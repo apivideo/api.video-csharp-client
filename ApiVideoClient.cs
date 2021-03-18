@@ -1,0 +1,214 @@
+using VideoApiClient.Api;
+using RestSharp;
+
+namespace VideoApiClient.Client
+{
+    /// <summary>
+    /// Class that allows you to call all the api routes
+    /// </summary>
+    public class ApiVideoClient {
+        private readonly ApiClient apiClient;
+        private readonly AccountApi account;
+        private readonly CaptionsApi captions;
+        private readonly ChaptersApi chapters;
+        private readonly LiveApi live;
+        private readonly PlayersApi players;
+        private readonly RawStatisticsApi rawStatistics;
+        private readonly VideosApi videos;
+        private readonly VideosDelegatedUploadApi videosDelegatedUpload;
+        private readonly WebhooksApi webhooks;
+
+        /// <summary>
+        /// Build an instance that targets production environment without authentication
+        /// </summary>
+        public ApiVideoClient() : this(Environment.PRODUCTION) {
+        }
+
+        /// <summary>
+        ///  Build an instance that targets the given environment without authentication
+        /// </summary>
+        /// <param name="environment">the target environment</param>
+        public ApiVideoClient(Environment environment) : this(new ApiClient(environment.GetUrl())) {
+        }
+
+        /// <summary>
+        /// Build an instance that targets the production environment with authentication
+        /// </summary>
+        /// <param name="apiKey">the api key to use to authenticate</param>
+        public ApiVideoClient(string apiKey) : this(apiKey, Environment.PRODUCTION) { 
+        }
+
+        /// <summary>
+        /// Build an instance that targets the given environment with authentication
+        /// </summary>
+        /// <param name="apiKey">the api key to use to authenticate</param>
+        /// <param name="environment">environment the target environment</param>
+        public ApiVideoClient(string apiKey, Environment environment) : this(new ApiClient(apiKey, environment.GetUrl())) { 
+        }
+
+        /// <summary>
+        /// Build an instance that targets the production environment using a custom OkHttp client
+        /// </summary>
+        /// <param name="client">the RestClient instance to use</param>
+        public ApiVideoClient(RestClient client) : this(new ApiClient(client, Environment.PRODUCTION.GetUrl()))
+        { 
+        }
+
+        /// <summary>
+        /// Build an instance that targets the production environment using a custom OkHttp client
+        /// </summary>
+        /// <param name="client">the RestClient instance to use</param>
+        /// <param name="environment">the target environment</param>
+        public ApiVideoClient(RestClient client, Environment environment) : this(new ApiClient(client, environment.GetUrl())) { 
+        }
+
+        private ApiVideoClient(ApiClient apiClient) {
+            this.apiClient = apiClient;
+            this.account = new AccountApi(this.apiClient);
+            this.captions = new CaptionsApi(this.apiClient);
+            this.chapters = new ChaptersApi(this.apiClient);
+            this.live = new LiveApi(this.apiClient);
+            this.players = new PlayersApi(this.apiClient);
+            this.rawStatistics = new RawStatisticsApi(this.apiClient);
+            this.videos = new VideosApi(this.apiClient);
+            this.videosDelegatedUpload = new VideosDelegatedUploadApi(this.apiClient);
+            this.webhooks = new WebhooksApi(this.apiClient);
+        }
+
+    
+        /// <summary>
+        /// Get an AccountApi instance
+        /// </summary>
+        /// <returns>AccountApi</returns>
+        public AccountApi Account() {
+            return this.account;
+        }
+    
+        /// <summary>
+        /// Get an CaptionsApi instance
+        /// </summary>
+        /// <returns>CaptionsApi</returns>
+        public CaptionsApi Captions() {
+            return this.captions;
+        }
+    
+        /// <summary>
+        /// Get an ChaptersApi instance
+        /// </summary>
+        /// <returns>ChaptersApi</returns>
+        public ChaptersApi Chapters() {
+            return this.chapters;
+        }
+    
+        /// <summary>
+        /// Get an LiveApi instance
+        /// </summary>
+        /// <returns>LiveApi</returns>
+        public LiveApi Live() {
+            return this.live;
+        }
+    
+        /// <summary>
+        /// Get an PlayersApi instance
+        /// </summary>
+        /// <returns>PlayersApi</returns>
+        public PlayersApi Players() {
+            return this.players;
+        }
+    
+        /// <summary>
+        /// Get an RawStatisticsApi instance
+        /// </summary>
+        /// <returns>RawStatisticsApi</returns>
+        public RawStatisticsApi RawStatistics() {
+            return this.rawStatistics;
+        }
+    
+        /// <summary>
+        /// Get an VideosApi instance
+        /// </summary>
+        /// <returns>VideosApi</returns>
+        public VideosApi Videos() {
+            return this.videos;
+        }
+    
+        /// <summary>
+        /// Get an VideosDelegatedUploadApi instance
+        /// </summary>
+        /// <returns>VideosDelegatedUploadApi</returns>
+        public VideosDelegatedUploadApi VideosDelegatedUpload() {
+            return this.videosDelegatedUpload;
+        }
+    
+        /// <summary>
+        /// Get an WebhooksApi instance
+        /// </summary>
+        /// <returns>WebhooksApi</returns>
+        public WebhooksApi Webhooks() {
+            return this.webhooks;
+        }
+    
+
+        /// <summary>
+        /// Gets the http client
+        /// </summary>
+        /// <returns>Current Api http client</returns>
+        public ApiClient GetHttpClient() {
+            return this.apiClient;
+        }
+
+        /// <summary>
+        /// Gets the upload chunk size
+        /// </summary>
+        /// <returns>The upload chunk size</returns>
+        public long GetUploadChunkSize() {
+            return this.apiClient.UploadChunkSize;
+        }
+
+        /// <summary>
+        /// Updates the upload chunk size
+        /// </summary>
+        /// <param name="uploadChunkSize">the new chunk size</param>
+        public void SetUploadChunkSize(long uploadChunkSize) {
+            this.apiClient.UploadChunkSize = uploadChunkSize;
+        }
+    }
+
+    /// <summary>
+    /// Provides Stream helpers methods
+    /// </summary>
+    public static class ApiVideoExtensions
+    {
+        /// <summary>
+        /// Returns the api URL of a given environment
+        /// </summary>
+        /// <param name="env">The environment to target</param>
+        /// <returns>The environment url</returns>
+        public static string GetUrl(this Environment env)
+        {
+            switch (env)
+            {
+                case Environment.PRODUCTION:
+                    return "https://ws.api.video";
+                case Environment.SANDBOX:
+                    return "https://sandbox.api.video";
+                default:
+                    return "";
+            }
+        }
+    }
+    /// <summary>
+    /// Environment to target
+    /// </summary>
+    public enum Environment
+    {
+        /// <summary>
+        /// Production environment
+        /// </summary>
+        PRODUCTION,
+        /// <summary>
+        /// Sandbox environment
+        /// </summary>
+        SANDBOX
+    }
+}
