@@ -167,5 +167,7 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (AccessToken) this.ApiClient.Deserialize(localVarResponse, typeof(AccessToken)));
         }
+
     }
+
 }

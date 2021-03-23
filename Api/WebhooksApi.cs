@@ -219,6 +219,92 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (WebhooksListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(WebhooksListResponse)));
         }
+            /**
+            * List all webhooks
+            * Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
+            * @return APIlistRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistRequest list() {
+                return new APIlistRequest(this);
+            }
+
+    public class APIlistRequest {
+        private string events;
+        private int? currentPage;
+        private int? pageSize;
+
+        private WebhooksApi currentApiInstance;
+
+        public APIlistRequest(WebhooksApi instance) {
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set events
+         * @param events The webhook event that you wish to filter on. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest Events(string events) {
+            this.events = events;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistRequest
+         */
+        public APIlistRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistRequest
+         */
+        public APIlistRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute list request
+         * @return WebhooksListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<Webhook> execute(){
+            ApiResponse<WebhooksListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(events, currentPage, pageSize);
+            return new Page<Webhook>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistRequest copy() {
+            APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
+            copy.Events(events);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes
         /// </summary>
@@ -284,5 +370,7 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Webhook) this.ApiClient.Deserialize(localVarResponse, typeof(Webhook)));
         }
+
     }
+
 }

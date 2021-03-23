@@ -106,6 +106,97 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (RawStatisticsListLiveStreamAnalyticsResponse) this.ApiClient.Deserialize(localVarResponse, typeof(RawStatisticsListLiveStreamAnalyticsResponse)));
         }
+            /**
+            * List live stream player sessions
+            * 
+            * @param liveStreamId The unique identifier for the live stream you want to retrieve analytics for. (required)
+            * @return APIgetLiveStreamAnalyticsRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIgetLiveStreamAnalyticsRequest getLiveStreamAnalytics(string liveStreamId) {
+                return new APIgetLiveStreamAnalyticsRequest(this,liveStreamId);
+            }
+
+    public class APIgetLiveStreamAnalyticsRequest {
+        private string liveStreamId;
+        private string period;
+        private int? currentPage;
+        private int? pageSize;
+
+        private RawStatisticsApi currentApiInstance;
+
+        public APIgetLiveStreamAnalyticsRequest(RawStatisticsApi instance, string liveStreamId) {
+            this.liveStreamId = liveStreamId;
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set period
+         * @param period Period must have one of the following formats:   - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (optional)
+         * @return APIgetLiveStreamAnalyticsRequest
+         */
+        public APIgetLiveStreamAnalyticsRequest Period(string period) {
+            this.period = period;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIgetLiveStreamAnalyticsRequest
+         */
+        public APIgetLiveStreamAnalyticsRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIgetLiveStreamAnalyticsRequest
+         */
+        public APIgetLiveStreamAnalyticsRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute getLiveStreamAnalytics request
+         * @return RawStatisticsListLiveStreamAnalyticsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<LiveStreamSession> execute(){
+            ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> localVarResp = this.currentApiInstance.getLiveStreamAnalyticsWithHttpInfo(liveStreamId, period, currentPage, pageSize);
+            return new Page<LiveStreamSession>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIgetLiveStreamAnalyticsRequest copy() {
+            APIgetLiveStreamAnalyticsRequest copy = new APIgetLiveStreamAnalyticsRequest( this.currentApiInstance, liveStreamId);
+            copy.Period(period);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// List player session events Useful to track and measure video&#39;s engagement.
         /// </summary>
@@ -172,6 +263,85 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (RawStatisticsListPlayerSessionEventsResponse) this.ApiClient.Deserialize(localVarResponse, typeof(RawStatisticsListPlayerSessionEventsResponse)));
         }
+            /**
+            * List player session events
+            * Useful to track and measure video&#39;s engagement.
+            * @param sessionId A unique identifier you can use to reference and track a session with. (required)
+            * @return APIlistPlayerSessionEventsRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistPlayerSessionEventsRequest listPlayerSessionEvents(string sessionId) {
+                return new APIlistPlayerSessionEventsRequest(this,sessionId);
+            }
+
+    public class APIlistPlayerSessionEventsRequest {
+        private string sessionId;
+        private int? currentPage;
+        private int? pageSize;
+
+        private RawStatisticsApi currentApiInstance;
+
+        public APIlistPlayerSessionEventsRequest(RawStatisticsApi instance, string sessionId) {
+            this.sessionId = sessionId;
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistPlayerSessionEventsRequest
+         */
+        public APIlistPlayerSessionEventsRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistPlayerSessionEventsRequest
+         */
+        public APIlistPlayerSessionEventsRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute listPlayerSessionEvents request
+         * @return RawStatisticsListPlayerSessionEventsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<PlayerSessionEvent> execute(){
+            ApiResponse<RawStatisticsListPlayerSessionEventsResponse> localVarResp = this.currentApiInstance.listPlayerSessionEventsWithHttpInfo(sessionId, currentPage, pageSize);
+            return new Page<PlayerSessionEvent>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistPlayerSessionEventsRequest copy() {
+            APIlistPlayerSessionEventsRequest copy = new APIlistPlayerSessionEventsRequest( this.currentApiInstance, sessionId);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// List video player sessions Retrieve all available user sessions for a specific video.
         /// </summary>
@@ -244,5 +414,110 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (RawStatisticsListSessionsResponse) this.ApiClient.Deserialize(localVarResponse, typeof(RawStatisticsListSessionsResponse)));
         }
+            /**
+            * List video player sessions
+            * Retrieve all available user sessions for a specific video.
+            * @param videoId The unique identifier for the video you want to retrieve session information for. (required)
+            * @return APIlistSessionsRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistSessionsRequest listSessions(string videoId) {
+                return new APIlistSessionsRequest(this,videoId);
+            }
+
+    public class APIlistSessionsRequest {
+        private string videoId;
+        private string period;
+        private List<string> metadata;
+        private int? currentPage;
+        private int? pageSize;
+
+        private RawStatisticsApi currentApiInstance;
+
+        public APIlistSessionsRequest(RawStatisticsApi instance, string videoId) {
+            this.videoId = videoId;
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set period
+         * @param period Period must have one of the following formats:   - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018  For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)
+         * @return APIlistSessionsRequest
+         */
+        public APIlistSessionsRequest Period(string period) {
+            this.period = period;
+            return this;
+        }
+
+        /**
+         * Set metadata
+         * @param metadata Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)
+         * @return APIlistSessionsRequest
+         */
+        public APIlistSessionsRequest Metadata(List<string> metadata) {
+            this.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistSessionsRequest
+         */
+        public APIlistSessionsRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistSessionsRequest
+         */
+        public APIlistSessionsRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute listSessions request
+         * @return RawStatisticsListSessionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<VideoSession> execute(){
+            ApiResponse<RawStatisticsListSessionsResponse> localVarResp = this.currentApiInstance.listSessionsWithHttpInfo(videoId, period, metadata, currentPage, pageSize);
+            return new Page<VideoSession>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistSessionsRequest copy() {
+            APIlistSessionsRequest copy = new APIlistSessionsRequest( this.currentApiInstance, videoId);
+            copy.Period(period);
+            copy.Metadata(metadata);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
     }
+
+    }
+
 }

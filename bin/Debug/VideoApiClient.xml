@@ -586,6 +586,39 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of CaptionsListResponse</returns>
         </member>
+        <member name="M:VideoApiClient.Api.CaptionsApi.list(System.String)">
+                        * List video captions
+                        * Retrieve a list of available captions for the videoId you provide.
+                        * @param videoId The unique identifier for the video you want to retrieve a list of captions for. (required)
+                        * @return APIlistRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.CaptionsApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.CaptionsApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.CaptionsApi.APIlistRequest.execute">
+                     * Execute list request
+                     * @return CaptionsListResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                     </table>
+        </member>
         <member name="M:VideoApiClient.Api.CaptionsApi.get(System.String,System.String)">
             <summary>
             Show a caption Display a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a response indicating the caption was not found.
@@ -698,6 +731,39 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of ChaptersListResponse</returns>
         </member>
+        <member name="M:VideoApiClient.Api.ChaptersApi.list(System.String)">
+                        * List video chapters
+                        * Retrieve a list of all chapters for a specified video.
+                        * @param videoId The unique identifier for the video you want to retrieve a list of chapters for. (required)
+                        * @return APIlistRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.ChaptersApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.ChaptersApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.ChaptersApi.APIlistRequest.execute">
+                     * Execute list request
+                     * @return ChaptersListResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                     </table>
+        </member>
         <member name="M:VideoApiClient.Api.ChaptersApi.get(System.String,System.String)">
             <summary>
             Show a chapter 
@@ -809,6 +875,56 @@
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of LiveStreamListResponse</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.LiveApi.list">
+                        * List all live streams
+                        * With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
+                        * @return APIlistRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.StreamKey(System.String)">
+            Set streamKey
+            @param streamKey The unique stream key that allows you to stream videos. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.Name(System.String)">
+            Set name
+            @param name You can filter live streams by their name or a part of their name. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.SortBy(System.String)">
+            Set sortBy
+            @param sortBy Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.SortOrder(System.String)">
+            Set sortOrder
+            @param sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.execute">
+                     * Execute list request
+                     * @return LiveStreamListResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                     </table>
         </member>
         <member name="M:VideoApiClient.Api.LiveApi.get(System.String)">
             <summary>
@@ -948,6 +1064,48 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of PlayersListResponse</returns>
         </member>
+        <member name="M:VideoApiClient.Api.PlayersApi.list">
+                        * List all players
+                        * Retrieve a list of all the players you created, as well as details about each one.
+                        * @return APIlistRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                            <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.SortBy(System.String)">
+            Set sortBy
+            @param sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.SortOrder(System.String)">
+            Set sortOrder
+            @param sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.execute">
+                     * Execute list request
+                     * @return PlayersListResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+                     </table>
+        </member>
         <member name="M:VideoApiClient.Api.PlayersApi.get(System.String)">
             <summary>
             Show a player Use a player ID to retrieve details about the player and display it for viewers.
@@ -1056,6 +1214,44 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of RawStatisticsListLiveStreamAnalyticsResponse</returns>
         </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.getLiveStreamAnalytics(System.String)">
+                        * List live stream player sessions
+                        * 
+                        * @param liveStreamId The unique identifier for the live stream you want to retrieve analytics for. (required)
+                        * @return APIgetLiveStreamAnalyticsRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest.Period(System.String)">
+            Set period
+            @param period Period must have one of the following formats:   - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (optional)
+            @return APIgetLiveStreamAnalyticsRequest
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIgetLiveStreamAnalyticsRequest
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIgetLiveStreamAnalyticsRequest
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest.execute">
+                     * Execute getLiveStreamAnalytics request
+                     * @return RawStatisticsListLiveStreamAnalyticsResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                     </table>
+        </member>
         <member name="M:VideoApiClient.Api.RawStatisticsApi.listPlayerSessionEvents(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List player session events Useful to track and measure video&#39;s engagement.
@@ -1075,6 +1271,39 @@
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of RawStatisticsListPlayerSessionEventsResponse</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listPlayerSessionEvents(System.String)">
+                        * List player session events
+                        * Useful to track and measure video&#39;s engagement.
+                        * @param sessionId A unique identifier you can use to reference and track a session with. (required)
+                        * @return APIlistPlayerSessionEventsRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistPlayerSessionEventsRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIlistPlayerSessionEventsRequest
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistPlayerSessionEventsRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIlistPlayerSessionEventsRequest
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistPlayerSessionEventsRequest.execute">
+                     * Execute listPlayerSessionEvents request
+                     * @return RawStatisticsListPlayerSessionEventsResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                     </table>
         </member>
         <member name="M:VideoApiClient.Api.RawStatisticsApi.listSessions(System.String,System.String,System.Collections.Generic.List{System.String},System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
@@ -1099,6 +1328,49 @@
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of RawStatisticsListSessionsResponse</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listSessions(System.String)">
+                        * List video player sessions
+                        * Retrieve all available user sessions for a specific video.
+                        * @param videoId The unique identifier for the video you want to retrieve session information for. (required)
+                        * @return APIlistSessionsRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.Period(System.String)">
+            Set period
+            @param period Period must have one of the following formats:   - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018  For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)
+            @return APIlistSessionsRequest
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.Metadata(System.Collections.Generic.List{System.String})">
+            Set metadata
+            @param metadata Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)
+            @return APIlistSessionsRequest
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIlistSessionsRequest
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIlistSessionsRequest
+        </member>
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.execute">
+                     * Execute listSessions request
+                     * @return RawStatisticsListSessionsResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+                     </table>
         </member>
         <member name="T:VideoApiClient.Api.VideosApi">
             <summary>
@@ -1195,6 +1467,73 @@
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of VideosListResponse</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.list">
+                        * List all videos
+                        * Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below.
+                        * @return APIlistRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                            <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.Title(System.String)">
+            Set title
+            @param title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.Tags(System.Collections.Generic.List{System.String})">
+            Set tags
+            @param tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.Metadata(System.Collections.Generic.List{System.String})">
+            Set metadata
+            @param metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.Description(System.String)">
+            Set description
+            @param description If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.LiveStreamId(System.String)">
+            Set liveStreamId
+            @param liveStreamId If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.SortBy(System.String)">
+            Set sortBy
+            @param sortBy Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.SortOrder(System.String)">
+            Set sortOrder
+            @param sortOrder Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.APIlistRequest.execute">
+                     * Execute list request
+                     * @return VideosListResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+                     </table>
         </member>
         <member name="M:VideoApiClient.Api.VideosApi.update(System.String,VideoApiClient.Model.VideoUpdatePayload)">
             <summary>
@@ -1338,6 +1677,46 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of TokenListResponse</returns>
         </member>
+        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.listTokens">
+                        * List all active upload tokens.
+                        * A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+                        * @return APIlistTokensRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.SortBy(System.String)">
+            Set sortBy
+            @param sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)
+            @return APIlistTokensRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.SortOrder(System.String)">
+            Set sortOrder
+            @param sortOrder Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)
+            @return APIlistTokensRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIlistTokensRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIlistTokensRequest
+        </member>
+        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.execute">
+                     * Execute listTokens request
+                     * @return TokenListResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                     </table>
+        </member>
         <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.getToken(System.String)">
             <summary>
             Show upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
@@ -1455,6 +1834,41 @@
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of WebhooksListResponse</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.WebhooksApi.list">
+                        * List all webhooks
+                        * Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
+                        * @return APIlistRequest
+                        * @http.response.details
+                        <table summary="Response Details" border="1">
+                            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                        </table>
+        </member>
+        <member name="M:VideoApiClient.Api.WebhooksApi.APIlistRequest.Events(System.String)">
+            Set events
+            @param events The webhook event that you wish to filter on. (optional)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.WebhooksApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
+            Set currentPage
+            @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.WebhooksApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
+            Set pageSize
+            @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+            @return APIlistRequest
+        </member>
+        <member name="M:VideoApiClient.Api.WebhooksApi.APIlistRequest.execute">
+                     * Execute list request
+                     * @return WebhooksListResponse
+                     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+                     * @http.response.details
+                     <table summary="Response Details" border="1">
+                        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                     </table>
         </member>
         <member name="M:VideoApiClient.Api.WebhooksApi.create(VideoApiClient.Model.WebhooksCreatePayload)">
             <summary>

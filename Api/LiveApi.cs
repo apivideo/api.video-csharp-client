@@ -227,6 +227,128 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (LiveStreamListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStreamListResponse)));
         }
+            /**
+            * List all live streams
+            * With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
+            * @return APIlistRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistRequest list() {
+                return new APIlistRequest(this);
+            }
+
+    public class APIlistRequest {
+        private string streamKey;
+        private string name;
+        private string sortBy;
+        private string sortOrder;
+        private int? currentPage;
+        private int? pageSize;
+
+        private LiveApi currentApiInstance;
+
+        public APIlistRequest(LiveApi instance) {
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set streamKey
+         * @param streamKey The unique stream key that allows you to stream videos. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest StreamKey(string streamKey) {
+            this.streamKey = streamKey;
+            return this;
+        }
+
+        /**
+         * Set name
+         * @param name You can filter live streams by their name or a part of their name. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest Name(string name) {
+            this.name = name;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest SortBy(string sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set sortOrder
+         * @param sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest SortOrder(string sortOrder) {
+            this.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistRequest
+         */
+        public APIlistRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistRequest
+         */
+        public APIlistRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute list request
+         * @return LiveStreamListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<LiveStream> execute(){
+            ApiResponse<LiveStreamListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(streamKey, name, sortBy, sortOrder, currentPage, pageSize);
+            return new Page<LiveStream>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistRequest copy() {
+            APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
+            copy.StreamKey(streamKey);
+            copy.Name(name);
+            copy.SortBy(sortBy);
+            copy.SortOrder(sortOrder);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// Show live stream Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
         /// </summary>
@@ -490,5 +612,7 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
         }
+
     }
+
 }

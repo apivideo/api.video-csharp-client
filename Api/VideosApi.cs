@@ -297,6 +297,166 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (VideosListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(VideosListResponse)));
         }
+            /**
+            * List all videos
+            * Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below.
+            * @return APIlistRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistRequest list() {
+                return new APIlistRequest(this);
+            }
+
+    public class APIlistRequest {
+        private string title;
+        private List<string> tags;
+        private List<string> metadata;
+        private string description;
+        private string liveStreamId;
+        private string sortBy;
+        private string sortOrder;
+        private int? currentPage;
+        private int? pageSize;
+
+        private VideosApi currentApiInstance;
+
+        public APIlistRequest(VideosApi instance) {
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set title
+         * @param title The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest Title(string title) {
+            this.title = title;
+            return this;
+        }
+
+        /**
+         * Set tags
+         * @param tags A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest Tags(List<string> tags) {
+            this.tags = tags;
+            return this;
+        }
+
+        /**
+         * Set metadata
+         * @param metadata Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest Metadata(List<string> metadata) {
+            this.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * Set description
+         * @param description If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest Description(string description) {
+            this.description = description;
+            return this;
+        }
+
+        /**
+         * Set liveStreamId
+         * @param liveStreamId If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest LiveStreamId(string liveStreamId) {
+            this.liveStreamId = liveStreamId;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest SortBy(string sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set sortOrder
+         * @param sortOrder Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest SortOrder(string sortOrder) {
+            this.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistRequest
+         */
+        public APIlistRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistRequest
+         */
+        public APIlistRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute list request
+         * @return VideosListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<Video> execute(){
+            ApiResponse<VideosListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize);
+            return new Page<Video>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistRequest copy() {
+            APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
+            copy.Title(title);
+            copy.Tags(tags);
+            copy.Metadata(metadata);
+            copy.Description(description);
+            copy.LiveStreamId(liveStreamId);
+            copy.SortBy(sortBy);
+            copy.SortOrder(sortOrder);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// Update a video Use this endpoint to update the parameters associated with your video. The video you are updating is determined by the video ID you provide in the path. For each parameter you want to update, include the update in the request body. NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
         /// </summary>
@@ -638,5 +798,7 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Video) this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
         }
+
     }
+
 }

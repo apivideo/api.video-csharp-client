@@ -162,6 +162,104 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (TokenListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(TokenListResponse)));
         }
+            /**
+            * List all active upload tokens.
+            * A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+            * @return APIlistTokensRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistTokensRequest listTokens() {
+                return new APIlistTokensRequest(this);
+            }
+
+    public class APIlistTokensRequest {
+        private string sortBy;
+        private string sortOrder;
+        private int? currentPage;
+        private int? pageSize;
+
+        private VideosDelegatedUploadApi currentApiInstance;
+
+        public APIlistTokensRequest(VideosDelegatedUploadApi instance) {
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)
+         * @return APIlistTokensRequest
+         */
+        public APIlistTokensRequest SortBy(string sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set sortOrder
+         * @param sortOrder Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)
+         * @return APIlistTokensRequest
+         */
+        public APIlistTokensRequest SortOrder(string sortOrder) {
+            this.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistTokensRequest
+         */
+        public APIlistTokensRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistTokensRequest
+         */
+        public APIlistTokensRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute listTokens request
+         * @return TokenListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<UploadToken> execute(){
+            ApiResponse<TokenListResponse> localVarResp = this.currentApiInstance.listTokensWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
+            return new Page<UploadToken>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistTokensRequest copy() {
+            APIlistTokensRequest copy = new APIlistTokensRequest( this.currentApiInstance);
+            copy.SortBy(sortBy);
+            copy.SortOrder(sortOrder);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// Show upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
         /// </summary>
@@ -354,5 +452,7 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (UploadToken) this.ApiClient.Deserialize(localVarResponse, typeof(UploadToken)));
         }
+
     }
+
 }

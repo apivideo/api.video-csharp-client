@@ -168,6 +168,85 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (CaptionsListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(CaptionsListResponse)));
         }
+            /**
+            * List video captions
+            * Retrieve a list of available captions for the videoId you provide.
+            * @param videoId The unique identifier for the video you want to retrieve a list of captions for. (required)
+            * @return APIlistRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistRequest list(string videoId) {
+                return new APIlistRequest(this,videoId);
+            }
+
+    public class APIlistRequest {
+        private string videoId;
+        private int? currentPage;
+        private int? pageSize;
+
+        private CaptionsApi currentApiInstance;
+
+        public APIlistRequest(CaptionsApi instance, string videoId) {
+            this.videoId = videoId;
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistRequest
+         */
+        public APIlistRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistRequest
+         */
+        public APIlistRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute list request
+         * @return CaptionsListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<Subtitle> execute(){
+            ApiResponse<CaptionsListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(videoId, currentPage, pageSize);
+            return new Page<Subtitle>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistRequest copy() {
+            APIlistRequest copy = new APIlistRequest( this.currentApiInstance, videoId);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// Show a caption Display a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a response indicating the caption was not found.
         /// </summary>
@@ -384,5 +463,7 @@ namespace VideoApiClient.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Subtitle) this.ApiClient.Deserialize(localVarResponse, typeof(Subtitle)));
         }
+
     }
+
 }
