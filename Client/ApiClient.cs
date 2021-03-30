@@ -109,7 +109,7 @@ namespace VideoApiClient.Client
         /// <summary>
         /// Gets or sets the file upload chunk size
         /// </summary>
-        public long UploadChunkSize{
+        public int UploadChunkSize{
             get;
             set;
         } = 100 * 1024 * 1024;

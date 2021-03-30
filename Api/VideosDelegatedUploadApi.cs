@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.IO;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -60,6 +61,8 @@ namespace VideoApiClient.Api
             if (uploadToken == null)
                 throw new ApiException(400, "Missing required parameter 'uploadToken' when calling VideosDelegatedUploadApi->deleteToken");
 
+            
+
             var localVarPath = "/upload-tokens/{uploadToken}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -83,7 +86,6 @@ namespace VideoApiClient.Api
 
             if (uploadToken != null) localVarPathParams.Add("uploadToken", this.ApiClient.ParameterToString(uploadToken)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -95,7 +97,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 null);
+            
         }
+
+        
         /// <summary>
         /// List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
         /// </summary>
@@ -123,6 +128,8 @@ namespace VideoApiClient.Api
 		public ApiResponse<TokenListResponse> listTokensWithHttpInfo(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
 
+            
+
             var localVarPath = "/upload-tokens";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -149,7 +156,6 @@ namespace VideoApiClient.Api
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -161,7 +167,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<TokenListResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (TokenListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(TokenListResponse)));
+            
         }
+
+        
             /**
             * List all active upload tokens.
             * A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
@@ -284,6 +293,8 @@ namespace VideoApiClient.Api
             if (uploadToken == null)
                 throw new ApiException(400, "Missing required parameter 'uploadToken' when calling VideosDelegatedUploadApi->getToken");
 
+            
+
             var localVarPath = "/upload-tokens/{uploadToken}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -307,7 +318,6 @@ namespace VideoApiClient.Api
 
             if (uploadToken != null) localVarPathParams.Add("uploadToken", this.ApiClient.ParameterToString(uploadToken)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -319,7 +329,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<UploadToken>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (UploadToken) this.ApiClient.Deserialize(localVarResponse, typeof(UploadToken)));
+            
         }
+
+        
         /// <summary>
         /// Upload with an upload token When given a token, anyone can upload a file to the URI &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;.  Example with cURL:  &#x60;&#x60;&#x60;curl $ curl  - -request POST - -url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39;  - -header &#39;content-type: multipart/form-data&#39;  -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60;  Or in an HTML form, with a little JavaScript to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!- -form for user interaction- -&gt; &lt;form name&#x3D;\&quot;videoUploadForm\&quot; &gt;   &lt;label for&#x3D;video&gt;Video:&lt;/label&gt;   &lt;input type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt;   &lt;input value&#x3D;\&quot;Submit\&quot; type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!- -JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     - -&gt; &lt;script&gt;    var form &#x3D; document.forms.namedItem(\&quot;videoUploadForm\&quot;);     form.addEventListener(&#39;submit&#39;, function(ev) {   ev.preventDefault();      var oOutput &#x3D; document.querySelector(\&quot;div\&quot;),          oData &#x3D; new FormData(form);      var oReq &#x3D; new XMLHttpRequest();         oReq.open(\&quot;POST\&quot;, \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true);      oReq.send(oData);   oReq.onload &#x3D; function(oEvent) {        if (oReq.status &#x3D;&#x3D;201) {          oOutput.innerHTML &#x3D; \&quot;Your video is uploaded!&lt;br/&gt;\&quot;  + oReq.response;        } else {          oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;;        }      };    }, false);  &lt;/script&gt; &#x60;&#x60;&#x60;   ### Dealing with large files  We have created a &lt;a href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt; to walk through the steps required.
         /// </summary>
@@ -349,6 +362,10 @@ namespace VideoApiClient.Api
             if (file == null)
                 throw new ApiException(400, "Missing required parameter 'file' when calling VideosDelegatedUploadApi->upload");
 
+            
+            long totalBytes = file.Length;
+            int chunkSize = Convert.ToInt32(this.ApiClient.UploadChunkSize);
+
             var localVarPath = "/upload";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -374,7 +391,32 @@ namespace VideoApiClient.Api
             if (token != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "token", token)); // query parameter
             if (file != null) localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
 
-            string[] localVarAuthNames = new string[] {  };
+            if (totalBytes > chunkSize)
+            {
+                ApiResponse<Video> lastRes = null;
+                localVarHeaderParams.Add("Content-Range", "");
+                for (int i = 0; i < totalBytes; i += chunkSize)
+                {
+                    byte[] buffer = new byte[chunkSize];
+                    localVarHeaderParams["Content-Range"] = "bytes " + i + "-" + (Math.Min(i+chunkSize,totalBytes)-1) + "/" + totalBytes;
+                    
+                    file.Read(buffer, 0, chunkSize);
+
+                    MemoryStream stream = new MemoryStream(buffer);
+                    if (stream != null) localVarFileParams["file"]= this.ApiClient.ParameterToFile("file", stream);
+                    // make the HTTP request
+                    IRestResponse localVarResponse = (IRestResponse)this.ApiClient.CallApi(localVarPath,
+                        Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                        localVarPathParams, localVarContentType);
+
+                    int localVarStatusCode = (int)localVarResponse.StatusCode;
+                    lastRes = new ApiResponse<Video>(localVarStatusCode,
+                        localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                        (Video)this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
+                }
+                return lastRes;
+            }
+            else{
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -386,7 +428,11 @@ namespace VideoApiClient.Api
             return new ApiResponse<Video>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Video) this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
+            
+            }
         }
+
+        
         /// <summary>
         /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
         /// </summary>
@@ -407,6 +453,8 @@ namespace VideoApiClient.Api
         /// <returns>ApiResponse of UploadToken</returns>
 		public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreatePayload tokenCreatePayload = default)
         {
+
+            
 
             var localVarPath = "/upload-tokens";
             var localVarPathParams = new Dictionary<string, string>();
@@ -439,7 +487,6 @@ namespace VideoApiClient.Api
                 localVarPostBody = tokenCreatePayload; // byte array
             }
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -451,7 +498,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<UploadToken>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (UploadToken) this.ApiClient.Deserialize(localVarResponse, typeof(UploadToken)));
+            
         }
+
+        
 
     }
 

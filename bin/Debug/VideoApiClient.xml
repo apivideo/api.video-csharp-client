@@ -112,7 +112,7 @@
             </summary>
             <returns>The upload chunk size</returns>
         </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.SetUploadChunkSize(System.Int64)">
+        <member name="M:VideoApiClient.Client.ApiVideoClient.SetUploadChunkSize(System.Int32)">
             <summary>
             Updates the upload chunk size
             </summary>

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.IO;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -65,6 +66,8 @@ namespace VideoApiClient.Api
             if (language == null)
                 throw new ApiException(400, "Missing required parameter 'language' when calling ChaptersApi->delete");
 
+            
+
             var localVarPath = "/videos/{videoId}/chapters/{language}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -89,7 +92,6 @@ namespace VideoApiClient.Api
             if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
             if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -101,7 +103,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 null);
+            
         }
+
+        
         /// <summary>
         /// List video chapters Retrieve a list of all chapters for a specified video.
         /// </summary>
@@ -130,6 +135,8 @@ namespace VideoApiClient.Api
             if (videoId == null)
                 throw new ApiException(400, "Missing required parameter 'videoId' when calling ChaptersApi->list");
 
+            
+
             var localVarPath = "/videos/{videoId}/chapters";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -155,7 +162,6 @@ namespace VideoApiClient.Api
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -167,7 +173,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<ChaptersListResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (ChaptersListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(ChaptersListResponse)));
+            
         }
+
+        
             /**
             * List video chapters
             * Retrieve a list of all chapters for a specified video.
@@ -276,6 +285,8 @@ namespace VideoApiClient.Api
             if (language == null)
                 throw new ApiException(400, "Missing required parameter 'language' when calling ChaptersApi->get");
 
+            
+
             var localVarPath = "/videos/{videoId}/chapters/{language}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -300,7 +311,6 @@ namespace VideoApiClient.Api
             if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
             if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -312,7 +322,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Chapter>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Chapter) this.ApiClient.Deserialize(localVarResponse, typeof(Chapter)));
+            
         }
+
+        
         /// <summary>
         /// Upload a chapter Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
         /// </summary>
@@ -347,6 +360,8 @@ namespace VideoApiClient.Api
             if (file == null)
                 throw new ApiException(400, "Missing required parameter 'file' when calling ChaptersApi->upload");
 
+            
+
             var localVarPath = "/videos/{videoId}/chapters/{language}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -373,7 +388,6 @@ namespace VideoApiClient.Api
             if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -385,7 +399,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Chapter>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Chapter) this.ApiClient.Deserialize(localVarResponse, typeof(Chapter)));
+            
         }
+
+        
 
     }
 

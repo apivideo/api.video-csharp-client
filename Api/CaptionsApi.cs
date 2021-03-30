@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.IO;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -65,6 +66,8 @@ namespace VideoApiClient.Api
             if (language == null)
                 throw new ApiException(400, "Missing required parameter 'language' when calling CaptionsApi->delete");
 
+            
+
             var localVarPath = "/videos/{videoId}/captions/{language}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -89,7 +92,6 @@ namespace VideoApiClient.Api
             if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
             if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -101,7 +103,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 null);
+            
         }
+
+        
         /// <summary>
         /// List video captions Retrieve a list of available captions for the videoId you provide.
         /// </summary>
@@ -130,6 +135,8 @@ namespace VideoApiClient.Api
             if (videoId == null)
                 throw new ApiException(400, "Missing required parameter 'videoId' when calling CaptionsApi->list");
 
+            
+
             var localVarPath = "/videos/{videoId}/captions";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -155,7 +162,6 @@ namespace VideoApiClient.Api
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -167,7 +173,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<CaptionsListResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (CaptionsListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(CaptionsListResponse)));
+            
         }
+
+        
             /**
             * List video captions
             * Retrieve a list of available captions for the videoId you provide.
@@ -276,6 +285,8 @@ namespace VideoApiClient.Api
             if (language == null)
                 throw new ApiException(400, "Missing required parameter 'language' when calling CaptionsApi->get");
 
+            
+
             var localVarPath = "/videos/{videoId}/captions/{language}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -300,7 +311,6 @@ namespace VideoApiClient.Api
             if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
             if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -312,7 +322,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Subtitle>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Subtitle) this.ApiClient.Deserialize(localVarResponse, typeof(Subtitle)));
+            
         }
+
+        
         /// <summary>
         /// Update caption To have the captions on automatically, use this PATCH to set default: true.
         /// </summary>
@@ -343,6 +356,8 @@ namespace VideoApiClient.Api
             // verify the required parameter 'language' is set
             if (language == null)
                 throw new ApiException(400, "Missing required parameter 'language' when calling CaptionsApi->update");
+
+            
 
             var localVarPath = "/videos/{videoId}/captions/{language}";
             var localVarPathParams = new Dictionary<string, string>();
@@ -377,7 +392,6 @@ namespace VideoApiClient.Api
                 localVarPostBody = captionsUpdatePayload; // byte array
             }
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -389,7 +403,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Subtitle>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Subtitle) this.ApiClient.Deserialize(localVarResponse, typeof(Subtitle)));
+            
         }
+
+        
         /// <summary>
         /// Upload a caption Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
         /// </summary>
@@ -424,6 +441,8 @@ namespace VideoApiClient.Api
             if (file == null)
                 throw new ApiException(400, "Missing required parameter 'file' when calling CaptionsApi->upload");
 
+            
+
             var localVarPath = "/videos/{videoId}/captions/{language}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -450,7 +469,6 @@ namespace VideoApiClient.Api
             if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -462,7 +480,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Subtitle>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Subtitle) this.ApiClient.Deserialize(localVarResponse, typeof(Subtitle)));
+            
         }
+
+        
 
     }
 

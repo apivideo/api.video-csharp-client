@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.IO;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -67,6 +68,8 @@ namespace VideoApiClient.Api
             if (liveStreamId == null)
                 throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling RawStatisticsApi->getLiveStreamAnalytics");
 
+            
+
             var localVarPath = "/analytics/live-streams/{liveStreamId}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -93,7 +96,6 @@ namespace VideoApiClient.Api
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -105,7 +107,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (RawStatisticsListLiveStreamAnalyticsResponse) this.ApiClient.Deserialize(localVarResponse, typeof(RawStatisticsListLiveStreamAnalyticsResponse)));
+            
         }
+
+        
             /**
             * List live stream player sessions
             * 
@@ -225,6 +230,8 @@ namespace VideoApiClient.Api
             if (sessionId == null)
                 throw new ApiException(400, "Missing required parameter 'sessionId' when calling RawStatisticsApi->listPlayerSessionEvents");
 
+            
+
             var localVarPath = "/analytics/sessions/{sessionId}/events";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -250,7 +257,6 @@ namespace VideoApiClient.Api
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -262,7 +268,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<RawStatisticsListPlayerSessionEventsResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (RawStatisticsListPlayerSessionEventsResponse) this.ApiClient.Deserialize(localVarResponse, typeof(RawStatisticsListPlayerSessionEventsResponse)));
+            
         }
+
+        
             /**
             * List player session events
             * Useful to track and measure video&#39;s engagement.
@@ -374,6 +383,8 @@ namespace VideoApiClient.Api
             if (videoId == null)
                 throw new ApiException(400, "Missing required parameter 'videoId' when calling RawStatisticsApi->listSessions");
 
+            
+
             var localVarPath = "/analytics/videos/{videoId}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -401,7 +412,6 @@ namespace VideoApiClient.Api
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -413,7 +423,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<RawStatisticsListSessionsResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (RawStatisticsListSessionsResponse) this.ApiClient.Deserialize(localVarResponse, typeof(RawStatisticsListSessionsResponse)));
+            
         }
+
+        
             /**
             * List video player sessions
             * Retrieve all available user sessions for a specific video.

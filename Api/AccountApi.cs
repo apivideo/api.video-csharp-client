@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.IO;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -58,6 +59,8 @@ namespace VideoApiClient.Api
 		public ApiResponse<Account> getWithHttpInfo()
         {
 
+            
+
             var localVarPath = "/account";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -80,7 +83,6 @@ namespace VideoApiClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -92,7 +94,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Account>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Account) this.ApiClient.Deserialize(localVarResponse, typeof(Account)));
+            
         }
+
+        
 
     }
 
