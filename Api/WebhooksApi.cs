@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.IO;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -60,6 +61,8 @@ namespace VideoApiClient.Api
             if (webhookId == null)
                 throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->delete");
 
+            
+
             var localVarPath = "/webhooks/{webhookId}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -83,7 +86,6 @@ namespace VideoApiClient.Api
 
             if (webhookId != null) localVarPathParams.Add("webhookId", this.ApiClient.ParameterToString(webhookId)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -95,7 +97,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 null);
+            
         }
+
+        
         /// <summary>
         /// Show Webhook details This call provides the same JSON information provided on Webjhook creation.
         /// </summary>
@@ -120,6 +125,8 @@ namespace VideoApiClient.Api
             if (webhookId == null)
                 throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->get");
 
+            
+
             var localVarPath = "/webhooks/{webhookId}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -143,7 +150,6 @@ namespace VideoApiClient.Api
 
             if (webhookId != null) localVarPathParams.Add("webhookId", this.ApiClient.ParameterToString(webhookId)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -155,7 +161,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Webhook>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Webhook) this.ApiClient.Deserialize(localVarResponse, typeof(Webhook)));
+            
         }
+
+        
         /// <summary>
         /// List all webhooks Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
         /// </summary>
@@ -180,6 +189,8 @@ namespace VideoApiClient.Api
         /// <returns>ApiResponse of WebhooksListResponse</returns>
 		public ApiResponse<WebhooksListResponse> listWithHttpInfo(string events = default, int? currentPage = default, int? pageSize = default)
         {
+
+            
 
             var localVarPath = "/webhooks";
             var localVarPathParams = new Dictionary<string, string>();
@@ -206,7 +217,6 @@ namespace VideoApiClient.Api
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -218,7 +228,96 @@ namespace VideoApiClient.Api
             return new ApiResponse<WebhooksListResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (WebhooksListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(WebhooksListResponse)));
+            
         }
+
+        
+            /**
+            * List all webhooks
+            * Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
+            * @return APIlistRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistRequest list() {
+                return new APIlistRequest(this);
+            }
+
+    public class APIlistRequest {
+        private string events;
+        private int? currentPage;
+        private int? pageSize;
+
+        private WebhooksApi currentApiInstance;
+
+        public APIlistRequest(WebhooksApi instance) {
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set events
+         * @param events The webhook event that you wish to filter on. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest Events(string events) {
+            this.events = events;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistRequest
+         */
+        public APIlistRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistRequest
+         */
+        public APIlistRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute list request
+         * @return WebhooksListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<Webhook> execute(){
+            ApiResponse<WebhooksListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(events, currentPage, pageSize);
+            return new Page<Webhook>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistRequest copy() {
+            APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
+            copy.Events(events);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes
         /// </summary>
@@ -239,6 +338,8 @@ namespace VideoApiClient.Api
         /// <returns>ApiResponse of Webhook</returns>
 		public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreatePayload webhooksCreatePayload = default)
         {
+
+            
 
             var localVarPath = "/webhooks";
             var localVarPathParams = new Dictionary<string, string>();
@@ -271,7 +372,6 @@ namespace VideoApiClient.Api
                 localVarPostBody = webhooksCreatePayload; // byte array
             }
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -283,6 +383,11 @@ namespace VideoApiClient.Api
             return new ApiResponse<Webhook>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Webhook) this.ApiClient.Deserialize(localVarResponse, typeof(Webhook)));
+            
         }
+
+        
+
     }
+
 }

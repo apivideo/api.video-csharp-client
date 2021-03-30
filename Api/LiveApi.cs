@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.IO;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -60,6 +61,8 @@ namespace VideoApiClient.Api
             if (liveStreamId == null)
                 throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveApi->delete");
 
+            
+
             var localVarPath = "/live-streams/{liveStreamId}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -82,7 +85,6 @@ namespace VideoApiClient.Api
 
             if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -94,7 +96,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 null);
+            
         }
+
+        
         /// <summary>
         /// Delete a thumbnail Send the unique identifier for a live stream to delete it from the system.
         /// </summary>
@@ -119,6 +124,8 @@ namespace VideoApiClient.Api
             if (liveStreamId == null)
                 throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveApi->deleteThumbnail");
 
+            
+
             var localVarPath = "/live-streams/{liveStreamId}/thumbnail";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -142,7 +149,6 @@ namespace VideoApiClient.Api
 
             if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -154,7 +160,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<LiveStream>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
         }
+
+        
         /// <summary>
         /// List all live streams With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
         /// </summary>
@@ -186,6 +195,8 @@ namespace VideoApiClient.Api
 		public ApiResponse<LiveStreamListResponse> listWithHttpInfo(string streamKey = default, string name = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
 
+            
+
             var localVarPath = "/live-streams";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -214,7 +225,6 @@ namespace VideoApiClient.Api
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -226,7 +236,132 @@ namespace VideoApiClient.Api
             return new ApiResponse<LiveStreamListResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (LiveStreamListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStreamListResponse)));
+            
         }
+
+        
+            /**
+            * List all live streams
+            * With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
+            * @return APIlistRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistRequest list() {
+                return new APIlistRequest(this);
+            }
+
+    public class APIlistRequest {
+        private string streamKey;
+        private string name;
+        private string sortBy;
+        private string sortOrder;
+        private int? currentPage;
+        private int? pageSize;
+
+        private LiveApi currentApiInstance;
+
+        public APIlistRequest(LiveApi instance) {
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set streamKey
+         * @param streamKey The unique stream key that allows you to stream videos. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest StreamKey(string streamKey) {
+            this.streamKey = streamKey;
+            return this;
+        }
+
+        /**
+         * Set name
+         * @param name You can filter live streams by their name or a part of their name. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest Name(string name) {
+            this.name = name;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest SortBy(string sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set sortOrder
+         * @param sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest SortOrder(string sortOrder) {
+            this.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistRequest
+         */
+        public APIlistRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistRequest
+         */
+        public APIlistRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute list request
+         * @return LiveStreamListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<LiveStream> execute(){
+            ApiResponse<LiveStreamListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(streamKey, name, sortBy, sortOrder, currentPage, pageSize);
+            return new Page<LiveStream>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistRequest copy() {
+            APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
+            copy.StreamKey(streamKey);
+            copy.Name(name);
+            copy.SortBy(sortBy);
+            copy.SortOrder(sortOrder);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// Show live stream Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
         /// </summary>
@@ -251,6 +386,8 @@ namespace VideoApiClient.Api
             if (liveStreamId == null)
                 throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveApi->get");
 
+            
+
             var localVarPath = "/live-streams/{liveStreamId}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -274,7 +411,6 @@ namespace VideoApiClient.Api
 
             if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -286,7 +422,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<LiveStream>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
         }
+
+        
         /// <summary>
         /// Update a live stream Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
         /// </summary>
@@ -312,6 +451,8 @@ namespace VideoApiClient.Api
             // verify the required parameter 'liveStreamId' is set
             if (liveStreamId == null)
                 throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveApi->update");
+
+            
 
             var localVarPath = "/live-streams/{liveStreamId}";
             var localVarPathParams = new Dictionary<string, string>();
@@ -345,7 +486,6 @@ namespace VideoApiClient.Api
                 localVarPostBody = liveStreamUpdatePayload; // byte array
             }
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -357,7 +497,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<LiveStream>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
         }
+
+        
         /// <summary>
         /// Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
         /// </summary>
@@ -378,6 +521,8 @@ namespace VideoApiClient.Api
         /// <returns>ApiResponse of LiveStream</returns>
 		public ApiResponse<LiveStream> createWithHttpInfo(LiveStreamCreatePayload liveStreamCreatePayload = default)
         {
+
+            
 
             var localVarPath = "/live-streams";
             var localVarPathParams = new Dictionary<string, string>();
@@ -410,7 +555,6 @@ namespace VideoApiClient.Api
                 localVarPostBody = liveStreamCreatePayload; // byte array
             }
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -422,7 +566,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<LiveStream>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
         }
+
+        
         /// <summary>
         /// Upload a thumbnail Upload an image to use as a backdrop for your livestream.
         /// </summary>
@@ -452,6 +599,8 @@ namespace VideoApiClient.Api
             if (file == null)
                 throw new ApiException(400, "Missing required parameter 'file' when calling LiveApi->uploadThumbnail");
 
+            
+
             var localVarPath = "/live-streams/{liveStreamId}/thumbnail";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -477,7 +626,6 @@ namespace VideoApiClient.Api
             if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
             if (file != null) localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -489,6 +637,11 @@ namespace VideoApiClient.Api
             return new ApiResponse<LiveStream>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
         }
+
+        
+
     }
+
 }

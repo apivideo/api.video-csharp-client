@@ -161,7 +161,7 @@ namespace VideoApiClient.Client
         /// Gets the upload chunk size
         /// </summary>
         /// <returns>The upload chunk size</returns>
-        public long GetUploadChunkSize() {
+        public int GetUploadChunkSize() {
             return this.apiClient.UploadChunkSize;
         }
 
@@ -169,7 +169,7 @@ namespace VideoApiClient.Client
         /// Updates the upload chunk size
         /// </summary>
         /// <param name="uploadChunkSize">the new chunk size</param>
-        public void SetUploadChunkSize(long uploadChunkSize) {
+        public void SetUploadChunkSize(int uploadChunkSize) {
             this.apiClient.UploadChunkSize = uploadChunkSize;
         }
     }

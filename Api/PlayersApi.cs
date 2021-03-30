@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.IO;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -60,6 +61,8 @@ namespace VideoApiClient.Api
             if (playerId == null)
                 throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayersApi->delete");
 
+            
+
             var localVarPath = "/players/{playerId}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -83,7 +86,6 @@ namespace VideoApiClient.Api
 
             if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -95,7 +97,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 null);
+            
         }
+
+        
         /// <summary>
         /// Delete logo 
         /// </summary>
@@ -120,6 +125,8 @@ namespace VideoApiClient.Api
             if (playerId == null)
                 throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayersApi->deleteLogo");
 
+            
+
             var localVarPath = "/players/{playerId}/logo";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -143,7 +150,6 @@ namespace VideoApiClient.Api
 
             if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -155,7 +161,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Object) this.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+            
         }
+
+        
         /// <summary>
         /// List all players Retrieve a list of all the players you created, as well as details about each one.
         /// </summary>
@@ -183,6 +192,8 @@ namespace VideoApiClient.Api
 		public ApiResponse<PlayersListResponse> listWithHttpInfo(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
 
+            
+
             var localVarPath = "/players";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -209,7 +220,6 @@ namespace VideoApiClient.Api
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -221,7 +231,110 @@ namespace VideoApiClient.Api
             return new ApiResponse<PlayersListResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (PlayersListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(PlayersListResponse)));
+            
         }
+
+        
+            /**
+            * List all players
+            * Retrieve a list of all the players you created, as well as details about each one.
+            * @return APIlistRequest
+            * @http.response.details
+            <table summary="Response Details" border="1">
+                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+                <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+            </table>
+            */
+            public APIlistRequest list() {
+                return new APIlistRequest(this);
+            }
+
+    public class APIlistRequest {
+        private string sortBy;
+        private string sortOrder;
+        private int? currentPage;
+        private int? pageSize;
+
+        private PlayersApi currentApiInstance;
+
+        public APIlistRequest(PlayersApi instance) {
+            this.currentApiInstance = instance;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest SortBy(string sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set sortOrder
+         * @param sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)
+         * @return APIlistRequest
+         */
+        public APIlistRequest SortOrder(string sortOrder) {
+            this.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * @return APIlistRequest
+         */
+        public APIlistRequest CurrentPage(int? currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * @return APIlistRequest
+         */
+        public APIlistRequest PageSize(int? pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        
+
+        /**
+         * Execute list request
+         * @return PlayersListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+         </table>
+         */
+        public Page<Player> execute(){
+            ApiResponse<PlayersListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
+            return new Page<Player>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                try {
+                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new Exception(e.Message);
+                }
+            }); 
+        }
+
+        private APIlistRequest copy() {
+            APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
+            copy.SortBy(sortBy);
+            copy.SortOrder(sortOrder);
+            copy.CurrentPage(currentPage);
+            copy.PageSize(pageSize);
+            return copy;
+        }
+    }
         /// <summary>
         /// Show a player Use a player ID to retrieve details about the player and display it for viewers.
         /// </summary>
@@ -246,6 +359,8 @@ namespace VideoApiClient.Api
             if (playerId == null)
                 throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayersApi->get");
 
+            
+
             var localVarPath = "/players/{playerId}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -269,7 +384,6 @@ namespace VideoApiClient.Api
 
             if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -281,7 +395,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Player>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Player) this.ApiClient.Deserialize(localVarResponse, typeof(Player)));
+            
         }
+
+        
         /// <summary>
         /// Update a player Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
         /// </summary>
@@ -310,6 +427,8 @@ namespace VideoApiClient.Api
             // verify the required parameter 'playerUpdatePayload' is set
             if (playerUpdatePayload == null)
                 throw new ApiException(400, "Missing required parameter 'playerUpdatePayload' when calling PlayersApi->update");
+
+            
 
             var localVarPath = "/players/{playerId}";
             var localVarPathParams = new Dictionary<string, string>();
@@ -343,7 +462,6 @@ namespace VideoApiClient.Api
                 localVarPostBody = playerUpdatePayload; // byte array
             }
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -355,7 +473,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Player>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Player) this.ApiClient.Deserialize(localVarResponse, typeof(Player)));
+            
         }
+
+        
         /// <summary>
         /// Create a player Create a player for your video, and customise it.
         /// </summary>
@@ -379,6 +500,8 @@ namespace VideoApiClient.Api
             // verify the required parameter 'playerCreationPayload' is set
             if (playerCreationPayload == null)
                 throw new ApiException(400, "Missing required parameter 'playerCreationPayload' when calling PlayersApi->create");
+
+            
 
             var localVarPath = "/players";
             var localVarPathParams = new Dictionary<string, string>();
@@ -411,7 +534,6 @@ namespace VideoApiClient.Api
                 localVarPostBody = playerCreationPayload; // byte array
             }
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -423,7 +545,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<Player>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Player) this.ApiClient.Deserialize(localVarResponse, typeof(Player)));
+            
         }
+
+        
         /// <summary>
         /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
         /// </summary>
@@ -458,6 +583,8 @@ namespace VideoApiClient.Api
             if (link == null)
                 throw new ApiException(400, "Missing required parameter 'link' when calling PlayersApi->uploadLogo");
 
+            
+
             var localVarPath = "/players/{playerId}/logo";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -484,7 +611,6 @@ namespace VideoApiClient.Api
             if (file != null) localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
             if (link != null) localVarFormParams.Add("link", this.ApiClient.ParameterToString(link)); // form parameter
 
-            string[] localVarAuthNames = new string[] { "bearerAuth" };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -496,6 +622,11 @@ namespace VideoApiClient.Api
             return new ApiResponse<Player>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Player) this.ApiClient.Deserialize(localVarResponse, typeof(Player)));
+            
         }
+
+        
+
     }
+
 }

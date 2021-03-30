@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.IO;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -58,6 +59,8 @@ namespace VideoApiClient.Api
 		public ApiResponse<AccessToken> authenticateWithHttpInfo(AuthenticatePayload authenticatePayload = default)
         {
 
+            
+
             var localVarPath = "/auth/api-key";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
@@ -89,7 +92,6 @@ namespace VideoApiClient.Api
                 localVarPostBody = authenticatePayload; // byte array
             }
 
-            string[] localVarAuthNames = new string[] {  };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -101,7 +103,10 @@ namespace VideoApiClient.Api
             return new ApiResponse<AccessToken>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (AccessToken) this.ApiClient.Deserialize(localVarResponse, typeof(AccessToken)));
+            
         }
+
+        
         /// <summary>
         /// Refresh token Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
         /// </summary>
@@ -122,6 +127,8 @@ namespace VideoApiClient.Api
         /// <returns>ApiResponse of AccessToken</returns>
 		public ApiResponse<AccessToken> refreshWithHttpInfo(RefreshTokenPayload refreshTokenPayload = default)
         {
+
+            
 
             var localVarPath = "/auth/refresh";
             var localVarPathParams = new Dictionary<string, string>();
@@ -154,7 +161,6 @@ namespace VideoApiClient.Api
                 localVarPostBody = refreshTokenPayload; // byte array
             }
 
-            string[] localVarAuthNames = new string[] {  };
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -166,6 +172,11 @@ namespace VideoApiClient.Api
             return new ApiResponse<AccessToken>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (AccessToken) this.ApiClient.Deserialize(localVarResponse, typeof(AccessToken)));
+            
         }
+
+        
+
     }
+
 }
