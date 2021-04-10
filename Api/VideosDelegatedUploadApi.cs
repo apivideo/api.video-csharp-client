@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
+using VideoApiClient.Upload;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -43,6 +44,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
+        
         /// <returns></returns>
 		public void deleteToken(string uploadToken)
         {
@@ -54,6 +56,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
+        
         /// <returns>ApiResponse of Object(void)</returns>
 		public ApiResponse<Object> deleteTokenWithHttpInfo(string uploadToken)
         {
@@ -87,6 +90,8 @@ namespace VideoApiClient.Api
             if (uploadToken != null) localVarPathParams.Add("uploadToken", this.ApiClient.ParameterToString(uploadToken)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -106,9 +111,10 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
-        /// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>TokenListResponse</returns>
 		public TokenListResponse listTokens(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
@@ -121,9 +127,10 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
-        /// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>ApiResponse of TokenListResponse</returns>
 		public ApiResponse<TokenListResponse> listTokensWithHttpInfo(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
@@ -157,6 +164,8 @@ namespace VideoApiClient.Api
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -171,109 +180,105 @@ namespace VideoApiClient.Api
         }
 
         
-            /**
-            * List all active upload tokens.
-            * A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
-            * @return APIlistTokensRequest
-            * @http.response.details
-            <table summary="Response Details" border="1">
-                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-            </table>
-            */
-            public APIlistTokensRequest listTokens() {
-                return new APIlistTokensRequest(this);
+        /// <summary>
+        /// A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+        /// </summary>
+        /// <returns>APIlistTokensRequest</returns>
+        public APIlistTokensRequest listTokens() {
+            return new APIlistTokensRequest(this);
+        }
+
+        /// <summary>
+        /// Request listTokens class to get paginated list of items
+        /// </summary>
+        public class APIlistTokensRequest {
+            private string sortBy;
+            private string sortOrder;
+            private int? currentPage;
+            private int? pageSize;
+
+            private VideosDelegatedUploadApi currentApiInstance;
+
+            /// <summary>
+            /// Class constructor with api instance
+            /// </summary>
+            /// <param name="instance">Instance of the current api</param>
+            public APIlistTokensRequest(VideosDelegatedUploadApi instance) {
+                this.currentApiInstance = instance;
             }
 
-    public class APIlistTokensRequest {
-        private string sortBy;
-        private string sortOrder;
-        private int? currentPage;
-        private int? pageSize;
+            /// <summary>
+            /// Set sortBy
+            /// </summary>
+            /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
+            /// <returns>APIlistTokensRequest</returns>
+            public APIlistTokensRequest SortBy(string sortBy) {
+                this.sortBy = sortBy;
+                return this;
+            }
 
-        private VideosDelegatedUploadApi currentApiInstance;
+            /// <summary>
+            /// Set sortOrder
+            /// </summary>
+            /// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
+            /// <returns>APIlistTokensRequest</returns>
+            public APIlistTokensRequest SortOrder(string sortOrder) {
+                this.sortOrder = sortOrder;
+                return this;
+            }
 
-        public APIlistTokensRequest(VideosDelegatedUploadApi instance) {
-            this.currentApiInstance = instance;
+            /// <summary>
+            /// Set currentPage
+            /// </summary>
+            /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+            /// <returns>APIlistTokensRequest</returns>
+            public APIlistTokensRequest CurrentPage(int? currentPage) {
+                this.currentPage = currentPage;
+                return this;
+            }
+
+            /// <summary>
+            /// Set pageSize
+            /// </summary>
+            /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+            /// <returns>APIlistTokensRequest</returns>
+            public APIlistTokensRequest PageSize(int? pageSize) {
+                this.pageSize = pageSize;
+                return this;
+            }
+
+            
+
+            /// <summary>
+            /// Execute listTokens request
+            /// </summary>
+            /// <returns>TokenListResponse </returns>
+            public Page<UploadToken> execute(){
+                ApiResponse<TokenListResponse> localVarResp = this.currentApiInstance.listTokensWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
+                return new Page<UploadToken>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                    try {
+                        return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                    } catch (ApiException e) {
+                        throw new Exception(e.Message);
+                    }
+                }); 
+            }
+
+            private APIlistTokensRequest copy() {
+                APIlistTokensRequest copy = new APIlistTokensRequest( this.currentApiInstance);
+                copy.SortBy(sortBy);
+                copy.SortOrder(sortOrder);
+                copy.CurrentPage(currentPage);
+                copy.PageSize(pageSize);
+                return copy;
+            }
         }
-
-        /**
-         * Set sortBy
-         * @param sortBy Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)
-         * @return APIlistTokensRequest
-         */
-        public APIlistTokensRequest SortBy(string sortBy) {
-            this.sortBy = sortBy;
-            return this;
-        }
-
-        /**
-         * Set sortOrder
-         * @param sortOrder Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)
-         * @return APIlistTokensRequest
-         */
-        public APIlistTokensRequest SortOrder(string sortOrder) {
-            this.sortOrder = sortOrder;
-            return this;
-        }
-
-        /**
-         * Set currentPage
-         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
-         * @return APIlistTokensRequest
-         */
-        public APIlistTokensRequest CurrentPage(int? currentPage) {
-            this.currentPage = currentPage;
-            return this;
-        }
-
-        /**
-         * Set pageSize
-         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
-         * @return APIlistTokensRequest
-         */
-        public APIlistTokensRequest PageSize(int? pageSize) {
-            this.pageSize = pageSize;
-            return this;
-        }
-
-        
-
-        /**
-         * Execute listTokens request
-         * @return TokenListResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-         </table>
-         */
-        public Page<UploadToken> execute(){
-            ApiResponse<TokenListResponse> localVarResp = this.currentApiInstance.listTokensWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
-            return new Page<UploadToken>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
-                try {
-                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
-                } catch (ApiException e) {
-                    throw new Exception(e.Message);
-                }
-            }); 
-        }
-
-        private APIlistTokensRequest copy() {
-            APIlistTokensRequest copy = new APIlistTokensRequest( this.currentApiInstance);
-            copy.SortBy(sortBy);
-            copy.SortOrder(sortOrder);
-            copy.CurrentPage(currentPage);
-            copy.PageSize(pageSize);
-            return copy;
-        }
-    }
         /// <summary>
         /// Show upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
+        
         /// <returns>UploadToken</returns>
 		public UploadToken getToken(string uploadToken)
         {
@@ -286,6 +291,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
+        
         /// <returns>ApiResponse of UploadToken</returns>
 		public ApiResponse<UploadToken> getTokenWithHttpInfo(string uploadToken)
         {
@@ -319,6 +325,8 @@ namespace VideoApiClient.Api
             if (uploadToken != null) localVarPathParams.Add("uploadToken", this.ApiClient.ParameterToString(uploadToken)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -338,11 +346,12 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">The unique identifier for the token you want to use to upload a video.</param>
-        /// <param name="file">The path to the video you want to upload.</param>
+/// <param name="file">The path to the video you want to upload.</param>
+        /// <param name="progressListener">Progress listener called after each chunk upload</param>
         /// <returns>Video</returns>
-		public Video upload(string token, System.IO.Stream file)
+		public Video upload(string token, System.IO.Stream file,IUploadProgressListener progressListener = null)
         {
-             ApiResponse<Video> localVarResponse = uploadWithHttpInfo(token, file);
+             ApiResponse<Video> localVarResponse = uploadWithHttpInfo(token, file,progressListener);
              return localVarResponse.Data;
         }
 
@@ -351,9 +360,10 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">The unique identifier for the token you want to use to upload a video.</param>
-        /// <param name="file">The path to the video you want to upload.</param>
+/// <param name="file">The path to the video you want to upload.</param>
+        /// <param name="progressListener">Progress listener called after each chunk upload</param>
         /// <returns>ApiResponse of Video</returns>
-		public ApiResponse<Video> uploadWithHttpInfo(string token, System.IO.Stream file)
+		public ApiResponse<Video> uploadWithHttpInfo(string token, System.IO.Stream file,IUploadProgressListener progressListener = null)
         {
             // verify the required parameter 'token' is set
             if (token == null)
@@ -389,21 +399,34 @@ namespace VideoApiClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (token != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "token", token)); // query parameter
-            if (file != null) localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+            
 
             if (totalBytes > chunkSize)
             {
                 ApiResponse<Video> lastRes = null;
                 localVarHeaderParams.Add("Content-Range", "");
+                var chunkNum = 0;
+                int chunkCount = (int)Math.Ceiling((double)totalBytes / (double)chunkSize);
                 for (int i = 0; i < totalBytes; i += chunkSize)
                 {
+                    chunkNum++;
                     byte[] buffer = new byte[chunkSize];
                     localVarHeaderParams["Content-Range"] = "bytes " + i + "-" + (Math.Min(i+chunkSize,totalBytes)-1) + "/" + totalBytes;
                     
                     file.Read(buffer, 0, chunkSize);
 
-                    MemoryStream stream = new MemoryStream(buffer);
-                    if (stream != null) localVarFileParams["file"]= this.ApiClient.ParameterToFile("file", stream);
+                    if(buffer != null)
+                    {
+                        if(localVarFileParams.ContainsKey("file"))
+                        {
+                            localVarFileParams["file"] = this.ApiClient.ParameterToFile("file", file, buffer);
+                        }
+                        else
+                        {
+                            localVarFileParams.Add("file",this.ApiClient.ParameterToFile("file", file, buffer));
+                        }
+                    }
+                    
                     // make the HTTP request
                     IRestResponse localVarResponse = (IRestResponse)this.ApiClient.CallApi(localVarPath,
                         Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -413,10 +436,20 @@ namespace VideoApiClient.Api
                     lastRes = new ApiResponse<Video>(localVarStatusCode,
                         localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                         (Video)this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
+                    
+                    if(progressListener != null)
+                    {
+                        progressListener.onProgress(Math.Min(i + chunkSize, totalBytes), totalBytes, chunkCount, chunkNum);
+                    }
                 }
                 return lastRes;
             }
             else{
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
@@ -438,6 +471,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenCreatePayload"> (optional)</param>
+        
         /// <returns>UploadToken</returns>
 		public UploadToken createToken(TokenCreatePayload tokenCreatePayload = default)
         {
@@ -450,6 +484,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenCreatePayload"> (optional)</param>
+        
         /// <returns>ApiResponse of UploadToken</returns>
 		public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreatePayload tokenCreatePayload = default)
         {
@@ -487,6 +522,8 @@ namespace VideoApiClient.Api
                 localVarPostBody = tokenCreatePayload; // byte array
             }
 
+
+            
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,

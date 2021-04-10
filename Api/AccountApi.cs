@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
+using VideoApiClient.Upload;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -42,6 +43,7 @@ namespace VideoApiClient.Api
         /// Show account Deprecated. Authenticate and get a token, then you can use the bearer token here to retrieve details about your account.
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+                
         /// <returns>Account</returns>
 		[Obsolete]
 		public Account get()
@@ -54,6 +56,7 @@ namespace VideoApiClient.Api
         /// Show account Deprecated. Authenticate and get a token, then you can use the bearer token here to retrieve details about your account.
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+                
         /// <returns>ApiResponse of Account</returns>
 		[Obsolete]
 		public ApiResponse<Account> getWithHttpInfo()
@@ -83,6 +86,8 @@ namespace VideoApiClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
+
+            
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,

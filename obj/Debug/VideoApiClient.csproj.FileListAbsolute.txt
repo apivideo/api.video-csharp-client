@@ -1,3 +1,5 @@
+C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\obj\Debug\VideoApiClient.csproj.CoreCompileInputs.cache
+C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\obj\Debug\VideoApiClient.csprojAssemblyReference.cache
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\bin\Debug\VideoApiClient.xml
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\bin\Debug\VideoApiClient.dll
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\bin\Debug\VideoApiClient.pdb
@@ -6,7 +8,6 @@ C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\bin\Debug\RestSharp.dll
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\bin\Debug\Newtonsoft.Json.xml
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\bin\Debug\RestSharp.xml
-C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\obj\Debug\VideoApiClient.csproj.CoreCompileInputs.cache
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\obj\Debug\VideoApiClient.csproj.CopyComplete
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\obj\Debug\VideoApiClient.dll
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\obj\Debug\VideoApiClient.pdb

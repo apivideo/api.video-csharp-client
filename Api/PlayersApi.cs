@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
+using VideoApiClient.Upload;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -43,6 +44,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to delete.</param>
+        
         /// <returns></returns>
 		public void delete(string playerId)
         {
@@ -54,6 +56,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to delete.</param>
+        
         /// <returns>ApiResponse of Object(void)</returns>
 		public ApiResponse<Object> deleteWithHttpInfo(string playerId)
         {
@@ -87,6 +90,8 @@ namespace VideoApiClient.Api
             if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -106,6 +111,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
+        
         /// <returns>Object</returns>
 		public Object deleteLogo(string playerId)
         {
@@ -118,6 +124,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
+        
         /// <returns>ApiResponse of Object</returns>
 		public ApiResponse<Object> deleteLogoWithHttpInfo(string playerId)
         {
@@ -151,6 +158,8 @@ namespace VideoApiClient.Api
             if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -170,9 +179,10 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
-        /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>PlayersListResponse</returns>
 		public PlayersListResponse list(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
@@ -185,9 +195,10 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
-        /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>ApiResponse of PlayersListResponse</returns>
 		public ApiResponse<PlayersListResponse> listWithHttpInfo(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
@@ -221,6 +232,8 @@ namespace VideoApiClient.Api
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -235,111 +248,105 @@ namespace VideoApiClient.Api
         }
 
         
-            /**
-            * List all players
-            * Retrieve a list of all the players you created, as well as details about each one.
-            * @return APIlistRequest
-            * @http.response.details
-            <table summary="Response Details" border="1">
-                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-                <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-            </table>
-            */
-            public APIlistRequest list() {
-                return new APIlistRequest(this);
+        /// <summary>
+        /// Retrieve a list of all the players you created, as well as details about each one.
+        /// </summary>
+        /// <returns>APIlistRequest</returns>
+        public APIlistRequest list() {
+            return new APIlistRequest(this);
+        }
+
+        /// <summary>
+        /// Request list class to get paginated list of items
+        /// </summary>
+        public class APIlistRequest {
+            private string sortBy;
+            private string sortOrder;
+            private int? currentPage;
+            private int? pageSize;
+
+            private PlayersApi currentApiInstance;
+
+            /// <summary>
+            /// Class constructor with api instance
+            /// </summary>
+            /// <param name="instance">Instance of the current api</param>
+            public APIlistRequest(PlayersApi instance) {
+                this.currentApiInstance = instance;
             }
 
-    public class APIlistRequest {
-        private string sortBy;
-        private string sortOrder;
-        private int? currentPage;
-        private int? pageSize;
+            /// <summary>
+            /// Set sortBy
+            /// </summary>
+            /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest SortBy(string sortBy) {
+                this.sortBy = sortBy;
+                return this;
+            }
 
-        private PlayersApi currentApiInstance;
+            /// <summary>
+            /// Set sortOrder
+            /// </summary>
+            /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest SortOrder(string sortOrder) {
+                this.sortOrder = sortOrder;
+                return this;
+            }
 
-        public APIlistRequest(PlayersApi instance) {
-            this.currentApiInstance = instance;
+            /// <summary>
+            /// Set currentPage
+            /// </summary>
+            /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest CurrentPage(int? currentPage) {
+                this.currentPage = currentPage;
+                return this;
+            }
+
+            /// <summary>
+            /// Set pageSize
+            /// </summary>
+            /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest PageSize(int? pageSize) {
+                this.pageSize = pageSize;
+                return this;
+            }
+
+            
+
+            /// <summary>
+            /// Execute list request
+            /// </summary>
+            /// <returns>PlayersListResponse </returns>
+            public Page<Player> execute(){
+                ApiResponse<PlayersListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
+                return new Page<Player>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                    try {
+                        return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                    } catch (ApiException e) {
+                        throw new Exception(e.Message);
+                    }
+                }); 
+            }
+
+            private APIlistRequest copy() {
+                APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
+                copy.SortBy(sortBy);
+                copy.SortOrder(sortOrder);
+                copy.CurrentPage(currentPage);
+                copy.PageSize(pageSize);
+                return copy;
+            }
         }
-
-        /**
-         * Set sortBy
-         * @param sortBy createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)
-         * @return APIlistRequest
-         */
-        public APIlistRequest SortBy(string sortBy) {
-            this.sortBy = sortBy;
-            return this;
-        }
-
-        /**
-         * Set sortOrder
-         * @param sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)
-         * @return APIlistRequest
-         */
-        public APIlistRequest SortOrder(string sortOrder) {
-            this.sortOrder = sortOrder;
-            return this;
-        }
-
-        /**
-         * Set currentPage
-         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
-         * @return APIlistRequest
-         */
-        public APIlistRequest CurrentPage(int? currentPage) {
-            this.currentPage = currentPage;
-            return this;
-        }
-
-        /**
-         * Set pageSize
-         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
-         * @return APIlistRequest
-         */
-        public APIlistRequest PageSize(int? pageSize) {
-            this.pageSize = pageSize;
-            return this;
-        }
-
-        
-
-        /**
-         * Execute list request
-         * @return PlayersListResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-         </table>
-         */
-        public Page<Player> execute(){
-            ApiResponse<PlayersListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
-            return new Page<Player>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
-                try {
-                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
-                } catch (ApiException e) {
-                    throw new Exception(e.Message);
-                }
-            }); 
-        }
-
-        private APIlistRequest copy() {
-            APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
-            copy.SortBy(sortBy);
-            copy.SortOrder(sortOrder);
-            copy.CurrentPage(currentPage);
-            copy.PageSize(pageSize);
-            return copy;
-        }
-    }
         /// <summary>
         /// Show a player Use a player ID to retrieve details about the player and display it for viewers.
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
+        
         /// <returns>Player</returns>
 		public Player get(string playerId)
         {
@@ -352,6 +359,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
+        
         /// <returns>ApiResponse of Player</returns>
 		public ApiResponse<Player> getWithHttpInfo(string playerId)
         {
@@ -385,6 +393,8 @@ namespace VideoApiClient.Api
             if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -404,7 +414,8 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
-        /// <param name="playerUpdatePayload"></param>
+/// <param name="playerUpdatePayload"></param>
+        
         /// <returns>Player</returns>
 		public Player update(string playerId, PlayerUpdatePayload playerUpdatePayload)
         {
@@ -417,7 +428,8 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
-        /// <param name="playerUpdatePayload"></param>
+/// <param name="playerUpdatePayload"></param>
+        
         /// <returns>ApiResponse of Player</returns>
 		public ApiResponse<Player> updateWithHttpInfo(string playerId, PlayerUpdatePayload playerUpdatePayload)
         {
@@ -463,6 +475,8 @@ namespace VideoApiClient.Api
             }
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -482,6 +496,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerCreationPayload"></param>
+        
         /// <returns>Player</returns>
 		public Player create(PlayerCreationPayload playerCreationPayload)
         {
@@ -494,6 +509,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerCreationPayload"></param>
+        
         /// <returns>ApiResponse of Player</returns>
 		public ApiResponse<Player> createWithHttpInfo(PlayerCreationPayload playerCreationPayload)
         {
@@ -535,6 +551,8 @@ namespace VideoApiClient.Api
             }
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -554,8 +572,9 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
-        /// <param name="file">The name of the file you want to use for your logo.</param>
-        /// <param name="link">The path to the file you want to upload and use as a logo.</param>
+/// <param name="file">The name of the file you want to use for your logo.</param>
+/// <param name="link">The path to the file you want to upload and use as a logo.</param>
+        
         /// <returns>Player</returns>
 		public Player uploadLogo(string playerId, System.IO.Stream file, string link)
         {
@@ -568,8 +587,9 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
-        /// <param name="file">The name of the file you want to use for your logo.</param>
-        /// <param name="link">The path to the file you want to upload and use as a logo.</param>
+/// <param name="file">The name of the file you want to use for your logo.</param>
+/// <param name="link">The path to the file you want to upload and use as a logo.</param>
+        
         /// <returns>ApiResponse of Player</returns>
 		public ApiResponse<Player> uploadLogoWithHttpInfo(string playerId, System.IO.Stream file, string link)
         {
@@ -608,8 +628,15 @@ namespace VideoApiClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
-            if (file != null) localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
-            if (link != null) localVarFormParams.Add("link", this.ApiClient.ParameterToString(link)); // form parameter
+            
+            if (link != null) 
+                localVarFormParams.Add("link", this.ApiClient.ParameterToString(link)); // form parameter
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
 
 
             // make the HTTP request
