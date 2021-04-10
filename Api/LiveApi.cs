@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
+using VideoApiClient.Upload;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -43,6 +44,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
+        
         /// <returns></returns>
 		public void delete(string liveStreamId)
         {
@@ -54,6 +56,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
+        
         /// <returns>ApiResponse of Object(void)</returns>
 		public ApiResponse<Object> deleteWithHttpInfo(string liveStreamId)
         {
@@ -86,6 +89,8 @@ namespace VideoApiClient.Api
             if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -105,6 +110,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to delete. </param>
+        
         /// <returns>LiveStream</returns>
 		public LiveStream deleteThumbnail(string liveStreamId)
         {
@@ -117,6 +123,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to delete. </param>
+        
         /// <returns>ApiResponse of LiveStream</returns>
 		public ApiResponse<LiveStream> deleteThumbnailWithHttpInfo(string liveStreamId)
         {
@@ -150,6 +157,8 @@ namespace VideoApiClient.Api
             if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -169,11 +178,12 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="streamKey">The unique stream key that allows you to stream videos. (optional)</param>
-        /// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
-        /// <param name="sortBy">Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)</param>
-        /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
+/// <param name="sortBy">Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>LiveStreamListResponse</returns>
 		public LiveStreamListResponse list(string streamKey = default, string name = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
@@ -186,11 +196,12 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="streamKey">The unique stream key that allows you to stream videos. (optional)</param>
-        /// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
-        /// <param name="sortBy">Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)</param>
-        /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
+/// <param name="sortBy">Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>ApiResponse of LiveStreamListResponse</returns>
 		public ApiResponse<LiveStreamListResponse> listWithHttpInfo(string streamKey = default, string name = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
@@ -226,6 +237,8 @@ namespace VideoApiClient.Api
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -240,133 +253,129 @@ namespace VideoApiClient.Api
         }
 
         
-            /**
-            * List all live streams
-            * With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
-            * @return APIlistRequest
-            * @http.response.details
-            <table summary="Response Details" border="1">
-                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-            </table>
-            */
-            public APIlistRequest list() {
-                return new APIlistRequest(this);
+        /// <summary>
+        /// With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
+        /// </summary>
+        /// <returns>APIlistRequest</returns>
+        public APIlistRequest list() {
+            return new APIlistRequest(this);
+        }
+
+        /// <summary>
+        /// Request list class to get paginated list of items
+        /// </summary>
+        public class APIlistRequest {
+            private string streamKey;
+            private string name;
+            private string sortBy;
+            private string sortOrder;
+            private int? currentPage;
+            private int? pageSize;
+
+            private LiveApi currentApiInstance;
+
+            /// <summary>
+            /// Class constructor with api instance
+            /// </summary>
+            /// <param name="instance">Instance of the current api</param>
+            public APIlistRequest(LiveApi instance) {
+                this.currentApiInstance = instance;
             }
 
-    public class APIlistRequest {
-        private string streamKey;
-        private string name;
-        private string sortBy;
-        private string sortOrder;
-        private int? currentPage;
-        private int? pageSize;
+            /// <summary>
+            /// Set streamKey
+            /// </summary>
+            /// <param name="streamKey">The unique stream key that allows you to stream videos. (optional)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest StreamKey(string streamKey) {
+                this.streamKey = streamKey;
+                return this;
+            }
 
-        private LiveApi currentApiInstance;
+            /// <summary>
+            /// Set name
+            /// </summary>
+            /// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest Name(string name) {
+                this.name = name;
+                return this;
+            }
 
-        public APIlistRequest(LiveApi instance) {
-            this.currentApiInstance = instance;
+            /// <summary>
+            /// Set sortBy
+            /// </summary>
+            /// <param name="sortBy">Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest SortBy(string sortBy) {
+                this.sortBy = sortBy;
+                return this;
+            }
+
+            /// <summary>
+            /// Set sortOrder
+            /// </summary>
+            /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest SortOrder(string sortOrder) {
+                this.sortOrder = sortOrder;
+                return this;
+            }
+
+            /// <summary>
+            /// Set currentPage
+            /// </summary>
+            /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest CurrentPage(int? currentPage) {
+                this.currentPage = currentPage;
+                return this;
+            }
+
+            /// <summary>
+            /// Set pageSize
+            /// </summary>
+            /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest PageSize(int? pageSize) {
+                this.pageSize = pageSize;
+                return this;
+            }
+
+            
+
+            /// <summary>
+            /// Execute list request
+            /// </summary>
+            /// <returns>LiveStreamListResponse </returns>
+            public Page<LiveStream> execute(){
+                ApiResponse<LiveStreamListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(streamKey, name, sortBy, sortOrder, currentPage, pageSize);
+                return new Page<LiveStream>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                    try {
+                        return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                    } catch (ApiException e) {
+                        throw new Exception(e.Message);
+                    }
+                }); 
+            }
+
+            private APIlistRequest copy() {
+                APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
+                copy.StreamKey(streamKey);
+                copy.Name(name);
+                copy.SortBy(sortBy);
+                copy.SortOrder(sortOrder);
+                copy.CurrentPage(currentPage);
+                copy.PageSize(pageSize);
+                return copy;
+            }
         }
-
-        /**
-         * Set streamKey
-         * @param streamKey The unique stream key that allows you to stream videos. (optional)
-         * @return APIlistRequest
-         */
-        public APIlistRequest StreamKey(string streamKey) {
-            this.streamKey = streamKey;
-            return this;
-        }
-
-        /**
-         * Set name
-         * @param name You can filter live streams by their name or a part of their name. (optional)
-         * @return APIlistRequest
-         */
-        public APIlistRequest Name(string name) {
-            this.name = name;
-            return this;
-        }
-
-        /**
-         * Set sortBy
-         * @param sortBy Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)
-         * @return APIlistRequest
-         */
-        public APIlistRequest SortBy(string sortBy) {
-            this.sortBy = sortBy;
-            return this;
-        }
-
-        /**
-         * Set sortOrder
-         * @param sortOrder Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)
-         * @return APIlistRequest
-         */
-        public APIlistRequest SortOrder(string sortOrder) {
-            this.sortOrder = sortOrder;
-            return this;
-        }
-
-        /**
-         * Set currentPage
-         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
-         * @return APIlistRequest
-         */
-        public APIlistRequest CurrentPage(int? currentPage) {
-            this.currentPage = currentPage;
-            return this;
-        }
-
-        /**
-         * Set pageSize
-         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
-         * @return APIlistRequest
-         */
-        public APIlistRequest PageSize(int? pageSize) {
-            this.pageSize = pageSize;
-            return this;
-        }
-
-        
-
-        /**
-         * Execute list request
-         * @return LiveStreamListResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-         </table>
-         */
-        public Page<LiveStream> execute(){
-            ApiResponse<LiveStreamListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(streamKey, name, sortBy, sortOrder, currentPage, pageSize);
-            return new Page<LiveStream>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
-                try {
-                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
-                } catch (ApiException e) {
-                    throw new Exception(e.Message);
-                }
-            }); 
-        }
-
-        private APIlistRequest copy() {
-            APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
-            copy.StreamKey(streamKey);
-            copy.Name(name);
-            copy.SortBy(sortBy);
-            copy.SortOrder(sortOrder);
-            copy.CurrentPage(currentPage);
-            copy.PageSize(pageSize);
-            return copy;
-        }
-    }
         /// <summary>
         /// Show live stream Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
+        
         /// <returns>LiveStream</returns>
 		public LiveStream get(string liveStreamId)
         {
@@ -379,6 +388,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
+        
         /// <returns>ApiResponse of LiveStream</returns>
 		public ApiResponse<LiveStream> getWithHttpInfo(string liveStreamId)
         {
@@ -412,6 +422,8 @@ namespace VideoApiClient.Api
             if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -431,7 +443,8 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
-        /// <param name="liveStreamUpdatePayload"> (optional)</param>
+/// <param name="liveStreamUpdatePayload"> (optional)</param>
+        
         /// <returns>LiveStream</returns>
 		public LiveStream update(string liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload = default)
         {
@@ -444,7 +457,8 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
-        /// <param name="liveStreamUpdatePayload"> (optional)</param>
+/// <param name="liveStreamUpdatePayload"> (optional)</param>
+        
         /// <returns>ApiResponse of LiveStream</returns>
 		public ApiResponse<LiveStream> updateWithHttpInfo(string liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload = default)
         {
@@ -487,6 +501,8 @@ namespace VideoApiClient.Api
             }
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -506,6 +522,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamCreatePayload"> (optional)</param>
+        
         /// <returns>LiveStream</returns>
 		public LiveStream create(LiveStreamCreatePayload liveStreamCreatePayload = default)
         {
@@ -518,6 +535,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamCreatePayload"> (optional)</param>
+        
         /// <returns>ApiResponse of LiveStream</returns>
 		public ApiResponse<LiveStream> createWithHttpInfo(LiveStreamCreatePayload liveStreamCreatePayload = default)
         {
@@ -556,6 +574,8 @@ namespace VideoApiClient.Api
             }
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -575,7 +595,8 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to upload.</param>
-        /// <param name="file">The image to be added as a thumbnail.</param>
+/// <param name="file">The image to be added as a thumbnail.</param>
+        
         /// <returns>LiveStream</returns>
 		public LiveStream uploadThumbnail(string liveStreamId, System.IO.Stream file)
         {
@@ -588,7 +609,8 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to upload.</param>
-        /// <param name="file">The image to be added as a thumbnail.</param>
+/// <param name="file">The image to be added as a thumbnail.</param>
+        
         /// <returns>ApiResponse of LiveStream</returns>
 		public ApiResponse<LiveStream> uploadThumbnailWithHttpInfo(string liveStreamId, System.IO.Stream file)
         {
@@ -624,7 +646,12 @@ namespace VideoApiClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
-            if (file != null) localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+            
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
 
 
             // make the HTTP request

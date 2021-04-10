@@ -172,6 +172,24 @@ namespace VideoApiClient.Client
         public void SetUploadChunkSize(int uploadChunkSize) {
             this.apiClient.UploadChunkSize = uploadChunkSize;
         }
+        
+        /// <summary>
+        /// Gets the rest client timeout
+        /// </summary>
+        /// <returns>The rest client timeout</returns>
+        public int GetTimeout()
+        {
+            return this.apiClient.RestClient.Timeout;
+        }
+
+        /// <summary>
+        /// Updates the rest client timeout
+        /// </summary>
+        /// <param name="newTimeOut">the new timeout</param>
+        public void SetTimeout(int newTimeOut)
+        {
+            this.apiClient.RestClient.Timeout = newTimeOut;
+        }
     }
 
     /// <summary>

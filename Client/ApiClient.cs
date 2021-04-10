@@ -178,9 +178,27 @@ namespace VideoApiClient.Client
 
             request = InterceptRequest(request);
             var response = RestClient.Execute(request);
+            this.CheckResponse(response);
 
             return (Object) response;
         }
+
+        /// <summary>
+        /// Check if the api call response was successful
+        /// </summary>
+        /// <param name="response">The response to check</param>
+        private void CheckResponse(IRestResponse response)
+        {
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                throw new ApiException((int)response.ResponseStatus, response.ErrorMessage, response.Content);
+            }
+            if (!((int)response.StatusCode).ToString().StartsWith("2"))
+            {
+                throw new ApiException((int)response.StatusCode, response.StatusDescription,response.Content);
+            }
+        }
+
         /// <summary>
         /// Makes the asynchronous HTTP request.
         /// </summary>
@@ -224,13 +242,14 @@ namespace VideoApiClient.Client
         /// </summary>
         /// <param name="name">Parameter name.</param>
         /// <param name="stream">Input stream.</param>
+        /// <param name="chunkedStream">Chunked byte array.</param>
         /// <returns>FileParameter.</returns>
-        public FileParameter ParameterToFile(string name, Stream stream)
+        public FileParameter ParameterToFile(string name, Stream stream, byte[] chunkedStream = null)
         {
             if (stream is FileStream fileStream)
-                return FileParameter.Create(name, ReadAsBytes(stream), Path.GetFileName(fileStream.Name));
+                return FileParameter.Create(name, chunkedStream ?? ReadAsBytes(stream), Path.GetFileName(fileStream.Name));
             else
-                return FileParameter.Create(name, ReadAsBytes(stream), "no_file_name_provided");
+                return FileParameter.Create(name, chunkedStream ?? ReadAsBytes(stream), "no_file_name_provided");
         }
 
         /// <summary>
@@ -417,15 +436,12 @@ namespace VideoApiClient.Client
         /// <returns>Byte array</returns>
         public static byte[] ReadAsBytes(Stream inputStream)
         {
-            byte[] buf = new byte[16*1024];
-            using (MemoryStream ms = new MemoryStream())
+            byte[] byteArray;
+            using (var streamReader = new MemoryStream())
             {
-                int count;
-                while ((count = inputStream.Read(buf, 0, buf.Length)) > 0)
-                {
-                    ms.Write(buf, 0, count);
-                }
-                return ms.ToArray();
+                inputStream.CopyTo(streamReader);
+                byteArray = streamReader.ToArray();
+                return byteArray;
             }
         }
 

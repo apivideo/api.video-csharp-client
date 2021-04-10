@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
+using VideoApiClient.Upload;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -43,7 +44,8 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to delete a chapter from. </param>
-        /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
         /// <returns></returns>
 		public void delete(string videoId, string language)
         {
@@ -55,7 +57,8 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to delete a chapter from. </param>
-        /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
         /// <returns>ApiResponse of Object(void)</returns>
 		public ApiResponse<Object> deleteWithHttpInfo(string videoId, string language)
         {
@@ -93,6 +96,8 @@ namespace VideoApiClient.Api
             if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -112,8 +117,9 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for.</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>ChaptersListResponse</returns>
 		public ChaptersListResponse list(string videoId, int? currentPage = default, int? pageSize = default)
         {
@@ -126,8 +132,9 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for.</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>ApiResponse of ChaptersListResponse</returns>
 		public ApiResponse<ChaptersListResponse> listWithHttpInfo(string videoId, int? currentPage = default, int? pageSize = default)
         {
@@ -163,6 +170,8 @@ namespace VideoApiClient.Api
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -177,91 +186,86 @@ namespace VideoApiClient.Api
         }
 
         
-            /**
-            * List video chapters
-            * Retrieve a list of all chapters for a specified video.
-            * @param videoId The unique identifier for the video you want to retrieve a list of chapters for. (required)
-            * @return APIlistRequest
-            * @http.response.details
-            <table summary="Response Details" border="1">
-                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-                <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-            </table>
-            */
-            public APIlistRequest list(string videoId) {
-                return new APIlistRequest(this,videoId);
+        /// <summary>
+        /// Retrieve a list of all chapters for a specified video.
+        /// </summary>
+        /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for. (required)</param>
+        /// <returns>APIlistRequest</returns>
+        public APIlistRequest list(string videoId) {
+            return new APIlistRequest(this,videoId);
+        }
+
+        /// <summary>
+        /// Request list class to get paginated list of items
+        /// </summary>
+        public class APIlistRequest {
+            private string videoId;
+            private int? currentPage;
+            private int? pageSize;
+
+            private ChaptersApi currentApiInstance;
+
+            /// <summary>
+            /// Class constructor with api instance
+            /// </summary>
+            /// <param name="instance">Instance of the current api</param>
+            /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for. (required)</param>
+            public APIlistRequest(ChaptersApi instance, string videoId) {
+                this.videoId = videoId;
+                this.currentApiInstance = instance;
             }
 
-    public class APIlistRequest {
-        private string videoId;
-        private int? currentPage;
-        private int? pageSize;
+            /// <summary>
+            /// Set currentPage
+            /// </summary>
+            /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest CurrentPage(int? currentPage) {
+                this.currentPage = currentPage;
+                return this;
+            }
 
-        private ChaptersApi currentApiInstance;
+            /// <summary>
+            /// Set pageSize
+            /// </summary>
+            /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest PageSize(int? pageSize) {
+                this.pageSize = pageSize;
+                return this;
+            }
 
-        public APIlistRequest(ChaptersApi instance, string videoId) {
-            this.videoId = videoId;
-            this.currentApiInstance = instance;
+            
+
+            /// <summary>
+            /// Execute list request
+            /// </summary>
+            /// <returns>ChaptersListResponse </returns>
+            public Page<Chapter> execute(){
+                ApiResponse<ChaptersListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(videoId, currentPage, pageSize);
+                return new Page<Chapter>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                    try {
+                        return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                    } catch (ApiException e) {
+                        throw new Exception(e.Message);
+                    }
+                }); 
+            }
+
+            private APIlistRequest copy() {
+                APIlistRequest copy = new APIlistRequest( this.currentApiInstance, videoId);
+                copy.CurrentPage(currentPage);
+                copy.PageSize(pageSize);
+                return copy;
+            }
         }
-
-        /**
-         * Set currentPage
-         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
-         * @return APIlistRequest
-         */
-        public APIlistRequest CurrentPage(int? currentPage) {
-            this.currentPage = currentPage;
-            return this;
-        }
-
-        /**
-         * Set pageSize
-         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
-         * @return APIlistRequest
-         */
-        public APIlistRequest PageSize(int? pageSize) {
-            this.pageSize = pageSize;
-            return this;
-        }
-
-        
-
-        /**
-         * Execute list request
-         * @return ChaptersListResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-         </table>
-         */
-        public Page<Chapter> execute(){
-            ApiResponse<ChaptersListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(videoId, currentPage, pageSize);
-            return new Page<Chapter>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
-                try {
-                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
-                } catch (ApiException e) {
-                    throw new Exception(e.Message);
-                }
-            }); 
-        }
-
-        private APIlistRequest copy() {
-            APIlistRequest copy = new APIlistRequest( this.currentApiInstance, videoId);
-            copy.CurrentPage(currentPage);
-            copy.PageSize(pageSize);
-            return copy;
-        }
-    }
         /// <summary>
         /// Show a chapter 
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
-        /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
         /// <returns>Chapter</returns>
 		public Chapter get(string videoId, string language)
         {
@@ -274,7 +278,8 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
-        /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
         /// <returns>ApiResponse of Chapter</returns>
 		public ApiResponse<Chapter> getWithHttpInfo(string videoId, string language)
         {
@@ -312,6 +317,8 @@ namespace VideoApiClient.Api
             if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -331,8 +338,9 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to upload a chapter for.</param>
-        /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-        /// <param name="file">The VTT file describing the chapters you want to upload.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="file">The VTT file describing the chapters you want to upload.</param>
+        
         /// <returns>Chapter</returns>
 		public Chapter upload(string videoId, string language, System.IO.Stream file)
         {
@@ -345,8 +353,9 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to upload a chapter for.</param>
-        /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-        /// <param name="file">The VTT file describing the chapters you want to upload.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="file">The VTT file describing the chapters you want to upload.</param>
+        
         /// <returns>ApiResponse of Chapter</returns>
 		public ApiResponse<Chapter> uploadWithHttpInfo(string videoId, string language, System.IO.Stream file)
         {
@@ -386,7 +395,12 @@ namespace VideoApiClient.Api
 
             if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
             if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
-            if (file != null) localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+            
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
 
 
             // make the HTTP request

@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
+using VideoApiClient.Upload;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -43,6 +44,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The webhook you wish to delete.</param>
+        
         /// <returns></returns>
 		public void delete(string webhookId)
         {
@@ -54,6 +56,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The webhook you wish to delete.</param>
+        
         /// <returns>ApiResponse of Object(void)</returns>
 		public ApiResponse<Object> deleteWithHttpInfo(string webhookId)
         {
@@ -87,6 +90,8 @@ namespace VideoApiClient.Api
             if (webhookId != null) localVarPathParams.Add("webhookId", this.ApiClient.ParameterToString(webhookId)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -106,6 +111,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The unique webhook you wish to retreive details on.</param>
+        
         /// <returns>Webhook</returns>
 		public Webhook get(string webhookId)
         {
@@ -118,6 +124,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The unique webhook you wish to retreive details on.</param>
+        
         /// <returns>ApiResponse of Webhook</returns>
 		public ApiResponse<Webhook> getWithHttpInfo(string webhookId)
         {
@@ -151,6 +158,8 @@ namespace VideoApiClient.Api
             if (webhookId != null) localVarPathParams.Add("webhookId", this.ApiClient.ParameterToString(webhookId)); // path parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -170,8 +179,9 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="events">The webhook event that you wish to filter on. (optional)</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>WebhooksListResponse</returns>
 		public WebhooksListResponse list(string events = default, int? currentPage = default, int? pageSize = default)
         {
@@ -184,8 +194,9 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="events">The webhook event that you wish to filter on. (optional)</param>
-        /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-        /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
         /// <returns>ApiResponse of WebhooksListResponse</returns>
 		public ApiResponse<WebhooksListResponse> listWithHttpInfo(string events = default, int? currentPage = default, int? pageSize = default)
         {
@@ -218,6 +229,8 @@ namespace VideoApiClient.Api
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -232,97 +245,93 @@ namespace VideoApiClient.Api
         }
 
         
-            /**
-            * List all webhooks
-            * Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
-            * @return APIlistRequest
-            * @http.response.details
-            <table summary="Response Details" border="1">
-                <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-                <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-            </table>
-            */
-            public APIlistRequest list() {
-                return new APIlistRequest(this);
+        /// <summary>
+        /// Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
+        /// </summary>
+        /// <returns>APIlistRequest</returns>
+        public APIlistRequest list() {
+            return new APIlistRequest(this);
+        }
+
+        /// <summary>
+        /// Request list class to get paginated list of items
+        /// </summary>
+        public class APIlistRequest {
+            private string events;
+            private int? currentPage;
+            private int? pageSize;
+
+            private WebhooksApi currentApiInstance;
+
+            /// <summary>
+            /// Class constructor with api instance
+            /// </summary>
+            /// <param name="instance">Instance of the current api</param>
+            public APIlistRequest(WebhooksApi instance) {
+                this.currentApiInstance = instance;
             }
 
-    public class APIlistRequest {
-        private string events;
-        private int? currentPage;
-        private int? pageSize;
+            /// <summary>
+            /// Set events
+            /// </summary>
+            /// <param name="events">The webhook event that you wish to filter on. (optional)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest Events(string events) {
+                this.events = events;
+                return this;
+            }
 
-        private WebhooksApi currentApiInstance;
+            /// <summary>
+            /// Set currentPage
+            /// </summary>
+            /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest CurrentPage(int? currentPage) {
+                this.currentPage = currentPage;
+                return this;
+            }
 
-        public APIlistRequest(WebhooksApi instance) {
-            this.currentApiInstance = instance;
+            /// <summary>
+            /// Set pageSize
+            /// </summary>
+            /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+            /// <returns>APIlistRequest</returns>
+            public APIlistRequest PageSize(int? pageSize) {
+                this.pageSize = pageSize;
+                return this;
+            }
+
+            
+
+            /// <summary>
+            /// Execute list request
+            /// </summary>
+            /// <returns>WebhooksListResponse </returns>
+            public Page<Webhook> execute(){
+                ApiResponse<WebhooksListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(events, currentPage, pageSize);
+                return new Page<Webhook>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                    try {
+                        return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                    } catch (ApiException e) {
+                        throw new Exception(e.Message);
+                    }
+                }); 
+            }
+
+            private APIlistRequest copy() {
+                APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
+                copy.Events(events);
+                copy.CurrentPage(currentPage);
+                copy.PageSize(pageSize);
+                return copy;
+            }
         }
-
-        /**
-         * Set events
-         * @param events The webhook event that you wish to filter on. (optional)
-         * @return APIlistRequest
-         */
-        public APIlistRequest Events(string events) {
-            this.events = events;
-            return this;
-        }
-
-        /**
-         * Set currentPage
-         * @param currentPage Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
-         * @return APIlistRequest
-         */
-        public APIlistRequest CurrentPage(int? currentPage) {
-            this.currentPage = currentPage;
-            return this;
-        }
-
-        /**
-         * Set pageSize
-         * @param pageSize Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
-         * @return APIlistRequest
-         */
-        public APIlistRequest PageSize(int? pageSize) {
-            this.pageSize = pageSize;
-            return this;
-        }
-
-        
-
-        /**
-         * Execute list request
-         * @return WebhooksListResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-         </table>
-         */
-        public Page<Webhook> execute(){
-            ApiResponse<WebhooksListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(events, currentPage, pageSize);
-            return new Page<Webhook>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
-                try {
-                    return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
-                } catch (ApiException e) {
-                    throw new Exception(e.Message);
-                }
-            }); 
-        }
-
-        private APIlistRequest copy() {
-            APIlistRequest copy = new APIlistRequest( this.currentApiInstance);
-            copy.Events(events);
-            copy.CurrentPage(currentPage);
-            copy.PageSize(pageSize);
-            return copy;
-        }
-    }
         /// <summary>
         /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhooksCreatePayload"> (optional)</param>
+        
         /// <returns>Webhook</returns>
 		public Webhook create(WebhooksCreatePayload webhooksCreatePayload = default)
         {
@@ -335,6 +344,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhooksCreatePayload"> (optional)</param>
+        
         /// <returns>ApiResponse of Webhook</returns>
 		public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreatePayload webhooksCreatePayload = default)
         {
@@ -372,6 +382,8 @@ namespace VideoApiClient.Api
                 localVarPostBody = webhooksCreatePayload; // byte array
             }
 
+
+            
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,

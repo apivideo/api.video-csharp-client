@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
+using VideoApiClient.Upload;
 using RestSharp;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -43,6 +44,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authenticatePayload"> (optional)</param>
+        
         /// <returns>AccessToken</returns>
 		public AccessToken authenticate(AuthenticatePayload authenticatePayload = default)
         {
@@ -55,6 +57,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authenticatePayload"> (optional)</param>
+        
         /// <returns>ApiResponse of AccessToken</returns>
 		public ApiResponse<AccessToken> authenticateWithHttpInfo(AuthenticatePayload authenticatePayload = default)
         {
@@ -93,6 +96,8 @@ namespace VideoApiClient.Api
             }
 
 
+            
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -112,6 +117,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="refreshTokenPayload"> (optional)</param>
+        
         /// <returns>AccessToken</returns>
 		public AccessToken refresh(RefreshTokenPayload refreshTokenPayload = default)
         {
@@ -124,6 +130,7 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="refreshTokenPayload"> (optional)</param>
+        
         /// <returns>ApiResponse of AccessToken</returns>
 		public ApiResponse<AccessToken> refreshWithHttpInfo(RefreshTokenPayload refreshTokenPayload = default)
         {
@@ -161,6 +168,8 @@ namespace VideoApiClient.Api
                 localVarPostBody = refreshTokenPayload; // byte array
             }
 
+
+            
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
