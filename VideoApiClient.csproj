@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
 api.video
 
@@ -9,7 +9,6 @@ The version of the OpenAPI document: 1
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{47A8F947-725D-485C-8D5A-3BA097703250}</ProjectGuid>
@@ -29,6 +28,7 @@ The version of the OpenAPI document: 1
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\VideoApiClient.xml</DocumentationFile>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,6 +38,7 @@ The version of the OpenAPI document: 1
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\VideoApiClient.xml</DocumentationFile>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -69,12 +70,93 @@ The version of the OpenAPI document: 1
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs"
-             Exclude="obj\**" />
+    <Compile Include="ApiVideoClient.cs" />
+    <Compile Include="Api\AccountApi.cs" />
+    <Compile Include="Api\AuthenticationApi.cs" />
+    <Compile Include="Api\CaptionsApi.cs" />
+    <Compile Include="Api\ChaptersApi.cs" />
+    <Compile Include="Api\LiveApi.cs" />
+    <Compile Include="Api\PlayersApi.cs" />
+    <Compile Include="Api\RawStatisticsApi.cs" />
+    <Compile Include="Api\VideosApi.cs" />
+    <Compile Include="Api\VideosDelegatedUploadApi.cs" />
+    <Compile Include="Api\WebhooksApi.cs" />
+    <Compile Include="Client\ApiClient.cs" />
+    <Compile Include="Client\ApiException.cs" />
+    <Compile Include="Client\ApiResponse.cs" />
+    <Compile Include="Client\AuthenticationManager.cs" />
+    <Compile Include="Model\AccessToken.cs" />
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\AccountQuota.cs" />
+    <Compile Include="Model\AuthenticatePayload.cs" />
+    <Compile Include="Model\BadRequest.cs" />
+    <Compile Include="Model\BytesRange.cs" />
+    <Compile Include="Model\CaptionsListResponse.cs" />
+    <Compile Include="Model\CaptionsUpdatePayload.cs" />
+    <Compile Include="Model\Chapter.cs" />
+    <Compile Include="Model\ChaptersListResponse.cs" />
+    <Compile Include="Model\IUploadProgressListener.cs" />
+    <Compile Include="Model\Link.cs" />
+    <Compile Include="Model\LiveStream.cs" />
+    <Compile Include="Model\LiveStreamAssets.cs" />
+    <Compile Include="Model\LiveStreamCreatePayload.cs" />
+    <Compile Include="Model\LiveStreamListResponse.cs" />
+    <Compile Include="Model\LiveStreamSession.cs" />
+    <Compile Include="Model\LiveStreamSessionClient.cs" />
+    <Compile Include="Model\LiveStreamSessionDevice.cs" />
+    <Compile Include="Model\LiveStreamSessionLocation.cs" />
+    <Compile Include="Model\LiveStreamSessionReferrer.cs" />
+    <Compile Include="Model\LiveStreamSessionSession.cs" />
+    <Compile Include="Model\LiveStreamUpdatePayload.cs" />
+    <Compile Include="Model\Metadata.cs" />
+    <Compile Include="Model\NotFound.cs" />
+    <Compile Include="Model\Page.cs" />
+    <Compile Include="Model\Pagination.cs" />
+    <Compile Include="Model\PaginationLink.cs" />
+    <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\PlayerAllOf.cs" />
+    <Compile Include="Model\PlayerAllOfAssets.cs" />
+    <Compile Include="Model\PlayerCreationPayload.cs" />
+    <Compile Include="Model\Playerinput.cs" />
+    <Compile Include="Model\PlayerSessionEvent.cs" />
+    <Compile Include="Model\PlayersListResponse.cs" />
+    <Compile Include="Model\PlayerUpdatePayload.cs" />
+    <Compile Include="Model\Quality.cs" />
+    <Compile Include="Model\RawStatisticsListLiveStreamAnalyticsResponse.cs" />
+    <Compile Include="Model\RawStatisticsListPlayerSessionEventsResponse.cs" />
+    <Compile Include="Model\RawStatisticsListSessionsResponse.cs" />
+    <Compile Include="Model\RefreshTokenPayload.cs" />
+    <Compile Include="Model\Subtitle.cs" />
+    <Compile Include="Model\TokenCreatePayload.cs" />
+    <Compile Include="Model\TokenListResponse.cs" />
+    <Compile Include="Model\UploadToken.cs" />
+    <Compile Include="Model\Video.cs" />
+    <Compile Include="Model\VideoAssets.cs" />
+    <Compile Include="Model\VideoCreatePayload.cs" />
+    <Compile Include="Model\VideoSession.cs" />
+    <Compile Include="Model\VideoSessionClient.cs" />
+    <Compile Include="Model\VideoSessionDevice.cs" />
+    <Compile Include="Model\VideoSessionLocation.cs" />
+    <Compile Include="Model\VideoSessionOs.cs" />
+    <Compile Include="Model\VideoSessionReferrer.cs" />
+    <Compile Include="Model\VideoSessionSession.cs" />
+    <Compile Include="Model\VideosListResponse.cs" />
+    <Compile Include="Model\VideoSource.cs" />
+    <Compile Include="Model\VideoSourceLiveStream.cs" />
+    <Compile Include="Model\VideoSourceLiveStreamLink.cs" />
+    <Compile Include="Model\Videostatus.cs" />
+    <Compile Include="Model\VideostatusEncoding.cs" />
+    <Compile Include="Model\VideostatusEncodingMetadata.cs" />
+    <Compile Include="Model\VideostatusIngest.cs" />
+    <Compile Include="Model\VideoThumbnailPickPayload.cs" />
+    <Compile Include="Model\VideoUpdatePayload.cs" />
+    <Compile Include="Model\Webhook.cs" />
+    <Compile Include="Model\WebhooksCreatePayload.cs" />
+    <Compile Include="Model\WebhooksListResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-      <None Include="packages.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
-

@@ -195,8 +195,17 @@ namespace VideoApiClient.Client
             }
             if (!((int)response.StatusCode).ToString().StartsWith("2"))
             {
-                throw new ApiException((int)response.StatusCode, response.StatusDescription,response.Content);
+                var exc = JsonConvert.DeserializeObject<ApiExceptionResponse>(response.Content);
+                throw new ApiException((int)response.StatusCode, exc.title, response.Content);;
             }
+        }
+
+        class ApiExceptionResponse
+        {
+            public string type;
+            public string title;
+            public string name;
+            public int status;
         }
 
         /// <summary>
