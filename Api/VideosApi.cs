@@ -832,9 +832,13 @@ namespace VideoApiClient.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
+            if (progressListener != null)
+            {
+                progressListener.onProgress(totalBytes, totalBytes, 1, 1);
+            }
             return new ApiResponse<Video>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Video) this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
+            localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+            (Video) this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
             
             }
         }
