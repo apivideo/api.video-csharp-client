@@ -47,7 +47,7 @@
     </Reference>
     <Reference Include="JsonSubTypes, Version=1.6.0.0, Culture=neutral, PublicKeyToken=ee75fc290dbc1176, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\VideoApiClient\bin\Debug\JsonSubTypes.dll</HintPath>
+      <HintPath>..\src\bin\Debug\JsonSubTypes.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\MSTest.TestFramework.2.1.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
@@ -60,11 +60,11 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\VideoApiClient\bin\Debug\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\src\bin\Debug\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\VideoApiClient\bin\Debug\RestSharp.dll</HintPath>
+      <HintPath>..\src\bin\Debug\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -80,7 +80,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="VideoApiClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\VideoApiClient\bin\Debug\VideoApiClient.dll</HintPath>
+      <HintPath>..\src\bin\Debug\VideoApiClient.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
