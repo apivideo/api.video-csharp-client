@@ -139,10 +139,9 @@ C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\obj\Debug\VideoAp
 C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\obj\Debug\VideoApiTests.csproj.CopyComplete
 C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\obj\Debug\VideoApiTests.dll
 C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\obj\Debug\VideoApiTests.pdb
-C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\bin\Debug\JsonSubTypes.dll
 C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\bin\Debug\RestSharp.dll
 C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\bin\Debug\VideoApiClient.dll
-C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\bin\Debug\Newtonsoft.Json.xml
 C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\bin\Debug\RestSharp.xml
 C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\bin\Debug\VideoApiClient.pdb
 C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\bin\Debug\VideoApiClient.xml
+C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\tests\bin\Debug\Newtonsoft.Json.xml

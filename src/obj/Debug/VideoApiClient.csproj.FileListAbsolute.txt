@@ -11,3 +11,11 @@ C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\obj\Debug\VideoApiClient.csproj.CopyComplete
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\obj\Debug\VideoApiClient.dll
 C:\Users\pedro\Downloads\api-video-api-client-generator\generated-clients\csharp\src\VideoApiClient\obj\Debug\VideoApiClient.pdb
+C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\src\bin\Debug\VideoApiClient.xml
+C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\src\bin\Debug\VideoApiClient.dll
+C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\src\bin\Debug\VideoApiClient.pdb
+C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\src\bin\Debug\Newtonsoft.Json.dll
+C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\src\obj\Debug\VideoApiClient.csproj.CoreCompileInputs.cache
+C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\src\obj\Debug\VideoApiClient.csproj.CopyComplete
+C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\src\obj\Debug\VideoApiClient.dll
+C:\Users\pedro\ProjetOpenApi\testfinal\csharp-api-client\src\obj\Debug\VideoApiClient.pdb

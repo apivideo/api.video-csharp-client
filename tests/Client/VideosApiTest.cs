@@ -124,11 +124,11 @@ namespace VideoApiTests.Client
         {
             answerOnAnyRequest(201, "{}");
 
-            api.Invoking(x => x.getVideoStatus(null))
+            api.Invoking(x => x.getStatus(null))
                                 .Should()
                                 .Throw<ApiException>()
-                                .WithMessage("Missing required parameter 'videoId' when calling VideosApi->getVideoStatus");
-            api.Invoking(x => x.getVideoStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz"))
+                                .WithMessage("Missing required parameter 'videoId' when calling VideosApi->getStatus");
+            api.Invoking(x => x.getStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz"))
                                 .Should()
                                 .NotThrow();
         }
@@ -139,7 +139,7 @@ namespace VideoApiTests.Client
             InitGetStatusTests();
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Videostatus res = api.getVideoStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz");
+            Videostatus res = api.getStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz");
 
             res.ingest.Should().NotBeNull();
             res.ingest.status.Should().Be("uploaded");
@@ -181,7 +181,7 @@ namespace VideoApiTests.Client
             InitGetStatusTests();
             answerOnAnyRequest(404, readResourceFile(PAYLOADS_PATH + "responses/404.json"));
 
-            api.Invoking(x => x.getVideoStatus("videoId_example"))
+            api.Invoking(x => x.getStatus("videoId_example"))
                                 .Should()
                                 .Throw<ApiException>()
                                 .Where(x => x.ErrorCode == 404)
@@ -470,6 +470,61 @@ namespace VideoApiTests.Client
         }
         #endregion
 
+        #region UPLOADWITHUPLOADTOKEN
+        private void InitUploadTokenTests()
+        {
+            PAYLOADS_PATH = "/payloads/videos/uploadWithUploadToken/";
+        }
+
+        [TestMethod]
+        public void UploadWithTokenRequiredParametersTest()
+        {
+            answerOnAnyRequest(201, "{}");
+            api.Invoking(x => x.uploadWithUploadToken(null, new MemoryStream()))
+                                            .Should()
+                                            .Throw<ApiException>()
+                                            .WithMessage("Missing required parameter 'token' when calling VideosApi->uploadWithUploadToken");
+
+            api.Invoking(x => x.uploadWithUploadToken("1234", null))
+                                            .Should()
+                                            .Throw<ApiException>()
+                                            .WithMessage("Missing required parameter 'file' when calling VideosApi->uploadWithUploadToken");
+
+
+            api.Invoking(x => x.uploadWithUploadToken("videoId_example", new MemoryStream()))
+                                .Should()
+                                .NotThrow();
+        }
+
+        [TestMethod]
+        public void UploadWithTokenResponseWithStatus201Test()
+        {
+            InitUploadTests();
+            answerOnAnyRequest(201, readResourceFile(PAYLOADS_PATH + "responses/201.json"));
+
+            Video res = api.uploadWithUploadToken("vi4k0jvEUuaTdRAEjQ4Jfrgz", new MemoryStream());
+
+            res.videoid.Should().Be("vi4k0jvEUuaTdRAEjQ4Jfrgz");
+            res.playerid.Should().Be("pl45KFKdlddgk654dspkze");
+            res.title.Should().Be("Maths video");
+            res.description.Should().Be("An amazing video explaining the string theory.");
+            res._public.Should().BeFalse();
+            res.panoramic.Should().BeFalse();
+            res.mp4support.Should().BeTrue();
+            res.tags.Should().BeEquivalentTo(new List<string>() { "maths", "string theory", "video" });
+            res.metadata.Should().BeEquivalentTo(new List<Metadata>() { new Metadata() { key = "Author", value = "John Doe" }, new Metadata() { key = "Format", value = "Tutorial" } });
+            res.publishedat.Should().Be("4665-07-14T23:36:18.598Z");
+            res.source.Should().NotBeNull();
+            res.source.uri.Should().Be("/videos/vi4k0jvEUuaTdRAEjQ4Jfrgz/source");
+            res.assets.Should().NotBeNull();
+            res.assets.hls.Should().Be("https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/hls/manifest.m3u8");
+            res.assets.iframe.Should().Be("<iframe src=\"//embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>");
+            res.assets.mp4.Should().Be("https://cdn.api.video/vod/vi4k0jvEUuaTdRAEjQ4Jfrgz/token/8fd70443-d9f0-45d2-b01c-12c8cfc707c9/mp4/720/source.mp4");
+            res.assets.player.Should().Be("https://embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae");
+            res.assets.thumbnail.Should().Be("https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg");
+        }
+        #endregion
+
         #region UPLOAD
         private void InitUploadTests()
         {
@@ -485,7 +540,7 @@ namespace VideoApiTests.Client
                                             .Throw<ApiException>()
                                             .WithMessage("Missing required parameter 'videoId' when calling VideosApi->upload");
 
-            api.Invoking(x => x.upload("1234",null))
+            api.Invoking(x => x.upload("1234", null))
                                             .Should()
                                             .Throw<ApiException>()
                                             .WithMessage("Missing required parameter 'file' when calling VideosApi->upload");

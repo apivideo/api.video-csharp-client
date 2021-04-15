@@ -46,12 +46,6 @@
             <param name="client">the RestClient instance to use</param>
             <param name="environment">the target environment</param>
         </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Account">
-            <summary>
-            Get an AccountApi instance
-            </summary>
-            <returns>AccountApi</returns>
-        </member>
         <member name="M:VideoApiClient.Client.ApiVideoClient.Captions">
             <summary>
             Get an CaptionsApi instance
@@ -64,17 +58,17 @@
             </summary>
             <returns>ChaptersApi</returns>
         </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Live">
+        <member name="M:VideoApiClient.Client.ApiVideoClient.LiveStreams">
             <summary>
-            Get an LiveApi instance
+            Get an LiveStreamsApi instance
             </summary>
-            <returns>LiveApi</returns>
+            <returns>LiveStreamsApi</returns>
         </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Players">
+        <member name="M:VideoApiClient.Client.ApiVideoClient.PlayerThemes">
             <summary>
-            Get an PlayersApi instance
+            Get an PlayerThemesApi instance
             </summary>
-            <returns>PlayersApi</returns>
+            <returns>PlayerThemesApi</returns>
         </member>
         <member name="M:VideoApiClient.Client.ApiVideoClient.RawStatistics">
             <summary>
@@ -82,17 +76,17 @@
             </summary>
             <returns>RawStatisticsApi</returns>
         </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.UploadTokens">
+            <summary>
+            Get an UploadTokensApi instance
+            </summary>
+            <returns>UploadTokensApi</returns>
+        </member>
         <member name="M:VideoApiClient.Client.ApiVideoClient.Videos">
             <summary>
             Get an VideosApi instance
             </summary>
             <returns>VideosApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.VideosDelegatedUpload">
-            <summary>
-            Get an VideosDelegatedUploadApi instance
-            </summary>
-            <returns>VideosDelegatedUploadApi</returns>
         </member>
         <member name="M:VideoApiClient.Client.ApiVideoClient.Webhooks">
             <summary>
@@ -473,36 +467,6 @@
             <param name="request">The request to update</param>
             <returns>The request updated</returns>
         </member>
-        <member name="T:VideoApiClient.Api.AccountApi">
-            <summary>
-            Represents a collection of functions to interact with the API endpoints
-            </summary>
-        </member>
-        <member name="P:VideoApiClient.Api.AccountApi.ApiClient">
-            <summary>
-            Api Client Instance
-            </summary>
-        </member>
-        <member name="M:VideoApiClient.Api.AccountApi.#ctor(VideoApiClient.Client.ApiClient)">
-            <summary>
-            Initializes a new instance of the <see cref="T:VideoApiClient.Api.AccountApi"/> class.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:VideoApiClient.Api.AccountApi.get">
-            <summary>
-            Show account Deprecated. Authenticate and get a token, then you can use the bearer token here to retrieve details about your account.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <returns>Account</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.AccountApi.getWithHttpInfo">
-            <summary>
-            Show account Deprecated. Authenticate and get a token, then you can use the bearer token here to retrieve details about your account.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <returns>ApiResponse of Account</returns>
-        </member>
         <member name="T:VideoApiClient.Api.AuthenticationApi">
             <summary>
             Represents a collection of functions to interact with the API endpoints
@@ -524,7 +488,7 @@
             Authenticate To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication.
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="authenticatePayload"> (optional)</param>
+            <param name="authenticatePayload"></param>
             <returns>AccessToken</returns>
         </member>
         <member name="M:VideoApiClient.Api.AuthenticationApi.authenticateWithHttpInfo(VideoApiClient.Model.AuthenticatePayload)">
@@ -532,7 +496,7 @@
             Authenticate To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication.
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="authenticatePayload"> (optional)</param>
+            <param name="authenticatePayload"></param>
             <returns>ApiResponse of AccessToken</returns>
         </member>
         <member name="M:VideoApiClient.Api.AuthenticationApi.refresh(VideoApiClient.Model.RefreshTokenPayload)">
@@ -540,7 +504,7 @@
             Refresh token Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="refreshTokenPayload"> (optional)</param>
+            <param name="refreshTokenPayload"></param>
             <returns>AccessToken</returns>
         </member>
         <member name="M:VideoApiClient.Api.AuthenticationApi.refreshWithHttpInfo(VideoApiClient.Model.RefreshTokenPayload)">
@@ -548,7 +512,7 @@
             Refresh token Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="refreshTokenPayload"> (optional)</param>
+            <param name="refreshTokenPayload"></param>
             <returns>ApiResponse of AccessToken</returns>
         </member>
         <member name="T:VideoApiClient.Api.CaptionsApi">
@@ -669,7 +633,7 @@
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
             <param name="videoId">The unique identifier for the video you want to have automatic captions for. </param>
             <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-            <param name="captionsUpdatePayload"> (optional)</param>
+            <param name="captionsUpdatePayload"></param>
             <returns>Subtitle</returns>
         </member>
         <member name="M:VideoApiClient.Api.CaptionsApi.updateWithHttpInfo(System.String,System.String,VideoApiClient.Model.CaptionsUpdatePayload)">
@@ -679,7 +643,7 @@
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
             <param name="videoId">The unique identifier for the video you want to have automatic captions for. </param>
             <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-            <param name="captionsUpdatePayload"> (optional)</param>
+            <param name="captionsUpdatePayload"></param>
             <returns>ApiResponse of Subtitle</returns>
         </member>
         <member name="M:VideoApiClient.Api.CaptionsApi.upload(System.String,System.String,System.IO.Stream)">
@@ -833,23 +797,23 @@
             <param name="file">The VTT file describing the chapters you want to upload.</param>
             <returns>ApiResponse of Chapter</returns>
         </member>
-        <member name="T:VideoApiClient.Api.LiveApi">
+        <member name="T:VideoApiClient.Api.LiveStreamsApi">
             <summary>
             Represents a collection of functions to interact with the API endpoints
             </summary>
         </member>
-        <member name="P:VideoApiClient.Api.LiveApi.ApiClient">
+        <member name="P:VideoApiClient.Api.LiveStreamsApi.ApiClient">
             <summary>
             Api Client Instance
             </summary>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.#ctor(VideoApiClient.Client.ApiClient)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.#ctor(VideoApiClient.Client.ApiClient)">
             <summary>
-            Initializes a new instance of the <see cref="T:VideoApiClient.Api.LiveApi"/> class.
+            Initializes a new instance of the <see cref="T:VideoApiClient.Api.LiveStreamsApi"/> class.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.delete(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.delete(System.String)">
             <summary>
             Delete a live stream 
             </summary>
@@ -857,7 +821,7 @@
             <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
             <returns></returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.deleteWithHttpInfo(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.deleteWithHttpInfo(System.String)">
             <summary>
             Delete a live stream 
             </summary>
@@ -865,7 +829,7 @@
             <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
             <returns>ApiResponse of Object(void)</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.deleteThumbnail(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.deleteThumbnail(System.String)">
             <summary>
             Delete a thumbnail Send the unique identifier for a live stream to delete it from the system.
             </summary>
@@ -873,7 +837,7 @@
             <param name="liveStreamId">The unique identifier for the live stream you want to delete. </param>
             <returns>LiveStream</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.deleteThumbnailWithHttpInfo(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.deleteThumbnailWithHttpInfo(System.String)">
             <summary>
             Delete a thumbnail Send the unique identifier for a live stream to delete it from the system.
             </summary>
@@ -881,7 +845,7 @@
             <param name="liveStreamId">The unique identifier for the live stream you want to delete. </param>
             <returns>ApiResponse of LiveStream</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.list(System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.list(System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List all live streams With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
             </summary>
@@ -894,7 +858,7 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>LiveStreamListResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.listWithHttpInfo(System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.listWithHttpInfo(System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List all live streams With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
             </summary>
@@ -907,72 +871,72 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of LiveStreamListResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.list">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.list">
             <summary>
             With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
             </summary>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="T:VideoApiClient.Api.LiveApi.APIlistRequest">
+        <member name="T:VideoApiClient.Api.LiveStreamsApi.APIlistRequest">
             <summary>
             Request list class to get paginated list of items
             </summary>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.#ctor(VideoApiClient.Api.LiveApi)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.APIlistRequest.#ctor(VideoApiClient.Api.LiveStreamsApi)">
             <summary>
             Class constructor with api instance
             </summary>
             <param name="instance">Instance of the current api</param>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.StreamKey(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.APIlistRequest.StreamKey(System.String)">
             <summary>
             Set streamKey
             </summary>
             <param name="streamKey">The unique stream key that allows you to stream videos. (optional)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.Name(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.APIlistRequest.Name(System.String)">
             <summary>
             Set name
             </summary>
             <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.SortBy(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.APIlistRequest.SortBy(System.String)">
             <summary>
             Set sortBy
             </summary>
             <param name="sortBy">Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.SortOrder(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.APIlistRequest.SortOrder(System.String)">
             <summary>
             Set sortOrder
             </summary>
             <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
             <summary>
             Set currentPage
             </summary>
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
             <summary>
             Set pageSize
             </summary>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.APIlistRequest.execute">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.APIlistRequest.execute">
             <summary>
             Execute list request
             </summary>
             <returns>LiveStreamListResponse </returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.get(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.get(System.String)">
             <summary>
             Show live stream Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
             </summary>
@@ -980,7 +944,7 @@
             <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
             <returns>LiveStream</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.getWithHttpInfo(System.String)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.getWithHttpInfo(System.String)">
             <summary>
             Show live stream Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
             </summary>
@@ -988,41 +952,41 @@
             <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
             <returns>ApiResponse of LiveStream</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.update(System.String,VideoApiClient.Model.LiveStreamUpdatePayload)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.update(System.String,VideoApiClient.Model.LiveStreamUpdatePayload)">
             <summary>
             Update a live stream Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
             <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
-            <param name="liveStreamUpdatePayload"> (optional)</param>
+            <param name="liveStreamUpdatePayload"></param>
             <returns>LiveStream</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.updateWithHttpInfo(System.String,VideoApiClient.Model.LiveStreamUpdatePayload)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.updateWithHttpInfo(System.String,VideoApiClient.Model.LiveStreamUpdatePayload)">
             <summary>
             Update a live stream Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
             <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
-            <param name="liveStreamUpdatePayload"> (optional)</param>
+            <param name="liveStreamUpdatePayload"></param>
             <returns>ApiResponse of LiveStream</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.create(VideoApiClient.Model.LiveStreamCreatePayload)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.create(VideoApiClient.Model.LiveStreamCreatePayload)">
             <summary>
             Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="liveStreamCreatePayload"> (optional)</param>
+            <param name="liveStreamCreatePayload"></param>
             <returns>LiveStream</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.createWithHttpInfo(VideoApiClient.Model.LiveStreamCreatePayload)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.createWithHttpInfo(VideoApiClient.Model.LiveStreamCreatePayload)">
             <summary>
             Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="liveStreamCreatePayload"> (optional)</param>
+            <param name="liveStreamCreatePayload"></param>
             <returns>ApiResponse of LiveStream</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.uploadThumbnail(System.String,System.IO.Stream)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.uploadThumbnail(System.String,System.IO.Stream)">
             <summary>
             Upload a thumbnail Upload an image to use as a backdrop for your livestream.
             </summary>
@@ -1031,7 +995,7 @@
             <param name="file">The image to be added as a thumbnail.</param>
             <returns>LiveStream</returns>
         </member>
-        <member name="M:VideoApiClient.Api.LiveApi.uploadThumbnailWithHttpInfo(System.String,System.IO.Stream)">
+        <member name="M:VideoApiClient.Api.LiveStreamsApi.uploadThumbnailWithHttpInfo(System.String,System.IO.Stream)">
             <summary>
             Upload a thumbnail Upload an image to use as a backdrop for your livestream.
             </summary>
@@ -1040,23 +1004,23 @@
             <param name="file">The image to be added as a thumbnail.</param>
             <returns>ApiResponse of LiveStream</returns>
         </member>
-        <member name="T:VideoApiClient.Api.PlayersApi">
+        <member name="T:VideoApiClient.Api.PlayerThemesApi">
             <summary>
             Represents a collection of functions to interact with the API endpoints
             </summary>
         </member>
-        <member name="P:VideoApiClient.Api.PlayersApi.ApiClient">
+        <member name="P:VideoApiClient.Api.PlayerThemesApi.ApiClient">
             <summary>
             Api Client Instance
             </summary>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.#ctor(VideoApiClient.Client.ApiClient)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.#ctor(VideoApiClient.Client.ApiClient)">
             <summary>
-            Initializes a new instance of the <see cref="T:VideoApiClient.Api.PlayersApi"/> class.
+            Initializes a new instance of the <see cref="T:VideoApiClient.Api.PlayerThemesApi"/> class.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.delete(System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.delete(System.String)">
             <summary>
             Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID for.
             </summary>
@@ -1064,7 +1028,7 @@
             <param name="playerId">The unique identifier for the player you want to delete.</param>
             <returns></returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.deleteWithHttpInfo(System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.deleteWithHttpInfo(System.String)">
             <summary>
             Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID for.
             </summary>
@@ -1072,7 +1036,7 @@
             <param name="playerId">The unique identifier for the player you want to delete.</param>
             <returns>ApiResponse of Object(void)</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.deleteLogo(System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.deleteLogo(System.String)">
             <summary>
             Delete logo 
             </summary>
@@ -1080,7 +1044,7 @@
             <param name="playerId">The unique identifier for the player.</param>
             <returns>Object</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.deleteLogoWithHttpInfo(System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.deleteLogoWithHttpInfo(System.String)">
             <summary>
             Delete logo 
             </summary>
@@ -1088,7 +1052,7 @@
             <param name="playerId">The unique identifier for the player.</param>
             <returns>ApiResponse of Object</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.list(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.list(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List all players Retrieve a list of all the players you created, as well as details about each one.
             </summary>
@@ -1099,7 +1063,7 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>PlayersListResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.listWithHttpInfo(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.listWithHttpInfo(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List all players Retrieve a list of all the players you created, as well as details about each one.
             </summary>
@@ -1110,58 +1074,58 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of PlayersListResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.list">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.list">
             <summary>
             Retrieve a list of all the players you created, as well as details about each one.
             </summary>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="T:VideoApiClient.Api.PlayersApi.APIlistRequest">
+        <member name="T:VideoApiClient.Api.PlayerThemesApi.APIlistRequest">
             <summary>
             Request list class to get paginated list of items
             </summary>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.#ctor(VideoApiClient.Api.PlayersApi)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.APIlistRequest.#ctor(VideoApiClient.Api.PlayerThemesApi)">
             <summary>
             Class constructor with api instance
             </summary>
             <param name="instance">Instance of the current api</param>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.SortBy(System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.APIlistRequest.SortBy(System.String)">
             <summary>
             Set sortBy
             </summary>
             <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.SortOrder(System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.APIlistRequest.SortOrder(System.String)">
             <summary>
             Set sortOrder
             </summary>
             <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
             <summary>
             Set currentPage
             </summary>
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
             <summary>
             Set pageSize
             </summary>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>APIlistRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.APIlistRequest.execute">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.APIlistRequest.execute">
             <summary>
             Execute list request
             </summary>
             <returns>PlayersListResponse </returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.get(System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.get(System.String)">
             <summary>
             Show a player Use a player ID to retrieve details about the player and display it for viewers.
             </summary>
@@ -1169,7 +1133,7 @@
             <param name="playerId">The unique identifier for the player you want to retrieve. </param>
             <returns>Player</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.getWithHttpInfo(System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.getWithHttpInfo(System.String)">
             <summary>
             Show a player Use a player ID to retrieve details about the player and display it for viewers.
             </summary>
@@ -1177,7 +1141,7 @@
             <param name="playerId">The unique identifier for the player you want to retrieve. </param>
             <returns>ApiResponse of Player</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.update(System.String,VideoApiClient.Model.PlayerUpdatePayload)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.update(System.String,VideoApiClient.Model.PlayerUpdatePayload)">
             <summary>
             Update a player Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
             </summary>
@@ -1186,7 +1150,7 @@
             <param name="playerUpdatePayload"></param>
             <returns>Player</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.updateWithHttpInfo(System.String,VideoApiClient.Model.PlayerUpdatePayload)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.updateWithHttpInfo(System.String,VideoApiClient.Model.PlayerUpdatePayload)">
             <summary>
             Update a player Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
             </summary>
@@ -1195,7 +1159,7 @@
             <param name="playerUpdatePayload"></param>
             <returns>ApiResponse of Player</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.create(VideoApiClient.Model.PlayerCreationPayload)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.create(VideoApiClient.Model.PlayerCreationPayload)">
             <summary>
             Create a player Create a player for your video, and customise it.
             </summary>
@@ -1203,7 +1167,7 @@
             <param name="playerCreationPayload"></param>
             <returns>Player</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.createWithHttpInfo(VideoApiClient.Model.PlayerCreationPayload)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.createWithHttpInfo(VideoApiClient.Model.PlayerCreationPayload)">
             <summary>
             Create a player Create a player for your video, and customise it.
             </summary>
@@ -1211,7 +1175,7 @@
             <param name="playerCreationPayload"></param>
             <returns>ApiResponse of Player</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.uploadLogo(System.String,System.IO.Stream,System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.uploadLogo(System.String,System.IO.Stream,System.String)">
             <summary>
             Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
             </summary>
@@ -1221,7 +1185,7 @@
             <param name="link">The path to the file you want to upload and use as a logo.</param>
             <returns>Player</returns>
         </member>
-        <member name="M:VideoApiClient.Api.PlayersApi.uploadLogoWithHttpInfo(System.String,System.IO.Stream,System.String)">
+        <member name="M:VideoApiClient.Api.PlayerThemesApi.uploadLogoWithHttpInfo(System.String,System.IO.Stream,System.String)">
             <summary>
             Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
             </summary>
@@ -1247,7 +1211,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.getLiveStreamAnalytics(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listLiveStreamSessions(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List live stream player sessions 
             </summary>
@@ -1258,7 +1222,7 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>RawStatisticsListLiveStreamAnalyticsResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.getLiveStreamAnalyticsWithHttpInfo(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listLiveStreamSessionsWithHttpInfo(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List live stream player sessions 
             </summary>
@@ -1269,53 +1233,53 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of RawStatisticsListLiveStreamAnalyticsResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.getLiveStreamAnalytics(System.String)">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listLiveStreamSessions(System.String)">
             <summary>
             
             </summary>
             <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for. (required)</param>
-            <returns>APIgetLiveStreamAnalyticsRequest</returns>
+            <returns>APIlistLiveStreamSessionsRequest</returns>
         </member>
-        <member name="T:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest">
+        <member name="T:VideoApiClient.Api.RawStatisticsApi.APIlistLiveStreamSessionsRequest">
             <summary>
-            Request getLiveStreamAnalytics class to get paginated list of items
+            Request listLiveStreamSessions class to get paginated list of items
             </summary>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest.#ctor(VideoApiClient.Api.RawStatisticsApi,System.String)">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistLiveStreamSessionsRequest.#ctor(VideoApiClient.Api.RawStatisticsApi,System.String)">
             <summary>
             Class constructor with api instance
             </summary>
             <param name="instance">Instance of the current api</param>
             <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for. (required)</param>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest.Period(System.String)">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistLiveStreamSessionsRequest.Period(System.String)">
             <summary>
             Set period
             </summary>
             <param name="period">Period must have one of the following formats:   - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (optional)</param>
-            <returns>APIgetLiveStreamAnalyticsRequest</returns>
+            <returns>APIlistLiveStreamSessionsRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest.CurrentPage(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistLiveStreamSessionsRequest.CurrentPage(System.Nullable{System.Int32})">
             <summary>
             Set currentPage
             </summary>
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            <returns>APIgetLiveStreamAnalyticsRequest</returns>
+            <returns>APIlistLiveStreamSessionsRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest.PageSize(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistLiveStreamSessionsRequest.PageSize(System.Nullable{System.Int32})">
             <summary>
             Set pageSize
             </summary>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            <returns>APIgetLiveStreamAnalyticsRequest</returns>
+            <returns>APIlistLiveStreamSessionsRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIgetLiveStreamAnalyticsRequest.execute">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistLiveStreamSessionsRequest.execute">
             <summary>
-            Execute getLiveStreamAnalytics request
+            Execute listLiveStreamSessions request
             </summary>
             <returns>RawStatisticsListLiveStreamAnalyticsResponse </returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.listPlayerSessionEvents(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listSessionEvents(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List player session events Useful to track and measure video&#39;s engagement.
             </summary>
@@ -1325,7 +1289,7 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>RawStatisticsListPlayerSessionEventsResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.listPlayerSessionEventsWithHttpInfo(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listSessionEventsWithHttpInfo(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List player session events Useful to track and measure video&#39;s engagement.
             </summary>
@@ -1335,46 +1299,46 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of RawStatisticsListPlayerSessionEventsResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.listPlayerSessionEvents(System.String)">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listSessionEvents(System.String)">
             <summary>
             Useful to track and measure video&#39;s engagement.
             </summary>
             <param name="sessionId">A unique identifier you can use to reference and track a session with. (required)</param>
-            <returns>APIlistPlayerSessionEventsRequest</returns>
+            <returns>APIlistSessionEventsRequest</returns>
         </member>
-        <member name="T:VideoApiClient.Api.RawStatisticsApi.APIlistPlayerSessionEventsRequest">
+        <member name="T:VideoApiClient.Api.RawStatisticsApi.APIlistSessionEventsRequest">
             <summary>
-            Request listPlayerSessionEvents class to get paginated list of items
+            Request listSessionEvents class to get paginated list of items
             </summary>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistPlayerSessionEventsRequest.#ctor(VideoApiClient.Api.RawStatisticsApi,System.String)">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionEventsRequest.#ctor(VideoApiClient.Api.RawStatisticsApi,System.String)">
             <summary>
             Class constructor with api instance
             </summary>
             <param name="instance">Instance of the current api</param>
             <param name="sessionId">A unique identifier you can use to reference and track a session with. (required)</param>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistPlayerSessionEventsRequest.CurrentPage(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionEventsRequest.CurrentPage(System.Nullable{System.Int32})">
             <summary>
             Set currentPage
             </summary>
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            <returns>APIlistPlayerSessionEventsRequest</returns>
+            <returns>APIlistSessionEventsRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistPlayerSessionEventsRequest.PageSize(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionEventsRequest.PageSize(System.Nullable{System.Int32})">
             <summary>
             Set pageSize
             </summary>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            <returns>APIlistPlayerSessionEventsRequest</returns>
+            <returns>APIlistSessionEventsRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistPlayerSessionEventsRequest.execute">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionEventsRequest.execute">
             <summary>
-            Execute listPlayerSessionEvents request
+            Execute listSessionEvents request
             </summary>
             <returns>RawStatisticsListPlayerSessionEventsResponse </returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.listSessions(System.String,System.String,System.Collections.Generic.List{System.String},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listVideoSessions(System.String,System.String,System.Collections.Generic.List{System.String},System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List video player sessions Retrieve all available user sessions for a specific video.
             </summary>
@@ -1386,7 +1350,7 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>RawStatisticsListSessionsResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.listSessionsWithHttpInfo(System.String,System.String,System.Collections.Generic.List{System.String},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listVideoSessionsWithHttpInfo(System.String,System.String,System.Collections.Generic.List{System.String},System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             List video player sessions Retrieve all available user sessions for a specific video.
             </summary>
@@ -1398,58 +1362,195 @@
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
             <returns>ApiResponse of RawStatisticsListSessionsResponse</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.listSessions(System.String)">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.listVideoSessions(System.String)">
             <summary>
             Retrieve all available user sessions for a specific video.
             </summary>
             <param name="videoId">The unique identifier for the video you want to retrieve session information for. (required)</param>
-            <returns>APIlistSessionsRequest</returns>
+            <returns>APIlistVideoSessionsRequest</returns>
         </member>
-        <member name="T:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest">
+        <member name="T:VideoApiClient.Api.RawStatisticsApi.APIlistVideoSessionsRequest">
             <summary>
-            Request listSessions class to get paginated list of items
+            Request listVideoSessions class to get paginated list of items
             </summary>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.#ctor(VideoApiClient.Api.RawStatisticsApi,System.String)">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistVideoSessionsRequest.#ctor(VideoApiClient.Api.RawStatisticsApi,System.String)">
             <summary>
             Class constructor with api instance
             </summary>
             <param name="instance">Instance of the current api</param>
             <param name="videoId">The unique identifier for the video you want to retrieve session information for. (required)</param>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.Period(System.String)">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistVideoSessionsRequest.Period(System.String)">
             <summary>
             Set period
             </summary>
             <param name="period">Period must have one of the following formats:   - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018  For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)</param>
-            <returns>APIlistSessionsRequest</returns>
+            <returns>APIlistVideoSessionsRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.Metadata(System.Collections.Generic.List{System.String})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistVideoSessionsRequest.Metadata(System.Collections.Generic.List{System.String})">
             <summary>
             Set metadata
             </summary>
             <param name="metadata">Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)</param>
-            <returns>APIlistSessionsRequest</returns>
+            <returns>APIlistVideoSessionsRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.CurrentPage(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistVideoSessionsRequest.CurrentPage(System.Nullable{System.Int32})">
             <summary>
             Set currentPage
             </summary>
             <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            <returns>APIlistSessionsRequest</returns>
+            <returns>APIlistVideoSessionsRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.PageSize(System.Nullable{System.Int32})">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistVideoSessionsRequest.PageSize(System.Nullable{System.Int32})">
             <summary>
             Set pageSize
             </summary>
             <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            <returns>APIlistSessionsRequest</returns>
+            <returns>APIlistVideoSessionsRequest</returns>
         </member>
-        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistSessionsRequest.execute">
+        <member name="M:VideoApiClient.Api.RawStatisticsApi.APIlistVideoSessionsRequest.execute">
             <summary>
-            Execute listSessions request
+            Execute listVideoSessions request
             </summary>
             <returns>RawStatisticsListSessionsResponse </returns>
+        </member>
+        <member name="T:VideoApiClient.Api.UploadTokensApi">
+            <summary>
+            Represents a collection of functions to interact with the API endpoints
+            </summary>
+        </member>
+        <member name="P:VideoApiClient.Api.UploadTokensApi.ApiClient">
+            <summary>
+            Api Client Instance
+            </summary>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.#ctor(VideoApiClient.Client.ApiClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VideoApiClient.Api.UploadTokensApi"/> class.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.deleteToken(System.String)">
+            <summary>
+            Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
+            <returns></returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.deleteTokenWithHttpInfo(System.String)">
+            <summary>
+            Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
+            <returns>ApiResponse of Object(void)</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.list(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
+            <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
+            <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+            <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+            <returns>TokenListResponse</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.listWithHttpInfo(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
+            <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
+            <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+            <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+            <returns>ApiResponse of TokenListResponse</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.list">
+            <summary>
+            A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+            </summary>
+            <returns>APIlistRequest</returns>
+        </member>
+        <member name="T:VideoApiClient.Api.UploadTokensApi.APIlistRequest">
+            <summary>
+            Request list class to get paginated list of items
+            </summary>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.APIlistRequest.#ctor(VideoApiClient.Api.UploadTokensApi)">
+            <summary>
+            Class constructor with api instance
+            </summary>
+            <param name="instance">Instance of the current api</param>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.APIlistRequest.SortBy(System.String)">
+            <summary>
+            Set sortBy
+            </summary>
+            <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
+            <returns>APIlistRequest</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.APIlistRequest.SortOrder(System.String)">
+            <summary>
+            Set sortOrder
+            </summary>
+            <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
+            <returns>APIlistRequest</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.APIlistRequest.CurrentPage(System.Nullable{System.Int32})">
+            <summary>
+            Set currentPage
+            </summary>
+            <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+            <returns>APIlistRequest</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.APIlistRequest.PageSize(System.Nullable{System.Int32})">
+            <summary>
+            Set pageSize
+            </summary>
+            <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+            <returns>APIlistRequest</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.APIlistRequest.execute">
+            <summary>
+            Execute list request
+            </summary>
+            <returns>TokenListResponse </returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.getToken(System.String)">
+            <summary>
+            Show upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="uploadToken">The unique identifier for the token you want information about.</param>
+            <returns>UploadToken</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.getTokenWithHttpInfo(System.String)">
+            <summary>
+            Show upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="uploadToken">The unique identifier for the token you want information about.</param>
+            <returns>ApiResponse of UploadToken</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.createToken(VideoApiClient.Model.TokenCreatePayload)">
+            <summary>
+            Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="tokenCreatePayload"></param>
+            <returns>UploadToken</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.UploadTokensApi.createTokenWithHttpInfo(VideoApiClient.Model.TokenCreatePayload)">
+            <summary>
+            Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="tokenCreatePayload"></param>
+            <returns>ApiResponse of UploadToken</returns>
         </member>
         <member name="T:VideoApiClient.Api.VideosApi">
             <summary>
@@ -1499,7 +1600,7 @@
             <param name="videoId">The unique identifier for the video you want details about.</param>
             <returns>ApiResponse of Video</returns>
         </member>
-        <member name="M:VideoApiClient.Api.VideosApi.getVideoStatus(System.String)">
+        <member name="M:VideoApiClient.Api.VideosApi.getStatus(System.String)">
             <summary>
             Show video status This API provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback.  Once encoding is completed, the response also lists the available stream qualities.
             </summary>
@@ -1507,7 +1608,7 @@
             <param name="videoId">The unique identifier for the video you want the status for.</param>
             <returns>Videostatus</returns>
         </member>
-        <member name="M:VideoApiClient.Api.VideosApi.getVideoStatusWithHttpInfo(System.String)">
+        <member name="M:VideoApiClient.Api.VideosApi.getStatusWithHttpInfo(System.String)">
             <summary>
             Show video status This API provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback.  Once encoding is completed, the response also lists the available stream qualities.
             </summary>
@@ -1639,7 +1740,7 @@
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
             <param name="videoId">The video ID for the video you want to delete.</param>
-            <param name="videoUpdatePayload"> (optional)</param>
+            <param name="videoUpdatePayload"></param>
             <returns>Video</returns>
         </member>
         <member name="M:VideoApiClient.Api.VideosApi.updateWithHttpInfo(System.String,VideoApiClient.Model.VideoUpdatePayload)">
@@ -1648,7 +1749,7 @@
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
             <param name="videoId">The video ID for the video you want to delete.</param>
-            <param name="videoUpdatePayload"> (optional)</param>
+            <param name="videoUpdatePayload"></param>
             <returns>ApiResponse of Video</returns>
         </member>
         <member name="M:VideoApiClient.Api.VideosApi.pickThumbnail(System.String,VideoApiClient.Model.VideoThumbnailPickPayload)">
@@ -1657,7 +1758,7 @@
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
             <param name="videoId">Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.</param>
-            <param name="videoThumbnailPickPayload"> (optional)</param>
+            <param name="videoThumbnailPickPayload"></param>
             <returns>Video</returns>
         </member>
         <member name="M:VideoApiClient.Api.VideosApi.pickThumbnailWithHttpInfo(System.String,VideoApiClient.Model.VideoThumbnailPickPayload)">
@@ -1666,7 +1767,27 @@
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
             <param name="videoId">Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.</param>
-            <param name="videoThumbnailPickPayload"> (optional)</param>
+            <param name="videoThumbnailPickPayload"></param>
+            <returns>ApiResponse of Video</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.uploadWithUploadToken(System.String,System.IO.Stream,VideoApiClient.Upload.IUploadProgressListener)">
+            <summary>
+            Upload with an upload token When given a token, anyone can upload a file to the URI &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;.  Example with cURL:  &#x60;&#x60;&#x60;curl $ curl  - -request POST - -url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39;  - -header &#39;content-type: multipart/form-data&#39;  -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60;  Or in an HTML form, with a little JavaScript to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!- -form for user interaction- -&gt; &lt;form name&#x3D;\&quot;videoUploadForm\&quot; &gt;   &lt;label for&#x3D;video&gt;Video:&lt;/label&gt;   &lt;input type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt;   &lt;input value&#x3D;\&quot;Submit\&quot; type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!- -JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     - -&gt; &lt;script&gt;    var form &#x3D; document.forms.namedItem(\&quot;videoUploadForm\&quot;);     form.addEventListener(&#39;submit&#39;, function(ev) {   ev.preventDefault();      var oOutput &#x3D; document.querySelector(\&quot;div\&quot;),          oData &#x3D; new FormData(form);      var oReq &#x3D; new XMLHttpRequest();         oReq.open(\&quot;POST\&quot;, \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true);      oReq.send(oData);   oReq.onload &#x3D; function(oEvent) {        if (oReq.status &#x3D;&#x3D;201) {          oOutput.innerHTML &#x3D; \&quot;Your video is uploaded!&lt;br/&gt;\&quot;  + oReq.response;        } else {          oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;;        }      };    }, false);  &lt;/script&gt; &#x60;&#x60;&#x60;   ### Dealing with large files  We have created a &lt;a href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt; to walk through the steps required.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="token">The unique identifier for the token you want to use to upload a video.</param>
+            <param name="file">The path to the video you want to upload.</param>
+            <param name="progressListener">Progress listener called after each chunk upload</param>
+            <returns>Video</returns>
+        </member>
+        <member name="M:VideoApiClient.Api.VideosApi.uploadWithUploadTokenWithHttpInfo(System.String,System.IO.Stream,VideoApiClient.Upload.IUploadProgressListener)">
+            <summary>
+            Upload with an upload token When given a token, anyone can upload a file to the URI &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;.  Example with cURL:  &#x60;&#x60;&#x60;curl $ curl  - -request POST - -url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39;  - -header &#39;content-type: multipart/form-data&#39;  -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60;  Or in an HTML form, with a little JavaScript to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!- -form for user interaction- -&gt; &lt;form name&#x3D;\&quot;videoUploadForm\&quot; &gt;   &lt;label for&#x3D;video&gt;Video:&lt;/label&gt;   &lt;input type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt;   &lt;input value&#x3D;\&quot;Submit\&quot; type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!- -JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     - -&gt; &lt;script&gt;    var form &#x3D; document.forms.namedItem(\&quot;videoUploadForm\&quot;);     form.addEventListener(&#39;submit&#39;, function(ev) {   ev.preventDefault();      var oOutput &#x3D; document.querySelector(\&quot;div\&quot;),          oData &#x3D; new FormData(form);      var oReq &#x3D; new XMLHttpRequest();         oReq.open(\&quot;POST\&quot;, \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true);      oReq.send(oData);   oReq.onload &#x3D; function(oEvent) {        if (oReq.status &#x3D;&#x3D;201) {          oOutput.innerHTML &#x3D; \&quot;Your video is uploaded!&lt;br/&gt;\&quot;  + oReq.response;        } else {          oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;;        }      };    }, false);  &lt;/script&gt; &#x60;&#x60;&#x60;   ### Dealing with large files  We have created a &lt;a href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt; to walk through the steps required.
+            </summary>
+            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+            <param name="token">The unique identifier for the token you want to use to upload a video.</param>
+            <param name="file">The path to the video you want to upload.</param>
+            <param name="progressListener">Progress listener called after each chunk upload</param>
             <returns>ApiResponse of Video</returns>
         </member>
         <member name="M:VideoApiClient.Api.VideosApi.create(VideoApiClient.Model.VideoCreatePayload)">
@@ -1674,7 +1795,7 @@
             Create a video To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;title\&quot;:\&quot;My video\&quot;,       \&quot;description\&quot;:\&quot;so many details\&quot;,      \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60;  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter:  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My video\&quot;}&#39; &#x60;&#x60;&#x60;  In this case, the service will respond &#x60;202 Accepted&#x60; and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) 
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="videoCreatePayload">video to create (optional)</param>
+            <param name="videoCreatePayload">video to create</param>
             <returns>Video</returns>
         </member>
         <member name="M:VideoApiClient.Api.VideosApi.createWithHttpInfo(VideoApiClient.Model.VideoCreatePayload)">
@@ -1682,7 +1803,7 @@
             Create a video To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;title\&quot;:\&quot;My video\&quot;,       \&quot;description\&quot;:\&quot;so many details\&quot;,      \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60;  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter:  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My video\&quot;}&#39; &#x60;&#x60;&#x60;  In this case, the service will respond &#x60;202 Accepted&#x60; and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) 
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="videoCreatePayload">video to create (optional)</param>
+            <param name="videoCreatePayload">video to create</param>
             <returns>ApiResponse of Video</returns>
         </member>
         <member name="M:VideoApiClient.Api.VideosApi.upload(System.String,System.IO.Stream,VideoApiClient.Upload.IUploadProgressListener)">
@@ -1722,163 +1843,6 @@
             <param name="videoId">Unique identifier of the chosen video </param>
             <param name="file">The image to be added as a thumbnail.</param>
             <returns>ApiResponse of Video</returns>
-        </member>
-        <member name="T:VideoApiClient.Api.VideosDelegatedUploadApi">
-            <summary>
-            Represents a collection of functions to interact with the API endpoints
-            </summary>
-        </member>
-        <member name="P:VideoApiClient.Api.VideosDelegatedUploadApi.ApiClient">
-            <summary>
-            Api Client Instance
-            </summary>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.#ctor(VideoApiClient.Client.ApiClient)">
-            <summary>
-            Initializes a new instance of the <see cref="T:VideoApiClient.Api.VideosDelegatedUploadApi"/> class.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.deleteToken(System.String)">
-            <summary>
-            Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
-            <returns></returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.deleteTokenWithHttpInfo(System.String)">
-            <summary>
-            Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
-            <returns>ApiResponse of Object(void)</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.listTokens(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
-            <summary>
-            List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
-            <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
-            <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            <returns>TokenListResponse</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.listTokensWithHttpInfo(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
-            <summary>
-            List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
-            <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
-            <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            <returns>ApiResponse of TokenListResponse</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.listTokens">
-            <summary>
-            A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
-            </summary>
-            <returns>APIlistTokensRequest</returns>
-        </member>
-        <member name="T:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest">
-            <summary>
-            Request listTokens class to get paginated list of items
-            </summary>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.#ctor(VideoApiClient.Api.VideosDelegatedUploadApi)">
-            <summary>
-            Class constructor with api instance
-            </summary>
-            <param name="instance">Instance of the current api</param>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.SortBy(System.String)">
-            <summary>
-            Set sortBy
-            </summary>
-            <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
-            <returns>APIlistTokensRequest</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.SortOrder(System.String)">
-            <summary>
-            Set sortOrder
-            </summary>
-            <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
-            <returns>APIlistTokensRequest</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.CurrentPage(System.Nullable{System.Int32})">
-            <summary>
-            Set currentPage
-            </summary>
-            <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            <returns>APIlistTokensRequest</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.PageSize(System.Nullable{System.Int32})">
-            <summary>
-            Set pageSize
-            </summary>
-            <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            <returns>APIlistTokensRequest</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.APIlistTokensRequest.execute">
-            <summary>
-            Execute listTokens request
-            </summary>
-            <returns>TokenListResponse </returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.getToken(System.String)">
-            <summary>
-            Show upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="uploadToken">The unique identifier for the token you want information about.</param>
-            <returns>UploadToken</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.getTokenWithHttpInfo(System.String)">
-            <summary>
-            Show upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="uploadToken">The unique identifier for the token you want information about.</param>
-            <returns>ApiResponse of UploadToken</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.upload(System.String,System.IO.Stream,VideoApiClient.Upload.IUploadProgressListener)">
-            <summary>
-            Upload with an upload token When given a token, anyone can upload a file to the URI &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;.  Example with cURL:  &#x60;&#x60;&#x60;curl $ curl  - -request POST - -url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39;  - -header &#39;content-type: multipart/form-data&#39;  -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60;  Or in an HTML form, with a little JavaScript to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!- -form for user interaction- -&gt; &lt;form name&#x3D;\&quot;videoUploadForm\&quot; &gt;   &lt;label for&#x3D;video&gt;Video:&lt;/label&gt;   &lt;input type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt;   &lt;input value&#x3D;\&quot;Submit\&quot; type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!- -JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     - -&gt; &lt;script&gt;    var form &#x3D; document.forms.namedItem(\&quot;videoUploadForm\&quot;);     form.addEventListener(&#39;submit&#39;, function(ev) {   ev.preventDefault();      var oOutput &#x3D; document.querySelector(\&quot;div\&quot;),          oData &#x3D; new FormData(form);      var oReq &#x3D; new XMLHttpRequest();         oReq.open(\&quot;POST\&quot;, \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true);      oReq.send(oData);   oReq.onload &#x3D; function(oEvent) {        if (oReq.status &#x3D;&#x3D;201) {          oOutput.innerHTML &#x3D; \&quot;Your video is uploaded!&lt;br/&gt;\&quot;  + oReq.response;        } else {          oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;;        }      };    }, false);  &lt;/script&gt; &#x60;&#x60;&#x60;   ### Dealing with large files  We have created a &lt;a href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt; to walk through the steps required.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="token">The unique identifier for the token you want to use to upload a video.</param>
-            <param name="file">The path to the video you want to upload.</param>
-            <param name="progressListener">Progress listener called after each chunk upload</param>
-            <returns>Video</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.uploadWithHttpInfo(System.String,System.IO.Stream,VideoApiClient.Upload.IUploadProgressListener)">
-            <summary>
-            Upload with an upload token When given a token, anyone can upload a file to the URI &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;.  Example with cURL:  &#x60;&#x60;&#x60;curl $ curl  - -request POST - -url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39;  - -header &#39;content-type: multipart/form-data&#39;  -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60;  Or in an HTML form, with a little JavaScript to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!- -form for user interaction- -&gt; &lt;form name&#x3D;\&quot;videoUploadForm\&quot; &gt;   &lt;label for&#x3D;video&gt;Video:&lt;/label&gt;   &lt;input type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt;   &lt;input value&#x3D;\&quot;Submit\&quot; type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!- -JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     - -&gt; &lt;script&gt;    var form &#x3D; document.forms.namedItem(\&quot;videoUploadForm\&quot;);     form.addEventListener(&#39;submit&#39;, function(ev) {   ev.preventDefault();      var oOutput &#x3D; document.querySelector(\&quot;div\&quot;),          oData &#x3D; new FormData(form);      var oReq &#x3D; new XMLHttpRequest();         oReq.open(\&quot;POST\&quot;, \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true);      oReq.send(oData);   oReq.onload &#x3D; function(oEvent) {        if (oReq.status &#x3D;&#x3D;201) {          oOutput.innerHTML &#x3D; \&quot;Your video is uploaded!&lt;br/&gt;\&quot;  + oReq.response;        } else {          oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;;        }      };    }, false);  &lt;/script&gt; &#x60;&#x60;&#x60;   ### Dealing with large files  We have created a &lt;a href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt; to walk through the steps required.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="token">The unique identifier for the token you want to use to upload a video.</param>
-            <param name="file">The path to the video you want to upload.</param>
-            <param name="progressListener">Progress listener called after each chunk upload</param>
-            <returns>ApiResponse of Video</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.createToken(VideoApiClient.Model.TokenCreatePayload)">
-            <summary>
-            Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="tokenCreatePayload"> (optional)</param>
-            <returns>UploadToken</returns>
-        </member>
-        <member name="M:VideoApiClient.Api.VideosDelegatedUploadApi.createTokenWithHttpInfo(VideoApiClient.Model.TokenCreatePayload)">
-            <summary>
-            Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
-            </summary>
-            <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="tokenCreatePayload"> (optional)</param>
-            <returns>ApiResponse of UploadToken</returns>
         </member>
         <member name="T:VideoApiClient.Api.WebhooksApi">
             <summary>
@@ -1994,18 +1958,18 @@
         </member>
         <member name="M:VideoApiClient.Api.WebhooksApi.create(VideoApiClient.Model.WebhooksCreatePayload)">
             <summary>
-            Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes
+            Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \\\&quot;type\\\&quot;: \\\&quot;video.encoding.quality.completed\\\&quot;, \\\&quot;emittedAt\\\&quot;: \\\&quot;2021-01-29T16:46:25.217+01:00\\\&quot;, \\\&quot;videoId\\\&quot;: \\\&quot;viXXXXXXXX\\\&quot;, \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="webhooksCreatePayload"> (optional)</param>
+            <param name="webhooksCreatePayload"></param>
             <returns>Webhook</returns>
         </member>
         <member name="M:VideoApiClient.Api.WebhooksApi.createWithHttpInfo(VideoApiClient.Model.WebhooksCreatePayload)">
             <summary>
-            Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes
+            Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \\\&quot;type\\\&quot;: \\\&quot;video.encoding.quality.completed\\\&quot;, \\\&quot;emittedAt\\\&quot;: \\\&quot;2021-01-29T16:46:25.217+01:00\\\&quot;, \\\&quot;videoId\\\&quot;: \\\&quot;viXXXXXXXX\\\&quot;, \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
             </summary>
             <exception cref="T:VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-            <param name="webhooksCreatePayload"> (optional)</param>
+            <param name="webhooksCreatePayload"></param>
             <returns>ApiResponse of Webhook</returns>
         </member>
         <member name="T:VideoApiClient.Model.AccessToken">
@@ -3844,6 +3808,12 @@
             The unique identifier of the video object.
             </summary>
             <value>The unique identifier of the video object.</value>
+        </member>
+        <member name="P:VideoApiClient.Model.Video.createdat">
+            <summary>
+            When an webhook was created, presented in ISO-8601 format.
+            </summary>
+            <value>When an webhook was created, presented in ISO-8601 format.</value>
         </member>
         <member name="P:VideoApiClient.Model.Video.title">
             <summary>

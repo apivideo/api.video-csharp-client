@@ -45,10 +45,6 @@
     <Reference Include="FluentAssertions, Version=5.10.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>packages\FluentAssertions.5.10.3\lib\net47\FluentAssertions.dll</HintPath>
     </Reference>
-    <Reference Include="JsonSubTypes, Version=1.6.0.0, Culture=neutral, PublicKeyToken=ee75fc290dbc1176, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\src\bin\Debug\JsonSubTypes.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\MSTest.TestFramework.2.1.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -60,11 +56,11 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\src\bin\Debug\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Projets\api-client-generator\api-client-generator\generated-clients\csharp\src\VideoApiClient\bin\Debug\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\src\bin\Debug\RestSharp.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Projets\api-client-generator\api-client-generator\generated-clients\csharp\src\VideoApiClient\bin\Debug\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -80,7 +76,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="VideoApiClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\src\bin\Debug\VideoApiClient.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Projets\api-client-generator\api-client-generator\generated-clients\csharp\src\VideoApiClient\bin\Debug\VideoApiClient.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

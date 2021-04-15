@@ -170,7 +170,7 @@ namespace VideoApiTests.Integration
         [TestMethod]
         public void getVideoStatus() 
         {
-            Videostatus videoStatus = apiClient.Videos().getVideoStatus(this.testVideo.videoid);
+            Videostatus videoStatus = apiClient.Videos().getStatus(this.testVideo.videoid);
 
             videoStatus.ingest.Should().BeNull();
             videoStatus.encoding.Should().NotBeNull();
