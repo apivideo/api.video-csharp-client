@@ -256,10 +256,10 @@ namespace VideoApiTests.Client
         {
             answerOnAnyRequest(201, "{}");
 
-            //api.Invoking(x => x.update("1234", null))
-            //                    .Should()
-            //                    .Throw<ApiException>()
-            //                    .WithMessage("Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
+            api.Invoking(x => x.update("1234", null))
+                                .Should()
+                                .Throw<ApiException>()
+                                .WithMessage("Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
 
 
             api.Invoking(x => x.update(null, new VideoUpdatePayload()))
@@ -345,15 +345,15 @@ namespace VideoApiTests.Client
                                             .Throw<ApiException>()
                                             .WithMessage("Missing required parameter 'videoId' when calling VideosApi->pickThumbnail");
 
-            //api.Invoking(x => x.pickThumbnail(videoId, null))
-            //                                .Should()
-            //                                .Throw<ApiException>()
-            //                                .WithMessage("Missing required parameter 'videoThumbnailPickPayload' when calling VideosApi->pickThumbnail");
+            api.Invoking(x => x.pickThumbnail(videoId, null))
+                                            .Should()
+                                            .Throw<ApiException>()
+                                            .WithMessage("Missing required parameter 'videoThumbnailPickPayload' when calling VideosApi->pickThumbnail");
 
-            //api.Invoking(x => x.pickThumbnail(videoId, new VideoThumbnailPickPayload()))
-            //                                .Should()
-            //                                .Throw<ApiException>()
-            //                                .WithMessage("Missing required parameter 'videoThumbnailPickPayload.timecode' when calling VideosApi->pickThumbnail");
+            api.Invoking(x => x.pickThumbnail(videoId, new VideoThumbnailPickPayload()))
+                                            .Should()
+                                            .Throw<ApiException>()
+                                            .WithMessage("Missing required parameter 'videoThumbnailPickPayload.timecode' when calling VideosApi->pickThumbnail");
 
             api.Invoking(x => x.pickThumbnail(videoId, tnpPayload))
                                 .Should()
@@ -413,15 +413,15 @@ namespace VideoApiTests.Client
         {
             answerOnAnyRequest(201, "{}");
 
-            //api.Invoking(x => x.create(null))
-            //                                .Should()
-            //                                .Throw<ApiException>()
-            //                                .WithMessage("Missing required parameter 'videoCreatePayload' when calling VideosApi->create");
+            api.Invoking(x => x.create(null))
+                                            .Should()
+                                            .Throw<ApiException>()
+                                            .WithMessage("Missing required parameter 'videoCreatePayload' when calling VideosApi->create");
 
-            //api.Invoking(x => x.create(new VideoCreatePayload()))
-            //                                .Should()
-            //                                .Throw<ApiException>()
-            //                                .WithMessage("Missing required parameter 'videoCreatePayload.title' when calling VideosApi->create");
+            api.Invoking(x => x.create(new VideoCreatePayload()))
+                                            .Should()
+                                            .Throw<ApiException>()
+                                            .WithMessage("Missing required parameter 'videoCreatePayload.title' when calling VideosApi->create");
 
             api.Invoking(x => x.create(new VideoCreatePayload() { title = "title" }))
                                 .Should()

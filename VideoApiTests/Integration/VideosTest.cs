@@ -93,7 +93,6 @@ namespace VideoApiTests.Integration
             Video updated = apiClient.Videos().update(testVideo.videoid,
                     new VideoUpdatePayload()
                     {
-                        title="title1",
                         metadata = new List<Metadata>(){
                             new Metadata(){key="firstKey", value="firstValue" },
                             new Metadata(){key="secondKey", value="secondValue"}
@@ -105,19 +104,16 @@ namespace VideoApiTests.Integration
                                 new Metadata(){key="firstKey", value="firstValue" },
                                 new Metadata(){key="secondKey", value="secondValue"}
                              );
-            updated.title.Should().Be("title1");
 
             Video updated2 = apiClient.Videos().update(testVideo.videoid,
                     new VideoUpdatePayload()
                     {
-                        title = "title2",
                         metadata = new List<Metadata>(){
                             new Metadata(){key="firstKey", value="firstValue" },
                             new Metadata(){key="secondKey", value="secondValue"},
                             new Metadata(){key="thirdKey", value="thirdValue"}
                         }
                     });
-            updated2.title.Should().Be("title2");
 
             updated2.metadata.Should()
                             .BeEquivalentTo(
@@ -130,10 +126,8 @@ namespace VideoApiTests.Integration
             Video updated3 = apiClient.Videos().update(testVideo.videoid,
                     new VideoUpdatePayload()
                     {
-                        title = "title3",
                         metadata = new List<Metadata>()
                     });
-            updated3.title.Should().Be("title3");
 
             updated3.metadata.Should()
                             .BeEmpty();
@@ -176,11 +170,11 @@ namespace VideoApiTests.Integration
         [TestMethod]
         public void getVideoStatus() 
         {
-            //Videostatus videoStatus = apiClient.Videos().getVideoStatus (testVideo.videoid);
+            Videostatus videoStatus = apiClient.Videos().getVideoStatus(this.testVideo.videoid);
 
-            //videoStatus.ingest.Should().BeNull();
-            //videoStatus.encoding.Should().NotBeNull();
-            //videoStatus.encoding.playable.Should().BeFalse();
+            videoStatus.ingest.Should().BeNull();
+            videoStatus.encoding.Should().NotBeNull();
+            videoStatus.encoding.playable.Should().BeFalse();
         }
     }
 }
