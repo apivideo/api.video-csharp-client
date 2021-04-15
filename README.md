@@ -33,12 +33,7 @@ NOTE: RestSharp versions greater than 105.1.0 have a bug which causes file uploa
 
 ## Installation
 
-Run the following command to generate the DLL
-
-- [Mac/Linux] `/bin/sh build.sh`
-- [Windows] `build.bat`
-
-Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
+Then include the DLL (under the `src/bin` folder) in the C# project, and use the namespaces:
 
 ```csharp
 using VideoApiClient.Api;
