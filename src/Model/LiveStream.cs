@@ -75,6 +75,22 @@ namespace VideoApiClient.Model {
     [JsonProperty(PropertyName = "broadcasting")]
     public bool broadcasting { get; set; }
 
+    /// <summary>
+    /// When the player was created, presented in ISO-8601 format.
+    /// </summary>
+    /// <value>When the player was created, presented in ISO-8601 format.</value>
+    [DataMember(Name="createdAt", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "createdAt")]
+    public DateTime? createdat { get; set; }
+
+    /// <summary>
+    /// When the player was last updated, presented in ISO-8601 format.
+    /// </summary>
+    /// <value>When the player was last updated, presented in ISO-8601 format.</value>
+    [DataMember(Name="updatedAt", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "updatedAt")]
+    public DateTime? updatedat { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -91,6 +107,8 @@ namespace VideoApiClient.Model {
       sb.Append("  Assets: ").Append(assets).Append("\n");
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");
       sb.Append("  Broadcasting: ").Append(broadcasting).Append("\n");
+      sb.Append("  CreatedAt: ").Append(createdat).Append("\n");
+      sb.Append("  UpdatedAt: ").Append(updatedat).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

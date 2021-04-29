@@ -46,6 +46,14 @@ namespace VideoApiClient.Model {
 
 
     /// <summary>
+    /// Constructor. Set default values.
+    /// </summary>
+    public AccessToken() {
+        tokentype = "bearer";
+        
+    }
+
+    /// <summary>
     /// Get the string presentation of the object
     /// </summary>
     /// <returns>String presentation of the object</returns>

@@ -21,6 +21,14 @@ namespace VideoApiClient.Model {
     public string videoid { get; set; }
 
     /// <summary>
+    /// When an webhook was created, presented in ISO-8601 format.
+    /// </summary>
+    /// <value>When an webhook was created, presented in ISO-8601 format.</value>
+    [DataMember(Name="createdAt", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "createdAt")]
+    public DateTime? createdat { get; set; }
+
+    /// <summary>
     /// The title of the video content. 
     /// </summary>
     /// <value>The title of the video content. </value>
@@ -123,6 +131,7 @@ namespace VideoApiClient.Model {
       var sb = new StringBuilder();
       sb.Append("class Video {\n");
       sb.Append("  VideoId: ").Append(videoid).Append("\n");
+      sb.Append("  CreatedAt: ").Append(createdat).Append("\n");
       sb.Append("  Title: ").Append(title).Append("\n");
       sb.Append("  Description: ").Append(description).Append("\n");
       sb.Append("  PublishedAt: ").Append(publishedat).Append("\n");
