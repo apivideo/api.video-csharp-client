@@ -4,475 +4,6 @@
         <name>VideoApiClient</name>
     </assembly>
     <members>
-        <member name="T:VideoApiClient.Client.ApiVideoClient">
-            <summary>
-            Class that allows you to call all the api routes
-            </summary>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor">
-            <summary>
-            Build an instance that targets production environment without authentication
-            </summary>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(VideoApiClient.Client.Environment)">
-            <summary>
-             Build an instance that targets the given environment without authentication
-            </summary>
-            <param name="environment">the target environment</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(System.String)">
-            <summary>
-            Build an instance that targets the production environment with authentication
-            </summary>
-            <param name="apiKey">the api key to use to authenticate</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(System.String,VideoApiClient.Client.Environment)">
-            <summary>
-            Build an instance that targets the given environment with authentication
-            </summary>
-            <param name="apiKey">the api key to use to authenticate</param>
-            <param name="environment">environment the target environment</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(RestSharp.RestClient)">
-            <summary>
-            Build an instance that targets the production environment using a custom OkHttp client
-            </summary>
-            <param name="client">the RestClient instance to use</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(RestSharp.RestClient,VideoApiClient.Client.Environment)">
-            <summary>
-            Build an instance that targets the production environment using a custom OkHttp client
-            </summary>
-            <param name="client">the RestClient instance to use</param>
-            <param name="environment">the target environment</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Account">
-            <summary>
-            Get an AccountApi instance
-            </summary>
-            <returns>AccountApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Captions">
-            <summary>
-            Get an CaptionsApi instance
-            </summary>
-            <returns>CaptionsApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Chapters">
-            <summary>
-            Get an ChaptersApi instance
-            </summary>
-            <returns>ChaptersApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Live">
-            <summary>
-            Get an LiveApi instance
-            </summary>
-            <returns>LiveApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Players">
-            <summary>
-            Get an PlayersApi instance
-            </summary>
-            <returns>PlayersApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.RawStatistics">
-            <summary>
-            Get an RawStatisticsApi instance
-            </summary>
-            <returns>RawStatisticsApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Videos">
-            <summary>
-            Get an VideosApi instance
-            </summary>
-            <returns>VideosApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.VideosDelegatedUpload">
-            <summary>
-            Get an VideosDelegatedUploadApi instance
-            </summary>
-            <returns>VideosDelegatedUploadApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.Webhooks">
-            <summary>
-            Get an WebhooksApi instance
-            </summary>
-            <returns>WebhooksApi</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.GetHttpClient">
-            <summary>
-            Gets the http client
-            </summary>
-            <returns>Current Api http client</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.GetUploadChunkSize">
-            <summary>
-            Gets the upload chunk size
-            </summary>
-            <returns>The upload chunk size</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.SetUploadChunkSize(System.Int32)">
-            <summary>
-            Updates the upload chunk size
-            </summary>
-            <param name="uploadChunkSize">the new chunk size</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.GetTimeout">
-            <summary>
-            Gets the rest client timeout
-            </summary>
-            <returns>The rest client timeout</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoClient.SetTimeout(System.Int32)">
-            <summary>
-            Updates the rest client timeout
-            </summary>
-            <param name="newTimeOut">the new timeout</param>
-        </member>
-        <member name="T:VideoApiClient.Client.ApiVideoExtensions">
-            <summary>
-            Provides Stream helpers methods
-            </summary>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiVideoExtensions.GetUrl(VideoApiClient.Client.Environment)">
-            <summary>
-            Returns the api URL of a given environment
-            </summary>
-            <param name="env">The environment to target</param>
-            <returns>The environment url</returns>
-        </member>
-        <member name="T:VideoApiClient.Client.Environment">
-            <summary>
-            Environment to target
-            </summary>
-        </member>
-        <member name="F:VideoApiClient.Client.Environment.PRODUCTION">
-            <summary>
-            Production environment
-            </summary>
-        </member>
-        <member name="F:VideoApiClient.Client.Environment.SANDBOX">
-            <summary>
-            Sandbox environment
-            </summary>
-        </member>
-        <member name="T:VideoApiClient.Client.ApiClient">
-            <summary>
-            API client is mainly responsible for making the HTTP call to the API backend.
-            </summary>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.InterceptRequest(RestSharp.IRestRequest)">
-            <summary>
-            Allows for extending request processing for <see cref="T:VideoApiClient.Client.ApiClient"/> generated code.
-            </summary>
-            <param name="request">The RestSharp request object</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.#ctor(System.String)">
-            <summary>
-            Constructor for ApiClient with custom basePath
-            </summary>
-            <param name="basePath">the api base path.</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.#ctor(System.String,System.String)">
-            <summary>
-            Constructor for ApiClient with custom API base path
-            </summary>
-            <param name="apiKey">the api key to use to authenticate to the API</param>
-            <param name="basePath">the api base path.</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.#ctor(RestSharp.RestClient,System.String)">
-            <summary>
-            Constructor for ApiClient with custom http client.
-            </summary>
-            <param name="client">a RestClient instance used to make API call</param>
-            <param name="basePath">the api base path.</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.GetTimeout">
-            <summary>
-            Get connection timeout (in milliseconds).
-            </summary>
-            <returns> Timeout in milliseconds</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.SetTimeout(System.Int32)">
-            <summary>
-             Sets the connect timeout (in milliseconds).
-            A value of 0 means no timeout, otherwise values must be between 1 and max INT value.
-            </summary>
-            <param name="connectionTimeout">connection timeout in milliseconds.</param>
-            <returns> Api client </returns>
-        </member>
-        <member name="P:VideoApiClient.Client.ApiClient.RestClient">
-            <summary>
-            Gets or sets the RestClient.
-            </summary>
-            <value>An instance of the RestClient</value>
-        </member>
-        <member name="P:VideoApiClient.Client.ApiClient.BasePath">
-            <summary>
-            Gets or sets the api base path.
-            </summary>
-            <value>The base path</value>
-        </member>
-        <member name="P:VideoApiClient.Client.ApiClient.UploadChunkSize">
-            <summary>
-            Gets or sets the file upload chunk size
-            </summary>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.CallApi(System.String,RestSharp.Method,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Object,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,RestSharp.FileParameter},System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
-            <summary>
-            Makes the HTTP request (Sync).
-            </summary>
-            <param name="path">URL path.</param>
-            <param name="method">HTTP method.</param>
-            <param name="queryParams">Query parameters.</param>
-            <param name="postBody">HTTP body (POST request).</param>
-            <param name="headerParams">Header parameters.</param>
-            <param name="formParams">Form parameters.</param>
-            <param name="fileParams">File parameters.</param>
-            <param name="pathParams">Path parameters.</param>
-            <param name="contentType">Content Type of the request</param>
-            <returns>Object</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.CheckResponse(RestSharp.IRestResponse)">
-            <summary>
-            Check if the api call response was successful
-            </summary>
-            <param name="response">The response to check</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.CallApiAsync(System.String,RestSharp.Method,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Object,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,RestSharp.FileParameter},System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Threading.CancellationToken)">
-            <summary>
-            Makes the asynchronous HTTP request.
-            </summary>
-            <param name="path">URL path.</param>
-            <param name="method">HTTP method.</param>
-            <param name="queryParams">Query parameters.</param>
-            <param name="postBody">HTTP body (POST request).</param>
-            <param name="headerParams">Header parameters.</param>
-            <param name="formParams">Form parameters.</param>
-            <param name="fileParams">File parameters.</param>
-            <param name="pathParams">Path parameters.</param>
-            <param name="contentType">Content type.</param>
-            <param name="cancellationToken">Cancellation Token.</param>
-            <returns>The Task instance.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.EscapeString(System.String)">
-            <summary>
-            Escape string (url-encoded).
-            </summary>
-            <param name="str">String to be escaped.</param>
-            <returns>Escaped string.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.ParameterToFile(System.String,System.IO.Stream,System.Byte[])">
-            <summary>
-            Create FileParameter based on Stream.
-            </summary>
-            <param name="name">Parameter name.</param>
-            <param name="stream">Input stream.</param>
-            <param name="chunkedStream">Chunked byte array.</param>
-            <returns>FileParameter.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.ParameterToString(System.Object)">
-            <summary>
-            If parameter is DateTime, output in a formatted string (default ISO 8601)
-            If parameter is a list, join the list with ",".
-            Otherwise just return the string.
-            </summary>
-            <param name="obj">The parameter (header, path, query, form).</param>
-            <returns>Formatted string.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.Deserialize(RestSharp.IRestResponse,System.Type)">
-            <summary>
-            Deserialize the JSON string into a proper object.
-            </summary>
-            <param name="response">The HTTP response.</param>
-            <param name="type">Object type.</param>
-            <returns>Object representation of the JSON string.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.Serialize(System.Object)">
-            <summary>
-            Serialize an input (model) into JSON string
-            </summary>
-            <param name="obj">Object.</param>
-            <returns>JSON string.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.IsJsonMime(System.String)">
-             <summary>
-            Check if the given MIME is a JSON MIME.
-            JSON MIME examples:
-                application/json
-                application/json; charset=UTF8
-                APPLICATION/JSON
-                application/vnd.company+json
-             </summary>
-             <param name="mime">MIME</param>
-             <returns>Returns True if MIME type is json.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.SelectHeaderContentType(System.String[])">
-            <summary>
-            Select the Content-Type header's value from the given content-type array:
-            if JSON type exists in the given array, use it;
-            otherwise use the first one defined in 'consumes'
-            </summary>
-            <param name="contentTypes">The Content-Type array to select from.</param>
-            <returns>The Content-Type header to use.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.SelectHeaderAccept(System.String[])">
-            <summary>
-            Select the Accept header's value from the given accepts array:
-            if JSON exists in the given array, use it;
-            otherwise use all of them (joining into a string)
-            </summary>
-            <param name="accepts">The accepts array to select from.</param>
-            <returns>The Accept header to use.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.Base64Encode(System.String)">
-            <summary>
-            Encode string in base64 format.
-            </summary>
-            <param name="text">String to be encoded.</param>
-            <returns>Encoded string.</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.ConvertType(System.Object,System.Type)">
-            <summary>
-            Dynamically cast the object into target type.
-            </summary>
-            <param name="fromObject">Object to be casted</param>
-            <param name="toObject">Target type</param>
-            <returns>Casted object</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.ReadAsBytes(System.IO.Stream)">
-            <summary>
-            Convert stream to byte array
-            </summary>
-            <param name="inputStream">Input stream to be converted</param>
-            <returns>Byte array</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.UrlEncode(System.String)">
-            <summary>
-            URL encode a string
-            Credit/Ref: https://github.com/restsharp/RestSharp/blob/master/RestSharp/Extensions/StringExtensions.cs#L50
-            </summary>
-            <param name="input">String to be URL encoded</param>
-            <returns>Byte array</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.SanitizeFilename(System.String)">
-            <summary>
-            Sanitize filename by removing the path
-            </summary>
-            <param name="filename">Filename</param>
-            <returns>Filename</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.ParameterToKeyValuePairs(System.String,System.String,System.Object)">
-            <summary>
-            Convert params to key/value pairs. 
-            Use collectionFormat to properly format lists and collections.
-            </summary>
-            <param name="collectionFormat">Collection format.</param>
-            <param name="name">Key name.</param>
-            <param name="value">Value object.</param>
-            <returns>A list of KeyValuePairs</returns>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiClient.IsCollection(System.Object)">
-            <summary>
-            Check if generic object is a collection.
-            </summary>
-            <param name="value"></param>
-            <returns>True if object is a collection type</returns>
-        </member>
-        <member name="T:VideoApiClient.Client.ApiException">
-            <summary>
-            API Exception
-            </summary>
-        </member>
-        <member name="P:VideoApiClient.Client.ApiException.ErrorCode">
-            <summary>
-            Gets or sets the error code (HTTP status code)
-            </summary>
-            <value>The error code (HTTP status code).</value>
-        </member>
-        <member name="P:VideoApiClient.Client.ApiException.ErrorContent">
-            <summary>
-            Gets or sets the error content (body json object)
-            </summary>
-            <value>The error content (Http response body).</value>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiException.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:VideoApiClient.Client.ApiException"/> class.
-            </summary>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiException.#ctor(System.Int32,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:VideoApiClient.Client.ApiException"/> class.
-            </summary>
-            <param name="errorCode">HTTP status code.</param>
-            <param name="message">Error message.</param>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiException.#ctor(System.Int32,System.String,System.Object)">
-            <summary>
-            Initializes a new instance of the <see cref="T:VideoApiClient.Client.ApiException"/> class.
-            </summary>
-            <param name="errorCode">HTTP status code.</param>
-            <param name="message">Error message.</param>
-            <param name="errorContent">Error content.</param>
-        </member>
-        <member name="T:VideoApiClient.Client.ApiResponse`1">
-            <summary>
-            API Response
-            </summary>
-        </member>
-        <member name="P:VideoApiClient.Client.ApiResponse`1.StatusCode">
-            <summary>
-            Gets or sets the status code (HTTP status code)
-            </summary>
-            <value>The status code.</value>
-        </member>
-        <member name="P:VideoApiClient.Client.ApiResponse`1.Headers">
-            <summary>
-            Gets or sets the HTTP headers
-            </summary>
-            <value>HTTP headers</value>
-        </member>
-        <member name="P:VideoApiClient.Client.ApiResponse`1.Data">
-            <summary>
-            Gets or sets the data (parsed HTTP body)
-            </summary>
-            <value>The data.</value>
-        </member>
-        <member name="M:VideoApiClient.Client.ApiResponse`1.#ctor(System.Int32,System.Collections.Generic.IDictionary{System.String,System.String},`0)">
-            <summary>
-            Initializes a new instance of the <see cref="T:VideoApiClient.Client.ApiResponse`1" /> class.
-            </summary>
-            <param name="statusCode">HTTP status code.</param>
-            <param name="headers">HTTP headers.</param>
-            <param name="data">Data (parsed HTTP body)</param>
-        </member>
-        <member name="T:VideoApiClient.Client.AuthenticationManager">
-            <summary>
-            Handle the client authentication methods
-            </summary>
-        </member>
-        <member name="P:VideoApiClient.Client.AuthenticationManager.ApiKey">
-            <summary>
-            Gets or sets the api key.
-            </summary>
-            <value>The base path</value>
-        </member>
-        <member name="M:VideoApiClient.Client.AuthenticationManager.#ctor(System.String,VideoApiClient.Client.ApiClient)">
-            <summary>
-            Build an instance of authentication manager
-            </summary>
-            <param name="apiKey">the api key that will allow us to get the access token</param>
-            <param name="apiClient">instance of the apiClient</param>
-        </member>
-        <member name="M:VideoApiClient.Client.AuthenticationManager.Intercept(RestSharp.IRestRequest)">
-            <summary>
-            Adds the authorization token to a request
-            </summary>
-            <param name="request">The request to update</param>
-            <returns>The request updated</returns>
-        </member>
         <member name="T:VideoApiClient.Api.AccountApi">
             <summary>
             Represents a collection of functions to interact with the API endpoints
@@ -2008,6 +1539,475 @@
             <param name="webhooksCreatePayload"> (optional)</param>
             <returns>ApiResponse of Webhook</returns>
         </member>
+        <member name="T:VideoApiClient.Client.ApiVideoClient">
+            <summary>
+            Class that allows you to call all the api routes
+            </summary>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor">
+            <summary>
+            Build an instance that targets production environment without authentication
+            </summary>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(VideoApiClient.Client.Environment)">
+            <summary>
+             Build an instance that targets the given environment without authentication
+            </summary>
+            <param name="environment">the target environment</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(System.String)">
+            <summary>
+            Build an instance that targets the production environment with authentication
+            </summary>
+            <param name="apiKey">the api key to use to authenticate</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(System.String,VideoApiClient.Client.Environment)">
+            <summary>
+            Build an instance that targets the given environment with authentication
+            </summary>
+            <param name="apiKey">the api key to use to authenticate</param>
+            <param name="environment">environment the target environment</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(RestSharp.RestClient)">
+            <summary>
+            Build an instance that targets the production environment using a custom OkHttp client
+            </summary>
+            <param name="client">the RestClient instance to use</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.#ctor(RestSharp.RestClient,VideoApiClient.Client.Environment)">
+            <summary>
+            Build an instance that targets the production environment using a custom OkHttp client
+            </summary>
+            <param name="client">the RestClient instance to use</param>
+            <param name="environment">the target environment</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.Account">
+            <summary>
+            Get an AccountApi instance
+            </summary>
+            <returns>AccountApi</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.Captions">
+            <summary>
+            Get an CaptionsApi instance
+            </summary>
+            <returns>CaptionsApi</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.Chapters">
+            <summary>
+            Get an ChaptersApi instance
+            </summary>
+            <returns>ChaptersApi</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.Live">
+            <summary>
+            Get an LiveApi instance
+            </summary>
+            <returns>LiveApi</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.Players">
+            <summary>
+            Get an PlayersApi instance
+            </summary>
+            <returns>PlayersApi</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.RawStatistics">
+            <summary>
+            Get an RawStatisticsApi instance
+            </summary>
+            <returns>RawStatisticsApi</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.Videos">
+            <summary>
+            Get an VideosApi instance
+            </summary>
+            <returns>VideosApi</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.VideosDelegatedUpload">
+            <summary>
+            Get an VideosDelegatedUploadApi instance
+            </summary>
+            <returns>VideosDelegatedUploadApi</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.Webhooks">
+            <summary>
+            Get an WebhooksApi instance
+            </summary>
+            <returns>WebhooksApi</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.GetHttpClient">
+            <summary>
+            Gets the http client
+            </summary>
+            <returns>Current Api http client</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.GetUploadChunkSize">
+            <summary>
+            Gets the upload chunk size
+            </summary>
+            <returns>The upload chunk size</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.SetUploadChunkSize(System.Int32)">
+            <summary>
+            Updates the upload chunk size
+            </summary>
+            <param name="uploadChunkSize">the new chunk size</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.GetTimeout">
+            <summary>
+            Gets the rest client timeout
+            </summary>
+            <returns>The rest client timeout</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoClient.SetTimeout(System.Int32)">
+            <summary>
+            Updates the rest client timeout
+            </summary>
+            <param name="newTimeOut">the new timeout</param>
+        </member>
+        <member name="T:VideoApiClient.Client.ApiVideoExtensions">
+            <summary>
+            Provides Stream helpers methods
+            </summary>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiVideoExtensions.GetUrl(VideoApiClient.Client.Environment)">
+            <summary>
+            Returns the api URL of a given environment
+            </summary>
+            <param name="env">The environment to target</param>
+            <returns>The environment url</returns>
+        </member>
+        <member name="T:VideoApiClient.Client.Environment">
+            <summary>
+            Environment to target
+            </summary>
+        </member>
+        <member name="F:VideoApiClient.Client.Environment.PRODUCTION">
+            <summary>
+            Production environment
+            </summary>
+        </member>
+        <member name="F:VideoApiClient.Client.Environment.SANDBOX">
+            <summary>
+            Sandbox environment
+            </summary>
+        </member>
+        <member name="T:VideoApiClient.Client.ApiClient">
+            <summary>
+            API client is mainly responsible for making the HTTP call to the API backend.
+            </summary>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.InterceptRequest(RestSharp.IRestRequest)">
+            <summary>
+            Allows for extending request processing for <see cref="T:VideoApiClient.Client.ApiClient"/> generated code.
+            </summary>
+            <param name="request">The RestSharp request object</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.#ctor(System.String)">
+            <summary>
+            Constructor for ApiClient with custom basePath
+            </summary>
+            <param name="basePath">the api base path.</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.#ctor(System.String,System.String)">
+            <summary>
+            Constructor for ApiClient with custom API base path
+            </summary>
+            <param name="apiKey">the api key to use to authenticate to the API</param>
+            <param name="basePath">the api base path.</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.#ctor(RestSharp.RestClient,System.String)">
+            <summary>
+            Constructor for ApiClient with custom http client.
+            </summary>
+            <param name="client">a RestClient instance used to make API call</param>
+            <param name="basePath">the api base path.</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.GetTimeout">
+            <summary>
+            Get connection timeout (in milliseconds).
+            </summary>
+            <returns> Timeout in milliseconds</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.SetTimeout(System.Int32)">
+            <summary>
+             Sets the connect timeout (in milliseconds).
+            A value of 0 means no timeout, otherwise values must be between 1 and max INT value.
+            </summary>
+            <param name="connectionTimeout">connection timeout in milliseconds.</param>
+            <returns> Api client </returns>
+        </member>
+        <member name="P:VideoApiClient.Client.ApiClient.RestClient">
+            <summary>
+            Gets or sets the RestClient.
+            </summary>
+            <value>An instance of the RestClient</value>
+        </member>
+        <member name="P:VideoApiClient.Client.ApiClient.BasePath">
+            <summary>
+            Gets or sets the api base path.
+            </summary>
+            <value>The base path</value>
+        </member>
+        <member name="P:VideoApiClient.Client.ApiClient.UploadChunkSize">
+            <summary>
+            Gets or sets the file upload chunk size
+            </summary>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.CallApi(System.String,RestSharp.Method,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Object,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,RestSharp.FileParameter},System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            Makes the HTTP request (Sync).
+            </summary>
+            <param name="path">URL path.</param>
+            <param name="method">HTTP method.</param>
+            <param name="queryParams">Query parameters.</param>
+            <param name="postBody">HTTP body (POST request).</param>
+            <param name="headerParams">Header parameters.</param>
+            <param name="formParams">Form parameters.</param>
+            <param name="fileParams">File parameters.</param>
+            <param name="pathParams">Path parameters.</param>
+            <param name="contentType">Content Type of the request</param>
+            <returns>Object</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.CheckResponse(RestSharp.IRestResponse)">
+            <summary>
+            Check if the api call response was successful
+            </summary>
+            <param name="response">The response to check</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.CallApiAsync(System.String,RestSharp.Method,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Object,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,RestSharp.FileParameter},System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Makes the asynchronous HTTP request.
+            </summary>
+            <param name="path">URL path.</param>
+            <param name="method">HTTP method.</param>
+            <param name="queryParams">Query parameters.</param>
+            <param name="postBody">HTTP body (POST request).</param>
+            <param name="headerParams">Header parameters.</param>
+            <param name="formParams">Form parameters.</param>
+            <param name="fileParams">File parameters.</param>
+            <param name="pathParams">Path parameters.</param>
+            <param name="contentType">Content type.</param>
+            <param name="cancellationToken">Cancellation Token.</param>
+            <returns>The Task instance.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.EscapeString(System.String)">
+            <summary>
+            Escape string (url-encoded).
+            </summary>
+            <param name="str">String to be escaped.</param>
+            <returns>Escaped string.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.ParameterToFile(System.String,System.IO.Stream,System.Byte[])">
+            <summary>
+            Create FileParameter based on Stream.
+            </summary>
+            <param name="name">Parameter name.</param>
+            <param name="stream">Input stream.</param>
+            <param name="chunkedStream">Chunked byte array.</param>
+            <returns>FileParameter.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.ParameterToString(System.Object)">
+            <summary>
+            If parameter is DateTime, output in a formatted string (default ISO 8601)
+            If parameter is a list, join the list with ",".
+            Otherwise just return the string.
+            </summary>
+            <param name="obj">The parameter (header, path, query, form).</param>
+            <returns>Formatted string.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.Deserialize(RestSharp.IRestResponse,System.Type)">
+            <summary>
+            Deserialize the JSON string into a proper object.
+            </summary>
+            <param name="response">The HTTP response.</param>
+            <param name="type">Object type.</param>
+            <returns>Object representation of the JSON string.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.Serialize(System.Object)">
+            <summary>
+            Serialize an input (model) into JSON string
+            </summary>
+            <param name="obj">Object.</param>
+            <returns>JSON string.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.IsJsonMime(System.String)">
+             <summary>
+            Check if the given MIME is a JSON MIME.
+            JSON MIME examples:
+                application/json
+                application/json; charset=UTF8
+                APPLICATION/JSON
+                application/vnd.company+json
+             </summary>
+             <param name="mime">MIME</param>
+             <returns>Returns True if MIME type is json.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.SelectHeaderContentType(System.String[])">
+            <summary>
+            Select the Content-Type header's value from the given content-type array:
+            if JSON type exists in the given array, use it;
+            otherwise use the first one defined in 'consumes'
+            </summary>
+            <param name="contentTypes">The Content-Type array to select from.</param>
+            <returns>The Content-Type header to use.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.SelectHeaderAccept(System.String[])">
+            <summary>
+            Select the Accept header's value from the given accepts array:
+            if JSON exists in the given array, use it;
+            otherwise use all of them (joining into a string)
+            </summary>
+            <param name="accepts">The accepts array to select from.</param>
+            <returns>The Accept header to use.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.Base64Encode(System.String)">
+            <summary>
+            Encode string in base64 format.
+            </summary>
+            <param name="text">String to be encoded.</param>
+            <returns>Encoded string.</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.ConvertType(System.Object,System.Type)">
+            <summary>
+            Dynamically cast the object into target type.
+            </summary>
+            <param name="fromObject">Object to be casted</param>
+            <param name="toObject">Target type</param>
+            <returns>Casted object</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.ReadAsBytes(System.IO.Stream)">
+            <summary>
+            Convert stream to byte array
+            </summary>
+            <param name="inputStream">Input stream to be converted</param>
+            <returns>Byte array</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.UrlEncode(System.String)">
+            <summary>
+            URL encode a string
+            Credit/Ref: https://github.com/restsharp/RestSharp/blob/master/RestSharp/Extensions/StringExtensions.cs#L50
+            </summary>
+            <param name="input">String to be URL encoded</param>
+            <returns>Byte array</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.SanitizeFilename(System.String)">
+            <summary>
+            Sanitize filename by removing the path
+            </summary>
+            <param name="filename">Filename</param>
+            <returns>Filename</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.ParameterToKeyValuePairs(System.String,System.String,System.Object)">
+            <summary>
+            Convert params to key/value pairs. 
+            Use collectionFormat to properly format lists and collections.
+            </summary>
+            <param name="collectionFormat">Collection format.</param>
+            <param name="name">Key name.</param>
+            <param name="value">Value object.</param>
+            <returns>A list of KeyValuePairs</returns>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiClient.IsCollection(System.Object)">
+            <summary>
+            Check if generic object is a collection.
+            </summary>
+            <param name="value"></param>
+            <returns>True if object is a collection type</returns>
+        </member>
+        <member name="T:VideoApiClient.Client.ApiException">
+            <summary>
+            API Exception
+            </summary>
+        </member>
+        <member name="P:VideoApiClient.Client.ApiException.ErrorCode">
+            <summary>
+            Gets or sets the error code (HTTP status code)
+            </summary>
+            <value>The error code (HTTP status code).</value>
+        </member>
+        <member name="P:VideoApiClient.Client.ApiException.ErrorContent">
+            <summary>
+            Gets or sets the error content (body json object)
+            </summary>
+            <value>The error content (Http response body).</value>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:VideoApiClient.Client.ApiException"/> class.
+            </summary>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiException.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VideoApiClient.Client.ApiException"/> class.
+            </summary>
+            <param name="errorCode">HTTP status code.</param>
+            <param name="message">Error message.</param>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiException.#ctor(System.Int32,System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VideoApiClient.Client.ApiException"/> class.
+            </summary>
+            <param name="errorCode">HTTP status code.</param>
+            <param name="message">Error message.</param>
+            <param name="errorContent">Error content.</param>
+        </member>
+        <member name="T:VideoApiClient.Client.ApiResponse`1">
+            <summary>
+            API Response
+            </summary>
+        </member>
+        <member name="P:VideoApiClient.Client.ApiResponse`1.StatusCode">
+            <summary>
+            Gets or sets the status code (HTTP status code)
+            </summary>
+            <value>The status code.</value>
+        </member>
+        <member name="P:VideoApiClient.Client.ApiResponse`1.Headers">
+            <summary>
+            Gets or sets the HTTP headers
+            </summary>
+            <value>HTTP headers</value>
+        </member>
+        <member name="P:VideoApiClient.Client.ApiResponse`1.Data">
+            <summary>
+            Gets or sets the data (parsed HTTP body)
+            </summary>
+            <value>The data.</value>
+        </member>
+        <member name="M:VideoApiClient.Client.ApiResponse`1.#ctor(System.Int32,System.Collections.Generic.IDictionary{System.String,System.String},`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VideoApiClient.Client.ApiResponse`1" /> class.
+            </summary>
+            <param name="statusCode">HTTP status code.</param>
+            <param name="headers">HTTP headers.</param>
+            <param name="data">Data (parsed HTTP body)</param>
+        </member>
+        <member name="T:VideoApiClient.Client.AuthenticationManager">
+            <summary>
+            Handle the client authentication methods
+            </summary>
+        </member>
+        <member name="P:VideoApiClient.Client.AuthenticationManager.ApiKey">
+            <summary>
+            Gets or sets the api key.
+            </summary>
+            <value>The base path</value>
+        </member>
+        <member name="M:VideoApiClient.Client.AuthenticationManager.#ctor(System.String,VideoApiClient.Client.ApiClient)">
+            <summary>
+            Build an instance of authentication manager
+            </summary>
+            <param name="apiKey">the api key that will allow us to get the access token</param>
+            <param name="apiClient">instance of the apiClient</param>
+        </member>
+        <member name="M:VideoApiClient.Client.AuthenticationManager.Intercept(RestSharp.IRestRequest)">
+            <summary>
+            Adds the authorization token to a request
+            </summary>
+            <param name="request">The request to update</param>
+            <returns>The request updated</returns>
+        </member>
         <member name="T:VideoApiClient.Model.AccessToken">
             <summary>
             
@@ -2036,6 +2036,11 @@
             Lists the time in seconds when your access token expires. It lasts for one hour.
             </summary>
             <value>Lists the time in seconds when your access token expires. It lasts for one hour.</value>
+        </member>
+        <member name="M:VideoApiClient.Model.AccessToken.#ctor">
+            <summary>
+            Constructor. Set default values.
+            </summary>
         </member>
         <member name="M:VideoApiClient.Model.AccessToken.ToString">
             <summary>
@@ -2406,6 +2411,18 @@
             </summary>
             <value>Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not.</value>
         </member>
+        <member name="P:VideoApiClient.Model.LiveStream.createdat">
+            <summary>
+            When the player was created, presented in ISO-8601 format.
+            </summary>
+            <value>When the player was created, presented in ISO-8601 format.</value>
+        </member>
+        <member name="P:VideoApiClient.Model.LiveStream.updatedat">
+            <summary>
+            When the player was last updated, presented in ISO-8601 format.
+            </summary>
+            <value>When the player was last updated, presented in ISO-8601 format.</value>
+        </member>
         <member name="M:VideoApiClient.Model.LiveStream.ToString">
             <summary>
             Get the string presentation of the object
@@ -2487,6 +2504,11 @@
             The unique identifier for the player.
             </summary>
             <value>The unique identifier for the player.</value>
+        </member>
+        <member name="M:VideoApiClient.Model.LiveStreamCreatePayload.#ctor">
+            <summary>
+            Constructor. Set default values.
+            </summary>
         </member>
         <member name="M:VideoApiClient.Model.LiveStreamCreatePayload.ToString">
             <summary>
@@ -3099,6 +3121,36 @@
             
             </summary>
         </member>
+        <member name="P:VideoApiClient.Model.PlayerAllOf.enableapi">
+            <summary>
+            enable/disable player SDK access. Default: true
+            </summary>
+            <value>enable/disable player SDK access. Default: true</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerAllOf.enablecontrols">
+            <summary>
+            enable/disable player controls. Default: true
+            </summary>
+            <value>enable/disable player controls. Default: true</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerAllOf.forceautoplay">
+            <summary>
+            enable/disable player autoplay. Default: false
+            </summary>
+            <value>enable/disable player autoplay. Default: false</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerAllOf.hidetitle">
+            <summary>
+            enable/disable title. Default: false
+            </summary>
+            <value>enable/disable title. Default: false</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerAllOf.forceloop">
+            <summary>
+            enable/disable looping. Default: false
+            </summary>
+            <value>enable/disable looping. Default: false</value>
+        </member>
         <member name="P:VideoApiClient.Model.PlayerAllOf.playerid">
             <summary>
             Gets or Sets PlayerId
@@ -3287,6 +3339,11 @@
             </summary>
             <value>enable/disable looping. Default: false</value>
         </member>
+        <member name="M:VideoApiClient.Model.PlayerCreationPayload.#ctor">
+            <summary>
+            Constructor. Set default values.
+            </summary>
+        </member>
         <member name="M:VideoApiClient.Model.PlayerCreationPayload.ToString">
             <summary>
             Get the string presentation of the object
@@ -3294,6 +3351,58 @@
             <returns>String presentation of the object</returns>
         </member>
         <member name="M:VideoApiClient.Model.PlayerCreationPayload.ToJson">
+            <summary>
+            Get the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="T:VideoApiClient.Model.PlayerCreationPayloadAllOf">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerCreationPayloadAllOf.enableapi">
+            <summary>
+            enable/disable player SDK access. Default: true
+            </summary>
+            <value>enable/disable player SDK access. Default: true</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerCreationPayloadAllOf.enablecontrols">
+            <summary>
+            enable/disable player controls. Default: true
+            </summary>
+            <value>enable/disable player controls. Default: true</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerCreationPayloadAllOf.forceautoplay">
+            <summary>
+            enable/disable player autoplay. Default: false
+            </summary>
+            <value>enable/disable player autoplay. Default: false</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerCreationPayloadAllOf.hidetitle">
+            <summary>
+            enable/disable title. Default: false
+            </summary>
+            <value>enable/disable title. Default: false</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerCreationPayloadAllOf.forceloop">
+            <summary>
+            enable/disable looping. Default: false
+            </summary>
+            <value>enable/disable looping. Default: false</value>
+        </member>
+        <member name="M:VideoApiClient.Model.PlayerCreationPayloadAllOf.#ctor">
+            <summary>
+            Constructor. Set default values.
+            </summary>
+        </member>
+        <member name="M:VideoApiClient.Model.PlayerCreationPayloadAllOf.ToString">
+            <summary>
+            Get the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:VideoApiClient.Model.PlayerCreationPayloadAllOf.ToJson">
             <summary>
             Get the JSON string presentation of the object
             </summary>
@@ -3357,36 +3466,6 @@
             RGBA color for title text. Default: rgba(255, 255, 255, 1)
             </summary>
             <value>RGBA color for title text. Default: rgba(255, 255, 255, 1)</value>
-        </member>
-        <member name="P:VideoApiClient.Model.Playerinput.enableapi">
-            <summary>
-            enable/disable player SDK access. Default: true
-            </summary>
-            <value>enable/disable player SDK access. Default: true</value>
-        </member>
-        <member name="P:VideoApiClient.Model.Playerinput.enablecontrols">
-            <summary>
-            enable/disable player controls. Default: true
-            </summary>
-            <value>enable/disable player controls. Default: true</value>
-        </member>
-        <member name="P:VideoApiClient.Model.Playerinput.forceautoplay">
-            <summary>
-            enable/disable player autoplay. Default: false
-            </summary>
-            <value>enable/disable player autoplay. Default: false</value>
-        </member>
-        <member name="P:VideoApiClient.Model.Playerinput.hidetitle">
-            <summary>
-            enable/disable title. Default: false
-            </summary>
-            <value>enable/disable title. Default: false</value>
-        </member>
-        <member name="P:VideoApiClient.Model.Playerinput.forceloop">
-            <summary>
-            enable/disable looping. Default: false
-            </summary>
-            <value>enable/disable looping. Default: false</value>
         </member>
         <member name="M:VideoApiClient.Model.Playerinput.ToString">
             <summary>
@@ -3572,6 +3651,53 @@
             </summary>
             <returns>JSON string presentation of the object</returns>
         </member>
+        <member name="T:VideoApiClient.Model.PlayerUpdatePayloadAllOf">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerUpdatePayloadAllOf.enableapi">
+            <summary>
+            enable/disable player SDK access. Default: true
+            </summary>
+            <value>enable/disable player SDK access. Default: true</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerUpdatePayloadAllOf.enablecontrols">
+            <summary>
+            enable/disable player controls. Default: true
+            </summary>
+            <value>enable/disable player controls. Default: true</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerUpdatePayloadAllOf.forceautoplay">
+            <summary>
+            enable/disable player autoplay. Default: false
+            </summary>
+            <value>enable/disable player autoplay. Default: false</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerUpdatePayloadAllOf.hidetitle">
+            <summary>
+            enable/disable title. Default: false
+            </summary>
+            <value>enable/disable title. Default: false</value>
+        </member>
+        <member name="P:VideoApiClient.Model.PlayerUpdatePayloadAllOf.forceloop">
+            <summary>
+            enable/disable looping. Default: false
+            </summary>
+            <value>enable/disable looping. Default: false</value>
+        </member>
+        <member name="M:VideoApiClient.Model.PlayerUpdatePayloadAllOf.ToString">
+            <summary>
+            Get the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:VideoApiClient.Model.PlayerUpdatePayloadAllOf.ToJson">
+            <summary>
+            Get the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
         <member name="T:VideoApiClient.Model.Quality">
             <summary>
             
@@ -3731,6 +3857,11 @@
             </summary>
             <value>Whether you will have subtitles or not. True for yes you will have subtitles, false for no you will not have subtitles.</value>
         </member>
+        <member name="M:VideoApiClient.Model.Subtitle.#ctor">
+            <summary>
+            Constructor. Set default values.
+            </summary>
+        </member>
         <member name="M:VideoApiClient.Model.Subtitle.ToString">
             <summary>
             Get the string presentation of the object
@@ -3753,6 +3884,11 @@
             Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
             </summary>
             <value>Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.</value>
+        </member>
+        <member name="M:VideoApiClient.Model.TokenCreatePayload.#ctor">
+            <summary>
+            Constructor. Set default values.
+            </summary>
         </member>
         <member name="M:VideoApiClient.Model.TokenCreatePayload.ToString">
             <summary>
@@ -3844,6 +3980,12 @@
             The unique identifier of the video object.
             </summary>
             <value>The unique identifier of the video object.</value>
+        </member>
+        <member name="P:VideoApiClient.Model.Video.createdat">
+            <summary>
+            When an webhook was created, presented in ISO-8601 format.
+            </summary>
+            <value>When an webhook was created, presented in ISO-8601 format.</value>
         </member>
         <member name="P:VideoApiClient.Model.Video.title">
             <summary>
@@ -4038,6 +4180,11 @@
             The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
             </summary>
             <value>The API uses ISO-8601 format for time, and includes 3 places for milliseconds.</value>
+        </member>
+        <member name="M:VideoApiClient.Model.VideoCreatePayload.#ctor">
+            <summary>
+            Constructor. Set default values.
+            </summary>
         </member>
         <member name="M:VideoApiClient.Model.VideoCreatePayload.ToString">
             <summary>
