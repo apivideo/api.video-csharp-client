@@ -1,4 +1,4 @@
-# VideoApiClient.Model.BadRequest
+# ApiVideo.Model.BadRequest
 
 ## Properties
 

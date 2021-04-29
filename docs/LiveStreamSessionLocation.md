@@ -1,4 +1,4 @@
-# VideoApiClient.Model.LiveStreamSessionLocation
+# ApiVideo.Model.LiveStreamSessionLocation
 The location of the viewer of the live stream.
 
 ## Properties

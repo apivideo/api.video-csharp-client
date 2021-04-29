@@ -1,4 +1,4 @@
-# VideoApiClient.Model.PlayerSessionEvent
+# ApiVideo.Model.PlayerSessionEvent
 
 ## Properties
 

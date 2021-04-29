@@ -1,4 +1,4 @@
-# VideoApiClient.Model.RawStatisticsListLiveStreamAnalyticsResponse
+# ApiVideo.Model.RawStatisticsListLiveStreamAnalyticsResponse
 
 ## Properties
 

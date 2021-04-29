@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using VideoApiClient.Model;
+using ApiVideo.Model;
 
 /// <summary>
 /// Handle T paginated items

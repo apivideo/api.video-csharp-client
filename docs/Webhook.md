@@ -1,4 +1,4 @@
-# VideoApiClient.Model.Webhook
+# ApiVideo.Model.Webhook
 
 ## Properties
 

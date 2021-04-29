@@ -10,7 +10,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace VideoApiClient.Client
+namespace ApiVideo.Client
 {
     /// <summary>
     /// API Response

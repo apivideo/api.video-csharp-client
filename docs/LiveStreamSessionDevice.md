@@ -1,4 +1,4 @@
-# VideoApiClient.Model.LiveStreamSessionDevice
+# ApiVideo.Model.LiveStreamSessionDevice
 What type of device the user is on when in the live stream session.
 
 ## Properties

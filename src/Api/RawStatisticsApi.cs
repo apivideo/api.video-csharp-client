@@ -13,12 +13,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
-using VideoApiClient.Upload;
+using ApiVideo.Upload;
 using RestSharp;
-using VideoApiClient.Client;
-using VideoApiClient.Model;
+using ApiVideo.Client;
+using ApiVideo.Model;
 
-namespace VideoApiClient.Api
+namespace ApiVideo.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -42,7 +42,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List live stream player sessions 
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for.</param>
 /// <param name="period">Period must have one of the following formats:   - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
@@ -58,7 +58,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List live stream player sessions 
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for.</param>
 /// <param name="period">Period must have one of the following formats:   - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
@@ -206,7 +206,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List player session events Useful to track and measure video&#39;s engagement.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionId">A unique identifier you can use to reference and track a session with.</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -221,7 +221,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List player session events Useful to track and measure video&#39;s engagement.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sessionId">A unique identifier you can use to reference and track a session with.</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -354,7 +354,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List video player sessions Retrieve all available user sessions for a specific video.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve session information for.</param>
 /// <param name="period">Period must have one of the following formats:   - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018  For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)</param>
 /// <param name="metadata">Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)</param>
@@ -371,7 +371,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List video player sessions Retrieve all available user sessions for a specific video.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve session information for.</param>
 /// <param name="period">Period must have one of the following formats:   - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018  For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)</param>
 /// <param name="metadata">Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)</param>

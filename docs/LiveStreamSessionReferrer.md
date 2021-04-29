@@ -1,4 +1,4 @@
-# VideoApiClient.Model.LiveStreamSessionReferrer
+# ApiVideo.Model.LiveStreamSessionReferrer
 
 ## Properties
 

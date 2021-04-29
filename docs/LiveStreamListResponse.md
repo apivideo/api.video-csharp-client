@@ -1,4 +1,4 @@
-# VideoApiClient.Model.LiveStreamListResponse
+# ApiVideo.Model.LiveStreamListResponse
 
 ## Properties
 

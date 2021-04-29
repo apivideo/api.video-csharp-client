@@ -1,4 +1,4 @@
-# VideoApiClient.Model.AccessToken
+# ApiVideo.Model.AccessToken
 
 ## Properties
 

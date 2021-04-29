@@ -1,4 +1,4 @@
-# VideoApiClient.Api.PlayerThemesApi
+# ApiVideo.Api.PlayerThemesApi
 
 All URIs are relative to *https://ws.api.video*
 
@@ -24,7 +24,7 @@ Delete a player if you no longer need it. You can delete any player that you hav
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -32,7 +32,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -92,7 +92,7 @@ Delete logo
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -100,7 +100,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -162,7 +162,7 @@ Retrieve a list of all the players you created, as well as details about each on
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -170,7 +170,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -239,7 +239,7 @@ Use a player ID to retrieve details about the player and display it for viewers.
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -247,7 +247,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -310,7 +310,7 @@ Use a player ID to update specific details for a player. NOTE: It may take up to
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -318,7 +318,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -383,7 +383,7 @@ Create a player for your video, and customise it.
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -391,7 +391,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -453,7 +453,7 @@ The uploaded image maximum size should be 200x100 and its weight should be 200KB
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -461,7 +461,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);

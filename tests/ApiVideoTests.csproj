@@ -7,8 +7,8 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Reference Include="VideoApiClient">
-      <HintPath>..\src\bin\Debug\VideoApiClient.dll</HintPath>
+    <Reference Include="ApiVideo">
+      <HintPath>..\src\bin\Debug\ApiVideo.dll</HintPath>
     </Reference>
     <Reference Include="JsonSubTypes">
       <HintPath>..\src\bin\Debug\JsonSubTypes.dll</HintPath>

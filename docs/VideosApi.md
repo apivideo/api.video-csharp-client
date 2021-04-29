@@ -1,4 +1,4 @@
-# VideoApiClient.Api.VideosApi
+# ApiVideo.Api.VideosApi
 
 All URIs are relative to *https://ws.api.video*
 
@@ -27,7 +27,7 @@ If you do not need a video any longer, you can send a request to delete it. All 
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -35,7 +35,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -97,7 +97,7 @@ This call provides the same JSON information provided on video creation. For pri
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -105,7 +105,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -168,7 +168,7 @@ This API provides upload status & encoding status to determine when the video is
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -176,7 +176,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -239,7 +239,7 @@ Requests to this endpoint return a list of your videos (with all their details).
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -247,7 +247,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -326,7 +326,7 @@ Use this endpoint to update the parameters associated with your video. The video
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -334,7 +334,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -400,7 +400,7 @@ Pick a thumbnail from the given time code. If you'd like to upload an image for 
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -408,7 +408,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -473,7 +473,7 @@ When given a token, anyone can upload a file to the URI `https://ws.api.video/up
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -481,7 +481,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -546,7 +546,7 @@ To create a video, you create its metadata first, before adding the video file (
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -554,7 +554,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -618,7 +618,7 @@ To upload a video to the videoId you created. Replace {videoId} with the id you'
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -626,7 +626,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -692,7 +692,7 @@ In creating a thumbnail, you may either upload an image, or you can pick a time 
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -700,7 +700,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);

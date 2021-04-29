@@ -1,4 +1,4 @@
-# VideoApiClient.Model.Quality
+# ApiVideo.Model.Quality
 
 ## Properties
 

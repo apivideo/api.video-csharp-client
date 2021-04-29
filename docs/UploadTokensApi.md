@@ -1,4 +1,4 @@
-# VideoApiClient.Api.UploadTokensApi
+# ApiVideo.Api.UploadTokensApi
 
 All URIs are relative to *https://ws.api.video*
 
@@ -21,7 +21,7 @@ Delete an existing upload token. This is especially useful for tokens you may ha
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -29,7 +29,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -91,7 +91,7 @@ A delegated token is used to allow secure uploads without exposing your API key.
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -99,7 +99,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -167,7 +167,7 @@ You can retrieve details about a specific upload token if you have the unique id
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -175,7 +175,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -238,7 +238,7 @@ Use this endpoint to generate an upload token. You can use this token to authent
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -246,7 +246,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);

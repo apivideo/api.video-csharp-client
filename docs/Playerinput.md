@@ -1,4 +1,4 @@
-# VideoApiClient.Model.Playerinput
+# ApiVideo.Model.Playerinput
 
 ## Properties
 

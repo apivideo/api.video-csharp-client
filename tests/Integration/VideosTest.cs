@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using VideoApiClient.Client;
-using VideoApiClient.Model;
-using VideoApiClient.Upload;
+using ApiVideo.Client;
+using ApiVideo.Model;
+using ApiVideo.Upload;
 
 namespace VideoApiTests.Integration
 {
@@ -34,7 +34,7 @@ namespace VideoApiTests.Integration
         [TestInitialize]
         public void init()
         {
-            this.apiClient = new ApiVideoClient(System.Environment.GetEnvironmentVariable("API_KEY"), VideoApiClient.Client.Environment.SANDBOX);
+            this.apiClient = new ApiVideoClient(System.Environment.GetEnvironmentVariable("API_KEY"), ApiVideo.Client.Environment.SANDBOX);
             this.testVideo = apiClient.Videos()
                     .create(new VideoCreatePayload() { title = "[Java-SDK-tests] sdk tests", _public = false});
             Console.WriteLine("Video "+this.testVideo.videoid+" created");

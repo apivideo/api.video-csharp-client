@@ -1,4 +1,4 @@
-# VideoApiClient.Model.RawStatisticsListPlayerSessionEventsResponse
+# ApiVideo.Model.RawStatisticsListPlayerSessionEventsResponse
 
 ## Properties
 

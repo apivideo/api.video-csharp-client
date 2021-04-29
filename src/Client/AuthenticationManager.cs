@@ -1,8 +1,8 @@
-using VideoApiClient.Api;
-using VideoApiClient.Model;
+using ApiVideo.Api;
+using ApiVideo.Model;
 using RestSharp;
 using System;
-namespace VideoApiClient.Client
+namespace ApiVideo.Client
 {
     /// <summary>
     /// Handle the client authentication methods

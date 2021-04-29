@@ -13,12 +13,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
-using VideoApiClient.Upload;
+using ApiVideo.Upload;
 using RestSharp;
-using VideoApiClient.Client;
-using VideoApiClient.Model;
+using ApiVideo.Client;
+using ApiVideo.Model;
 
-namespace VideoApiClient.Api
+namespace ApiVideo.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -42,7 +42,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete a Webhook This endpoint will delete the indicated webhook.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The webhook you wish to delete.</param>
         
         /// <returns></returns>
@@ -54,7 +54,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete a Webhook This endpoint will delete the indicated webhook.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The webhook you wish to delete.</param>
         
         /// <returns>ApiResponse of Object(void)</returns>
@@ -108,7 +108,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Show Webhook details This call provides the same JSON information provided on Webjhook creation.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The unique webhook you wish to retreive details on.</param>
         
         /// <returns>Webhook</returns>
@@ -121,7 +121,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Show Webhook details This call provides the same JSON information provided on Webjhook creation.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The unique webhook you wish to retreive details on.</param>
         
         /// <returns>ApiResponse of Webhook</returns>
@@ -175,7 +175,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List all webhooks Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="events">The webhook event that you wish to filter on. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -190,7 +190,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List all webhooks Requests to this endpoint return a list of your webhooks (with all their details). You can filter what the webhook list that the API returns using the parameters described below.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="events">The webhook event that you wish to filter on. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -328,7 +328,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \\\&quot;type\\\&quot;: \\\&quot;video.encoding.quality.completed\\\&quot;, \\\&quot;emittedAt\\\&quot;: \\\&quot;2021-01-29T16:46:25.217+01:00\\\&quot;, \\\&quot;videoId\\\&quot;: \\\&quot;viXXXXXXXX\\\&quot;, \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhooksCreatePayload"></param>
         
         /// <returns>Webhook</returns>
@@ -341,7 +341,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \\\&quot;type\\\&quot;: \\\&quot;video.encoding.quality.completed\\\&quot;, \\\&quot;emittedAt\\\&quot;: \\\&quot;2021-01-29T16:46:25.217+01:00\\\&quot;, \\\&quot;videoId\\\&quot;: \\\&quot;viXXXXXXXX\\\&quot;, \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhooksCreatePayload"></param>
         
         /// <returns>ApiResponse of Webhook</returns>

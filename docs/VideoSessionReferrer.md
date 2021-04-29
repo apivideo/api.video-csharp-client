@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoSessionReferrer
+# ApiVideo.Model.VideoSessionReferrer
 
 ## Properties
 

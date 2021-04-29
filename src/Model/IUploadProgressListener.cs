@@ -1,4 +1,4 @@
-namespace VideoApiClient.Upload
+namespace ApiVideo.Upload
 {
     /// <summary>
     /// Progress listener interface used to handle the chunk upload progress

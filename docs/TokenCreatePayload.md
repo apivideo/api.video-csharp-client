@@ -1,4 +1,4 @@
-# VideoApiClient.Model.TokenCreatePayload
+# ApiVideo.Model.TokenCreatePayload
 
 ## Properties
 

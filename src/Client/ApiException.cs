@@ -1,6 +1,6 @@
 using System;
 
-namespace VideoApiClient.Client {
+namespace ApiVideo.Client {
   /// <summary>
   /// API Exception
   /// </summary>

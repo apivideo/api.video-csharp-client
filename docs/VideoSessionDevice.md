@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoSessionDevice
+# ApiVideo.Model.VideoSessionDevice
 What type of device the user is on when in the video session.
 
 ## Properties

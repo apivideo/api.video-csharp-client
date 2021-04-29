@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoSourceLiveStream
+# ApiVideo.Model.VideoSourceLiveStream
 This appears if the video is from a Live Record.
 
 ## Properties

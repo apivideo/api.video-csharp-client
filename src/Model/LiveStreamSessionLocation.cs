@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace VideoApiClient.Model {
+namespace ApiVideo.Model {
 
   /// <summary>
   /// The location of the viewer of the live stream.

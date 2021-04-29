@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace VideoApiClient.Model {
+namespace ApiVideo.Model {
 
   /// <summary>
   /// Collection of details about the video object that you can use to work with the video object.

@@ -1,4 +1,4 @@
-# VideoApiClient.Model.CaptionsListResponse
+# ApiVideo.Model.CaptionsListResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# VideoApiClient.Model.PlayerCreationPayload
+# ApiVideo.Model.PlayerCreationPayload
 
 ## Properties
 

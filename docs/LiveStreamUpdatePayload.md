@@ -1,4 +1,4 @@
-# VideoApiClient.Model.LiveStreamUpdatePayload
+# ApiVideo.Model.LiveStreamUpdatePayload
 
 ## Properties
 

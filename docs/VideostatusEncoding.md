@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideostatusEncoding
+# ApiVideo.Model.VideostatusEncoding
 
 ## Properties
 

@@ -13,12 +13,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
-using VideoApiClient.Upload;
+using ApiVideo.Upload;
 using RestSharp;
-using VideoApiClient.Client;
-using VideoApiClient.Model;
+using ApiVideo.Client;
+using ApiVideo.Model;
 
-namespace VideoApiClient.Api
+namespace ApiVideo.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -42,7 +42,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete a live stream 
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
         
         /// <returns></returns>
@@ -54,7 +54,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete a live stream 
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
         
         /// <returns>ApiResponse of Object(void)</returns>
@@ -107,7 +107,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete a thumbnail Send the unique identifier for a live stream to delete it from the system.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to delete. </param>
         
         /// <returns>LiveStream</returns>
@@ -120,7 +120,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete a thumbnail Send the unique identifier for a live stream to delete it from the system.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to delete. </param>
         
         /// <returns>ApiResponse of LiveStream</returns>
@@ -174,7 +174,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List all live streams With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="streamKey">The unique stream key that allows you to stream videos. (optional)</param>
 /// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
 /// <param name="sortBy">Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)</param>
@@ -192,7 +192,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List all live streams With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="streamKey">The unique stream key that allows you to stream videos. (optional)</param>
 /// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
 /// <param name="sortBy">Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional)</param>
@@ -375,7 +375,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Show live stream Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
         
         /// <returns>LiveStream</returns>
@@ -388,7 +388,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Show live stream Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
         
         /// <returns>ApiResponse of LiveStream</returns>
@@ -442,7 +442,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Update a live stream Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
 /// <param name="liveStreamUpdatePayload"></param>
         
@@ -456,7 +456,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Update a live stream Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
 /// <param name="liveStreamUpdatePayload"></param>
         
@@ -530,7 +530,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamCreatePayload"></param>
         
         /// <returns>LiveStream</returns>
@@ -543,7 +543,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamCreatePayload"></param>
         
         /// <returns>ApiResponse of LiveStream</returns>
@@ -611,7 +611,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Upload a thumbnail Upload an image to use as a backdrop for your livestream.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to upload.</param>
 /// <param name="file">The image to be added as a thumbnail.</param>
         
@@ -625,7 +625,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Upload a thumbnail Upload an image to use as a backdrop for your livestream.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to upload.</param>
 /// <param name="file">The image to be added as a thumbnail.</param>
         

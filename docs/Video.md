@@ -1,4 +1,4 @@
-# VideoApiClient.Model.Video
+# ApiVideo.Model.Video
 
 ## Properties
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace VideoApiClient.Model {
+namespace ApiVideo.Model {
 
   /// <summary>
   /// What kind of browser the viewer is using for the video session.

@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoSessionClient
+# ApiVideo.Model.VideoSessionClient
 What kind of browser the viewer is using for the video session.
 
 ## Properties

@@ -13,12 +13,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
-using VideoApiClient.Upload;
+using ApiVideo.Upload;
 using RestSharp;
-using VideoApiClient.Client;
-using VideoApiClient.Model;
+using ApiVideo.Client;
+using ApiVideo.Model;
 
-namespace VideoApiClient.Api
+namespace ApiVideo.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -42,7 +42,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Authenticate To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authenticatePayload"></param>
         
         /// <returns>AccessToken</returns>
@@ -55,7 +55,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Authenticate To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authenticatePayload"></param>
         
         /// <returns>ApiResponse of AccessToken</returns>
@@ -123,7 +123,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Refresh token Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="refreshTokenPayload"></param>
         
         /// <returns>AccessToken</returns>
@@ -136,7 +136,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Refresh token Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="refreshTokenPayload"></param>
         
         /// <returns>ApiResponse of AccessToken</returns>

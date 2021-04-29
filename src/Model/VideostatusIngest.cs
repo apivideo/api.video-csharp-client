@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace VideoApiClient.Model {
+namespace ApiVideo.Model {
 
   /// <summary>
   /// Details about the capturing, transferring, and storing of your video for use immediately or in the future.

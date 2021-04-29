@@ -1,4 +1,4 @@
-# VideoApiClient.Api.CaptionsApi
+# ApiVideo.Api.CaptionsApi
 
 All URIs are relative to *https://ws.api.video*
 
@@ -22,7 +22,7 @@ Delete a caption in a specific language by providing the video ID for the video 
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -30,7 +30,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -94,7 +94,7 @@ Retrieve a list of available captions for the videoId you provide.
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -102,7 +102,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -169,7 +169,7 @@ Display a caption for a video in a specific language. If the language is availab
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -177,7 +177,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -242,7 +242,7 @@ To have the captions on automatically, use this PATCH to set default: true.
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -250,7 +250,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -318,7 +318,7 @@ Upload a VTT file to add captions to your video.  Read our [captioning tutorial]
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -326,7 +326,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);

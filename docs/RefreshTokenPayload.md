@@ -1,4 +1,4 @@
-# VideoApiClient.Model.RefreshTokenPayload
+# ApiVideo.Model.RefreshTokenPayload
 
 ## Properties
 

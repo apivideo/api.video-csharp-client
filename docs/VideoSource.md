@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoSource
+# ApiVideo.Model.VideoSource
 Source information about the video.
 
 ## Properties

@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoSessionLocation
+# ApiVideo.Model.VideoSessionLocation
 The location of the viewer.
 
 ## Properties

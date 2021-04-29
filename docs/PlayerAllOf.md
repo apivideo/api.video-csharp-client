@@ -1,4 +1,4 @@
-# VideoApiClient.Model.PlayerAllOf
+# ApiVideo.Model.PlayerAllOf
 
 ## Properties
 

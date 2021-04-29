@@ -1,4 +1,4 @@
-# VideoApiClient.Model.PaginationLink
+# ApiVideo.Model.PaginationLink
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# VideoApiClient.Model.NotFound
+# ApiVideo.Model.NotFound
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoSessionSession
+# ApiVideo.Model.VideoSessionSession
 
 ## Properties
 

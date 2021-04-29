@@ -1,4 +1,4 @@
-# VideoApiClient.Model.LiveStreamSessionSession
+# ApiVideo.Model.LiveStreamSessionSession
 
 ## Properties
 

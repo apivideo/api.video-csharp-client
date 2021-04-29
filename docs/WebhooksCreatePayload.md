@@ -1,4 +1,4 @@
-# VideoApiClient.Model.WebhooksCreatePayload
+# ApiVideo.Model.WebhooksCreatePayload
 
 ## Properties
 

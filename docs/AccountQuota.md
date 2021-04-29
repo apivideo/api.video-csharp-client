@@ -1,4 +1,4 @@
-# VideoApiClient.Model.AccountQuota
+# ApiVideo.Model.AccountQuota
 Deprecated
 
 ## Properties

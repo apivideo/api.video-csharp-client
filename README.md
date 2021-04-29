@@ -30,7 +30,7 @@ NOTE: RestSharp versions greater than 105.1.0 have a bug which causes file uploa
 ### Using Nuget
 
 ```
-Install-Package ApiVideoClient
+Install-Package ApiVideo
 ```
 
 ### Generating the DLL yourself
@@ -40,9 +40,9 @@ Generate the DLL using your preferred tool
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 
 ```csharp
-using VideoApiClient.Api;
-using VideoApiClient.Client;
-using VideoApiClient.Model;
+using ApiVideo.Api;
+using ApiVideo.Client;
+using ApiVideo.Model;
 
 ```
 
@@ -53,9 +53,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System;
 using System.IO;
-using VideoApiClient.Api;
-using VideoApiClient.Client;
-using VideoApiClient.Model;
+using ApiVideo.Api;
+using ApiVideo.Client;
+using ApiVideo.Model;
 
 namespace Example
 {
@@ -67,7 +67,7 @@ namespace Example
 
             var apiVideoClient = new ApiVideoClient(apiKey);
             // if you rather like to use the sandbox environment:
-            // var apiVideoClient = new ApiVideoClient(apiKey, VideoApiClient.Client.Environment.SANDBOX);
+            // var apiVideoClient = new ApiVideoClient(apiKey, ApiVideo.Client.Environment.SANDBOX);
 
             var videoPayload = new VideoCreatePayload()
             {

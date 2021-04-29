@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoAssets
+# ApiVideo.Model.VideoAssets
 Collection of details about the video object that you can use to work with the video object.
 
 ## Properties

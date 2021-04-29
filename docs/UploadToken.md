@@ -1,4 +1,4 @@
-# VideoApiClient.Model.UploadToken
+# ApiVideo.Model.UploadToken
 
 ## Properties
 

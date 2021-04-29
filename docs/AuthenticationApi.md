@@ -1,4 +1,4 @@
-# VideoApiClient.Api.AuthenticationApi
+# ApiVideo.Api.AuthenticationApi
 
 All URIs are relative to *https://ws.api.video*
 
@@ -19,7 +19,7 @@ To get started, submit your API key in the body of your request. api.video retur
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -27,7 +27,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
@@ -90,7 +90,7 @@ Use the refresh endpoint with the refresh token you received when you first auth
 ### Example
 ```csharp
 using System.Diagnostics;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace Example
 {
@@ -98,7 +98,7 @@ namespace Example
     {
         public static void Main()
         {
-            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);

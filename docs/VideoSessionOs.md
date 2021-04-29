@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoSessionOs
+# ApiVideo.Model.VideoSessionOs
 The operating system the viewer is on.
 
 ## Properties

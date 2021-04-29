@@ -1,4 +1,4 @@
-# VideoApiClient.Model.AuthenticatePayload
+# ApiVideo.Model.AuthenticatePayload
 
 ## Properties
 

@@ -1,7 +1,7 @@
-using VideoApiClient.Api;
+using ApiVideo.Api;
 using RestSharp;
 
-namespace VideoApiClient.Client
+namespace ApiVideo.Client
 {
     /// <summary>
     /// Class that allows you to call all the api routes

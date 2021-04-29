@@ -2,7 +2,7 @@
 using RestSharp;
 using System.Net;
 using System.IO;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 
 namespace VideoApiTests.Client
 {

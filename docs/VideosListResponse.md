@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideosListResponse
+# ApiVideo.Model.VideosListResponse
 
 ## Properties
 

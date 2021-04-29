@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace VideoApiClient.Model {
+namespace ApiVideo.Model {
 
   /// <summary>
   /// What type of device the user is on when in the live stream session.

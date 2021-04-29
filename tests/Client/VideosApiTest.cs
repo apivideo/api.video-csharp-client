@@ -1,8 +1,8 @@
-﻿using VideoApiClient.Api;
+﻿using ApiVideo.Api;
 using FluentAssertions;
-using VideoApiClient.Client;
+using ApiVideo.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using VideoApiClient.Model;
+using ApiVideo.Model;
 using System.Collections.Generic;
 using System.IO;
 using Moq;

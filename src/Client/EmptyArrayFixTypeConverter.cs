@@ -1,9 +1,9 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using VideoApiClient.Model;
+using ApiVideo.Model;
 
-namespace VideoApiClient.Client
+namespace ApiVideo.Client
 {
     class EmptyArrayFixTypeConverter : JsonConverter
     {

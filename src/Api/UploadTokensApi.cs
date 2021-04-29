@@ -13,12 +13,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
-using VideoApiClient.Upload;
+using ApiVideo.Upload;
 using RestSharp;
-using VideoApiClient.Client;
-using VideoApiClient.Model;
+using ApiVideo.Client;
+using ApiVideo.Model;
 
-namespace VideoApiClient.Api
+namespace ApiVideo.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -42,7 +42,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
         
         /// <returns></returns>
@@ -54,7 +54,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
         
         /// <returns>ApiResponse of Object(void)</returns>
@@ -108,7 +108,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
@@ -124,7 +124,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
@@ -277,7 +277,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Show upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
         
         /// <returns>UploadToken</returns>
@@ -290,7 +290,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Show upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
         
         /// <returns>ApiResponse of UploadToken</returns>
@@ -344,7 +344,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenCreatePayload"></param>
         
         /// <returns>UploadToken</returns>
@@ -357,7 +357,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenCreatePayload"></param>
         
         /// <returns>ApiResponse of UploadToken</returns>

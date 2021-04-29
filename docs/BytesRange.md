@@ -1,4 +1,4 @@
-# VideoApiClient.Model.BytesRange
+# ApiVideo.Model.BytesRange
 
 ## Properties
 

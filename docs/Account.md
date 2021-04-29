@@ -1,4 +1,4 @@
-# VideoApiClient.Model.Account
+# ApiVideo.Model.Account
 
 ## Properties
 

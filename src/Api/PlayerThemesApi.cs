@@ -13,12 +13,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.IO;
-using VideoApiClient.Upload;
+using ApiVideo.Upload;
 using RestSharp;
-using VideoApiClient.Client;
-using VideoApiClient.Model;
+using ApiVideo.Client;
+using ApiVideo.Model;
 
-namespace VideoApiClient.Api
+namespace ApiVideo.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -42,7 +42,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID for.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to delete.</param>
         
         /// <returns></returns>
@@ -54,7 +54,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID for.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to delete.</param>
         
         /// <returns>ApiResponse of Object(void)</returns>
@@ -108,7 +108,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete logo 
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
         
         /// <returns></returns>
@@ -120,7 +120,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Delete logo 
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
         
         /// <returns>ApiResponse of Object(void)</returns>
@@ -174,7 +174,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List all players Retrieve a list of all the players you created, as well as details about each one.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
@@ -190,7 +190,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// List all players Retrieve a list of all the players you created, as well as details about each one.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
@@ -343,7 +343,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Show a player Use a player ID to retrieve details about the player and display it for viewers.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
         
         /// <returns>Player</returns>
@@ -356,7 +356,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Show a player Use a player ID to retrieve details about the player and display it for viewers.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
         
         /// <returns>ApiResponse of Player</returns>
@@ -410,7 +410,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Update a player Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
 /// <param name="playerUpdatePayload"></param>
         
@@ -424,7 +424,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Update a player Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
 /// <param name="playerUpdatePayload"></param>
         
@@ -498,7 +498,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Create a player Create a player for your video, and customise it.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerCreationPayload"></param>
         
         /// <returns>Player</returns>
@@ -511,7 +511,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Create a player Create a player for your video, and customise it.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerCreationPayload"></param>
         
         /// <returns>ApiResponse of Player</returns>
@@ -576,7 +576,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
 /// <param name="file">The name of the file you want to use for your logo.</param>
 /// <param name="link">The path to the file you want to upload and use as a logo.</param>
@@ -591,7 +591,7 @@ namespace VideoApiClient.Api
         /// <summary>
         /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
         /// </summary>
-        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
 /// <param name="file">The name of the file you want to use for your logo.</param>
 /// <param name="link">The path to the file you want to upload and use as a logo.</param>

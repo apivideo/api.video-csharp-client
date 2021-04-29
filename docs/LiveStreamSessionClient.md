@@ -1,4 +1,4 @@
-# VideoApiClient.Model.LiveStreamSessionClient
+# ApiVideo.Model.LiveStreamSessionClient
 What kind of browser the viewer is using for the live stream session.
 
 ## Properties

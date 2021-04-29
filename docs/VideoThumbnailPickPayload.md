@@ -1,4 +1,4 @@
-# VideoApiClient.Model.VideoThumbnailPickPayload
+# ApiVideo.Model.VideoThumbnailPickPayload
 
 ## Properties
 
