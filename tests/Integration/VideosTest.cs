@@ -34,7 +34,7 @@ namespace VideoApiTests.Integration
         [TestInitialize]
         public void init()
         {
-            this.apiClient = new ApiVideoClient("r4qMAdUQBC7duPALUzEZtjKfQ0AlBqLfyCkgffLuNFH", VideoApiClient.Client.Environment.SANDBOX);
+            this.apiClient = new ApiVideoClient(System.Environment.GetEnvironmentVariable("API_KEY"), VideoApiClient.Client.Environment.SANDBOX);
             this.testVideo = apiClient.Videos()
                     .create(new VideoCreatePayload() { title = "[Java-SDK-tests] sdk tests", _public = false});
             Console.WriteLine("Video "+this.testVideo.videoid+" created");
@@ -49,7 +49,7 @@ namespace VideoApiTests.Integration
         [TestMethod]
         public void UploadVideoByChunk()
         {
-            var mp4File = File.OpenRead("../../resources/assets/sample.mp4");
+            var mp4File = File.OpenRead("../../../resources/assets/sample.mp4");
 
             long fileSize = mp4File.Length;
             int chunkSize = 1024 * 100;
@@ -70,7 +70,7 @@ namespace VideoApiTests.Integration
         [TestMethod]
         public void UploadVideoWithoutChunk()
         {
-            var mp4File = File.OpenRead("../../resources/assets/sample.mp4");
+            var mp4File = File.OpenRead("../../../resources/assets/sample.mp4");
 
             long fileSize = mp4File.Length;
             int chunkSize = (int)fileSize + 1;
@@ -147,7 +147,7 @@ namespace VideoApiTests.Integration
         [TestMethod]
         public void uploadThumbnail()
         {
-            var jpgFile = File.OpenRead("../../resources/assets/cat.jpg");
+            var jpgFile = File.OpenRead("../../../resources/assets/cat.jpg");
 
             Video video = apiClient.Videos().uploadThumbnail(testVideo.videoid, jpgFile);
 

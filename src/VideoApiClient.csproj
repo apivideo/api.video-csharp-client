@@ -12,7 +12,7 @@ The version of the OpenAPI document: 1
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CDEFA0A3-A7A1-4AB1-81A2-09691300BE70}</ProjectGuid>
+    <ProjectGuid>{06E34F1B-23DB-4721-9A72-AF27A4A59B6F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VideoApiClient</RootNamespace>
@@ -21,7 +21,7 @@ The version of the OpenAPI document: 1
     <FileAlignment>512</FileAlignment>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>VideoApiClient</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>0.0.4</PackageVersion>
     <Authors>api.video</Authors>
     <Description>api.video csharp API client</Description>
     <DevelopmentDependency>true</DevelopmentDependency>
