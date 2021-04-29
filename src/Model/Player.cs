@@ -200,7 +200,7 @@ namespace ApiVideo.Model {
     /// </summary>
     [DataMember(Name="assets", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "assets")]
-    public PlayerAllOfAssets assets { get; set; }
+    public PlayerAssets assets { get; set; }
 
 
     /// <summary>

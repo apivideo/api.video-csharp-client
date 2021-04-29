@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class PlayerAllOfAssets {
+  public class PlayerAssets {
     /// <summary>
     /// The name of the file containing the logo you want to use.
     /// </summary>
@@ -35,7 +35,7 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PlayerAllOfAssets {\n");
+      sb.Append("class PlayerAssets {\n");
       sb.Append("  Logo: ").Append(logo).Append("\n");
       sb.Append("  Link: ").Append(link).Append("\n");
       sb.Append("}\n");

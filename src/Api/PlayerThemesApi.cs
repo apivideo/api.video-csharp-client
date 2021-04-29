@@ -434,11 +434,11 @@ namespace ApiVideo.Api
             if (playerUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'playerUpdatePayload' when calling PlayerThemesApi->update");
             
-
+                                                                                                                                                                        
             if (playerUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'playerUpdatePayload' when calling PlayerThemesApi->update");
             
-
+                                                                                                                                                                        
             // verify the required parameter 'playerId' is set
             if (playerId == null)
                 throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->update");
@@ -520,7 +520,7 @@ namespace ApiVideo.Api
             if (playerCreationPayload == null) 
                 throw new ApiException(400,"Missing required parameter 'playerCreationPayload' when calling PlayerThemesApi->create");
             
-
+                                                                                                                                                                        
             // verify the required parameter 'playerCreationPayload' is set
             if (playerCreationPayload == null)
                 throw new ApiException(400, "Missing required parameter 'playerCreationPayload' when calling PlayerThemesApi->create");

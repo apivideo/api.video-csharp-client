@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **ShapeBackgroundTop** | **string** | Deprecated | [optional] 
 **ShapeBackgroundBottom** | **string** | Deprecated | [optional] 
 **LinkActive** | **string** | Deprecated | [optional] 
-**Assets** | [**PlayerAllOfAssets**](PlayerAllOfAssets.md) |  | [optional] 
+**Assets** | [**PlayerAssets**](PlayerAssets.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
