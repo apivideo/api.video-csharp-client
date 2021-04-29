@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VideoApiClient.Client;
 using VideoApiClient.Model;
@@ -14,8 +15,7 @@ namespace VideoApiTests.Integration
         [TestInitialize]
         public void init()
         {
-            apiClient = new ApiVideoClient("r4qMAdUQBC7duPALUzEZtjKfQ0AlBqLfyCkgffLuNFH");
-            apiClient.GetHttpClient().BasePath = "https://ws-staging.api.video";
+            apiClient = new ApiVideoClient(System.Environment.GetEnvironmentVariable("API_KEY"));
 
         }
 
@@ -23,8 +23,8 @@ namespace VideoApiTests.Integration
         public void createAndListWebhook()
         {
             webhook = apiClient.Webhooks()
-                    .create(new WebhooksCreatePayload() { url = "https://webhooks.test-java-api-client" });
-            Console.WriteLine(webhook);
+                    .create(new WebhooksCreatePayload() { url = "https://webhooks.test-java-api-client", events = new List<string> { "video.encoding.quality.completed", } });
+            
 
             Page<Webhook> list = apiClient.Webhooks().list().execute();
 

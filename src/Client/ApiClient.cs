@@ -52,7 +52,6 @@ namespace VideoApiClient.Client
         /// </summary>
         /// <param name="basePath">the api base path.</param>
         public ApiClient(string basePath) {
-            this.BasePath = basePath;
             this.RestClient = new RestClient(basePath);
             this.RestClient.UserAgent = "api.video client (C#; v:0.0.4; )";
         }
@@ -63,7 +62,6 @@ namespace VideoApiClient.Client
         /// <param name="apiKey">the api key to use to authenticate to the API</param>
         /// <param name="basePath">the api base path.</param>
         public ApiClient(string apiKey,string basePath) {
-            this.BasePath = basePath;
             this.RestClient = new RestClient(basePath);
             this.RestClient.UserAgent = "api.video client (C#; v:0.0.4; )";
             this.AuthManager = new AuthenticationManager(apiKey, this);
@@ -73,9 +71,7 @@ namespace VideoApiClient.Client
         /// Constructor for ApiClient with custom http client.
         /// </summary>
         /// <param name="client">a RestClient instance used to make API call</param>
-        /// <param name="basePath">the api base path.</param>
-        public ApiClient(RestClient client,string basePath) {
-            this.BasePath = basePath;
+        public ApiClient(RestClient client) {
             this.RestClient = client;
             this.RestClient.UserAgent = "api.video client (C#; v:0.0.4; )";
         }
@@ -108,10 +104,12 @@ namespace VideoApiClient.Client
         public RestClient RestClient { get; set; }
 
         /// <summary>
-        /// Gets or sets the api base path.
+        /// Sets the api base path.
         /// </summary>
-        /// <value>The base path</value>
-        public string BasePath { get; set; }
+        public void SetBasePath(string basePath) {
+            this.RestClient.BaseUrl = new Uri(basePath);
+        }
+
 
         /// <summary>
         /// Gets or sets the file upload chunk size
