@@ -49,9 +49,9 @@ namespace VideoApiClient.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>RawStatisticsListLiveStreamAnalyticsResponse</returns>
-		public RawStatisticsListLiveStreamAnalyticsResponse getLiveStreamAnalytics(string liveStreamId, string period = default, int? currentPage = default, int? pageSize = default)
+		public RawStatisticsListLiveStreamAnalyticsResponse listLiveStreamSessions(string liveStreamId, string period = default, int? currentPage = default, int? pageSize = default)
         {
-             ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> localVarResponse = getLiveStreamAnalyticsWithHttpInfo(liveStreamId, period, currentPage, pageSize);
+             ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> localVarResponse = listLiveStreamSessionsWithHttpInfo(liveStreamId, period, currentPage, pageSize);
              return localVarResponse.Data;
         }
 
@@ -65,7 +65,7 @@ namespace VideoApiClient.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>ApiResponse of RawStatisticsListLiveStreamAnalyticsResponse</returns>
-		public ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> getLiveStreamAnalyticsWithHttpInfo(string liveStreamId, string period = default, int? currentPage = default, int? pageSize = default)
+		public ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> listLiveStreamSessionsWithHttpInfo(string liveStreamId, string period = default, int? currentPage = default, int? pageSize = default)
         {
 
 
@@ -73,7 +73,7 @@ namespace VideoApiClient.Api
 
             // verify the required parameter 'liveStreamId' is set
             if (liveStreamId == null)
-                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling RawStatisticsApi->getLiveStreamAnalytics");
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling RawStatisticsApi->listLiveStreamSessions");
             
 
             var localVarPath = "/analytics/live-streams/{liveStreamId}";
@@ -122,15 +122,15 @@ namespace VideoApiClient.Api
         /// 
         /// </summary>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for. (required)</param>
-        /// <returns>APIgetLiveStreamAnalyticsRequest</returns>
-        public APIgetLiveStreamAnalyticsRequest getLiveStreamAnalytics(string liveStreamId) {
-            return new APIgetLiveStreamAnalyticsRequest(this,liveStreamId);
+        /// <returns>APIlistLiveStreamSessionsRequest</returns>
+        public APIlistLiveStreamSessionsRequest listLiveStreamSessions(string liveStreamId) {
+            return new APIlistLiveStreamSessionsRequest(this,liveStreamId);
         }
 
         /// <summary>
-        /// Request getLiveStreamAnalytics class to get paginated list of items
+        /// Request listLiveStreamSessions class to get paginated list of items
         /// </summary>
-        public class APIgetLiveStreamAnalyticsRequest {
+        public class APIlistLiveStreamSessionsRequest {
             private string liveStreamId;
             private string period;
             private int? currentPage;
@@ -143,7 +143,7 @@ namespace VideoApiClient.Api
             /// </summary>
             /// <param name="instance">Instance of the current api</param>
             /// <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for. (required)</param>
-            public APIgetLiveStreamAnalyticsRequest(RawStatisticsApi instance, string liveStreamId) {
+            public APIlistLiveStreamSessionsRequest(RawStatisticsApi instance, string liveStreamId) {
                 this.liveStreamId = liveStreamId;
                 this.currentApiInstance = instance;
             }
@@ -152,8 +152,8 @@ namespace VideoApiClient.Api
             /// Set period
             /// </summary>
             /// <param name="period">Period must have one of the following formats:   - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot;  For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (optional)</param>
-            /// <returns>APIgetLiveStreamAnalyticsRequest</returns>
-            public APIgetLiveStreamAnalyticsRequest Period(string period) {
+            /// <returns>APIlistLiveStreamSessionsRequest</returns>
+            public APIlistLiveStreamSessionsRequest Period(string period) {
                 this.period = period;
                 return this;
             }
@@ -162,8 +162,8 @@ namespace VideoApiClient.Api
             /// Set currentPage
             /// </summary>
             /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            /// <returns>APIgetLiveStreamAnalyticsRequest</returns>
-            public APIgetLiveStreamAnalyticsRequest CurrentPage(int? currentPage) {
+            /// <returns>APIlistLiveStreamSessionsRequest</returns>
+            public APIlistLiveStreamSessionsRequest CurrentPage(int? currentPage) {
                 this.currentPage = currentPage;
                 return this;
             }
@@ -172,8 +172,8 @@ namespace VideoApiClient.Api
             /// Set pageSize
             /// </summary>
             /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            /// <returns>APIgetLiveStreamAnalyticsRequest</returns>
-            public APIgetLiveStreamAnalyticsRequest PageSize(int? pageSize) {
+            /// <returns>APIlistLiveStreamSessionsRequest</returns>
+            public APIlistLiveStreamSessionsRequest PageSize(int? pageSize) {
                 this.pageSize = pageSize;
                 return this;
             }
@@ -181,11 +181,11 @@ namespace VideoApiClient.Api
             
 
             /// <summary>
-            /// Execute getLiveStreamAnalytics request
+            /// Execute listLiveStreamSessions request
             /// </summary>
             /// <returns>RawStatisticsListLiveStreamAnalyticsResponse </returns>
             public Page<LiveStreamSession> execute(){
-                ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> localVarResp = this.currentApiInstance.getLiveStreamAnalyticsWithHttpInfo(liveStreamId, period, currentPage, pageSize);
+                ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> localVarResp = this.currentApiInstance.listLiveStreamSessionsWithHttpInfo(liveStreamId, period, currentPage, pageSize);
                 return new Page<LiveStreamSession>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
                     try {
                         return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
@@ -195,8 +195,8 @@ namespace VideoApiClient.Api
                 }); 
             }
 
-            private APIgetLiveStreamAnalyticsRequest copy() {
-                APIgetLiveStreamAnalyticsRequest copy = new APIgetLiveStreamAnalyticsRequest( this.currentApiInstance, liveStreamId);
+            private APIlistLiveStreamSessionsRequest copy() {
+                APIlistLiveStreamSessionsRequest copy = new APIlistLiveStreamSessionsRequest( this.currentApiInstance, liveStreamId);
                 copy.Period(period);
                 copy.CurrentPage(currentPage);
                 copy.PageSize(pageSize);
@@ -212,9 +212,9 @@ namespace VideoApiClient.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>RawStatisticsListPlayerSessionEventsResponse</returns>
-		public RawStatisticsListPlayerSessionEventsResponse listPlayerSessionEvents(string sessionId, int? currentPage = default, int? pageSize = default)
+		public RawStatisticsListPlayerSessionEventsResponse listSessionEvents(string sessionId, int? currentPage = default, int? pageSize = default)
         {
-             ApiResponse<RawStatisticsListPlayerSessionEventsResponse> localVarResponse = listPlayerSessionEventsWithHttpInfo(sessionId, currentPage, pageSize);
+             ApiResponse<RawStatisticsListPlayerSessionEventsResponse> localVarResponse = listSessionEventsWithHttpInfo(sessionId, currentPage, pageSize);
              return localVarResponse.Data;
         }
 
@@ -227,14 +227,14 @@ namespace VideoApiClient.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>ApiResponse of RawStatisticsListPlayerSessionEventsResponse</returns>
-		public ApiResponse<RawStatisticsListPlayerSessionEventsResponse> listPlayerSessionEventsWithHttpInfo(string sessionId, int? currentPage = default, int? pageSize = default)
+		public ApiResponse<RawStatisticsListPlayerSessionEventsResponse> listSessionEventsWithHttpInfo(string sessionId, int? currentPage = default, int? pageSize = default)
         {
 
 
 
             // verify the required parameter 'sessionId' is set
             if (sessionId == null)
-                throw new ApiException(400, "Missing required parameter 'sessionId' when calling RawStatisticsApi->listPlayerSessionEvents");
+                throw new ApiException(400, "Missing required parameter 'sessionId' when calling RawStatisticsApi->listSessionEvents");
             
 
             var localVarPath = "/analytics/sessions/{sessionId}/events";
@@ -282,15 +282,15 @@ namespace VideoApiClient.Api
         /// Useful to track and measure video&#39;s engagement.
         /// </summary>
         /// <param name="sessionId">A unique identifier you can use to reference and track a session with. (required)</param>
-        /// <returns>APIlistPlayerSessionEventsRequest</returns>
-        public APIlistPlayerSessionEventsRequest listPlayerSessionEvents(string sessionId) {
-            return new APIlistPlayerSessionEventsRequest(this,sessionId);
+        /// <returns>APIlistSessionEventsRequest</returns>
+        public APIlistSessionEventsRequest listSessionEvents(string sessionId) {
+            return new APIlistSessionEventsRequest(this,sessionId);
         }
 
         /// <summary>
-        /// Request listPlayerSessionEvents class to get paginated list of items
+        /// Request listSessionEvents class to get paginated list of items
         /// </summary>
-        public class APIlistPlayerSessionEventsRequest {
+        public class APIlistSessionEventsRequest {
             private string sessionId;
             private int? currentPage;
             private int? pageSize;
@@ -302,7 +302,7 @@ namespace VideoApiClient.Api
             /// </summary>
             /// <param name="instance">Instance of the current api</param>
             /// <param name="sessionId">A unique identifier you can use to reference and track a session with. (required)</param>
-            public APIlistPlayerSessionEventsRequest(RawStatisticsApi instance, string sessionId) {
+            public APIlistSessionEventsRequest(RawStatisticsApi instance, string sessionId) {
                 this.sessionId = sessionId;
                 this.currentApiInstance = instance;
             }
@@ -311,8 +311,8 @@ namespace VideoApiClient.Api
             /// Set currentPage
             /// </summary>
             /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            /// <returns>APIlistPlayerSessionEventsRequest</returns>
-            public APIlistPlayerSessionEventsRequest CurrentPage(int? currentPage) {
+            /// <returns>APIlistSessionEventsRequest</returns>
+            public APIlistSessionEventsRequest CurrentPage(int? currentPage) {
                 this.currentPage = currentPage;
                 return this;
             }
@@ -321,8 +321,8 @@ namespace VideoApiClient.Api
             /// Set pageSize
             /// </summary>
             /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            /// <returns>APIlistPlayerSessionEventsRequest</returns>
-            public APIlistPlayerSessionEventsRequest PageSize(int? pageSize) {
+            /// <returns>APIlistSessionEventsRequest</returns>
+            public APIlistSessionEventsRequest PageSize(int? pageSize) {
                 this.pageSize = pageSize;
                 return this;
             }
@@ -330,11 +330,11 @@ namespace VideoApiClient.Api
             
 
             /// <summary>
-            /// Execute listPlayerSessionEvents request
+            /// Execute listSessionEvents request
             /// </summary>
             /// <returns>RawStatisticsListPlayerSessionEventsResponse </returns>
             public Page<PlayerSessionEvent> execute(){
-                ApiResponse<RawStatisticsListPlayerSessionEventsResponse> localVarResp = this.currentApiInstance.listPlayerSessionEventsWithHttpInfo(sessionId, currentPage, pageSize);
+                ApiResponse<RawStatisticsListPlayerSessionEventsResponse> localVarResp = this.currentApiInstance.listSessionEventsWithHttpInfo(sessionId, currentPage, pageSize);
                 return new Page<PlayerSessionEvent>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
                     try {
                         return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
@@ -344,8 +344,8 @@ namespace VideoApiClient.Api
                 }); 
             }
 
-            private APIlistPlayerSessionEventsRequest copy() {
-                APIlistPlayerSessionEventsRequest copy = new APIlistPlayerSessionEventsRequest( this.currentApiInstance, sessionId);
+            private APIlistSessionEventsRequest copy() {
+                APIlistSessionEventsRequest copy = new APIlistSessionEventsRequest( this.currentApiInstance, sessionId);
                 copy.CurrentPage(currentPage);
                 copy.PageSize(pageSize);
                 return copy;
@@ -362,9 +362,9 @@ namespace VideoApiClient.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>RawStatisticsListSessionsResponse</returns>
-		public RawStatisticsListSessionsResponse listSessions(string videoId, string period = default, List<string> metadata = default, int? currentPage = default, int? pageSize = default)
+		public RawStatisticsListSessionsResponse listVideoSessions(string videoId, string period = default, List<string> metadata = default, int? currentPage = default, int? pageSize = default)
         {
-             ApiResponse<RawStatisticsListSessionsResponse> localVarResponse = listSessionsWithHttpInfo(videoId, period, metadata, currentPage, pageSize);
+             ApiResponse<RawStatisticsListSessionsResponse> localVarResponse = listVideoSessionsWithHttpInfo(videoId, period, metadata, currentPage, pageSize);
              return localVarResponse.Data;
         }
 
@@ -379,7 +379,7 @@ namespace VideoApiClient.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>ApiResponse of RawStatisticsListSessionsResponse</returns>
-		public ApiResponse<RawStatisticsListSessionsResponse> listSessionsWithHttpInfo(string videoId, string period = default, List<string> metadata = default, int? currentPage = default, int? pageSize = default)
+		public ApiResponse<RawStatisticsListSessionsResponse> listVideoSessionsWithHttpInfo(string videoId, string period = default, List<string> metadata = default, int? currentPage = default, int? pageSize = default)
         {
 
 
@@ -388,7 +388,7 @@ namespace VideoApiClient.Api
 
             // verify the required parameter 'videoId' is set
             if (videoId == null)
-                throw new ApiException(400, "Missing required parameter 'videoId' when calling RawStatisticsApi->listSessions");
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling RawStatisticsApi->listVideoSessions");
             
 
             var localVarPath = "/analytics/videos/{videoId}";
@@ -438,15 +438,15 @@ namespace VideoApiClient.Api
         /// Retrieve all available user sessions for a specific video.
         /// </summary>
         /// <param name="videoId">The unique identifier for the video you want to retrieve session information for. (required)</param>
-        /// <returns>APIlistSessionsRequest</returns>
-        public APIlistSessionsRequest listSessions(string videoId) {
-            return new APIlistSessionsRequest(this,videoId);
+        /// <returns>APIlistVideoSessionsRequest</returns>
+        public APIlistVideoSessionsRequest listVideoSessions(string videoId) {
+            return new APIlistVideoSessionsRequest(this,videoId);
         }
 
         /// <summary>
-        /// Request listSessions class to get paginated list of items
+        /// Request listVideoSessions class to get paginated list of items
         /// </summary>
-        public class APIlistSessionsRequest {
+        public class APIlistVideoSessionsRequest {
             private string videoId;
             private string period;
             private List<string> metadata;
@@ -460,7 +460,7 @@ namespace VideoApiClient.Api
             /// </summary>
             /// <param name="instance">Instance of the current api</param>
             /// <param name="videoId">The unique identifier for the video you want to retrieve session information for. (required)</param>
-            public APIlistSessionsRequest(RawStatisticsApi instance, string videoId) {
+            public APIlistVideoSessionsRequest(RawStatisticsApi instance, string videoId) {
                 this.videoId = videoId;
                 this.currentApiInstance = instance;
             }
@@ -469,8 +469,8 @@ namespace VideoApiClient.Api
             /// Set period
             /// </summary>
             /// <param name="period">Period must have one of the following formats:   - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018  For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)</param>
-            /// <returns>APIlistSessionsRequest</returns>
-            public APIlistSessionsRequest Period(string period) {
+            /// <returns>APIlistVideoSessionsRequest</returns>
+            public APIlistVideoSessionsRequest Period(string period) {
                 this.period = period;
                 return this;
             }
@@ -479,8 +479,8 @@ namespace VideoApiClient.Api
             /// Set metadata
             /// </summary>
             /// <param name="metadata">Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional)</param>
-            /// <returns>APIlistSessionsRequest</returns>
-            public APIlistSessionsRequest Metadata(List<string> metadata) {
+            /// <returns>APIlistVideoSessionsRequest</returns>
+            public APIlistVideoSessionsRequest Metadata(List<string> metadata) {
                 this.metadata = metadata;
                 return this;
             }
@@ -489,8 +489,8 @@ namespace VideoApiClient.Api
             /// Set currentPage
             /// </summary>
             /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            /// <returns>APIlistSessionsRequest</returns>
-            public APIlistSessionsRequest CurrentPage(int? currentPage) {
+            /// <returns>APIlistVideoSessionsRequest</returns>
+            public APIlistVideoSessionsRequest CurrentPage(int? currentPage) {
                 this.currentPage = currentPage;
                 return this;
             }
@@ -499,8 +499,8 @@ namespace VideoApiClient.Api
             /// Set pageSize
             /// </summary>
             /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            /// <returns>APIlistSessionsRequest</returns>
-            public APIlistSessionsRequest PageSize(int? pageSize) {
+            /// <returns>APIlistVideoSessionsRequest</returns>
+            public APIlistVideoSessionsRequest PageSize(int? pageSize) {
                 this.pageSize = pageSize;
                 return this;
             }
@@ -508,11 +508,11 @@ namespace VideoApiClient.Api
             
 
             /// <summary>
-            /// Execute listSessions request
+            /// Execute listVideoSessions request
             /// </summary>
             /// <returns>RawStatisticsListSessionsResponse </returns>
             public Page<VideoSession> execute(){
-                ApiResponse<RawStatisticsListSessionsResponse> localVarResp = this.currentApiInstance.listSessionsWithHttpInfo(videoId, period, metadata, currentPage, pageSize);
+                ApiResponse<RawStatisticsListSessionsResponse> localVarResp = this.currentApiInstance.listVideoSessionsWithHttpInfo(videoId, period, metadata, currentPage, pageSize);
                 return new Page<VideoSession>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
                     try {
                         return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
@@ -522,8 +522,8 @@ namespace VideoApiClient.Api
                 }); 
             }
 
-            private APIlistSessionsRequest copy() {
-                APIlistSessionsRequest copy = new APIlistSessionsRequest( this.currentApiInstance, videoId);
+            private APIlistVideoSessionsRequest copy() {
+                APIlistVideoSessionsRequest copy = new APIlistVideoSessionsRequest( this.currentApiInstance, videoId);
                 copy.Period(period);
                 copy.Metadata(metadata);
                 copy.CurrentPage(currentPage);

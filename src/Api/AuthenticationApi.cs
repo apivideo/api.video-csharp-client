@@ -43,10 +43,10 @@ namespace VideoApiClient.Api
         /// Authenticate To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication.
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="authenticatePayload"> (optional)</param>
+        /// <param name="authenticatePayload"></param>
         
         /// <returns>AccessToken</returns>
-		public AccessToken authenticate(AuthenticatePayload authenticatePayload = default)
+		public AccessToken authenticate(AuthenticatePayload authenticatePayload)
         {
              ApiResponse<AccessToken> localVarResponse = authenticateWithHttpInfo(authenticatePayload);
              return localVarResponse.Data;
@@ -56,10 +56,10 @@ namespace VideoApiClient.Api
         /// Authenticate To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication.
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="authenticatePayload"> (optional)</param>
+        /// <param name="authenticatePayload"></param>
         
         /// <returns>ApiResponse of AccessToken</returns>
-		public ApiResponse<AccessToken> authenticateWithHttpInfo(AuthenticatePayload authenticatePayload = default)
+		public ApiResponse<AccessToken> authenticateWithHttpInfo(AuthenticatePayload authenticatePayload)
         {
             if (authenticatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'authenticatePayload' when calling AuthenticationApi->authenticate");
@@ -68,6 +68,9 @@ namespace VideoApiClient.Api
                 throw new ApiException(400,"Missing required parameter 'authenticatePayload.ApiKey' when calling AuthenticationApi->authenticate");
             }
             
+            // verify the required parameter 'authenticatePayload' is set
+            if (authenticatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'authenticatePayload' when calling AuthenticationApi->authenticate");
             
 
             var localVarPath = "/auth/api-key";
@@ -121,10 +124,10 @@ namespace VideoApiClient.Api
         /// Refresh token Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="refreshTokenPayload"> (optional)</param>
+        /// <param name="refreshTokenPayload"></param>
         
         /// <returns>AccessToken</returns>
-		public AccessToken refresh(RefreshTokenPayload refreshTokenPayload = default)
+		public AccessToken refresh(RefreshTokenPayload refreshTokenPayload)
         {
              ApiResponse<AccessToken> localVarResponse = refreshWithHttpInfo(refreshTokenPayload);
              return localVarResponse.Data;
@@ -134,10 +137,10 @@ namespace VideoApiClient.Api
         /// Refresh token Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="refreshTokenPayload"> (optional)</param>
+        /// <param name="refreshTokenPayload"></param>
         
         /// <returns>ApiResponse of AccessToken</returns>
-		public ApiResponse<AccessToken> refreshWithHttpInfo(RefreshTokenPayload refreshTokenPayload = default)
+		public ApiResponse<AccessToken> refreshWithHttpInfo(RefreshTokenPayload refreshTokenPayload)
         {
             if (refreshTokenPayload == null) 
                 throw new ApiException(400,"Missing required parameter 'refreshTokenPayload' when calling AuthenticationApi->refresh");
@@ -146,6 +149,9 @@ namespace VideoApiClient.Api
                 throw new ApiException(400,"Missing required parameter 'refreshTokenPayload.RefreshToken' when calling AuthenticationApi->refresh");
             }
             
+            // verify the required parameter 'refreshTokenPayload' is set
+            if (refreshTokenPayload == null)
+                throw new ApiException(400, "Missing required parameter 'refreshTokenPayload' when calling AuthenticationApi->refresh");
             
 
             var localVarPath = "/auth/refresh";

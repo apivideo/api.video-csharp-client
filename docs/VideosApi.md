@@ -6,10 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](VideosApi.md#deletevideo) | **DELETE** /videos/{videoId} | Delete a video
 [**get**](VideosApi.md#getvideo) | **GET** /videos/{videoId} | Show a video
-[**getVideoStatus**](VideosApi.md#getvideostatus) | **GET** /videos/{videoId}/status | Show video status
+[**getStatus**](VideosApi.md#getvideostatus) | **GET** /videos/{videoId}/status | Show video status
 [**list**](VideosApi.md#listvideos) | **GET** /videos | List all videos
 [**update**](VideosApi.md#patchvideo) | **PATCH** /videos/{videoId} | Update a video
 [**pickThumbnail**](VideosApi.md#patchvideosvideoidthumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
+[**uploadWithUploadToken**](VideosApi.md#postupload) | **POST** /upload | Upload with an upload token
 [**create**](VideosApi.md#postvideo) | **POST** /videos | Create a video
 [**upload**](VideosApi.md#postvideosvideoidsource) | **POST** /videos/{videoId}/source | Upload a video
 [**uploadThumbnail**](VideosApi.md#postvideosvideoidthumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
@@ -157,8 +158,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="getvideostatus"></a>
-# **getVideoStatus**
-> Videostatus getVideoStatus (string videoId)
+# **getStatus**
+> Videostatus getStatus (string videoId)
 
 Show video status
 
@@ -171,7 +172,7 @@ using VideoApiClient.Client;
 
 namespace Example
 {
-    public class getVideoStatusExample
+    public class getStatusExample
     {
         public static void Main()
         {
@@ -185,12 +186,12 @@ namespace Example
             try
             {
                 // Show video status
-                Videostatus result = apiVideosInstance.getVideoStatus(videoId);
+                Videostatus result = apiVideosInstance.getStatus(videoId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling VideosApi.getVideoStatus: " + e.Message );
+                Debug.Print("Exception when calling VideosApi.getStatus: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -229,7 +230,7 @@ Name | Type | Description  | Notes
 
 <a name="listvideos"></a>
 # **list**
-> VideosListResponse list (string title = null, List<string> tags = null, List<string> metadata = null, string description = null, string liveStreamId = null, string sortBy = null, string sortOrder = null, int? currentPage = null, int? pageSize = null)
+> VideosListResponse list (string title = null, List<string> tags = null, Dictionary<string, string> metadata = null, string description = null, string liveStreamId = null, string sortBy = null, string sortOrder = null, int? currentPage = null, int? pageSize = null)
 
 List all videos
 
@@ -253,7 +254,7 @@ namespace Example
 
             var title = My Video.mp4;  // string | The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional) 
             var tags = new List<string>(); // List<string> | A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional) 
-            var metadata = new List<string>(); // List<string> | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional) 
+            var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional) 
             var description = New Zealand;  // string | If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional) 
             var liveStreamId = li400mYKSgQ6xs7taUeSaEKr;  // string | If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional) 
             var sortBy = publishedAt;  // string | Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional) 
@@ -284,7 +285,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **string**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional] 
  **tags** | [**List&lt;string&gt;**](string.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional] 
- **metadata** | [**List&lt;string&gt;**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional] 
+ **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional] 
  **description** | **string**| If you described a video with a term or sentence, you can add it here to return videos containing this string. | [optional] 
  **liveStreamId** | **string**| If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. | [optional] 
  **sortBy** | **string**| Allowed: publishedAt, title. You can search by the time videos were published at, or by title. | [optional] 
@@ -316,7 +317,7 @@ Name | Type | Description  | Notes
 
 <a name="patchvideo"></a>
 # **update**
-> Video update (string videoId, VideoUpdatePayload videoUpdatePayload = null)
+> Video update (string videoId, VideoUpdatePayload videoUpdatePayload)
 
 Update a video
 
@@ -339,7 +340,7 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The video ID for the video you want to delete.
-            var videoUpdatePayload = new VideoUpdatePayload(); // VideoUpdatePayload |  (optional) 
+            var videoUpdatePayload = new VideoUpdatePayload(); // VideoUpdatePayload | 
             var apiVideosInstance = apiInstance.Videos();
             try
             {
@@ -363,7 +364,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| The video ID for the video you want to delete. | 
- **videoUpdatePayload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  | [optional] 
+ **videoUpdatePayload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  | 
 
 ### Return type
 
@@ -390,7 +391,7 @@ Name | Type | Description  | Notes
 
 <a name="patchvideosvideoidthumbnail"></a>
 # **pickThumbnail**
-> Video pickThumbnail (string videoId, VideoThumbnailPickPayload videoThumbnailPickPayload = null)
+> Video pickThumbnail (string videoId, VideoThumbnailPickPayload videoThumbnailPickPayload)
 
 Pick a thumbnail
 
@@ -413,7 +414,7 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
-            var videoThumbnailPickPayload = new VideoThumbnailPickPayload(); // VideoThumbnailPickPayload |  (optional) 
+            var videoThumbnailPickPayload = new VideoThumbnailPickPayload(); // VideoThumbnailPickPayload | 
             var apiVideosInstance = apiInstance.Videos();
             try
             {
@@ -437,7 +438,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. | 
- **videoThumbnailPickPayload** | [**VideoThumbnailPickPayload**](VideoThumbnailPickPayload.md)|  | [optional] 
+ **videoThumbnailPickPayload** | [**VideoThumbnailPickPayload**](VideoThumbnailPickPayload.md)|  | 
 
 ### Return type
 
@@ -461,9 +462,82 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="postupload"></a>
+# **uploadWithUploadToken**
+> Video uploadWithUploadToken (string token, System.IO.Stream file)
+
+Upload with an upload token
+
+When given a token, anyone can upload a file to the URI `https://ws.api.video/upload?token=<tokenId>`.  Example with cURL:  ```curl $ curl  - -request POST - -url 'https://ws.api.video/upload?token=toXXX'  - -header 'content-type: multipart/form-data'  -F file=@video.mp4 ```  Or in an HTML form, with a little JavaScript to convert the form into JSON: ```html <!- -form for user interaction- -> <form name=\"videoUploadForm\" >   <label for=video>Video:</label>   <input type=file name=source/><br/>   <input value=\"Submit\" type=\"submit\"> </form> <div></div> <!- -JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     - -> <script>    var form = document.forms.namedItem(\"videoUploadForm\");     form.addEventListener('submit', function(ev) {   ev.preventDefault();      var oOutput = document.querySelector(\"div\"),          oData = new FormData(form);      var oReq = new XMLHttpRequest();         oReq.open(\"POST\", \"https://ws.api.video/upload?token=toXXX\", true);      oReq.send(oData);   oReq.onload = function(oEvent) {        if (oReq.status ==201) {          oOutput.innerHTML = \"Your video is uploaded!<br/>\"  + oReq.response;        } else {          oOutput.innerHTML = \"Error \" + oReq.status + \" occurred when trying to upload your file.<br />\";        }      };    }, false);  </script> ```   ### Dealing with large files  We have created a <a href='https://api.video/blog/tutorials/uploading-large-files-with-javascript'>tutorial</a> to walk through the steps required.
+
+### Example
+```csharp
+using System.Diagnostics;
+using VideoApiClient.Client;
+
+namespace Example
+{
+    public class uploadWithUploadTokenExample
+    {
+        public static void Main()
+        {
+            var basePath = VideoApiClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var token = to1tcmSFHeYY5KzyhOqVKMKb;  // string | The unique identifier for the token you want to use to upload a video.
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The path to the video you want to upload.
+            var apiVideosInstance = apiInstance.Videos();
+            try
+            {
+                // Upload with an upload token
+                Video result = apiVideosInstance.uploadWithUploadToken(token, file);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling VideosApi.uploadWithUploadToken: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **string**| The unique identifier for the token you want to use to upload a video. | 
+ **file** | **System.IO.Stream****System.IO.Stream**| The path to the video you want to upload. | 
+
+### Return type
+
+[**Video**](Video.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="postvideo"></a>
 # **create**
-> Video create (VideoCreatePayload videoCreatePayload = null)
+> Video create (VideoCreatePayload videoCreatePayload)
 
 Create a video
 
@@ -485,7 +559,7 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var videoCreatePayload = new VideoCreatePayload(); // VideoCreatePayload | video to create (optional) 
+            var videoCreatePayload = new VideoCreatePayload(); // VideoCreatePayload | video to create
             var apiVideosInstance = apiInstance.Videos();
             try
             {
@@ -508,7 +582,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoCreatePayload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create | [optional] 
+ **videoCreatePayload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create | 
 
 ### Return type
 

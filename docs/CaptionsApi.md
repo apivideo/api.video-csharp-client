@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 <a name="patchvideosvideoidcaptionslanguage"></a>
 # **update**
-> Subtitle update (string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload = null)
+> Subtitle update (string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
 
 Update caption
 
@@ -257,7 +257,7 @@ namespace Example
 
             var videoId = vi4k0jvEUuaTdRAEjQ4Prklg;  // string | The unique identifier for the video you want to have automatic captions for. 
             var language = en;  // string | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-            var captionsUpdatePayload = new CaptionsUpdatePayload(); // CaptionsUpdatePayload |  (optional) 
+            var captionsUpdatePayload = new CaptionsUpdatePayload(); // CaptionsUpdatePayload | 
             var apiCaptionsInstance = apiInstance.Captions();
             try
             {
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| The unique identifier for the video you want to have automatic captions for.  | 
  **language** | **string**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. | 
- **captionsUpdatePayload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  | [optional] 
+ **captionsUpdatePayload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  | 
 
 ### Return type
 

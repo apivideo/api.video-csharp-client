@@ -9,25 +9,25 @@ The version of the OpenAPI document: 1
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AD40CCAA-4C3B-4A84-AB61-03CF313ABDAD}</ProjectGuid>
+    <ProjectGuid>{CDEFA0A3-A7A1-4AB1-81A2-09691300BE70}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VideoApiClient</RootNamespace>
     <AssemblyName>VideoApiClient</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackOnBuild>true</PackOnBuild>
-    <PackageId>ApiVideoClient</PackageId>
-    <PackageVersion>0.0.3</PackageVersion>
+    <PackageId>VideoApiClient</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
     <Authors>api.video</Authors>
-    <Description>api.video C# API client</Description>
+    <Description>api.video csharp API client</Description>
     <DevelopmentDependency>true</DevelopmentDependency>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/apivideo/csharp-api-client</PackageProjectUrl>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -38,7 +38,6 @@ The version of the OpenAPI document: 1
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\VideoApiClient.xml</DocumentationFile>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
@@ -62,7 +61,7 @@ The version of the OpenAPI document: 1
       <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <HintPath Condition="Exists('..\packages')">..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <HintPath Condition="Exists('..\..\packages')">..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+        <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="JsonSubTypes">
       <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\JsonSubTypes.1.6.0\lib\net45\JsonSubTypes.dll</HintPath>
@@ -71,10 +70,10 @@ The version of the OpenAPI document: 1
       <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\JsonSubTypes.1.6.0\lib\net45\JsonSubTypes.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
-      <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
-      <HintPath Condition="Exists('..\packages')">..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
-      <HintPath Condition="Exists('..\..\packages')">..\..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
-      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
+      <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
+      <HintPath Condition="Exists('..\packages')">..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
+      <HintPath Condition="Exists('..\..\packages')">..\..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
+      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -82,9 +81,10 @@ The version of the OpenAPI document: 1
              Exclude="obj\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="RestSharp" Version="105.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="JsonSubTypes" Version="1.8.0" />
+      <PackageReference Include="RestSharp" Version="105.1.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="JsonSubTypes" Version="1.8.0" />
   </ItemGroup>
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
+

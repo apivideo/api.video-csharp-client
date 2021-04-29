@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="postauthapikey"></a>
 # **authenticate**
-> AccessToken authenticate (AuthenticatePayload authenticatePayload = null)
+> AccessToken authenticate (AuthenticatePayload authenticatePayload)
 
 Authenticate
 
@@ -32,7 +32,7 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var authenticatePayload = new AuthenticatePayload(); // AuthenticatePayload |  (optional) 
+            var authenticatePayload = new AuthenticatePayload(); // AuthenticatePayload | 
             var apiAuthenticationInstance = apiInstance.Authentication();
             try
             {
@@ -55,7 +55,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authenticatePayload** | [**AuthenticatePayload**](AuthenticatePayload.md)|  | [optional] 
+ **authenticatePayload** | [**AuthenticatePayload**](AuthenticatePayload.md)|  | 
 
 ### Return type
 
@@ -81,7 +81,7 @@ No authorization required
 
 <a name="postauthrefresh"></a>
 # **refresh**
-> AccessToken refresh (RefreshTokenPayload refreshTokenPayload = null)
+> AccessToken refresh (RefreshTokenPayload refreshTokenPayload)
 
 Refresh token
 
@@ -103,7 +103,7 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var refreshTokenPayload = new RefreshTokenPayload(); // RefreshTokenPayload |  (optional) 
+            var refreshTokenPayload = new RefreshTokenPayload(); // RefreshTokenPayload | 
             var apiAuthenticationInstance = apiInstance.Authentication();
             try
             {
@@ -126,7 +126,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **refreshTokenPayload** | [**RefreshTokenPayload**](RefreshTokenPayload.md)|  | [optional] 
+ **refreshTokenPayload** | [**RefreshTokenPayload**](RefreshTokenPayload.md)|  | 
 
 ### Return type
 

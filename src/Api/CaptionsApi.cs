@@ -340,10 +340,10 @@ namespace VideoApiClient.Api
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to have automatic captions for. </param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-/// <param name="captionsUpdatePayload"> (optional)</param>
+/// <param name="captionsUpdatePayload"></param>
         
         /// <returns>Subtitle</returns>
-		public Subtitle update(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload = default)
+		public Subtitle update(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
         {
              ApiResponse<Subtitle> localVarResponse = updateWithHttpInfo(videoId, language, captionsUpdatePayload);
              return localVarResponse.Data;
@@ -355,10 +355,10 @@ namespace VideoApiClient.Api
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to have automatic captions for. </param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-/// <param name="captionsUpdatePayload"> (optional)</param>
+/// <param name="captionsUpdatePayload"></param>
         
         /// <returns>ApiResponse of Subtitle</returns>
-		public ApiResponse<Subtitle> updateWithHttpInfo(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload = default)
+		public ApiResponse<Subtitle> updateWithHttpInfo(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
         {
             if (captionsUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'captionsUpdatePayload' when calling CaptionsApi->update");
@@ -378,6 +378,9 @@ namespace VideoApiClient.Api
             // verify the required parameter 'language' is set
             if (language == null)
                 throw new ApiException(400, "Missing required parameter 'language' when calling CaptionsApi->update");
+            // verify the required parameter 'captionsUpdatePayload' is set
+            if (captionsUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'captionsUpdatePayload' when calling CaptionsApi->update");
             
 
             var localVarPath = "/videos/{videoId}/captions/{language}";
