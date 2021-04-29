@@ -1,6 +1,12 @@
+![](https://github.com/apivideo/API_OAS_file/blob/master/apivideo_banner.png)
+
 # api.video C# API client
 
 api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
+
+## Warning
+
+This API client is still in beta. Please feel free to report any issue you may encounter.
 
 ## Frameworks supported
 
