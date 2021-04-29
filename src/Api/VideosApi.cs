@@ -179,9 +179,9 @@ namespace VideoApiClient.Api
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
         
         /// <returns>Videostatus</returns>
-		public Videostatus getVideoStatus(string videoId)
+		public Videostatus getStatus(string videoId)
         {
-             ApiResponse<Videostatus> localVarResponse = getVideoStatusWithHttpInfo(videoId);
+             ApiResponse<Videostatus> localVarResponse = getStatusWithHttpInfo(videoId);
              return localVarResponse.Data;
         }
 
@@ -192,12 +192,12 @@ namespace VideoApiClient.Api
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
         
         /// <returns>ApiResponse of Videostatus</returns>
-		public ApiResponse<Videostatus> getVideoStatusWithHttpInfo(string videoId)
+		public ApiResponse<Videostatus> getStatusWithHttpInfo(string videoId)
         {
 
             // verify the required parameter 'videoId' is set
             if (videoId == null)
-                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->getVideoStatus");
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->getStatus");
             
 
             var localVarPath = "/videos/{videoId}/status";
@@ -254,7 +254,7 @@ namespace VideoApiClient.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>VideosListResponse</returns>
-		public VideosListResponse list(string title = default, List<string> tags = default, List<string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
+		public VideosListResponse list(string title = default, List<string> tags = default, Dictionary<string, string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
              ApiResponse<VideosListResponse> localVarResponse = listWithHttpInfo(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize);
              return localVarResponse.Data;
@@ -275,7 +275,7 @@ namespace VideoApiClient.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>ApiResponse of VideosListResponse</returns>
-		public ApiResponse<VideosListResponse> listWithHttpInfo(string title = default, List<string> tags = default, List<string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
+		public ApiResponse<VideosListResponse> listWithHttpInfo(string title = default, List<string> tags = default, Dictionary<string, string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
 
 
@@ -311,7 +311,7 @@ namespace VideoApiClient.Api
 
             if (title != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "title", title)); // query parameter
             if (tags != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("multi", "tags", tags)); // query parameter
-            if (metadata != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("multi", "metadata", metadata)); // query parameter
+            if (metadata != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "metadata", metadata)); // query parameter
             if (description != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "description", description)); // query parameter
             if (liveStreamId != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "liveStreamId", liveStreamId)); // query parameter
             if (sortBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
@@ -349,7 +349,7 @@ namespace VideoApiClient.Api
         public class APIlistRequest {
             private string title;
             private List<string> tags;
-            private List<string> metadata;
+            private Dictionary<string, string> metadata;
             private string description;
             private string liveStreamId;
             private string sortBy;
@@ -392,7 +392,7 @@ namespace VideoApiClient.Api
             /// </summary>
             /// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
             /// <returns>APIlistRequest</returns>
-            public APIlistRequest Metadata(List<string> metadata) {
+            public APIlistRequest Metadata(Dictionary<string, string> metadata) {
                 this.metadata = metadata;
                 return this;
             }
@@ -493,10 +493,10 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to delete.</param>
-/// <param name="videoUpdatePayload"> (optional)</param>
+/// <param name="videoUpdatePayload"></param>
         
         /// <returns>Video</returns>
-		public Video update(string videoId, VideoUpdatePayload videoUpdatePayload = default)
+		public Video update(string videoId, VideoUpdatePayload videoUpdatePayload)
         {
              ApiResponse<Video> localVarResponse = updateWithHttpInfo(videoId, videoUpdatePayload);
              return localVarResponse.Data;
@@ -507,10 +507,10 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to delete.</param>
-/// <param name="videoUpdatePayload"> (optional)</param>
+/// <param name="videoUpdatePayload"></param>
         
         /// <returns>ApiResponse of Video</returns>
-		public ApiResponse<Video> updateWithHttpInfo(string videoId, VideoUpdatePayload videoUpdatePayload = default)
+		public ApiResponse<Video> updateWithHttpInfo(string videoId, VideoUpdatePayload videoUpdatePayload)
         {
             if (videoUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
@@ -523,6 +523,9 @@ namespace VideoApiClient.Api
             // verify the required parameter 'videoId' is set
             if (videoId == null)
                 throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->update");
+            // verify the required parameter 'videoUpdatePayload' is set
+            if (videoUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
             
 
             var localVarPath = "/videos/{videoId}";
@@ -578,10 +581,10 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.</param>
-/// <param name="videoThumbnailPickPayload"> (optional)</param>
+/// <param name="videoThumbnailPickPayload"></param>
         
         /// <returns>Video</returns>
-		public Video pickThumbnail(string videoId, VideoThumbnailPickPayload videoThumbnailPickPayload = default)
+		public Video pickThumbnail(string videoId, VideoThumbnailPickPayload videoThumbnailPickPayload)
         {
              ApiResponse<Video> localVarResponse = pickThumbnailWithHttpInfo(videoId, videoThumbnailPickPayload);
              return localVarResponse.Data;
@@ -592,10 +595,10 @@ namespace VideoApiClient.Api
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.</param>
-/// <param name="videoThumbnailPickPayload"> (optional)</param>
+/// <param name="videoThumbnailPickPayload"></param>
         
         /// <returns>ApiResponse of Video</returns>
-		public ApiResponse<Video> pickThumbnailWithHttpInfo(string videoId, VideoThumbnailPickPayload videoThumbnailPickPayload = default)
+		public ApiResponse<Video> pickThumbnailWithHttpInfo(string videoId, VideoThumbnailPickPayload videoThumbnailPickPayload)
         {
             if (videoThumbnailPickPayload == null) 
                 throw new ApiException(400,"Missing required parameter 'videoThumbnailPickPayload' when calling VideosApi->pickThumbnail");
@@ -614,6 +617,9 @@ namespace VideoApiClient.Api
             // verify the required parameter 'videoId' is set
             if (videoId == null)
                 throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->pickThumbnail");
+            // verify the required parameter 'videoThumbnailPickPayload' is set
+            if (videoThumbnailPickPayload == null)
+                throw new ApiException(400, "Missing required parameter 'videoThumbnailPickPayload' when calling VideosApi->pickThumbnail");
             
 
             var localVarPath = "/videos/{videoId}/thumbnail";
@@ -665,13 +671,142 @@ namespace VideoApiClient.Api
 
         
         /// <summary>
+        /// Upload with an upload token When given a token, anyone can upload a file to the URI &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;.  Example with cURL:  &#x60;&#x60;&#x60;curl $ curl  - -request POST - -url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39;  - -header &#39;content-type: multipart/form-data&#39;  -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60;  Or in an HTML form, with a little JavaScript to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!- -form for user interaction- -&gt; &lt;form name&#x3D;\&quot;videoUploadForm\&quot; &gt;   &lt;label for&#x3D;video&gt;Video:&lt;/label&gt;   &lt;input type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt;   &lt;input value&#x3D;\&quot;Submit\&quot; type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!- -JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     - -&gt; &lt;script&gt;    var form &#x3D; document.forms.namedItem(\&quot;videoUploadForm\&quot;);     form.addEventListener(&#39;submit&#39;, function(ev) {   ev.preventDefault();      var oOutput &#x3D; document.querySelector(\&quot;div\&quot;),          oData &#x3D; new FormData(form);      var oReq &#x3D; new XMLHttpRequest();         oReq.open(\&quot;POST\&quot;, \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true);      oReq.send(oData);   oReq.onload &#x3D; function(oEvent) {        if (oReq.status &#x3D;&#x3D;201) {          oOutput.innerHTML &#x3D; \&quot;Your video is uploaded!&lt;br/&gt;\&quot;  + oReq.response;        } else {          oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;;        }      };    }, false);  &lt;/script&gt; &#x60;&#x60;&#x60;   ### Dealing with large files  We have created a &lt;a href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt; to walk through the steps required.
+        /// </summary>
+        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token">The unique identifier for the token you want to use to upload a video.</param>
+/// <param name="file">The path to the video you want to upload.</param>
+        /// <param name="progressListener">Progress listener called after each chunk upload</param>
+        /// <returns>Video</returns>
+		public Video uploadWithUploadToken(string token, System.IO.Stream file,IUploadProgressListener progressListener = null)
+        {
+             ApiResponse<Video> localVarResponse = uploadWithUploadTokenWithHttpInfo(token, file,progressListener);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Upload with an upload token When given a token, anyone can upload a file to the URI &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;.  Example with cURL:  &#x60;&#x60;&#x60;curl $ curl  - -request POST - -url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39;  - -header &#39;content-type: multipart/form-data&#39;  -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60;  Or in an HTML form, with a little JavaScript to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!- -form for user interaction- -&gt; &lt;form name&#x3D;\&quot;videoUploadForm\&quot; &gt;   &lt;label for&#x3D;video&gt;Video:&lt;/label&gt;   &lt;input type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt;   &lt;input value&#x3D;\&quot;Submit\&quot; type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!- -JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     - -&gt; &lt;script&gt;    var form &#x3D; document.forms.namedItem(\&quot;videoUploadForm\&quot;);     form.addEventListener(&#39;submit&#39;, function(ev) {   ev.preventDefault();      var oOutput &#x3D; document.querySelector(\&quot;div\&quot;),          oData &#x3D; new FormData(form);      var oReq &#x3D; new XMLHttpRequest();         oReq.open(\&quot;POST\&quot;, \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true);      oReq.send(oData);   oReq.onload &#x3D; function(oEvent) {        if (oReq.status &#x3D;&#x3D;201) {          oOutput.innerHTML &#x3D; \&quot;Your video is uploaded!&lt;br/&gt;\&quot;  + oReq.response;        } else {          oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;;        }      };    }, false);  &lt;/script&gt; &#x60;&#x60;&#x60;   ### Dealing with large files  We have created a &lt;a href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt; to walk through the steps required.
+        /// </summary>
+        /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="token">The unique identifier for the token you want to use to upload a video.</param>
+/// <param name="file">The path to the video you want to upload.</param>
+        /// <param name="progressListener">Progress listener called after each chunk upload</param>
+        /// <returns>ApiResponse of Video</returns>
+		public ApiResponse<Video> uploadWithUploadTokenWithHttpInfo(string token, System.IO.Stream file,IUploadProgressListener progressListener = null)
+        {
+
+
+            // verify the required parameter 'token' is set
+            if (token == null)
+                throw new ApiException(400, "Missing required parameter 'token' when calling VideosApi->uploadWithUploadToken");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling VideosApi->uploadWithUploadToken");
+            
+            long totalBytes = file.Length;
+            int chunkSize = Convert.ToInt32(this.ApiClient.UploadChunkSize);
+
+            var localVarPath = "/upload";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (token != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "token", token)); // query parameter
+            
+
+            if (totalBytes > chunkSize)
+            {
+                ApiResponse<Video> lastRes = null;
+                localVarHeaderParams.Add("Content-Range", "");
+                var chunkNum = 0;
+                int chunkCount = (int)Math.Ceiling((double)totalBytes / (double)chunkSize);
+                for (int i = 0; i < totalBytes; i += chunkSize)
+                {
+                    chunkNum++;
+                    byte[] buffer = new byte[chunkSize];
+                    localVarHeaderParams["Content-Range"] = "bytes " + i + "-" + (Math.Min(i+chunkSize,totalBytes)-1) + "/" + totalBytes;
+                    
+                    file.Read(buffer, 0, chunkSize);
+
+                    if(buffer != null)
+                    {
+                        if(localVarFileParams.ContainsKey("file"))
+                        {
+                            localVarFileParams["file"] = this.ApiClient.ParameterToFile("file", file, buffer);
+                        }
+                        else
+                        {
+                            localVarFileParams.Add("file",this.ApiClient.ParameterToFile("file", file, buffer));
+                        }
+                    }
+                    
+                    // make the HTTP request
+                    IRestResponse localVarResponse = (IRestResponse)this.ApiClient.CallApi(localVarPath,
+                        Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                        localVarPathParams, localVarContentType);
+
+                    int localVarStatusCode = (int)localVarResponse.StatusCode;
+                    lastRes = new ApiResponse<Video>(localVarStatusCode,
+                        localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                        (Video)this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
+                    
+                    if(progressListener != null)
+                    {
+                        progressListener.onProgress(Math.Min(i + chunkSize, totalBytes), totalBytes, chunkCount, chunkNum);
+                    }
+                }
+                return lastRes;
+            }
+            else{
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            if (progressListener != null)
+            {
+                progressListener.onProgress(totalBytes, totalBytes, 1, 1);
+            }
+            return new ApiResponse<Video>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Video) this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
+            
+            }
+        }
+
+        
+        /// <summary>
         /// Create a video To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;title\&quot;:\&quot;My video\&quot;,       \&quot;description\&quot;:\&quot;so many details\&quot;,      \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60;  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter:  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My video\&quot;}&#39; &#x60;&#x60;&#x60;  In this case, the service will respond &#x60;202 Accepted&#x60; and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) 
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoCreatePayload">video to create (optional)</param>
+        /// <param name="videoCreatePayload">video to create</param>
         
         /// <returns>Video</returns>
-		public Video create(VideoCreatePayload videoCreatePayload = default)
+		public Video create(VideoCreatePayload videoCreatePayload)
         {
              ApiResponse<Video> localVarResponse = createWithHttpInfo(videoCreatePayload);
              return localVarResponse.Data;
@@ -681,10 +816,10 @@ namespace VideoApiClient.Api
         /// Create a video To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;title\&quot;:\&quot;My video\&quot;,       \&quot;description\&quot;:\&quot;so many details\&quot;,      \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60;  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter:  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My video\&quot;}&#39; &#x60;&#x60;&#x60;  In this case, the service will respond &#x60;202 Accepted&#x60; and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) 
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoCreatePayload">video to create (optional)</param>
+        /// <param name="videoCreatePayload">video to create</param>
         
         /// <returns>ApiResponse of Video</returns>
-		public ApiResponse<Video> createWithHttpInfo(VideoCreatePayload videoCreatePayload = default)
+		public ApiResponse<Video> createWithHttpInfo(VideoCreatePayload videoCreatePayload)
         {
             if (videoCreatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'videoCreatePayload' when calling VideosApi->create");
@@ -693,6 +828,9 @@ namespace VideoApiClient.Api
                 throw new ApiException(400,"Missing required parameter 'videoCreatePayload.Title' when calling VideosApi->create");
             }
                                                                                                                         
+            // verify the required parameter 'videoCreatePayload' is set
+            if (videoCreatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'videoCreatePayload' when calling VideosApi->create");
             
 
             var localVarPath = "/videos";

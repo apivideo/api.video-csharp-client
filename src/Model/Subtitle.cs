@@ -43,6 +43,14 @@ namespace VideoApiClient.Model {
 
 
     /// <summary>
+    /// Constructor. Set default values.
+    /// </summary>
+    public Subtitle() {
+        _default = false;
+        
+    }
+
+    /// <summary>
     /// Get the string presentation of the object
     /// </summary>
     /// <returns>String presentation of the object</returns>

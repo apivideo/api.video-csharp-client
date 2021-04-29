@@ -326,26 +326,26 @@ namespace VideoApiClient.Api
             }
         }
         /// <summary>
-        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes
+        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \\\&quot;type\\\&quot;: \\\&quot;video.encoding.quality.completed\\\&quot;, \\\&quot;emittedAt\\\&quot;: \\\&quot;2021-01-29T16:46:25.217+01:00\\\&quot;, \\\&quot;videoId\\\&quot;: \\\&quot;viXXXXXXXX\\\&quot;, \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="webhooksCreatePayload"> (optional)</param>
+        /// <param name="webhooksCreatePayload"></param>
         
         /// <returns>Webhook</returns>
-		public Webhook create(WebhooksCreatePayload webhooksCreatePayload = default)
+		public Webhook create(WebhooksCreatePayload webhooksCreatePayload)
         {
              ApiResponse<Webhook> localVarResponse = createWithHttpInfo(webhooksCreatePayload);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes
+        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \\\&quot;type\\\&quot;: \\\&quot;video.encoding.quality.completed\\\&quot;, \\\&quot;emittedAt\\\&quot;: \\\&quot;2021-01-29T16:46:25.217+01:00\\\&quot;, \\\&quot;videoId\\\&quot;: \\\&quot;viXXXXXXXX\\\&quot;, \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
         /// </summary>
         /// <exception cref="VideoApiClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="webhooksCreatePayload"> (optional)</param>
+        /// <param name="webhooksCreatePayload"></param>
         
         /// <returns>ApiResponse of Webhook</returns>
-		public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreatePayload webhooksCreatePayload = default)
+		public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreatePayload webhooksCreatePayload)
         {
             if (webhooksCreatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'webhooksCreatePayload' when calling WebhooksApi->create");
@@ -357,6 +357,9 @@ namespace VideoApiClient.Api
                 throw new ApiException(400,"Missing required parameter 'webhooksCreatePayload.Url' when calling WebhooksApi->create");
             }
             
+            // verify the required parameter 'webhooksCreatePayload' is set
+            if (webhooksCreatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'webhooksCreatePayload' when calling WebhooksApi->create");
             
 
             var localVarPath = "/webhooks";

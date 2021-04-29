@@ -13,6 +13,46 @@ namespace VideoApiClient.Model {
   [DataContract]
   public class PlayerAllOf {
     /// <summary>
+    /// enable/disable player SDK access. Default: true
+    /// </summary>
+    /// <value>enable/disable player SDK access. Default: true</value>
+    [DataMember(Name="enableApi", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "enableApi")]
+    public bool enableapi { get; set; }
+
+    /// <summary>
+    /// enable/disable player controls. Default: true
+    /// </summary>
+    /// <value>enable/disable player controls. Default: true</value>
+    [DataMember(Name="enableControls", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "enableControls")]
+    public bool enablecontrols { get; set; }
+
+    /// <summary>
+    /// enable/disable player autoplay. Default: false
+    /// </summary>
+    /// <value>enable/disable player autoplay. Default: false</value>
+    [DataMember(Name="forceAutoplay", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "forceAutoplay")]
+    public bool forceautoplay { get; set; }
+
+    /// <summary>
+    /// enable/disable title. Default: false
+    /// </summary>
+    /// <value>enable/disable title. Default: false</value>
+    [DataMember(Name="hideTitle", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "hideTitle")]
+    public bool hidetitle { get; set; }
+
+    /// <summary>
+    /// enable/disable looping. Default: false
+    /// </summary>
+    /// <value>enable/disable looping. Default: false</value>
+    [DataMember(Name="forceLoop", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "forceLoop")]
+    public bool forceloop { get; set; }
+
+    /// <summary>
     /// Gets or Sets PlayerId
     /// </summary>
     [DataMember(Name="playerId", EmitDefaultValue=false)]
@@ -98,6 +138,11 @@ namespace VideoApiClient.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class PlayerAllOf {\n");
+      sb.Append("  EnableApi: ").Append(enableapi).Append("\n");
+      sb.Append("  EnableControls: ").Append(enablecontrols).Append("\n");
+      sb.Append("  ForceAutoplay: ").Append(forceautoplay).Append("\n");
+      sb.Append("  HideTitle: ").Append(hidetitle).Append("\n");
+      sb.Append("  ForceLoop: ").Append(forceloop).Append("\n");
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");
       sb.Append("  CreatedAt: ").Append(createdat).Append("\n");
       sb.Append("  UpdatedAt: ").Append(updatedat).Append("\n");

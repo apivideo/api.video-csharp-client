@@ -4,14 +4,14 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLiveStreamAnalytics**](RawStatisticsApi.md#getanalyticslivestreamslivestreamid) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**listPlayerSessionEvents**](RawStatisticsApi.md#getanalyticssessionssessionidevents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**listSessions**](RawStatisticsApi.md#getanalyticsvideosvideoid) | **GET** /analytics/videos/{videoId} | List video player sessions
+[**listLiveStreamSessions**](RawStatisticsApi.md#getanalyticslivestreamslivestreamid) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
+[**listSessionEvents**](RawStatisticsApi.md#getanalyticssessionssessionidevents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
+[**listVideoSessions**](RawStatisticsApi.md#getanalyticsvideosvideoid) | **GET** /analytics/videos/{videoId} | List video player sessions
 
 
 <a name="getanalyticslivestreamslivestreamid"></a>
-# **getLiveStreamAnalytics**
-> RawStatisticsListLiveStreamAnalyticsResponse getLiveStreamAnalytics (string liveStreamId, string period = null, int? currentPage = null, int? pageSize = null)
+# **listLiveStreamSessions**
+> RawStatisticsListLiveStreamAnalyticsResponse listLiveStreamSessions (string liveStreamId, string period = null, int? currentPage = null, int? pageSize = null)
 
 List live stream player sessions
 
@@ -22,7 +22,7 @@ using VideoApiClient.Client;
 
 namespace Example
 {
-    public class getLiveStreamAnalyticsExample
+    public class listLiveStreamSessionsExample
     {
         public static void Main()
         {
@@ -39,12 +39,12 @@ namespace Example
             try
             {
                 // List live stream player sessions
-                RawStatisticsListLiveStreamAnalyticsResponse result = apiRawStatisticsInstance.getLiveStreamAnalytics(liveStreamId, period, currentPage, pageSize);
+                RawStatisticsListLiveStreamAnalyticsResponse result = apiRawStatisticsInstance.listLiveStreamSessions(liveStreamId, period, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RawStatisticsApi.getLiveStreamAnalytics: " + e.Message );
+                Debug.Print("Exception when calling RawStatisticsApi.listLiveStreamSessions: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -85,8 +85,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="getanalyticssessionssessionidevents"></a>
-# **listPlayerSessionEvents**
-> RawStatisticsListPlayerSessionEventsResponse listPlayerSessionEvents (string sessionId, int? currentPage = null, int? pageSize = null)
+# **listSessionEvents**
+> RawStatisticsListPlayerSessionEventsResponse listSessionEvents (string sessionId, int? currentPage = null, int? pageSize = null)
 
 List player session events
 
@@ -99,7 +99,7 @@ using VideoApiClient.Client;
 
 namespace Example
 {
-    public class listPlayerSessionEventsExample
+    public class listSessionEventsExample
     {
         public static void Main()
         {
@@ -115,12 +115,12 @@ namespace Example
             try
             {
                 // List player session events
-                RawStatisticsListPlayerSessionEventsResponse result = apiRawStatisticsInstance.listPlayerSessionEvents(sessionId, currentPage, pageSize);
+                RawStatisticsListPlayerSessionEventsResponse result = apiRawStatisticsInstance.listSessionEvents(sessionId, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RawStatisticsApi.listPlayerSessionEvents: " + e.Message );
+                Debug.Print("Exception when calling RawStatisticsApi.listSessionEvents: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -160,8 +160,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="getanalyticsvideosvideoid"></a>
-# **listSessions**
-> RawStatisticsListSessionsResponse listSessions (string videoId, string period = null, List<string> metadata = null, int? currentPage = null, int? pageSize = null)
+# **listVideoSessions**
+> RawStatisticsListSessionsResponse listVideoSessions (string videoId, string period = null, List<string> metadata = null, int? currentPage = null, int? pageSize = null)
 
 List video player sessions
 
@@ -174,7 +174,7 @@ using VideoApiClient.Client;
 
 namespace Example
 {
-    public class listSessionsExample
+    public class listVideoSessionsExample
     {
         public static void Main()
         {
@@ -192,12 +192,12 @@ namespace Example
             try
             {
                 // List video player sessions
-                RawStatisticsListSessionsResponse result = apiRawStatisticsInstance.listSessions(videoId, period, metadata, currentPage, pageSize);
+                RawStatisticsListSessionsResponse result = apiRawStatisticsInstance.listVideoSessions(videoId, period, metadata, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RawStatisticsApi.listSessions: " + e.Message );
+                Debug.Print("Exception when calling RawStatisticsApi.listVideoSessions: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

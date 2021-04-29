@@ -84,46 +84,6 @@ namespace VideoApiClient.Model {
     [JsonProperty(PropertyName = "backgroundText")]
     public string backgroundtext { get; set; }
 
-    /// <summary>
-    /// enable/disable player SDK access. Default: true
-    /// </summary>
-    /// <value>enable/disable player SDK access. Default: true</value>
-    [DataMember(Name="enableApi", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "enableApi")]
-    public bool enableapi { get; set; }
-
-    /// <summary>
-    /// enable/disable player controls. Default: true
-    /// </summary>
-    /// <value>enable/disable player controls. Default: true</value>
-    [DataMember(Name="enableControls", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "enableControls")]
-    public bool enablecontrols { get; set; }
-
-    /// <summary>
-    /// enable/disable player autoplay. Default: false
-    /// </summary>
-    /// <value>enable/disable player autoplay. Default: false</value>
-    [DataMember(Name="forceAutoplay", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "forceAutoplay")]
-    public bool forceautoplay { get; set; }
-
-    /// <summary>
-    /// enable/disable title. Default: false
-    /// </summary>
-    /// <value>enable/disable title. Default: false</value>
-    [DataMember(Name="hideTitle", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "hideTitle")]
-    public bool hidetitle { get; set; }
-
-    /// <summary>
-    /// enable/disable looping. Default: false
-    /// </summary>
-    /// <value>enable/disable looping. Default: false</value>
-    [DataMember(Name="forceLoop", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "forceLoop")]
-    public bool forceloop { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object
@@ -141,11 +101,6 @@ namespace VideoApiClient.Model {
       sb.Append("  BackgroundTop: ").Append(backgroundtop).Append("\n");
       sb.Append("  BackgroundBottom: ").Append(backgroundbottom).Append("\n");
       sb.Append("  BackgroundText: ").Append(backgroundtext).Append("\n");
-      sb.Append("  EnableApi: ").Append(enableapi).Append("\n");
-      sb.Append("  EnableControls: ").Append(enablecontrols).Append("\n");
-      sb.Append("  ForceAutoplay: ").Append(forceautoplay).Append("\n");
-      sb.Append("  HideTitle: ").Append(hidetitle).Append("\n");
-      sb.Append("  ForceLoop: ").Append(forceloop).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

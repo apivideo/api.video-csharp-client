@@ -54,6 +54,7 @@ namespace VideoApiClient.Client
         public ApiClient(string basePath) {
             this.BasePath = basePath;
             this.RestClient = new RestClient(basePath);
+            this.RestClient.UserAgent = "api.video client (C#; v:0.0.4; )";
         }
         
         /// <summary>
@@ -64,6 +65,7 @@ namespace VideoApiClient.Client
         public ApiClient(string apiKey,string basePath) {
             this.BasePath = basePath;
             this.RestClient = new RestClient(basePath);
+            this.RestClient.UserAgent = "api.video client (C#; v:0.0.4; )";
             this.AuthManager = new AuthenticationManager(apiKey, this);
         }
 
@@ -75,6 +77,7 @@ namespace VideoApiClient.Client
         public ApiClient(RestClient client,string basePath) {
             this.BasePath = basePath;
             this.RestClient = client;
+            this.RestClient.UserAgent = "api.video client (C#; v:0.0.4; )";
         }
 
         /// <summary>

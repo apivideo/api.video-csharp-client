@@ -8,14 +8,13 @@ namespace VideoApiClient.Client
     /// </summary>
     public class ApiVideoClient {
         private readonly ApiClient apiClient;
-        private readonly AccountApi account;
         private readonly CaptionsApi captions;
         private readonly ChaptersApi chapters;
-        private readonly LiveApi live;
-        private readonly PlayersApi players;
+        private readonly LiveStreamsApi liveStreams;
+        private readonly PlayerThemesApi playerThemes;
         private readonly RawStatisticsApi rawStatistics;
+        private readonly UploadTokensApi uploadTokens;
         private readonly VideosApi videos;
-        private readonly VideosDelegatedUploadApi videosDelegatedUpload;
         private readonly WebhooksApi webhooks;
 
         /// <summary>
@@ -64,25 +63,16 @@ namespace VideoApiClient.Client
 
         private ApiVideoClient(ApiClient apiClient) {
             this.apiClient = apiClient;
-            this.account = new AccountApi(this.apiClient);
             this.captions = new CaptionsApi(this.apiClient);
             this.chapters = new ChaptersApi(this.apiClient);
-            this.live = new LiveApi(this.apiClient);
-            this.players = new PlayersApi(this.apiClient);
+            this.liveStreams = new LiveStreamsApi(this.apiClient);
+            this.playerThemes = new PlayerThemesApi(this.apiClient);
             this.rawStatistics = new RawStatisticsApi(this.apiClient);
+            this.uploadTokens = new UploadTokensApi(this.apiClient);
             this.videos = new VideosApi(this.apiClient);
-            this.videosDelegatedUpload = new VideosDelegatedUploadApi(this.apiClient);
             this.webhooks = new WebhooksApi(this.apiClient);
         }
 
-    
-        /// <summary>
-        /// Get an AccountApi instance
-        /// </summary>
-        /// <returns>AccountApi</returns>
-        public AccountApi Account() {
-            return this.account;
-        }
     
         /// <summary>
         /// Get an CaptionsApi instance
@@ -101,19 +91,19 @@ namespace VideoApiClient.Client
         }
     
         /// <summary>
-        /// Get an LiveApi instance
+        /// Get an LiveStreamsApi instance
         /// </summary>
-        /// <returns>LiveApi</returns>
-        public LiveApi Live() {
-            return this.live;
+        /// <returns>LiveStreamsApi</returns>
+        public LiveStreamsApi LiveStreams() {
+            return this.liveStreams;
         }
     
         /// <summary>
-        /// Get an PlayersApi instance
+        /// Get an PlayerThemesApi instance
         /// </summary>
-        /// <returns>PlayersApi</returns>
-        public PlayersApi Players() {
-            return this.players;
+        /// <returns>PlayerThemesApi</returns>
+        public PlayerThemesApi PlayerThemes() {
+            return this.playerThemes;
         }
     
         /// <summary>
@@ -125,19 +115,19 @@ namespace VideoApiClient.Client
         }
     
         /// <summary>
+        /// Get an UploadTokensApi instance
+        /// </summary>
+        /// <returns>UploadTokensApi</returns>
+        public UploadTokensApi UploadTokens() {
+            return this.uploadTokens;
+        }
+    
+        /// <summary>
         /// Get an VideosApi instance
         /// </summary>
         /// <returns>VideosApi</returns>
         public VideosApi Videos() {
             return this.videos;
-        }
-    
-        /// <summary>
-        /// Get an VideosDelegatedUploadApi instance
-        /// </summary>
-        /// <returns>VideosDelegatedUploadApi</returns>
-        public VideosDelegatedUploadApi VideosDelegatedUpload() {
-            return this.videosDelegatedUpload;
         }
     
         /// <summary>

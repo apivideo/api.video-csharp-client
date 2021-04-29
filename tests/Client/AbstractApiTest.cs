@@ -13,7 +13,7 @@ namespace VideoApiTests.Client
 
         protected string readResourceFile(string path)
         {
-            return File.ReadAllText("../../resources"+path);
+            return File.ReadAllText("../../../resources"+path);
         }
         protected void answerOnAnyRequest(int statusCode, string body)
         {
