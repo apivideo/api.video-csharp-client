@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class WebhooksCreatePayload {
+  public class WebhooksCreationPayload {
     /// <summary>
     /// A list of the webhooks that you are subscribing to. Currently \"video.encoding.quality.completed\" is the only option. video.encoding.quality.completed - a video encoding quality is ready for the video (for example the 720p quality hls encoding video is ready.)
     /// </summary>
@@ -35,7 +35,7 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class WebhooksCreatePayload {\n");
+      sb.Append("class WebhooksCreationPayload {\n");
       sb.Append("  Events: ").Append(events).Append("\n");
       sb.Append("  Url: ").Append(url).Append("\n");
       sb.Append("}\n");

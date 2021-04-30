@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 <a name="postlivestreams"></a>
 # **create**
-> LiveStream create (LiveStreamCreatePayload liveStreamCreatePayload)
+> LiveStream create (LiveStreamCreationPayload liveStreamCreationPayload)
 
 Create live stream
 
@@ -398,12 +398,12 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var liveStreamCreatePayload = new LiveStreamCreatePayload(); // LiveStreamCreatePayload | 
+            var liveStreamCreationPayload = new LiveStreamCreationPayload(); // LiveStreamCreationPayload | 
             var apiLiveStreamsInstance = apiInstance.LiveStreams();
             try
             {
                 // Create live stream
-                LiveStream result = apiLiveStreamsInstance.create(liveStreamCreatePayload);
+                LiveStream result = apiLiveStreamsInstance.create(liveStreamCreationPayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -421,7 +421,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamCreatePayload** | [**LiveStreamCreatePayload**](LiveStreamCreatePayload.md)|  | 
+ **liveStreamCreationPayload** | [**LiveStreamCreationPayload**](LiveStreamCreationPayload.md)|  | 
 
 ### Return type
 

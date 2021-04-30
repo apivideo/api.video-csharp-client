@@ -36,7 +36,7 @@ namespace VideoApiTests.Integration
         {
             this.apiClient = new ApiVideoClient(System.Environment.GetEnvironmentVariable("API_KEY"), ApiVideo.Client.Environment.SANDBOX);
             this.testVideo = apiClient.Videos()
-                    .create(new VideoCreatePayload() { title = "[Java-SDK-tests] sdk tests", _public = false});
+                    .create(new VideoCreationPayload() { title = "[Java-SDK-tests] sdk tests", _public = false});
             Console.WriteLine("Video "+this.testVideo.videoid+" created");
         }
         [TestCleanup]
@@ -170,7 +170,7 @@ namespace VideoApiTests.Integration
         [TestMethod]
         public void getVideoStatus() 
         {
-            Videostatus videoStatus = apiClient.Videos().getStatus(this.testVideo.videoid);
+            VideoStatus videoStatus = apiClient.Videos().getStatus(this.testVideo.videoid);
 
             videoStatus.ingest.Should().BeNull();
             videoStatus.encoding.Should().NotBeNull();

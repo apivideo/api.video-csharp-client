@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 <a name="postwebhooks"></a>
 # **create**
-> Webhook create (WebhooksCreatePayload webhooksCreatePayload)
+> Webhook create (WebhooksCreationPayload webhooksCreationPayload)
 
 Create Webhook
 
@@ -248,12 +248,12 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var webhooksCreatePayload = new WebhooksCreatePayload(); // WebhooksCreatePayload | 
+            var webhooksCreationPayload = new WebhooksCreationPayload(); // WebhooksCreationPayload | 
             var apiWebhooksInstance = apiInstance.Webhooks();
             try
             {
                 // Create Webhook
-                Webhook result = apiWebhooksInstance.create(webhooksCreatePayload);
+                Webhook result = apiWebhooksInstance.create(webhooksCreationPayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -271,7 +271,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhooksCreatePayload** | [**WebhooksCreatePayload**](WebhooksCreatePayload.md)|  | 
+ **webhooksCreationPayload** | [**WebhooksCreationPayload**](WebhooksCreationPayload.md)|  | 
 
 ### Return type
 

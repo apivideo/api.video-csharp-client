@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 <a name="getvideostatus"></a>
 # **getStatus**
-> Videostatus getStatus (string videoId)
+> VideoStatus getStatus (string videoId)
 
 Show video status
 
@@ -186,7 +186,7 @@ namespace Example
             try
             {
                 // Show video status
-                Videostatus result = apiVideosInstance.getStatus(videoId);
+                VideoStatus result = apiVideosInstance.getStatus(videoId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Videostatus**](Videostatus.md)
+[**VideoStatus**](VideoStatus.md)
 
 ### Authorization
 
@@ -537,7 +537,7 @@ No authorization required
 
 <a name="postvideo"></a>
 # **create**
-> Video create (VideoCreatePayload videoCreatePayload)
+> Video create (VideoCreationPayload videoCreationPayload)
 
 Create a video
 
@@ -559,12 +559,12 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var videoCreatePayload = new VideoCreatePayload(); // VideoCreatePayload | video to create
+            var videoCreationPayload = new VideoCreationPayload(); // VideoCreationPayload | video to create
             var apiVideosInstance = apiInstance.Videos();
             try
             {
                 // Create a video
-                Video result = apiVideosInstance.create(videoCreatePayload);
+                Video result = apiVideosInstance.create(videoCreationPayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -582,7 +582,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoCreatePayload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create | 
+ **videoCreationPayload** | [**VideoCreationPayload**](VideoCreationPayload.md)| video to create | 
 
 ### Return type
 

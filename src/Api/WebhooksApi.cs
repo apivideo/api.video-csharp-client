@@ -329,12 +329,12 @@ namespace ApiVideo.Api
         /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \\\&quot;type\\\&quot;: \\\&quot;video.encoding.quality.completed\\\&quot;, \\\&quot;emittedAt\\\&quot;: \\\&quot;2021-01-29T16:46:25.217+01:00\\\&quot;, \\\&quot;videoId\\\&quot;: \\\&quot;viXXXXXXXX\\\&quot;, \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="webhooksCreatePayload"></param>
+        /// <param name="webhooksCreationPayload"></param>
         
         /// <returns>Webhook</returns>
-		public Webhook create(WebhooksCreatePayload webhooksCreatePayload)
+		public Webhook create(WebhooksCreationPayload webhooksCreationPayload)
         {
-             ApiResponse<Webhook> localVarResponse = createWithHttpInfo(webhooksCreatePayload);
+             ApiResponse<Webhook> localVarResponse = createWithHttpInfo(webhooksCreationPayload);
              return localVarResponse.Data;
         }
 
@@ -342,24 +342,24 @@ namespace ApiVideo.Api
         /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer one event, the &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; event.  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \\\&quot;type\\\&quot;: \\\&quot;video.encoding.quality.completed\\\&quot;, \\\&quot;emittedAt\\\&quot;: \\\&quot;2021-01-29T16:46:25.217+01:00\\\&quot;, \\\&quot;videoId\\\&quot;: \\\&quot;viXXXXXXXX\\\&quot;, \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="webhooksCreatePayload"></param>
+        /// <param name="webhooksCreationPayload"></param>
         
         /// <returns>ApiResponse of Webhook</returns>
-		public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreatePayload webhooksCreatePayload)
+		public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreationPayload webhooksCreationPayload)
         {
-            if (webhooksCreatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'webhooksCreatePayload' when calling WebhooksApi->create");
+            if (webhooksCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload' when calling WebhooksApi->create");
             
-            if (webhooksCreatePayload != null && webhooksCreatePayload.events == null) {
-                throw new ApiException(400,"Missing required parameter 'webhooksCreatePayload.Events' when calling WebhooksApi->create");
+            if (webhooksCreationPayload != null && webhooksCreationPayload.events == null) {
+                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload.Events' when calling WebhooksApi->create");
             }
-                        if (webhooksCreatePayload != null && webhooksCreatePayload.url == null) {
-                throw new ApiException(400,"Missing required parameter 'webhooksCreatePayload.Url' when calling WebhooksApi->create");
+                        if (webhooksCreationPayload != null && webhooksCreationPayload.url == null) {
+                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload.Url' when calling WebhooksApi->create");
             }
             
-            // verify the required parameter 'webhooksCreatePayload' is set
-            if (webhooksCreatePayload == null)
-                throw new ApiException(400, "Missing required parameter 'webhooksCreatePayload' when calling WebhooksApi->create");
+            // verify the required parameter 'webhooksCreationPayload' is set
+            if (webhooksCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'webhooksCreationPayload' when calling WebhooksApi->create");
             
 
             var localVarPath = "/webhooks";
@@ -384,13 +384,13 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (webhooksCreatePayload != null && webhooksCreatePayload.GetType() != typeof(byte[]) && webhooksCreatePayload.GetType() != typeof(string))
+            if (webhooksCreationPayload != null && webhooksCreationPayload.GetType() != typeof(byte[]) && webhooksCreationPayload.GetType() != typeof(string))
             {
-                localVarPostBody = this.ApiClient.Serialize(webhooksCreatePayload); // http body (model) parameter
+                localVarPostBody = this.ApiClient.Serialize(webhooksCreationPayload); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = webhooksCreatePayload; // byte array
+                localVarPostBody = webhooksCreationPayload; // byte array
             }
 
 

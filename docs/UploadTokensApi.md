@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 <a name="postuploadtokens"></a>
 # **createToken**
-> UploadToken createToken (TokenCreatePayload tokenCreatePayload)
+> UploadToken createToken (TokenCreationPayload tokenCreationPayload)
 
 Generate an upload token
 
@@ -251,12 +251,12 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var tokenCreatePayload = new TokenCreatePayload(); // TokenCreatePayload | 
+            var tokenCreationPayload = new TokenCreationPayload(); // TokenCreationPayload | 
             var apiUploadTokensInstance = apiInstance.UploadTokens();
             try
             {
                 // Generate an upload token
-                UploadToken result = apiUploadTokensInstance.createToken(tokenCreatePayload);
+                UploadToken result = apiUploadTokensInstance.createToken(tokenCreationPayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -274,7 +274,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenCreatePayload** | [**TokenCreatePayload**](TokenCreatePayload.md)|  | 
+ **tokenCreationPayload** | [**TokenCreationPayload**](TokenCreationPayload.md)|  | 
 
 ### Return type
 

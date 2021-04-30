@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class VideoCreatePayload {
+  public class VideoCreationPayload {
     /// <summary>
     /// The title of your new video.
     /// </summary>
@@ -96,7 +96,7 @@ namespace ApiVideo.Model {
     /// <summary>
     /// Constructor. Set default values.
     /// </summary>
-    public VideoCreatePayload() {
+    public VideoCreationPayload() {
         _public = true;
         panoramic = false;
         mp4support = true;
@@ -109,7 +109,7 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class VideoCreatePayload {\n");
+      sb.Append("class VideoCreationPayload {\n");
       sb.Append("  Title: ").Append(title).Append("\n");
       sb.Append("  Description: ").Append(description).Append("\n");
       sb.Append("  Source: ").Append(source).Append("\n");

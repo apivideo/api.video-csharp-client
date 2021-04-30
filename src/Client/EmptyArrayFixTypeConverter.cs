@@ -10,7 +10,7 @@ namespace ApiVideo.Client
 
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof(VideostatusIngest);
+            return objectType == typeof(VideoStatusIngest);
         }
         public override bool CanWrite => false;
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

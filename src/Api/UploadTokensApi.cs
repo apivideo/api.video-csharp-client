@@ -345,12 +345,12 @@ namespace ApiVideo.Api
         /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tokenCreatePayload"></param>
+        /// <param name="tokenCreationPayload"></param>
         
         /// <returns>UploadToken</returns>
-		public UploadToken createToken(TokenCreatePayload tokenCreatePayload)
+		public UploadToken createToken(TokenCreationPayload tokenCreationPayload)
         {
-             ApiResponse<UploadToken> localVarResponse = createTokenWithHttpInfo(tokenCreatePayload);
+             ApiResponse<UploadToken> localVarResponse = createTokenWithHttpInfo(tokenCreationPayload);
              return localVarResponse.Data;
         }
 
@@ -358,18 +358,18 @@ namespace ApiVideo.Api
         /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tokenCreatePayload"></param>
+        /// <param name="tokenCreationPayload"></param>
         
         /// <returns>ApiResponse of UploadToken</returns>
-		public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreatePayload tokenCreatePayload)
+		public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreationPayload tokenCreationPayload)
         {
-            if (tokenCreatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'tokenCreatePayload' when calling UploadTokensApi->createToken");
+            if (tokenCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'tokenCreationPayload' when calling UploadTokensApi->createToken");
             
             
-            // verify the required parameter 'tokenCreatePayload' is set
-            if (tokenCreatePayload == null)
-                throw new ApiException(400, "Missing required parameter 'tokenCreatePayload' when calling UploadTokensApi->createToken");
+            // verify the required parameter 'tokenCreationPayload' is set
+            if (tokenCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'tokenCreationPayload' when calling UploadTokensApi->createToken");
             
 
             var localVarPath = "/upload-tokens";
@@ -394,13 +394,13 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (tokenCreatePayload != null && tokenCreatePayload.GetType() != typeof(byte[]) && tokenCreatePayload.GetType() != typeof(string))
+            if (tokenCreationPayload != null && tokenCreationPayload.GetType() != typeof(byte[]) && tokenCreationPayload.GetType() != typeof(string))
             {
-                localVarPostBody = this.ApiClient.Serialize(tokenCreatePayload); // http body (model) parameter
+                localVarPostBody = this.ApiClient.Serialize(tokenCreationPayload); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = tokenCreatePayload; // byte array
+                localVarPostBody = tokenCreationPayload; // byte array
             }
 
 

@@ -139,7 +139,7 @@ namespace VideoApiTests.Client
             InitGetStatusTests();
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Videostatus res = api.getStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz");
+            VideoStatus res = api.getStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz");
 
             res.ingest.Should().NotBeNull();
             res.ingest.status.Should().Be("uploaded");
@@ -418,12 +418,12 @@ namespace VideoApiTests.Client
                                             .Throw<ApiException>()
                                             .WithMessage("Missing required parameter 'videoCreatePayload' when calling VideosApi->create");
 
-            api.Invoking(x => x.create(new VideoCreatePayload()))
+            api.Invoking(x => x.create(new VideoCreationPayload()))
                                             .Should()
                                             .Throw<ApiException>()
                                             .WithMessage("Missing required parameter 'videoCreatePayload.title' when calling VideosApi->create");
 
-            api.Invoking(x => x.create(new VideoCreatePayload() { title = "title" }))
+            api.Invoking(x => x.create(new VideoCreationPayload() { title = "title" }))
                                 .Should()
                                 .NotThrow();
         }
@@ -434,7 +434,7 @@ namespace VideoApiTests.Client
             InitCreateTests();
             answerOnAnyRequest(201, readResourceFile(PAYLOADS_PATH + "responses/201.json"));
 
-            Video res = api.create(new VideoCreatePayload() { title = "title" });
+            Video res = api.create(new VideoCreationPayload() { title = "title" });
 
             res.videoid.Should().Be("vi4k0jvEUuaTdRAEjQ4Jfrgz");
             res.playerid.Should().Be("pl4k0jvEUuaTdRAEjQ4Jfrgz");
@@ -462,7 +462,7 @@ namespace VideoApiTests.Client
             InitCreateTests();
             answerOnAnyRequest(400, readResourceFile(PAYLOADS_PATH + "responses/400.json"));
 
-            api.Invoking(x => x.create(new VideoCreatePayload() { title = "title" }))
+            api.Invoking(x => x.create(new VideoCreationPayload() { title = "title" }))
                                 .Should()
                                 .Throw<ApiException>()
                                 .Where(x => x.ErrorCode == 400)

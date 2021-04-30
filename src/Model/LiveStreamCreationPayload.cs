@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class LiveStreamCreatePayload {
+  public class LiveStreamCreationPayload {
     /// <summary>
     /// Add a name for your live stream here.
     /// </summary>
@@ -48,7 +48,7 @@ namespace ApiVideo.Model {
     /// <summary>
     /// Constructor. Set default values.
     /// </summary>
-    public LiveStreamCreatePayload() {
+    public LiveStreamCreationPayload() {
         record = false;
         
     }
@@ -59,7 +59,7 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class LiveStreamCreatePayload {\n");
+      sb.Append("class LiveStreamCreationPayload {\n");
       sb.Append("  Name: ").Append(name).Append("\n");
       sb.Append("  Record: ").Append(record).Append("\n");
       sb.Append("  Public: ").Append(_public).Append("\n");

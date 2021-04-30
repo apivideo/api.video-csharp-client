@@ -178,10 +178,10 @@ namespace ApiVideo.Api
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
         
-        /// <returns>Videostatus</returns>
-		public Videostatus getStatus(string videoId)
+        /// <returns>VideoStatus</returns>
+		public VideoStatus getStatus(string videoId)
         {
-             ApiResponse<Videostatus> localVarResponse = getStatusWithHttpInfo(videoId);
+             ApiResponse<VideoStatus> localVarResponse = getStatusWithHttpInfo(videoId);
              return localVarResponse.Data;
         }
 
@@ -191,8 +191,8 @@ namespace ApiVideo.Api
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
         
-        /// <returns>ApiResponse of Videostatus</returns>
-		public ApiResponse<Videostatus> getStatusWithHttpInfo(string videoId)
+        /// <returns>ApiResponse of VideoStatus</returns>
+		public ApiResponse<VideoStatus> getStatusWithHttpInfo(string videoId)
         {
 
             // verify the required parameter 'videoId' is set
@@ -232,9 +232,9 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Videostatus>(localVarStatusCode,
+            return new ApiResponse<VideoStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Videostatus) this.ApiClient.Deserialize(localVarResponse, typeof(Videostatus)));
+                (VideoStatus) this.ApiClient.Deserialize(localVarResponse, typeof(VideoStatus)));
             
         }
 
@@ -803,12 +803,12 @@ namespace ApiVideo.Api
         /// Create a video To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;title\&quot;:\&quot;My video\&quot;,       \&quot;description\&quot;:\&quot;so many details\&quot;,      \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60;  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter:  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My video\&quot;}&#39; &#x60;&#x60;&#x60;  In this case, the service will respond &#x60;202 Accepted&#x60; and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoCreatePayload">video to create</param>
+        /// <param name="videoCreationPayload">video to create</param>
         
         /// <returns>Video</returns>
-		public Video create(VideoCreatePayload videoCreatePayload)
+		public Video create(VideoCreationPayload videoCreationPayload)
         {
-             ApiResponse<Video> localVarResponse = createWithHttpInfo(videoCreatePayload);
+             ApiResponse<Video> localVarResponse = createWithHttpInfo(videoCreationPayload);
              return localVarResponse.Data;
         }
 
@@ -816,21 +816,21 @@ namespace ApiVideo.Api
         /// Create a video To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source).  Videos are public by default. Mp4 encoded versions are created at the highest quality (max 1080p) by default.  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;title\&quot;:\&quot;My video\&quot;,       \&quot;description\&quot;:\&quot;so many details\&quot;,      \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60;  ### Creating a hosted video   You can also create a video directly from one hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter:  &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My video\&quot;}&#39; &#x60;&#x60;&#x60;  In this case, the service will respond &#x60;202 Accepted&#x60; and download the video asynchronously.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoCreatePayload">video to create</param>
+        /// <param name="videoCreationPayload">video to create</param>
         
         /// <returns>ApiResponse of Video</returns>
-		public ApiResponse<Video> createWithHttpInfo(VideoCreatePayload videoCreatePayload)
+		public ApiResponse<Video> createWithHttpInfo(VideoCreationPayload videoCreationPayload)
         {
-            if (videoCreatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'videoCreatePayload' when calling VideosApi->create");
+            if (videoCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'videoCreationPayload' when calling VideosApi->create");
             
-            if (videoCreatePayload != null && videoCreatePayload.title == null) {
-                throw new ApiException(400,"Missing required parameter 'videoCreatePayload.Title' when calling VideosApi->create");
+            if (videoCreationPayload != null && videoCreationPayload.title == null) {
+                throw new ApiException(400,"Missing required parameter 'videoCreationPayload.Title' when calling VideosApi->create");
             }
                                                                                                                         
-            // verify the required parameter 'videoCreatePayload' is set
-            if (videoCreatePayload == null)
-                throw new ApiException(400, "Missing required parameter 'videoCreatePayload' when calling VideosApi->create");
+            // verify the required parameter 'videoCreationPayload' is set
+            if (videoCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'videoCreationPayload' when calling VideosApi->create");
             
 
             var localVarPath = "/videos";
@@ -855,13 +855,13 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (videoCreatePayload != null && videoCreatePayload.GetType() != typeof(byte[]) && videoCreatePayload.GetType() != typeof(string))
+            if (videoCreationPayload != null && videoCreationPayload.GetType() != typeof(byte[]) && videoCreationPayload.GetType() != typeof(string))
             {
-                localVarPostBody = this.ApiClient.Serialize(videoCreatePayload); // http body (model) parameter
+                localVarPostBody = this.ApiClient.Serialize(videoCreationPayload); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = videoCreatePayload; // byte array
+                localVarPostBody = videoCreationPayload; // byte array
             }
 
 

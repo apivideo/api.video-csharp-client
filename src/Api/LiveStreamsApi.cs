@@ -531,12 +531,12 @@ namespace ApiVideo.Api
         /// Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamCreatePayload"></param>
+        /// <param name="liveStreamCreationPayload"></param>
         
         /// <returns>LiveStream</returns>
-		public LiveStream create(LiveStreamCreatePayload liveStreamCreatePayload)
+		public LiveStream create(LiveStreamCreationPayload liveStreamCreationPayload)
         {
-             ApiResponse<LiveStream> localVarResponse = createWithHttpInfo(liveStreamCreatePayload);
+             ApiResponse<LiveStream> localVarResponse = createWithHttpInfo(liveStreamCreationPayload);
              return localVarResponse.Data;
         }
 
@@ -544,21 +544,21 @@ namespace ApiVideo.Api
         /// Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamCreatePayload"></param>
+        /// <param name="liveStreamCreationPayload"></param>
         
         /// <returns>ApiResponse of LiveStream</returns>
-		public ApiResponse<LiveStream> createWithHttpInfo(LiveStreamCreatePayload liveStreamCreatePayload)
+		public ApiResponse<LiveStream> createWithHttpInfo(LiveStreamCreationPayload liveStreamCreationPayload)
         {
-            if (liveStreamCreatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'liveStreamCreatePayload' when calling LiveStreamsApi->create");
+            if (liveStreamCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'liveStreamCreationPayload' when calling LiveStreamsApi->create");
             
-            if (liveStreamCreatePayload != null && liveStreamCreatePayload.name == null) {
-                throw new ApiException(400,"Missing required parameter 'liveStreamCreatePayload.Name' when calling LiveStreamsApi->create");
+            if (liveStreamCreationPayload != null && liveStreamCreationPayload.name == null) {
+                throw new ApiException(400,"Missing required parameter 'liveStreamCreationPayload.Name' when calling LiveStreamsApi->create");
             }
                                                 
-            // verify the required parameter 'liveStreamCreatePayload' is set
-            if (liveStreamCreatePayload == null)
-                throw new ApiException(400, "Missing required parameter 'liveStreamCreatePayload' when calling LiveStreamsApi->create");
+            // verify the required parameter 'liveStreamCreationPayload' is set
+            if (liveStreamCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamCreationPayload' when calling LiveStreamsApi->create");
             
 
             var localVarPath = "/live-streams";
@@ -583,13 +583,13 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (liveStreamCreatePayload != null && liveStreamCreatePayload.GetType() != typeof(byte[]) && liveStreamCreatePayload.GetType() != typeof(string))
+            if (liveStreamCreationPayload != null && liveStreamCreationPayload.GetType() != typeof(byte[]) && liveStreamCreationPayload.GetType() != typeof(string))
             {
-                localVarPostBody = this.ApiClient.Serialize(liveStreamCreatePayload); // http body (model) parameter
+                localVarPostBody = this.ApiClient.Serialize(liveStreamCreationPayload); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = liveStreamCreatePayload; // byte array
+                localVarPostBody = liveStreamCreationPayload; // byte array
             }
 
 

@@ -75,7 +75,7 @@ namespace Example
             // if you rather like to use the sandbox environment:
             // var apiVideoClient = new ApiVideoClient(apiKey, ApiVideo.Client.Environment.SANDBOX);
 
-            var videoPayload = new VideoCreatePayload()
+            var videoPayload = new VideoCreationPayload()
             {
                 title = "Example video title",
                 description = "Example video description",
@@ -288,7 +288,7 @@ Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [LiveStream](docs/LiveStream.md)
  - [LiveStreamAssets](docs/LiveStreamAssets.md)
- - [LiveStreamCreatePayload](docs/LiveStreamCreatePayload.md)
+ - [LiveStreamCreationPayload](docs/LiveStreamCreationPayload.md)
  - [LiveStreamListResponse](docs/LiveStreamListResponse.md)
  - [LiveStreamSession](docs/LiveStreamSession.md)
  - [LiveStreamSessionClient](docs/LiveStreamSessionClient.md)
@@ -313,12 +313,12 @@ Method | HTTP request | Description
  - [RawStatisticsListSessionsResponse](docs/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](docs/RefreshTokenPayload.md)
  - [Subtitle](docs/Subtitle.md)
- - [TokenCreatePayload](docs/TokenCreatePayload.md)
+ - [TokenCreationPayload](docs/TokenCreationPayload.md)
  - [TokenListResponse](docs/TokenListResponse.md)
  - [UploadToken](docs/UploadToken.md)
  - [Video](docs/Video.md)
  - [VideoAssets](docs/VideoAssets.md)
- - [VideoCreatePayload](docs/VideoCreatePayload.md)
+ - [VideoCreationPayload](docs/VideoCreationPayload.md)
  - [VideoSession](docs/VideoSession.md)
  - [VideoSessionClient](docs/VideoSessionClient.md)
  - [VideoSessionDevice](docs/VideoSessionDevice.md)
@@ -329,15 +329,15 @@ Method | HTTP request | Description
  - [VideoSource](docs/VideoSource.md)
  - [VideoSourceLiveStream](docs/VideoSourceLiveStream.md)
  - [VideoSourceLiveStreamLink](docs/VideoSourceLiveStreamLink.md)
+ - [VideoStatus](docs/VideoStatus.md)
+ - [VideoStatusEncoding](docs/VideoStatusEncoding.md)
+ - [VideoStatusEncodingMetadata](docs/VideoStatusEncodingMetadata.md)
+ - [VideoStatusIngest](docs/VideoStatusIngest.md)
  - [VideoThumbnailPickPayload](docs/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](docs/VideoUpdatePayload.md)
  - [VideosListResponse](docs/VideosListResponse.md)
- - [Videostatus](docs/Videostatus.md)
- - [VideostatusEncoding](docs/VideostatusEncoding.md)
- - [VideostatusEncodingMetadata](docs/VideostatusEncodingMetadata.md)
- - [VideostatusIngest](docs/VideostatusIngest.md)
  - [Webhook](docs/Webhook.md)
- - [WebhooksCreatePayload](docs/WebhooksCreatePayload.md)
+ - [WebhooksCreationPayload](docs/WebhooksCreationPayload.md)
  - [WebhooksListResponse](docs/WebhooksListResponse.md)
 
 

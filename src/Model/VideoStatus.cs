@@ -11,23 +11,21 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class TokenCreatePayload {
+  public class VideoStatus {
     /// <summary>
-    /// Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
+    /// Gets or Sets Ingest
     /// </summary>
-    /// <value>Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.</value>
-    [DataMember(Name="ttl", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "ttl")]
-    public int ttl { get; set; }
-
+    [DataMember(Name="ingest", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "ingest")]
+    public VideoStatusIngest ingest { get; set; }
 
     /// <summary>
-    /// Constructor. Set default values.
+    /// Gets or Sets Encoding
     /// </summary>
-    public TokenCreatePayload() {
-        ttl = 0;
-        
-    }
+    [DataMember(Name="encoding", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "encoding")]
+    public VideoStatusEncoding encoding { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -35,8 +33,9 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class TokenCreatePayload {\n");
-      sb.Append("  Ttl: ").Append(ttl).Append("\n");
+      sb.Append("class VideoStatus {\n");
+      sb.Append("  Ingest: ").Append(ingest).Append("\n");
+      sb.Append("  Encoding: ").Append(encoding).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
