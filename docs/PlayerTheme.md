@@ -1,4 +1,4 @@
-# ApiVideo.Model.Player
+# ApiVideo.Model.PlayerTheme
 
 ## Properties
 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **ShapeBackgroundTop** | **string** | Deprecated | [optional] 
 **ShapeBackgroundBottom** | **string** | Deprecated | [optional] 
 **LinkActive** | **string** | Deprecated | [optional] 
-**Assets** | [**PlayerAssets**](PlayerAssets.md) |  | [optional] 
+**Assets** | [**PlayerThemeAssets**](PlayerThemeAssets.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

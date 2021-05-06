@@ -17,7 +17,7 @@ namespace ApiVideo.Model {
     /// </summary>
     [DataMember(Name="data", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "data")]
-    public List<Subtitle> data { get; set; }
+    public List<Caption> data { get; set; }
 
     /// <summary>
     /// Gets or Sets Pagination

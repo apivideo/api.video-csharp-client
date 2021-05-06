@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 <a name="getvideosvideoidcaptionslanguage"></a>
 # **get**
-> Subtitle get (string videoId, string language)
+> Caption get (string videoId, string language)
 
 Show a caption
 
@@ -188,7 +188,7 @@ namespace Example
             try
             {
                 // Show a caption
-                Subtitle result = apiCaptionsInstance.get(videoId, language);
+                Caption result = apiCaptionsInstance.get(videoId, language);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### Authorization
 
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 <a name="patchvideosvideoidcaptionslanguage"></a>
 # **update**
-> Subtitle update (string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
+> Caption update (string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
 
 Update caption
 
@@ -262,7 +262,7 @@ namespace Example
             try
             {
                 // Update caption
-                Subtitle result = apiCaptionsInstance.update(videoId, language, captionsUpdatePayload);
+                Caption result = apiCaptionsInstance.update(videoId, language, captionsUpdatePayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### Authorization
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 <a name="postvideosvideoidcaptionslanguage"></a>
 # **upload**
-> Subtitle upload (string videoId, string language, System.IO.Stream file)
+> Caption upload (string videoId, string language, System.IO.Stream file)
 
 Upload a caption
 
@@ -338,7 +338,7 @@ namespace Example
             try
             {
                 // Upload a caption
-                Subtitle result = apiCaptionsInstance.upload(videoId, language, file);
+                Caption result = apiCaptionsInstance.upload(videoId, language, file);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -362,7 +362,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### Authorization
 

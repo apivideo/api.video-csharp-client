@@ -1,11 +1,11 @@
-# ApiVideo.Model.PlayerAssets
+# ApiVideo.Model.PlayerThemesListResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Logo** | **string** | The name of the file containing the logo you want to use. | [optional] 
-**Link** | **string** | The path to the file containing your logo. | [optional] 
+**Data** | [**List&lt;PlayerTheme&gt;**](PlayerTheme.md) |  | [optional] 
+**Pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

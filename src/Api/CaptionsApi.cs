@@ -242,9 +242,9 @@ namespace ApiVideo.Api
             /// Execute list request
             /// </summary>
             /// <returns>CaptionsListResponse </returns>
-            public Page<Subtitle> execute(){
+            public Page<Caption> execute(){
                 ApiResponse<CaptionsListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(videoId, currentPage, pageSize);
-                return new Page<Subtitle>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                return new Page<Caption>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
                     try {
                         return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
                     } catch (ApiException e) {
@@ -267,10 +267,10 @@ namespace ApiVideo.Api
         /// <param name="videoId">The unique identifier for the video you want captions for.</param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation</param>
         
-        /// <returns>Subtitle</returns>
-		public Subtitle get(string videoId, string language)
+        /// <returns>Caption</returns>
+		public Caption get(string videoId, string language)
         {
-             ApiResponse<Subtitle> localVarResponse = getWithHttpInfo(videoId, language);
+             ApiResponse<Caption> localVarResponse = getWithHttpInfo(videoId, language);
              return localVarResponse.Data;
         }
 
@@ -281,8 +281,8 @@ namespace ApiVideo.Api
         /// <param name="videoId">The unique identifier for the video you want captions for.</param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation</param>
         
-        /// <returns>ApiResponse of Subtitle</returns>
-		public ApiResponse<Subtitle> getWithHttpInfo(string videoId, string language)
+        /// <returns>ApiResponse of Caption</returns>
+		public ApiResponse<Caption> getWithHttpInfo(string videoId, string language)
         {
 
 
@@ -327,9 +327,9 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Subtitle>(localVarStatusCode,
+            return new ApiResponse<Caption>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Subtitle) this.ApiClient.Deserialize(localVarResponse, typeof(Subtitle)));
+                (Caption) this.ApiClient.Deserialize(localVarResponse, typeof(Caption)));
             
         }
 
@@ -342,10 +342,10 @@ namespace ApiVideo.Api
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
 /// <param name="captionsUpdatePayload"></param>
         
-        /// <returns>Subtitle</returns>
-		public Subtitle update(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
+        /// <returns>Caption</returns>
+		public Caption update(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
         {
-             ApiResponse<Subtitle> localVarResponse = updateWithHttpInfo(videoId, language, captionsUpdatePayload);
+             ApiResponse<Caption> localVarResponse = updateWithHttpInfo(videoId, language, captionsUpdatePayload);
              return localVarResponse.Data;
         }
 
@@ -357,8 +357,8 @@ namespace ApiVideo.Api
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
 /// <param name="captionsUpdatePayload"></param>
         
-        /// <returns>ApiResponse of Subtitle</returns>
-		public ApiResponse<Subtitle> updateWithHttpInfo(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
+        /// <returns>ApiResponse of Caption</returns>
+		public ApiResponse<Caption> updateWithHttpInfo(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
         {
             if (captionsUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'captionsUpdatePayload' when calling CaptionsApi->update");
@@ -425,9 +425,9 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Subtitle>(localVarStatusCode,
+            return new ApiResponse<Caption>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Subtitle) this.ApiClient.Deserialize(localVarResponse, typeof(Subtitle)));
+                (Caption) this.ApiClient.Deserialize(localVarResponse, typeof(Caption)));
             
         }
 
@@ -440,10 +440,10 @@ namespace ApiVideo.Api
 /// <param name="language">A valid BCP 47 language representation.</param>
 /// <param name="file">The video text track (VTT) you want to upload.</param>
         
-        /// <returns>Subtitle</returns>
-		public Subtitle upload(string videoId, string language, System.IO.Stream file)
+        /// <returns>Caption</returns>
+		public Caption upload(string videoId, string language, System.IO.Stream file)
         {
-             ApiResponse<Subtitle> localVarResponse = uploadWithHttpInfo(videoId, language, file);
+             ApiResponse<Caption> localVarResponse = uploadWithHttpInfo(videoId, language, file);
              return localVarResponse.Data;
         }
 
@@ -455,8 +455,8 @@ namespace ApiVideo.Api
 /// <param name="language">A valid BCP 47 language representation.</param>
 /// <param name="file">The video text track (VTT) you want to upload.</param>
         
-        /// <returns>ApiResponse of Subtitle</returns>
-		public ApiResponse<Subtitle> uploadWithHttpInfo(string videoId, string language, System.IO.Stream file)
+        /// <returns>ApiResponse of Caption</returns>
+		public ApiResponse<Caption> uploadWithHttpInfo(string videoId, string language, System.IO.Stream file)
         {
 
 
@@ -510,9 +510,9 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Subtitle>(localVarStatusCode,
+            return new ApiResponse<Caption>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Subtitle) this.ApiClient.Deserialize(localVarResponse, typeof(Subtitle)));
+                (Caption) this.ApiClient.Deserialize(localVarResponse, typeof(Caption)));
             
         }
 

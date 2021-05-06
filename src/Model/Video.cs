@@ -66,7 +66,7 @@ namespace ApiVideo.Model {
     /// <value>One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  </value>
     [DataMember(Name="tags", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "tags")]
-    public List<Object> tags { get; set; }
+    public List<string> tags { get; set; }
 
     /// <summary>
     /// Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.  

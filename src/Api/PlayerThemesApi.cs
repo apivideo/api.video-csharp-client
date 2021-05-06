@@ -180,10 +180,10 @@ namespace ApiVideo.Api
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
-        /// <returns>PlayersListResponse</returns>
-		public PlayersListResponse list(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
+        /// <returns>PlayerThemesListResponse</returns>
+		public PlayerThemesListResponse list(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
-             ApiResponse<PlayersListResponse> localVarResponse = listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
+             ApiResponse<PlayerThemesListResponse> localVarResponse = listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
              return localVarResponse.Data;
         }
 
@@ -196,8 +196,8 @@ namespace ApiVideo.Api
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
-        /// <returns>ApiResponse of PlayersListResponse</returns>
-		public ApiResponse<PlayersListResponse> listWithHttpInfo(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
+        /// <returns>ApiResponse of PlayerThemesListResponse</returns>
+		public ApiResponse<PlayerThemesListResponse> listWithHttpInfo(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
         {
 
 
@@ -240,9 +240,9 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<PlayersListResponse>(localVarStatusCode,
+            return new ApiResponse<PlayerThemesListResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (PlayersListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(PlayersListResponse)));
+                (PlayerThemesListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerThemesListResponse)));
             
         }
 
@@ -319,10 +319,10 @@ namespace ApiVideo.Api
             /// <summary>
             /// Execute list request
             /// </summary>
-            /// <returns>PlayersListResponse </returns>
-            public Page<Player> execute(){
-                ApiResponse<PlayersListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
-                return new Page<Player>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+            /// <returns>PlayerThemesListResponse </returns>
+            public Page<PlayerTheme> execute(){
+                ApiResponse<PlayerThemesListResponse> localVarResp = this.currentApiInstance.listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
+                return new Page<PlayerTheme>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
                     try {
                         return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
                     } catch (ApiException e) {
@@ -346,10 +346,10 @@ namespace ApiVideo.Api
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
         
-        /// <returns>Player</returns>
-		public Player get(string playerId)
+        /// <returns>PlayerTheme</returns>
+		public PlayerTheme get(string playerId)
         {
-             ApiResponse<Player> localVarResponse = getWithHttpInfo(playerId);
+             ApiResponse<PlayerTheme> localVarResponse = getWithHttpInfo(playerId);
              return localVarResponse.Data;
         }
 
@@ -359,8 +359,8 @@ namespace ApiVideo.Api
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
         
-        /// <returns>ApiResponse of Player</returns>
-		public ApiResponse<Player> getWithHttpInfo(string playerId)
+        /// <returns>ApiResponse of PlayerTheme</returns>
+		public ApiResponse<PlayerTheme> getWithHttpInfo(string playerId)
         {
 
             // verify the required parameter 'playerId' is set
@@ -400,9 +400,9 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Player>(localVarStatusCode,
+            return new ApiResponse<PlayerTheme>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Player) this.ApiClient.Deserialize(localVarResponse, typeof(Player)));
+                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
             
         }
 
@@ -412,12 +412,12 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
-/// <param name="playerUpdatePayload"></param>
+/// <param name="playerThemeUpdatePayload"></param>
         
-        /// <returns>Player</returns>
-		public Player update(string playerId, PlayerUpdatePayload playerUpdatePayload)
+        /// <returns>PlayerTheme</returns>
+		public PlayerTheme update(string playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload)
         {
-             ApiResponse<Player> localVarResponse = updateWithHttpInfo(playerId, playerUpdatePayload);
+             ApiResponse<PlayerTheme> localVarResponse = updateWithHttpInfo(playerId, playerThemeUpdatePayload);
              return localVarResponse.Data;
         }
 
@@ -426,25 +426,25 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
-/// <param name="playerUpdatePayload"></param>
+/// <param name="playerThemeUpdatePayload"></param>
         
-        /// <returns>ApiResponse of Player</returns>
-		public ApiResponse<Player> updateWithHttpInfo(string playerId, PlayerUpdatePayload playerUpdatePayload)
+        /// <returns>ApiResponse of PlayerTheme</returns>
+		public ApiResponse<PlayerTheme> updateWithHttpInfo(string playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload)
         {
-            if (playerUpdatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'playerUpdatePayload' when calling PlayerThemesApi->update");
+            if (playerThemeUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
             
                                                                                                                                                                         
-            if (playerUpdatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'playerUpdatePayload' when calling PlayerThemesApi->update");
+            if (playerThemeUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
             
                                                                                                                                                                         
             // verify the required parameter 'playerId' is set
             if (playerId == null)
                 throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->update");
-            // verify the required parameter 'playerUpdatePayload' is set
-            if (playerUpdatePayload == null)
-                throw new ApiException(400, "Missing required parameter 'playerUpdatePayload' when calling PlayerThemesApi->update");
+            // verify the required parameter 'playerThemeUpdatePayload' is set
+            if (playerThemeUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
             
 
             var localVarPath = "/players/{playerId}";
@@ -470,13 +470,13 @@ namespace ApiVideo.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
-            if (playerUpdatePayload != null && playerUpdatePayload.GetType() != typeof(byte[]) && playerUpdatePayload.GetType() != typeof(string))
+            if (playerThemeUpdatePayload != null && playerThemeUpdatePayload.GetType() != typeof(byte[]) && playerThemeUpdatePayload.GetType() != typeof(string))
             {
-                localVarPostBody = this.ApiClient.Serialize(playerUpdatePayload); // http body (model) parameter
+                localVarPostBody = this.ApiClient.Serialize(playerThemeUpdatePayload); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = playerUpdatePayload; // byte array
+                localVarPostBody = playerThemeUpdatePayload; // byte array
             }
 
 
@@ -488,9 +488,9 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Player>(localVarStatusCode,
+            return new ApiResponse<PlayerTheme>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Player) this.ApiClient.Deserialize(localVarResponse, typeof(Player)));
+                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
             
         }
 
@@ -499,12 +499,12 @@ namespace ApiVideo.Api
         /// Create a player Create a player for your video, and customise it.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerCreationPayload"></param>
+        /// <param name="playerThemeCreationPayload"></param>
         
-        /// <returns>Player</returns>
-		public Player create(PlayerCreationPayload playerCreationPayload)
+        /// <returns>PlayerTheme</returns>
+		public PlayerTheme create(PlayerThemeCreationPayload playerThemeCreationPayload)
         {
-             ApiResponse<Player> localVarResponse = createWithHttpInfo(playerCreationPayload);
+             ApiResponse<PlayerTheme> localVarResponse = createWithHttpInfo(playerThemeCreationPayload);
              return localVarResponse.Data;
         }
 
@@ -512,18 +512,18 @@ namespace ApiVideo.Api
         /// Create a player Create a player for your video, and customise it.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerCreationPayload"></param>
+        /// <param name="playerThemeCreationPayload"></param>
         
-        /// <returns>ApiResponse of Player</returns>
-		public ApiResponse<Player> createWithHttpInfo(PlayerCreationPayload playerCreationPayload)
+        /// <returns>ApiResponse of PlayerTheme</returns>
+		public ApiResponse<PlayerTheme> createWithHttpInfo(PlayerThemeCreationPayload playerThemeCreationPayload)
         {
-            if (playerCreationPayload == null) 
-                throw new ApiException(400,"Missing required parameter 'playerCreationPayload' when calling PlayerThemesApi->create");
+            if (playerThemeCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");
             
                                                                                                                                                                         
-            // verify the required parameter 'playerCreationPayload' is set
-            if (playerCreationPayload == null)
-                throw new ApiException(400, "Missing required parameter 'playerCreationPayload' when calling PlayerThemesApi->create");
+            // verify the required parameter 'playerThemeCreationPayload' is set
+            if (playerThemeCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");
             
 
             var localVarPath = "/players";
@@ -548,13 +548,13 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (playerCreationPayload != null && playerCreationPayload.GetType() != typeof(byte[]) && playerCreationPayload.GetType() != typeof(string))
+            if (playerThemeCreationPayload != null && playerThemeCreationPayload.GetType() != typeof(byte[]) && playerThemeCreationPayload.GetType() != typeof(string))
             {
-                localVarPostBody = this.ApiClient.Serialize(playerCreationPayload); // http body (model) parameter
+                localVarPostBody = this.ApiClient.Serialize(playerThemeCreationPayload); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = playerCreationPayload; // byte array
+                localVarPostBody = playerThemeCreationPayload; // byte array
             }
 
 
@@ -566,9 +566,9 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Player>(localVarStatusCode,
+            return new ApiResponse<PlayerTheme>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Player) this.ApiClient.Deserialize(localVarResponse, typeof(Player)));
+                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
             
         }
 
@@ -581,10 +581,10 @@ namespace ApiVideo.Api
 /// <param name="file">The name of the file you want to use for your logo.</param>
 /// <param name="link">The path to the file you want to upload and use as a logo.</param>
         
-        /// <returns>Player</returns>
-		public Player uploadLogo(string playerId, System.IO.Stream file, string link)
+        /// <returns>PlayerTheme</returns>
+		public PlayerTheme uploadLogo(string playerId, System.IO.Stream file, string link)
         {
-             ApiResponse<Player> localVarResponse = uploadLogoWithHttpInfo(playerId, file, link);
+             ApiResponse<PlayerTheme> localVarResponse = uploadLogoWithHttpInfo(playerId, file, link);
              return localVarResponse.Data;
         }
 
@@ -596,8 +596,8 @@ namespace ApiVideo.Api
 /// <param name="file">The name of the file you want to use for your logo.</param>
 /// <param name="link">The path to the file you want to upload and use as a logo.</param>
         
-        /// <returns>ApiResponse of Player</returns>
-		public ApiResponse<Player> uploadLogoWithHttpInfo(string playerId, System.IO.Stream file, string link)
+        /// <returns>ApiResponse of PlayerTheme</returns>
+		public ApiResponse<PlayerTheme> uploadLogoWithHttpInfo(string playerId, System.IO.Stream file, string link)
         {
 
 
@@ -653,9 +653,9 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Player>(localVarStatusCode,
+            return new ApiResponse<PlayerTheme>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Player) this.ApiClient.Deserialize(localVarResponse, typeof(Player)));
+                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
             
         }
 

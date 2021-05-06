@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class PlayerUpdatePayload {
+  public class PlayerThemeUpdatePayload {
     /// <summary>
     /// RGBA color for timer text. Default: rgba(255, 255, 255, 1)
     /// </summary>
@@ -131,7 +131,7 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PlayerUpdatePayload {\n");
+      sb.Append("class PlayerThemeUpdatePayload {\n");
       sb.Append("  Text: ").Append(text).Append("\n");
       sb.Append("  Link: ").Append(link).Append("\n");
       sb.Append("  LinkHover: ").Append(linkhover).Append("\n");

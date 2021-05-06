@@ -1,4 +1,4 @@
-# ApiVideo.Model.Subtitle
+# ApiVideo.Model.Caption
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# ApiVideo.Model.PlayerCreationPayload
+# ApiVideo.Model.PlayerThemeCreationPayload
 
 ## Properties
 
