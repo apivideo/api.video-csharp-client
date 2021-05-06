@@ -11,20 +11,22 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class PlayersListResponse {
+  public class PlayerThemeAssets {
     /// <summary>
-    /// Gets or Sets Data
+    /// The name of the file containing the logo you want to use.
     /// </summary>
-    [DataMember(Name="data", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "data")]
-    public List<Player> data { get; set; }
+    /// <value>The name of the file containing the logo you want to use.</value>
+    [DataMember(Name="logo", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "logo")]
+    public string logo { get; set; }
 
     /// <summary>
-    /// Gets or Sets Pagination
+    /// The path to the file containing your logo.
     /// </summary>
-    [DataMember(Name="pagination", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "pagination")]
-    public Pagination pagination { get; set; }
+    /// <value>The path to the file containing your logo.</value>
+    [DataMember(Name="link", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "link")]
+    public string link { get; set; }
 
 
     /// <summary>
@@ -33,9 +35,9 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PlayersListResponse {\n");
-      sb.Append("  Data: ").Append(data).Append("\n");
-      sb.Append("  Pagination: ").Append(pagination).Append("\n");
+      sb.Append("class PlayerThemeAssets {\n");
+      sb.Append("  Logo: ").Append(logo).Append("\n");
+      sb.Append("  Link: ").Append(link).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

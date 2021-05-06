@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Subtitle {
+  public class Caption {
     /// <summary>
     /// Gets or Sets Uri
     /// </summary>
@@ -45,7 +45,7 @@ namespace ApiVideo.Model {
     /// <summary>
     /// Constructor. Set default values.
     /// </summary>
-    public Subtitle() {
+    public Caption() {
         _default = false;
         
     }
@@ -56,7 +56,7 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class Subtitle {\n");
+      sb.Append("class Caption {\n");
       sb.Append("  Uri: ").Append(uri).Append("\n");
       sb.Append("  Src: ").Append(src).Append("\n");
       sb.Append("  Srclang: ").Append(srclang).Append("\n");

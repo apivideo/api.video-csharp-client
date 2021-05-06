@@ -53,7 +53,7 @@ namespace ApiVideo.Client
         /// <param name="basePath">the api base path.</param>
         public ApiClient(string basePath) {
             this.RestClient = new RestClient(basePath);
-            this.RestClient.UserAgent = "api.video client (C#; v:0.0.6; )";
+            this.RestClient.UserAgent = "api.video client (C#; v:0.0.7; )";
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace ApiVideo.Client
         /// <param name="basePath">the api base path.</param>
         public ApiClient(string apiKey,string basePath) {
             this.RestClient = new RestClient(basePath);
-            this.RestClient.UserAgent = "api.video client (C#; v:0.0.6; )";
+            this.RestClient.UserAgent = "api.video client (C#; v:0.0.7; )";
             this.AuthManager = new AuthenticationManager(apiKey, this);
         }
 
@@ -73,7 +73,7 @@ namespace ApiVideo.Client
         /// <param name="client">a RestClient instance used to make API call</param>
         public ApiClient(RestClient client) {
             this.RestClient = client;
-            this.RestClient.UserAgent = "api.video client (C#; v:0.0.6; )";
+            this.RestClient.UserAgent = "api.video client (C#; v:0.0.7; )";
         }
 
         /// <summary>

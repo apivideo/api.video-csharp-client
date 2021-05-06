@@ -153,7 +153,7 @@ void (empty response body)
 
 <a name="getplayers"></a>
 # **list**
-> PlayersListResponse list (string sortBy = null, string sortOrder = null, int? currentPage = null, int? pageSize = null)
+> PlayerThemesListResponse list (string sortBy = null, string sortOrder = null, int? currentPage = null, int? pageSize = null)
 
 List all players
 
@@ -183,7 +183,7 @@ namespace Example
             try
             {
                 // List all players
-                PlayersListResponse result = apiPlayerThemesInstance.list(sortBy, sortOrder, currentPage, pageSize);
+                PlayerThemesListResponse result = apiPlayerThemesInstance.list(sortBy, sortOrder, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PlayersListResponse**](PlayersListResponse.md)
+[**PlayerThemesListResponse**](PlayerThemesListResponse.md)
 
 ### Authorization
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 <a name="getplayersplayerid"></a>
 # **get**
-> Player get (string playerId)
+> PlayerTheme get (string playerId)
 
 Show a player
 
@@ -257,7 +257,7 @@ namespace Example
             try
             {
                 // Show a player
-                Player result = apiPlayerThemesInstance.get(playerId);
+                PlayerTheme result = apiPlayerThemesInstance.get(playerId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### Authorization
 
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 <a name="patchplayersplayerid"></a>
 # **update**
-> Player update (string playerId, PlayerUpdatePayload playerUpdatePayload)
+> PlayerTheme update (string playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload)
 
 Update a player
 
@@ -324,12 +324,12 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var playerId = pl45d5vFFGrfdsdsd156dGhh;  // string | The unique identifier for the player.
-            var playerUpdatePayload = new PlayerUpdatePayload(); // PlayerUpdatePayload | 
+            var playerThemeUpdatePayload = new PlayerThemeUpdatePayload(); // PlayerThemeUpdatePayload | 
             var apiPlayerThemesInstance = apiInstance.PlayerThemes();
             try
             {
                 // Update a player
-                Player result = apiPlayerThemesInstance.update(playerId, playerUpdatePayload);
+                PlayerTheme result = apiPlayerThemesInstance.update(playerId, playerThemeUpdatePayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -348,11 +348,11 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playerId** | **string**| The unique identifier for the player. | 
- **playerUpdatePayload** | [**PlayerUpdatePayload**](PlayerUpdatePayload.md)|  | 
+ **playerThemeUpdatePayload** | [**PlayerThemeUpdatePayload**](PlayerThemeUpdatePayload.md)|  | 
 
 ### Return type
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### Authorization
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 <a name="postplayers"></a>
 # **create**
-> Player create (PlayerCreationPayload playerCreationPayload)
+> PlayerTheme create (PlayerThemeCreationPayload playerThemeCreationPayload)
 
 Create a player
 
@@ -396,12 +396,12 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var playerCreationPayload = new PlayerCreationPayload(); // PlayerCreationPayload | 
+            var playerThemeCreationPayload = new PlayerThemeCreationPayload(); // PlayerThemeCreationPayload | 
             var apiPlayerThemesInstance = apiInstance.PlayerThemes();
             try
             {
                 // Create a player
-                Player result = apiPlayerThemesInstance.create(playerCreationPayload);
+                PlayerTheme result = apiPlayerThemesInstance.create(playerThemeCreationPayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -419,11 +419,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerCreationPayload** | [**PlayerCreationPayload**](PlayerCreationPayload.md)|  | 
+ **playerThemeCreationPayload** | [**PlayerThemeCreationPayload**](PlayerThemeCreationPayload.md)|  | 
 
 ### Return type
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### Authorization
 
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 <a name="postplayersplayeridlogo"></a>
 # **uploadLogo**
-> Player uploadLogo (string playerId, System.IO.Stream file, string link)
+> PlayerTheme uploadLogo (string playerId, System.IO.Stream file, string link)
 
 Upload a logo
 
@@ -473,7 +473,7 @@ namespace Example
             try
             {
                 // Upload a logo
-                Player result = apiPlayerThemesInstance.uploadLogo(playerId, file, link);
+                PlayerTheme result = apiPlayerThemesInstance.uploadLogo(playerId, file, link);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -497,7 +497,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### Authorization
 
