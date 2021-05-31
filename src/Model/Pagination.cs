@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="itemsTotal", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "itemsTotal")]
     public int itemstotal { get; set; }
-
     /// <summary>
     /// Number of items listed in the current page.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="pagesTotal", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "pagesTotal")]
     public int pagestotal { get; set; }
-
     /// <summary>
     /// Maximum number of item per page.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="pageSize", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "pageSize")]
     public int pagesize { get; set; }
-
     /// <summary>
     /// The current page index.
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="currentPage", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "currentPage")]
     public int currentpage { get; set; }
-
     /// <summary>
     /// The number of items on the current page.
     /// </summary>
@@ -51,14 +47,12 @@ namespace ApiVideo.Model {
     [DataMember(Name="currentPageItems", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "currentPageItems")]
     public int currentpageitems { get; set; }
-
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
     [DataMember(Name="links", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "links")]
     public List<PaginationLink> links { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

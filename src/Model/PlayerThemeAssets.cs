@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="logo", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "logo")]
     public string logo { get; set; }
-
     /// <summary>
     /// The path to the file containing your logo.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="link", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "link")]
     public string link { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

@@ -574,30 +574,30 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
 /// <param name="file">The name of the file you want to use for your logo.</param>
-/// <param name="link">The path to the file you want to upload and use as a logo.</param>
+/// <param name="link">A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. (optional)</param>
         
         /// <returns>PlayerTheme</returns>
-		public PlayerTheme uploadLogo(string playerId, System.IO.Stream file, string link)
+		public PlayerTheme uploadLogo(string playerId, System.IO.Stream file, string link = default)
         {
              ApiResponse<PlayerTheme> localVarResponse = uploadLogoWithHttpInfo(playerId, file, link);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
 /// <param name="file">The name of the file you want to use for your logo.</param>
-/// <param name="link">The path to the file you want to upload and use as a logo.</param>
+/// <param name="link">A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. (optional)</param>
         
         /// <returns>ApiResponse of PlayerTheme</returns>
-		public ApiResponse<PlayerTheme> uploadLogoWithHttpInfo(string playerId, System.IO.Stream file, string link)
+		public ApiResponse<PlayerTheme> uploadLogoWithHttpInfo(string playerId, System.IO.Stream file, string link = default)
         {
 
 
@@ -608,9 +608,6 @@ namespace ApiVideo.Api
             // verify the required parameter 'file' is set
             if (file == null)
                 throw new ApiException(400, "Missing required parameter 'file' when calling PlayerThemesApi->uploadLogo");
-            // verify the required parameter 'link' is set
-            if (link == null)
-                throw new ApiException(400, "Missing required parameter 'link' when calling PlayerThemesApi->uploadLogo");
             
 
             var localVarPath = "/players/{playerId}/logo";

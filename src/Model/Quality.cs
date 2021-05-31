@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="quality", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "quality")]
     public string _quality { get; set; }
-
     /// <summary>
     /// The status of your video. Statuses include waiting - the video is waiting to be encoded. encoding - the video is in the process of being encoded. encoded - the video was successfully encoded. failed - the video failed to be encoded.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status")]
     public string status { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

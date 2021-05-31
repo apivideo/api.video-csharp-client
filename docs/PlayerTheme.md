@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **ForceAutoplay** | **bool** | enable/disable player autoplay. Default: false | [optional] 
 **HideTitle** | **bool** | enable/disable title. Default: false | [optional] 
 **ForceLoop** | **bool** | enable/disable looping. Default: false | [optional] 
-**PlayerId** | **string** |  | [optional] 
+**PlayerId** | **string** |  | 
 **CreatedAt** | **DateTime** | When the player was created, presented in ISO-8601 format. | [optional] 
 **UpdatedAt** | **DateTime** | When the player was last updated, presented in ISO-8601 format. | [optional] 
 **ShapeMargin** | **int** | Deprecated | [optional] 

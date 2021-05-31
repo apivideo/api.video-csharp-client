@@ -43,7 +43,7 @@ namespace ApiVideo.Api
         /// Delete a chapter 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The unique identifier for the video you want to delete a chapter from. </param>
+        /// <param name="videoId">The unique identifier for the video you want to delete a chapter from.</param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
         
         /// <returns></returns>
@@ -56,7 +56,7 @@ namespace ApiVideo.Api
         /// Delete a chapter 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The unique identifier for the video you want to delete a chapter from. </param>
+        /// <param name="videoId">The unique identifier for the video you want to delete a chapter from.</param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
         
         /// <returns>ApiResponse of Object(void)</returns>

@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="type", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "type")]
     public string type { get; set; }
-
     /// <summary>
     /// If known, what the brand of the device is, like Apple, Dell, etc.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="vendor", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "vendor")]
     public string vendor { get; set; }
-
     /// <summary>
     /// The specific model of the device, if known.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="model", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "model")]
     public string model { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

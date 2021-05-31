@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LiveStreamId** | **string** | The unique identifier for the live stream. Live stream IDs begin with \&quot;li.\&quot; | [optional] 
+**LiveStreamId** | **string** | The unique identifier for the live stream. Live stream IDs begin with \&quot;li.\&quot; | 
 **Name** | **string** | The name of your live stream. | [optional] 
 **StreamKey** | **string** | The unique, private stream key that you use to begin streaming. | [optional] 
 **Record** | **bool** | Whether you are recording or not. | [optional] 

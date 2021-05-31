@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="type", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "type")]
     public string type { get; set; }
-
     /// <summary>
     /// When an event occurred, presented in ISO-8601 format.
     /// </summary>
@@ -27,28 +26,24 @@ namespace ApiVideo.Model {
     [DataMember(Name="emittedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "emittedAt")]
     public DateTime? emittedat { get; set; }
-
     /// <summary>
     /// Gets or Sets At
     /// </summary>
     [DataMember(Name="at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "at")]
     public int at { get; set; }
-
     /// <summary>
     /// Gets or Sets From
     /// </summary>
     [DataMember(Name="from", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "from")]
     public int from { get; set; }
-
     /// <summary>
     /// Gets or Sets To
     /// </summary>
     [DataMember(Name="to", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "to")]
     public int to { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object
