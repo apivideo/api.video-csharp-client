@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="hls", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "hls")]
     public string hls { get; set; }
-
     /// <summary>
     /// The embed code for the iframe containing your live video stream.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="iframe", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "iframe")]
     public string iframe { get; set; }
-
     /// <summary>
     /// A link to the video player that is playing your live stream.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="player", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "player")]
     public string player { get; set; }
-
     /// <summary>
     /// A link to the thumbnail for your video.
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="thumbnail", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "thumbnail")]
     public string thumbnail { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

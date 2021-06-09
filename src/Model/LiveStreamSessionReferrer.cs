@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="url", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "url")]
     public string url { get; set; }
-
     /// <summary>
     /// The type of search that brought the viewer to the live stream. Organic would be they found it on their own, paid would be they found it via an advertisement.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="medium", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "medium")]
     public string medium { get; set; }
-
     /// <summary>
     /// Where the viewer came from to see the live stream (usually where they searched from).
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="source", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "source")]
     public string source { get; set; }
-
     /// <summary>
     /// What term they searched for that led them to the live stream.
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="searchTerm", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "searchTerm")]
     public string searchterm { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

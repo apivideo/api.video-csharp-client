@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="hls", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "hls")]
     public string hls { get; set; }
-
     /// <summary>
     /// Code to use video from a third party website
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="iframe", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "iframe")]
     public string iframe { get; set; }
-
     /// <summary>
     /// Raw url of the player.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="player", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "player")]
     public string player { get; set; }
-
     /// <summary>
     /// Poster of the video.
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="thumbnail", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "thumbnail")]
     public string thumbnail { get; set; }
-
     /// <summary>
     /// Available only if mp4Support is enabled. Raw mp4 url.
     /// </summary>
@@ -51,7 +47,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="mp4", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "mp4")]
     public string mp4 { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

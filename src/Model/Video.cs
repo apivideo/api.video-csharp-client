@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="videoId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "videoId")]
     public string videoid { get; set; }
-
     /// <summary>
     /// When an webhook was created, presented in ISO-8601 format.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }
-
     /// <summary>
     /// The title of the video content. 
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="title", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "title")]
     public string title { get; set; }
-
     /// <summary>
     /// A description for the video content. 
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="description", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "description")]
     public string description { get; set; }
-
     /// <summary>
     /// The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.
     /// </summary>
@@ -51,7 +47,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="publishedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "publishedAt")]
     public string publishedat { get; set; }
-
     /// <summary>
     /// The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.
     /// </summary>
@@ -59,37 +54,32 @@ namespace ApiVideo.Model {
     [DataMember(Name="updatedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updatedAt")]
     public DateTime? updatedat { get; set; }
-
     /// <summary>
-    /// One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  
+    /// One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces. 
     /// </summary>
-    /// <value>One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  </value>
+    /// <value>One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces. </value>
     [DataMember(Name="tags", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "tags")]
     public List<string> tags { get; set; }
-
     /// <summary>
-    /// Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.  
+    /// Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. 
     /// </summary>
-    /// <value>Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.  </value>
+    /// <value>Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. </value>
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
-
     /// <summary>
     /// Gets or Sets Source
     /// </summary>
     [DataMember(Name="source", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "source")]
     public VideoSource source { get; set; }
-
     /// <summary>
     /// Gets or Sets Assets
     /// </summary>
     [DataMember(Name="assets", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "assets")]
     public VideoAssets assets { get; set; }
-
     /// <summary>
     /// The id of the player that will be applied on the video. 
     /// </summary>
@@ -97,7 +87,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="playerId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "playerId")]
     public string playerid { get; set; }
-
     /// <summary>
     /// Defines if the content is publicly reachable or if a unique token is needed for each play session. 
     /// </summary>
@@ -105,7 +94,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public bool _public { get; set; }
-
     /// <summary>
     /// Defines if video is panoramic. 
     /// </summary>
@@ -113,7 +101,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="panoramic", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "panoramic")]
     public bool panoramic { get; set; }
-
     /// <summary>
     /// This lets you know whether mp4 is supported. If enabled, an mp4 URL will be provided in the response for the video. 
     /// </summary>
@@ -121,7 +108,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="mp4Support", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "mp4Support")]
     public bool mp4support { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

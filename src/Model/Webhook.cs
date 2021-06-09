@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="webhookId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "webhookId")]
     public string webhookid { get; set; }
-
     /// <summary>
     /// When an webhook was created, presented in ISO-8601 format.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }
-
     /// <summary>
     /// A list of events that will trigger the webhook.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="events", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "events")]
     public List<string> events { get; set; }
-
     /// <summary>
     /// URL of the webhook
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="url", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "url")]
     public string url { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

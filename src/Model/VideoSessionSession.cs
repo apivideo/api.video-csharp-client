@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="sessionId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "sessionId")]
     public string sessionid { get; set; }
-
     /// <summary>
     /// When the video session started, presented in ISO-8601 format.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="loadedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "loadedAt")]
     public DateTime? loadedat { get; set; }
-
     /// <summary>
     /// When the video session ended, presented in ISO-8601 format.
     /// </summary>
@@ -35,7 +33,13 @@ namespace ApiVideo.Model {
     [DataMember(Name="endedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "endedAt")]
     public DateTime? endedat { get; set; }
-
+    /// <summary>
+    /// A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
+    /// </summary>
+    /// <value>A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.</value>
+    [DataMember(Name="metadata", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "metadata")]
+    public List<Metadata> metadata { get; set; }
 
     /// <summary>
     /// Get the string presentation of the object
@@ -47,6 +51,7 @@ namespace ApiVideo.Model {
       sb.Append("  SessionId: ").Append(sessionid).Append("\n");
       sb.Append("  LoadedAt: ").Append(loadedat).Append("\n");
       sb.Append("  EndedAt: ").Append(endedat).Append("\n");
+      sb.Append("  Metadata: ").Append(metadata).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

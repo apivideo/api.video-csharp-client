@@ -19,21 +19,18 @@ namespace ApiVideo.Model {
     [DataMember(Name="uri", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "uri")]
     public string uri { get; set; }
-
     /// <summary>
     /// Gets or Sets Type
     /// </summary>
     [DataMember(Name="type", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "type")]
     public string type { get; set; }
-
     /// <summary>
     /// Gets or Sets LiveStream
     /// </summary>
     [DataMember(Name="liveStream", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "liveStream")]
     public VideoSourceLiveStream livestream { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

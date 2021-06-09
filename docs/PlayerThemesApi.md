@@ -444,11 +444,11 @@ Name | Type | Description  | Notes
 
 <a name="postplayersplayeridlogo"></a>
 # **uploadLogo**
-> PlayerTheme uploadLogo (string playerId, System.IO.Stream file, string link)
+> PlayerTheme uploadLogo (string playerId, System.IO.Stream file, string link = null)
 
 Upload a logo
 
-The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
 
 ### Example
 ```csharp
@@ -468,7 +468,7 @@ namespace Example
 
             var playerId = pl14Db6oMJRH6SRVoOwORacK;  // string | The unique identifier for the player.
             var file = BINARY_DATA_HERE;  // System.IO.Stream | The name of the file you want to use for your logo.
-            var link = link_example;  // string | The path to the file you want to upload and use as a logo.
+            var link = link_example;  // string | A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. (optional) 
             var apiPlayerThemesInstance = apiInstance.PlayerThemes();
             try
             {
@@ -493,7 +493,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playerId** | **string**| The unique identifier for the player. | 
  **file** | **System.IO.Stream****System.IO.Stream**| The name of the file you want to use for your logo. | 
- **link** | **string**| The path to the file you want to upload and use as a logo. | 
+ **link** | **string**| A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. | [optional] 
 
 ### Return type
 

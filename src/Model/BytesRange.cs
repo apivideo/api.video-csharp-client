@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="from", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "from")]
     public int from { get; set; }
-
     /// <summary>
     /// The ending point for the range of bytes for a chunk of a video.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="to", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "to")]
     public int to { get; set; }
-
     /// <summary>
     /// The total number of bytes in the provided range.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="total", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "total")]
     public int total { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

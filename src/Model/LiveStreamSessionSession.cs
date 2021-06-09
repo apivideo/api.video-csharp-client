@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="sessionId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "sessionId")]
     public string sessionid { get; set; }
-
     /// <summary>
     /// When the session started, with the date and time presented in ISO-8601 format.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="loadedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "loadedAt")]
     public DateTime? loadedat { get; set; }
-
     /// <summary>
     /// When the session ended, with the date and time presented in ISO-8601 format.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="endedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "endedAt")]
     public DateTime? endedat { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

@@ -20,7 +20,6 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "apiKey")]
     public string apikey { get; set; }
 
-
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="key", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "key")]
     public string key { get; set; }
-
     /// <summary>
     /// A variable which belongs to the data set.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "value")]
     public string value { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

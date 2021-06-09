@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status")]
     public string status { get; set; }
-
     /// <summary>
     /// The size of your file in bytes.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="filesize", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "filesize")]
     public int filesize { get; set; }
-
     /// <summary>
     /// The total number of bytes received, listed for each chunk of the upload.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="receivedBytes", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "receivedBytes")]
     public List<BytesRange> receivedbytes { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

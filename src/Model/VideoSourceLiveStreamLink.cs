@@ -18,14 +18,12 @@ namespace ApiVideo.Model {
     [DataMember(Name="rel", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "rel")]
     public string rel { get; set; }
-
     /// <summary>
     /// Gets or Sets Uri
     /// </summary>
     [DataMember(Name="uri", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "uri")]
     public string uri { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object
