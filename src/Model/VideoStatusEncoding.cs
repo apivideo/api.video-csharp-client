@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="playable", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "playable")]
     public bool playable { get; set; }
-
     /// <summary>
     /// Available qualities the video can be viewed in.
     /// </summary>
@@ -27,14 +26,12 @@ namespace ApiVideo.Model {
     [DataMember(Name="qualities", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "qualities")]
     public List<Quality> qualities { get; set; }
-
     /// <summary>
     /// Gets or Sets Metadata
     /// </summary>
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public VideoStatusEncodingMetadata metadata { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

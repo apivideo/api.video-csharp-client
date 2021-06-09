@@ -18,28 +18,24 @@ namespace ApiVideo.Model {
     [DataMember(Name="type", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "type")]
     public string type { get; set; }
-
     /// <summary>
     /// Gets or Sets Title
     /// </summary>
     [DataMember(Name="title", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "title")]
     public string title { get; set; }
-
     /// <summary>
     /// Gets or Sets Name
     /// </summary>
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string name { get; set; }
-
     /// <summary>
     /// Gets or Sets Status
     /// </summary>
     [DataMember(Name="status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status")]
     public int status { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

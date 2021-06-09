@@ -19,14 +19,12 @@ namespace ApiVideo.Model {
     [DataMember(Name="liveStreamId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "liveStreamId")]
     public string livestreamid { get; set; }
-
     /// <summary>
     /// Gets or Sets Links
     /// </summary>
     [DataMember(Name="links", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "links")]
     public List<VideoSourceLiveStreamLink> links { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

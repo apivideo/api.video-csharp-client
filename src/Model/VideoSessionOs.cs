@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string name { get; set; }
-
     /// <summary>
     /// The nickname for the operating system, often representing the version.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="shortname", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "shortname")]
     public string shortname { get; set; }
-
     /// <summary>
     /// The version of the operating system.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="version", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "version")]
     public string version { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

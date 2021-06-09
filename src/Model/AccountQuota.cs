@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="quotaUsed", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "quotaUsed")]
     public decimal quotaused { get; set; }
-
     /// <summary>
     /// Deprecated
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="quotaRemaining", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "quotaRemaining")]
     public decimal quotaremaining { get; set; }
-
     /// <summary>
     /// Deprecated
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="quotaTotal", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "quotaTotal")]
     public decimal quotatotal { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

@@ -18,7 +18,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="uri", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "uri")]
     public string uri { get; set; }
-
     /// <summary>
     /// The link to your VTT file, which contains your chapters information for the video.
     /// </summary>
@@ -26,14 +25,12 @@ namespace ApiVideo.Model {
     [DataMember(Name="src", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "src")]
     public string src { get; set; }
-
     /// <summary>
     /// Gets or Sets Language
     /// </summary>
     [DataMember(Name="language", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "language")]
     public string language { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

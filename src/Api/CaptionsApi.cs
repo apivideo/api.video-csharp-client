@@ -338,7 +338,7 @@ namespace ApiVideo.Api
         /// Update caption To have the captions on automatically, use this PATCH to set default: true.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The unique identifier for the video you want to have automatic captions for. </param>
+        /// <param name="videoId">The unique identifier for the video you want to have automatic captions for.</param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
 /// <param name="captionsUpdatePayload"></param>
         
@@ -353,7 +353,7 @@ namespace ApiVideo.Api
         /// Update caption To have the captions on automatically, use this PATCH to set default: true.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The unique identifier for the video you want to have automatic captions for. </param>
+        /// <param name="videoId">The unique identifier for the video you want to have automatic captions for.</param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
 /// <param name="captionsUpdatePayload"></param>
         

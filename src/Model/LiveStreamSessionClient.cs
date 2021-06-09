@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string name { get; set; }
-
     /// <summary>
     /// The version of the browser used to view the live stream session.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="version", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "version")]
     public string version { get; set; }
-
     /// <summary>
     /// The type of client used to view the live stream session.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="type", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "type")]
     public string type { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

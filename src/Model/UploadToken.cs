@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="token", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "token")]
     public string token { get; set; }
-
     /// <summary>
     /// Time-to-live - how long the upload token is valid for.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="ttl", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "ttl")]
     public int ttl { get; set; }
-
     /// <summary>
     /// When the token was created, displayed in ISO-8601 format.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }
-
     /// <summary>
     /// When the token expires, displayed in ISO-8601 format.
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="expiresAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "expiresAt")]
     public DateTime? expiresat { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

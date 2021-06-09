@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="events", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "events")]
     public List<string> events { get; set; }
-
     /// <summary>
     /// The the url to which HTTP notifications are sent. It could be any http or https URL.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="url", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "url")]
     public string url { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

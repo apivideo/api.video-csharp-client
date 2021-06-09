@@ -255,7 +255,7 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var videoId = vi4k0jvEUuaTdRAEjQ4Prklg;  // string | The unique identifier for the video you want to have automatic captions for. 
+            var videoId = vi4k0jvEUuaTdRAEjQ4Prklg;  // string | The unique identifier for the video you want to have automatic captions for.
             var language = en;  // string | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
             var captionsUpdatePayload = new CaptionsUpdatePayload(); // CaptionsUpdatePayload | 
             var apiCaptionsInstance = apiInstance.Captions();
@@ -280,7 +280,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoId** | **string**| The unique identifier for the video you want to have automatic captions for.  | 
+ **videoId** | **string**| The unique identifier for the video you want to have automatic captions for. | 
  **language** | **string**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. | 
  **captionsUpdatePayload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  | 
 

@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="playerId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "playerId")]
     public string playerid { get; set; }
-
     /// <summary>
     /// The title you want to use for your video.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="title", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "title")]
     public string title { get; set; }
-
     /// <summary>
     /// A brief description of the video.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="description", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "description")]
     public string description { get; set; }
-
     /// <summary>
     /// Whether the video is publicly available or not. False means it is set to private.
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public bool _public { get; set; }
-
     /// <summary>
     /// Whether the video is a 360 degree or immersive video.
     /// </summary>
@@ -51,7 +47,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="panoramic", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "panoramic")]
     public bool panoramic { get; set; }
-
     /// <summary>
     /// Whether the player supports the mp4 format.
     /// </summary>
@@ -59,7 +54,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="mp4Support", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "mp4Support")]
     public bool mp4support { get; set; }
-
     /// <summary>
     /// A list of terms or words you want to tag the video with. Make sure the list includes all the tags you want as whatever you send in this list will overwrite the existing list for the video.
     /// </summary>
@@ -67,7 +61,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="tags", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "tags")]
     public List<string> tags { get; set; }
-
     /// <summary>
     /// A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video.
     /// </summary>
@@ -75,7 +68,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

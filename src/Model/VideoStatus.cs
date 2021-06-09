@@ -18,14 +18,12 @@ namespace ApiVideo.Model {
     [DataMember(Name="ingest", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "ingest")]
     public VideoStatusIngest ingest { get; set; }
-
     /// <summary>
     /// Gets or Sets Encoding
     /// </summary>
     [DataMember(Name="encoding", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "encoding")]
     public VideoStatusEncoding encoding { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object
