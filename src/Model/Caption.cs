@@ -18,21 +18,18 @@ namespace ApiVideo.Model {
     [DataMember(Name="uri", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "uri")]
     public string uri { get; set; }
-
     /// <summary>
     /// Gets or Sets Src
     /// </summary>
     [DataMember(Name="src", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "src")]
     public string src { get; set; }
-
     /// <summary>
     /// Gets or Sets Srclang
     /// </summary>
     [DataMember(Name="srclang", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "srclang")]
     public string srclang { get; set; }
-
     /// <summary>
     /// Whether you will have subtitles or not. True for yes you will have subtitles, false for no you will not have subtitles.
     /// </summary>
@@ -40,7 +37,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="default", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "default")]
     public bool _default { get; set; }
-
 
     /// <summary>
     /// Constructor. Set default values.

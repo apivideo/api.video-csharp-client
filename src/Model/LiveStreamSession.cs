@@ -18,42 +18,36 @@ namespace ApiVideo.Model {
     [DataMember(Name="session", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "session")]
     public LiveStreamSessionSession session { get; set; }
-
     /// <summary>
     /// Gets or Sets Location
     /// </summary>
     [DataMember(Name="location", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "location")]
     public LiveStreamSessionLocation location { get; set; }
-
     /// <summary>
     /// Gets or Sets Referrer
     /// </summary>
     [DataMember(Name="referrer", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "referrer")]
     public LiveStreamSessionReferrer referrer { get; set; }
-
     /// <summary>
     /// Gets or Sets Device
     /// </summary>
     [DataMember(Name="device", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "device")]
     public LiveStreamSessionDevice device { get; set; }
-
     /// <summary>
     /// Gets or Sets Os
     /// </summary>
     [DataMember(Name="os", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "os")]
     public VideoSessionOs os { get; set; }
-
     /// <summary>
     /// Gets or Sets _Client
     /// </summary>
     [DataMember(Name="client", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "client")]
     public LiveStreamSessionClient _client { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

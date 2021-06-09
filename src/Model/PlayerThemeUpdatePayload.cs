@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="text", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "text")]
     public string text { get; set; }
-
     /// <summary>
     /// RGBA color for all controls. Default: rgba(255, 255, 255, 1)
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="link", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "link")]
     public string link { get; set; }
-
     /// <summary>
     /// RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="linkHover", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "linkHover")]
     public string linkhover { get; set; }
-
     /// <summary>
     /// RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="trackPlayed", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "trackPlayed")]
     public string trackplayed { get; set; }
-
     /// <summary>
     /// RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
     /// </summary>
@@ -51,7 +47,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="trackUnplayed", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "trackUnplayed")]
     public string trackunplayed { get; set; }
-
     /// <summary>
     /// RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
     /// </summary>
@@ -59,7 +54,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="trackBackground", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "trackBackground")]
     public string trackbackground { get; set; }
-
     /// <summary>
     /// RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
     /// </summary>
@@ -67,7 +61,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="backgroundTop", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "backgroundTop")]
     public string backgroundtop { get; set; }
-
     /// <summary>
     /// RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
     /// </summary>
@@ -75,7 +68,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="backgroundBottom", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "backgroundBottom")]
     public string backgroundbottom { get; set; }
-
     /// <summary>
     /// RGBA color for title text. Default: rgba(255, 255, 255, 1)
     /// </summary>
@@ -83,7 +75,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="backgroundText", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "backgroundText")]
     public string backgroundtext { get; set; }
-
     /// <summary>
     /// enable/disable player SDK access. Default: true
     /// </summary>
@@ -91,7 +82,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="enableApi", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "enableApi")]
     public bool enableapi { get; set; }
-
     /// <summary>
     /// enable/disable player controls. Default: true
     /// </summary>
@@ -99,7 +89,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="enableControls", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "enableControls")]
     public bool enablecontrols { get; set; }
-
     /// <summary>
     /// enable/disable player autoplay. Default: false
     /// </summary>
@@ -107,7 +96,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="forceAutoplay", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "forceAutoplay")]
     public bool forceautoplay { get; set; }
-
     /// <summary>
     /// enable/disable title. Default: false
     /// </summary>
@@ -115,7 +103,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="hideTitle", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "hideTitle")]
     public bool hidetitle { get; set; }
-
     /// <summary>
     /// enable/disable looping. Default: false
     /// </summary>
@@ -123,7 +110,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="forceLoop", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "forceLoop")]
     public bool forceloop { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

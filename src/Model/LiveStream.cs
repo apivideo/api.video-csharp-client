@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="liveStreamId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "liveStreamId")]
     public string livestreamid { get; set; }
-
     /// <summary>
     /// The name of your live stream.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string name { get; set; }
-
     /// <summary>
     /// The unique, private stream key that you use to begin streaming.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="streamKey", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "streamKey")]
     public string streamkey { get; set; }
-
     /// <summary>
     /// Whether you are recording or not.
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="record", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "record")]
     public bool record { get; set; }
-
     /// <summary>
     /// BETA FEATURE Please limit all public = false (\"private\") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
     /// </summary>
@@ -51,14 +47,12 @@ namespace ApiVideo.Model {
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public bool _public { get; set; }
-
     /// <summary>
     /// Gets or Sets Assets
     /// </summary>
     [DataMember(Name="assets", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "assets")]
     public LiveStreamAssets assets { get; set; }
-
     /// <summary>
     /// The unique identifier for the player.
     /// </summary>
@@ -66,7 +60,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="playerId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "playerId")]
     public string playerid { get; set; }
-
     /// <summary>
     /// Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not.
     /// </summary>
@@ -74,7 +67,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="broadcasting", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "broadcasting")]
     public bool broadcasting { get; set; }
-
     /// <summary>
     /// When the player was created, presented in ISO-8601 format.
     /// </summary>
@@ -82,7 +74,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }
-
     /// <summary>
     /// When the player was last updated, presented in ISO-8601 format.
     /// </summary>
@@ -90,7 +81,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="updatedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updatedAt")]
     public DateTime? updatedat { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

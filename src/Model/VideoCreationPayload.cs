@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="title", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "title")]
     public string title { get; set; }
-
     /// <summary>
     /// A brief description of your video.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="description", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "description")]
     public string description { get; set; }
-
     /// <summary>
     /// If you add a video already on the web, this is where you enter the url for the video.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="source", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "source")]
     public string source { get; set; }
-
     /// <summary>
     /// Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public bool _public { get; set; }
-
     /// <summary>
     /// Indicates if your video is a 360/immersive video.
     /// </summary>
@@ -51,7 +47,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="panoramic", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "panoramic")]
     public bool panoramic { get; set; }
-
     /// <summary>
     /// Enables mp4 version in addition to streamed version.
     /// </summary>
@@ -59,7 +54,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="mp4Support", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "mp4Support")]
     public bool mp4support { get; set; }
-
     /// <summary>
     /// The unique identification number for your video player.
     /// </summary>
@@ -67,7 +61,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="playerId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "playerId")]
     public string playerid { get; set; }
-
     /// <summary>
     /// A list of tags you want to use to describe your video.
     /// </summary>
@@ -75,7 +68,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="tags", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "tags")]
     public List<string> tags { get; set; }
-
     /// <summary>
     /// A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
     /// </summary>
@@ -83,7 +75,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
-
     /// <summary>
     /// The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
     /// </summary>
@@ -91,7 +82,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="publishedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "publishedAt")]
     public DateTime? publishedat { get; set; }
-
 
     /// <summary>
     /// Constructor. Set default values.

@@ -32,7 +32,7 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The unique identifier for the video you want to delete a chapter from. 
+            var videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The unique identifier for the video you want to delete a chapter from.
             var language = en;  // string | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
             var apiChaptersInstance = apiInstance.Chapters();
             try
@@ -55,7 +55,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoId** | **string**| The unique identifier for the video you want to delete a chapter from.  | 
+ **videoId** | **string**| The unique identifier for the video you want to delete a chapter from. | 
  **language** | **string**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. | 
 
 ### Return type

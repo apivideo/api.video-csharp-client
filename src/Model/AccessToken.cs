@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="access_token", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "access_token")]
     public string accesstoken { get; set; }
-
     /// <summary>
     /// The type of token you have.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="token_type", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "token_type")]
     public string tokentype { get; set; }
-
     /// <summary>
     /// A token you can use to get the next access token when your current access token expires.
     /// </summary>
@@ -35,7 +33,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="refresh_token", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "refresh_token")]
     public string refreshtoken { get; set; }
-
     /// <summary>
     /// Lists the time in seconds when your access token expires. It lasts for one hour.
     /// </summary>
@@ -43,7 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="expires_in", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "expires_in")]
     public int expiresin { get; set; }
-
 
     /// <summary>
     /// Constructor. Set default values.

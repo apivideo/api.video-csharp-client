@@ -18,14 +18,12 @@ namespace ApiVideo.Model {
     [DataMember(Name="data", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "data")]
     public List<Video> data { get; set; }
-
     /// <summary>
     /// Gets or Sets Pagination
     /// </summary>
     [DataMember(Name="pagination", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "pagination")]
     public Pagination pagination { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

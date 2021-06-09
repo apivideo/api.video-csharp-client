@@ -19,7 +19,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="country", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "country")]
     public string country { get; set; }
-
     /// <summary>
     /// The city of the viewer of the live stream.
     /// </summary>
@@ -27,7 +26,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="city", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "city")]
     public string city { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object
