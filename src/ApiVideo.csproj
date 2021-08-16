@@ -12,7 +12,7 @@ The version of the OpenAPI document: 1
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{43A371AB-EC90-4A1A-AAEE-50636407EE86}</ProjectGuid>
+    <ProjectGuid>{7C0C0787-7DAF-4EFF-82C9-0F77A5C7AED0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ApiVideo</RootNamespace>

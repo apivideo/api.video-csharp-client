@@ -352,7 +352,7 @@ namespace ApiVideo.Api
             }
         }
         /// <summary>
-        /// List video player sessions Retrieve all available user sessions for a specific video.
+        /// List video player sessions Retrieve all available user sessions for a specific video. Tutorials that use the [analytics endpoint](https://api.video/blog/endpoints/analytics).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve session information for.</param>
@@ -369,7 +369,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List video player sessions Retrieve all available user sessions for a specific video.
+        /// List video player sessions Retrieve all available user sessions for a specific video. Tutorials that use the [analytics endpoint](https://api.video/blog/endpoints/analytics).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve session information for.</param>
@@ -435,7 +435,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve all available user sessions for a specific video.
+        /// Retrieve all available user sessions for a specific video. Tutorials that use the [analytics endpoint](https://api.video/blog/endpoints/analytics).
         /// </summary>
         /// <param name="videoId">The unique identifier for the video you want to retrieve session information for. (required)</param>
         /// <returns>APIlistVideoSessionsRequest</returns>
