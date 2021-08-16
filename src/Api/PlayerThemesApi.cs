@@ -172,7 +172,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List all players Retrieve a list of all the players you created, as well as details about each one.
+        /// List all players Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
@@ -188,7 +188,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List all players Retrieve a list of all the players you created, as well as details about each one.
+        /// List all players Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
@@ -248,7 +248,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve a list of all the players you created, as well as details about each one.
+        /// Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
         /// </summary>
         /// <returns>APIlistRequest</returns>
         public APIlistRequest list() {
