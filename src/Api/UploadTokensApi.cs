@@ -106,7 +106,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+        /// List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
@@ -122,7 +122,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+        /// List all active upload tokens. A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
@@ -182,7 +182,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens.
+        /// A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
         /// </summary>
         /// <returns>APIlistRequest</returns>
         public APIlistRequest list() {
@@ -342,7 +342,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
+        /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenCreationPayload"></param>
@@ -355,7 +355,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe.
+        /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenCreationPayload"></param>
