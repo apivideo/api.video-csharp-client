@@ -25,6 +25,10 @@ namespace ApiVideo.Client
     /// </summary>
     public partial class ApiClient
     {
+        private const int DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
+        private const int MIN_CHUNK_SIZE = 5 * 1024 * 1024;
+        private const int MAX_CHUNK_SIZE = 128 * 1024 * 1024;
+
         private readonly JsonSerializerSettings serializerSettings = new JsonSerializerSettings
         {
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
@@ -53,7 +57,7 @@ namespace ApiVideo.Client
         /// <param name="basePath">the api base path.</param>
         public ApiClient(string basePath) {
             this.RestClient = new RestClient(basePath);
-            this.RestClient.UserAgent = "api.video client (C#; v:0.0.8; )";
+            this.RestClient.UserAgent = "api.video client (C#; v:0.0.9; )";
         }
         
         /// <summary>
@@ -63,7 +67,7 @@ namespace ApiVideo.Client
         /// <param name="basePath">the api base path.</param>
         public ApiClient(string apiKey,string basePath) {
             this.RestClient = new RestClient(basePath);
-            this.RestClient.UserAgent = "api.video client (C#; v:0.0.8; )";
+            this.RestClient.UserAgent = "api.video client (C#; v:0.0.9; )";
             this.AuthManager = new AuthenticationManager(apiKey, this);
         }
 
@@ -73,7 +77,7 @@ namespace ApiVideo.Client
         /// <param name="client">a RestClient instance used to make API call</param>
         public ApiClient(RestClient client) {
             this.RestClient = client;
-            this.RestClient.UserAgent = "api.video client (C#; v:0.0.8; )";
+            this.RestClient.UserAgent = "api.video client (C#; v:0.0.9; )";
         }
 
         /// <summary>
@@ -111,13 +115,22 @@ namespace ApiVideo.Client
         }
 
 
+        private int _uploadChunkSize = DEFAULT_CHUNK_SIZE;
+        
         /// <summary>
         /// Gets or sets the file upload chunk size
         /// </summary>
-        public int UploadChunkSize{
-            get;
-            set;
-        } = 100 * 1024 * 1024;
+        public int UploadChunkSize
+        {
+            get => _uploadChunkSize;
+            set { 
+                if ((value < MIN_CHUNK_SIZE) && (value > MAX_CHUNK_SIZE))
+                {
+                    throw new Exception("Invalid chunk size value. Must be greater than " + MIN_CHUNK_SIZE + " bytes and lower than " + MAX_CHUNK_SIZE + " bytes.");
+                }
+                _uploadChunkSize = value;
+            }
+        }
 
         // Creates and sets up a RestRequest prior to a call.
         private RestRequest PrepareRequest(
