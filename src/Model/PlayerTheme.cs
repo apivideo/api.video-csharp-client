@@ -134,41 +134,6 @@ namespace ApiVideo.Model {
     /// Deprecated
     /// </summary>
     /// <value>Deprecated</value>
-    [DataMember(Name="shapeMargin", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "shapeMargin")]
-    public int shapemargin { get; set; }
-    /// <summary>
-    /// Deprecated
-    /// </summary>
-    /// <value>Deprecated</value>
-    [DataMember(Name="shapeRadius", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "shapeRadius")]
-    public int shaperadius { get; set; }
-    /// <summary>
-    /// Deprecated
-    /// </summary>
-    /// <value>Deprecated</value>
-    [DataMember(Name="shapeAspect", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "shapeAspect")]
-    public string shapeaspect { get; set; }
-    /// <summary>
-    /// Deprecated
-    /// </summary>
-    /// <value>Deprecated</value>
-    [DataMember(Name="shapeBackgroundTop", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "shapeBackgroundTop")]
-    public string shapebackgroundtop { get; set; }
-    /// <summary>
-    /// Deprecated
-    /// </summary>
-    /// <value>Deprecated</value>
-    [DataMember(Name="shapeBackgroundBottom", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "shapeBackgroundBottom")]
-    public string shapebackgroundbottom { get; set; }
-    /// <summary>
-    /// Deprecated
-    /// </summary>
-    /// <value>Deprecated</value>
     [DataMember(Name="linkActive", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "linkActive")]
     public string linkactive { get; set; }
@@ -203,11 +168,6 @@ namespace ApiVideo.Model {
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");
       sb.Append("  CreatedAt: ").Append(createdat).Append("\n");
       sb.Append("  UpdatedAt: ").Append(updatedat).Append("\n");
-      sb.Append("  ShapeMargin: ").Append(shapemargin).Append("\n");
-      sb.Append("  ShapeRadius: ").Append(shaperadius).Append("\n");
-      sb.Append("  ShapeAspect: ").Append(shapeaspect).Append("\n");
-      sb.Append("  ShapeBackgroundTop: ").Append(shapebackgroundtop).Append("\n");
-      sb.Append("  ShapeBackgroundBottom: ").Append(shapebackgroundbottom).Append("\n");
       sb.Append("  LinkActive: ").Append(linkactive).Append("\n");
       sb.Append("  Assets: ").Append(assets).Append("\n");
       sb.Append("}\n");

@@ -21,11 +21,6 @@ Name | Type | Description | Notes
 **PlayerId** | **string** |  | 
 **CreatedAt** | **DateTime** | When the player was created, presented in ISO-8601 format. | [optional] 
 **UpdatedAt** | **DateTime** | When the player was last updated, presented in ISO-8601 format. | [optional] 
-**ShapeMargin** | **int** | Deprecated | [optional] 
-**ShapeRadius** | **int** | Deprecated | [optional] 
-**ShapeAspect** | **string** | Deprecated | [optional] 
-**ShapeBackgroundTop** | **string** | Deprecated | [optional] 
-**ShapeBackgroundBottom** | **string** | Deprecated | [optional] 
 **LinkActive** | **string** | Deprecated | [optional] 
 **Assets** | [**PlayerThemeAssets**](PlayerThemeAssets.md) |  | [optional] 
 
