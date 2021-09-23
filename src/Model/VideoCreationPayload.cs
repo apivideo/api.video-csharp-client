@@ -75,13 +75,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
-    /// <summary>
-    /// The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
-    /// </summary>
-    /// <value>The API uses ISO-8601 format for time, and includes 3 places for milliseconds.</value>
-    [DataMember(Name="publishedAt", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "publishedAt")]
-    public DateTime? publishedat { get; set; }
 
     /// <summary>
     /// Constructor. Set default values.
@@ -109,7 +102,6 @@ namespace ApiVideo.Model {
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");
       sb.Append("  Tags: ").Append(tags).Append("\n");
       sb.Append("  Metadata: ").Append(metadata).Append("\n");
-      sb.Append("  PublishedAt: ").Append(publishedat).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
