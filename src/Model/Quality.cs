@@ -13,6 +13,13 @@ namespace ApiVideo.Model {
   [DataContract]
   public class Quality {
     /// <summary>
+    /// The type of video (hls or mp4).
+    /// </summary>
+    /// <value>The type of video (hls or mp4).</value>
+    [DataMember(Name="type", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "type")]
+    public string type { get; set; }
+    /// <summary>
     /// The quality of the video you have, in pixels. Choices include 360p, 480p, 720p, 1080p, and 2160p.
     /// </summary>
     /// <value>The quality of the video you have, in pixels. Choices include 360p, 480p, 720p, 1080p, and 2160p.</value>
@@ -34,6 +41,7 @@ namespace ApiVideo.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Quality {\n");
+      sb.Append("  Type: ").Append(type).Append("\n");
       sb.Append("  _Quality: ").Append(_quality).Append("\n");
       sb.Append("  Status: ").Append(status).Append("\n");
       sb.Append("}\n");
