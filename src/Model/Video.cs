@@ -20,9 +20,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "videoId")]
     public string videoid { get; set; }
     /// <summary>
-    /// When an webhook was created, presented in ISO-8601 format.
+    /// When a video was created, presented in ISO-8601 format.
     /// </summary>
-    /// <value>When an webhook was created, presented in ISO-8601 format.</value>
+    /// <value>When a video was created, presented in ISO-8601 format.</value>
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }
@@ -55,16 +55,16 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "updatedAt")]
     public DateTime? updatedat { get; set; }
     /// <summary>
-    /// One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces. 
+    /// One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  
     /// </summary>
-    /// <value>One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces. </value>
+    /// <value>One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  </value>
     [DataMember(Name="tags", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "tags")]
     public List<string> tags { get; set; }
     /// <summary>
-    /// Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. 
+    /// Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. 
     /// </summary>
-    /// <value>Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. </value>
+    /// <value>Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. </value>
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
@@ -88,9 +88,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "playerId")]
     public string playerid { get; set; }
     /// <summary>
-    /// Defines if the content is publicly reachable or if a unique token is needed for each play session. 
+    /// Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos). 
     /// </summary>
-    /// <value>Defines if the content is publicly reachable or if a unique token is needed for each play session. </value>
+    /// <value>Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos). </value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public bool _public { get; set; }

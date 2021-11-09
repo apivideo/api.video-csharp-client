@@ -173,7 +173,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Show video status This API provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback.  Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).
+        /// Show video status This API provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
@@ -186,7 +186,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Show video status This API provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback.  Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).
+        /// Show video status This API provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
@@ -240,12 +240,12 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List all videos Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below. We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
+        /// List all videos Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below.  We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
 /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
-/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. (optional)</param>
 /// <param name="description">If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional)</param>
 /// <param name="liveStreamId">If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional)</param>
 /// <param name="sortBy">Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional)</param>
@@ -261,12 +261,12 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List all videos Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below. We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
+        /// List all videos Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below.  We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
 /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
-/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. (optional)</param>
 /// <param name="description">If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional)</param>
 /// <param name="liveStreamId">If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional)</param>
 /// <param name="sortBy">Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional)</param>
@@ -336,7 +336,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below. We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
+        /// Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below.  We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
         /// </summary>
         /// <returns>APIlistRequest</returns>
         public APIlistRequest list() {
@@ -390,7 +390,7 @@ namespace ApiVideo.Api
             /// <summary>
             /// Set metadata
             /// </summary>
-            /// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
+            /// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. (optional)</param>
             /// <returns>APIlistRequest</returns>
             public APIlistRequest Metadata(Dictionary<string, string> metadata) {
                 this.metadata = metadata;
@@ -741,7 +741,11 @@ namespace ApiVideo.Api
                 {
                     chunkNum++;
                     byte[] buffer = new byte[chunkSize];
-                    localVarHeaderParams["Content-Range"] = "bytes " + i + "-" + (Math.Min(i+chunkSize,totalBytes)-1) + "/" + totalBytes;
+                    if(i + chunkSize >= totalBytes) {
+                        localVarHeaderParams["Content-Range"] = "part " + chunkNum + "/" + chunkNum;
+                    } else {
+                        localVarHeaderParams["Content-Range"] = "part " + chunkNum + "/*";
+                    }
                     
                     file.Read(buffer, 0, chunkSize);
 
@@ -798,9 +802,111 @@ namespace ApiVideo.Api
             }
         }
 
+         public ApiResponse<Video> uploadWithUploadTokenPartWithHttpInfo(string token, System.IO.Stream file, string videoId, int part, bool isLast) {
+
+
+            // verify the required parameter 'token' is set
+            if (token == null)
+                throw new ApiException(400, "Missing required parameter 'token' when calling VideosApi->uploadWithUploadToken");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling VideosApi->uploadWithUploadToken");
+
+            long totalBytes = file.Length;
+            int chunkSize = Convert.ToInt32(this.ApiClient.UploadChunkSize);
+
+            var localVarPath = "/upload";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null)
+                localVarFormParams.Add("videoId", videoId);
+
+            if (token != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "token", token)); // query parameter
+            
+
+            
+            if (file != null)
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+            if(isLast)
+            {
+                localVarHeaderParams["Content-Range"] = "part " + part + "/" + part;
+            } else
+            {
+                localVarHeaderParams["Content-Range"] = "part " + part + "/*";
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            return new ApiResponse<Video>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Video) this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
+
+
+        }
+
+
+        public class UploadWithUploadTokenProgressiveSession {
+            private int partNum = 1;
+            private string videoId; 
+            
+            private string token;
+            private VideosApi videosApi;
+
+            public UploadWithUploadTokenProgressiveSession(VideosApi videosApi, string token) {
+                this.token = token;
+                this.videosApi = videosApi;
+            }
+
+            public Video uploadPart(System.IO.Stream part) {
+                return uploadPart(part, false);
+            }
+
+            public Video uploadLastPart(System.IO.Stream part) {
+                return uploadPart(part, true);
+            }
+
+            public Video uploadPart(System.IO.Stream part, bool isLastPart) {
+                int lastPartNum = partNum;
+                partNum++;
+                ApiResponse<Video> localVarResp = this.videosApi.uploadWithUploadTokenPartWithHttpInfo(this.token, part, this.videoId, lastPartNum, isLastPart);
+                if(this.videoId == null) {
+                    this.videoId = localVarResp.Data.videoid;
+                } 
+                return localVarResp.Data;
+            }
+        }
+
+        public UploadWithUploadTokenProgressiveSession createUploadWithUploadTokenProgressiveSession(string token) {
+            return new UploadWithUploadTokenProgressiveSession(this, token);
+        }
         
         /// <summary>
-        /// Create a video To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source). * Videos are public by default. [Learn about Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * Up to 6 responsive video streams will be created (from 240p to 4k) * Mp4 encoded versions are created at the highest quality (max 1080p) by default. * Panoramic videos are for videos recorded in 360 degrees.  You can toggle this after your 360 video upload. * Searchable parameters: title, description, tags and metadata   &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;title\&quot;:\&quot;My video\&quot;,      \&quot;description\&quot;:\&quot;so many details\&quot;,      \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60; ### add an URL to upload on creation You can also create a video directly from a video hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter: &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My video\&quot;}&#39; &#x60;&#x60;&#x60; In this case, the service will respond &#x60;202 Accepted&#x60; and download the video asynchronously. ### Track users with Dynamic Metadata Metadata values can be a key:value where the values are predefined, but Dynamic metadata allows you to enter *any* value for a defined key.  To defined a dynamic metadata pair use: &#x60;&#x60;&#x60; \&quot;metadata\&quot;:[{\&quot;dynamicKey\&quot;: \&quot;__dynamicKey__\&quot;}] &#x60;&#x60;&#x60; The double underscore on both sides of the value allows any variable to be added for a given video session. Added the the url you might have: &#x60;&#x60;&#x60; &lt;iframe type&#x3D;\&quot;text/html\&quot; src&#x3D;\&quot;https://embed.api.video/vod/vi6QvU9dhYCzW3BpPvPsZUa8?metadata[classUserName]&#x3D;Doug\&quot; width&#x3D;\&quot;960\&quot; height&#x3D;\&quot;320\&quot; frameborder&#x3D;\&quot;0\&quot; scrollling&#x3D;\&quot;no\&quot;&gt;&lt;/iframe&gt; &#x60;&#x60;&#x60; This video session will be tagged as watched by Doug - allowing for in-depth analysis on how each viewer interacts with the videos.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata) * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
+        /// Create a video  ## We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos)   * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoCreationPayload">video to create</param>
@@ -813,7 +919,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Create a video To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source). * Videos are public by default. [Learn about Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * Up to 6 responsive video streams will be created (from 240p to 4k) * Mp4 encoded versions are created at the highest quality (max 1080p) by default. * Panoramic videos are for videos recorded in 360 degrees.  You can toggle this after your 360 video upload. * Searchable parameters: title, description, tags and metadata   &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;title\&quot;:\&quot;My video\&quot;,      \&quot;description\&quot;:\&quot;so many details\&quot;,      \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60; ### add an URL to upload on creation You can also create a video directly from a video hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter: &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My video\&quot;}&#39; &#x60;&#x60;&#x60; In this case, the service will respond &#x60;202 Accepted&#x60; and download the video asynchronously. ### Track users with Dynamic Metadata Metadata values can be a key:value where the values are predefined, but Dynamic metadata allows you to enter *any* value for a defined key.  To defined a dynamic metadata pair use: &#x60;&#x60;&#x60; \&quot;metadata\&quot;:[{\&quot;dynamicKey\&quot;: \&quot;__dynamicKey__\&quot;}] &#x60;&#x60;&#x60; The double underscore on both sides of the value allows any variable to be added for a given video session. Added the the url you might have: &#x60;&#x60;&#x60; &lt;iframe type&#x3D;\&quot;text/html\&quot; src&#x3D;\&quot;https://embed.api.video/vod/vi6QvU9dhYCzW3BpPvPsZUa8?metadata[classUserName]&#x3D;Doug\&quot; width&#x3D;\&quot;960\&quot; height&#x3D;\&quot;320\&quot; frameborder&#x3D;\&quot;0\&quot; scrollling&#x3D;\&quot;no\&quot;&gt;&lt;/iframe&gt; &#x60;&#x60;&#x60; This video session will be tagged as watched by Doug - allowing for in-depth analysis on how each viewer interacts with the videos.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata) * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
+        /// Create a video  ## We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos)   * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoCreationPayload">video to create</param>
@@ -881,7 +987,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Upload a video To upload a video to the videoId you created. Replace {videoId} with the id you&#39;d like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you&#39;d like to upload. You can only upload your video to the videoId once. &#x60;&#x60;&#x60;bash curl https://ws.api.video/videos/{videoId}/source \\   -H &#39;Authorization: Bearer {access_token}&#39; \\   -F file&#x3D;@/path/to/video.mp4   &#x60;&#x60;&#x60; Tutorials using [video upload](https://api.video/blog/endpoints/video-upload)
+        /// Upload a video To upload a video to the videoId you created. Replace {videoId} with the id you&#39;d like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you&#39;d like to upload. You can only upload your video to the videoId once. &#x60;&#x60;&#x60;bash curl https://ws.api.video/videos/{videoId}/source \\   -H &#39;Authorization: Bearer {access_token}&#39; \\   -F file&#x3D;@/path/to/video.mp4    &#x60;&#x60;&#x60; Tutorials using [video upload](https://api.video/blog/endpoints/video-upload).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Enter the videoId you want to use to upload your video.</param>
@@ -895,7 +1001,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a video To upload a video to the videoId you created. Replace {videoId} with the id you&#39;d like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you&#39;d like to upload. You can only upload your video to the videoId once. &#x60;&#x60;&#x60;bash curl https://ws.api.video/videos/{videoId}/source \\   -H &#39;Authorization: Bearer {access_token}&#39; \\   -F file&#x3D;@/path/to/video.mp4   &#x60;&#x60;&#x60; Tutorials using [video upload](https://api.video/blog/endpoints/video-upload)
+        /// Upload a video To upload a video to the videoId you created. Replace {videoId} with the id you&#39;d like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you&#39;d like to upload. You can only upload your video to the videoId once. &#x60;&#x60;&#x60;bash curl https://ws.api.video/videos/{videoId}/source \\   -H &#39;Authorization: Bearer {access_token}&#39; \\   -F file&#x3D;@/path/to/video.mp4    &#x60;&#x60;&#x60; Tutorials using [video upload](https://api.video/blog/endpoints/video-upload).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Enter the videoId you want to use to upload your video.</param>
@@ -951,7 +1057,11 @@ namespace ApiVideo.Api
                 {
                     chunkNum++;
                     byte[] buffer = new byte[chunkSize];
-                    localVarHeaderParams["Content-Range"] = "bytes " + i + "-" + (Math.Min(i+chunkSize,totalBytes)-1) + "/" + totalBytes;
+                    if(i + chunkSize >= totalBytes) {
+                        localVarHeaderParams["Content-Range"] = "part " + chunkNum + "/" + chunkNum;
+                    } else {
+                        localVarHeaderParams["Content-Range"] = "part " + chunkNum + "/*";
+                    }
                     
                     file.Read(buffer, 0, chunkSize);
 
@@ -1008,9 +1118,106 @@ namespace ApiVideo.Api
             }
         }
 
+         public ApiResponse<Video> uploadPartWithHttpInfo(string videoId, System.IO.Stream file, int part, bool isLast) {
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->upload");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling VideosApi->upload");
+
+            long totalBytes = file.Length;
+            int chunkSize = Convert.ToInt32(this.ApiClient.UploadChunkSize);
+
+            var localVarPath = "/videos/{videoId}/source";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            
+
+            
+            if (file != null)
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+            if(isLast)
+            {
+                localVarHeaderParams["Content-Range"] = "part " + part + "/" + part;
+            } else
+            {
+                localVarHeaderParams["Content-Range"] = "part " + part + "/*";
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            return new ApiResponse<Video>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Video) this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
+
+
+        }
+
+
+        public class UploadProgressiveSession {
+            private int partNum = 1;
+
+            
+            private string videoId;
+            private VideosApi videosApi;
+
+            public UploadProgressiveSession(VideosApi videosApi, string videoId) {
+                this.videoId = videoId;
+                this.videosApi = videosApi;
+            }
+
+            public Video uploadPart(System.IO.Stream part) {
+                return uploadPart(part, false);
+            }
+
+            public Video uploadLastPart(System.IO.Stream part) {
+                return uploadPart(part, true);
+            }
+
+            public Video uploadPart(System.IO.Stream part, bool isLastPart) {
+                int lastPartNum = partNum;
+                partNum++;
+                ApiResponse<Video> localVarResp = this.videosApi.uploadPartWithHttpInfo(this.videoId, part, lastPartNum, isLastPart);
+
+                return localVarResp.Data;
+            }
+        }
+
+        public UploadProgressiveSession createUploadProgressiveSession(string videoId) {
+            return new UploadProgressiveSession(this, videoId);
+        }
         
         /// <summary>
-        /// Upload a thumbnail The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video. Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).
+        /// Upload a thumbnail The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video.  Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the chosen video </param>
@@ -1024,7 +1231,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a thumbnail The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video. Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).
+        /// Upload a thumbnail The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video.  Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the chosen video </param>

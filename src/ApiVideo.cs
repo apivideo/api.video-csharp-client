@@ -46,6 +46,14 @@ namespace ApiVideo.Client
         }
 
         /// <summary>
+        /// Build an instance that targets the given environment with authentication
+        /// </summary>
+        /// <param name="apiKey">the api key to use to authenticate</param>
+        /// <param name="host">host the target host</param>
+        public ApiVideoClient(string apiKey, string host) : this(new ApiClient(apiKey, host)) {
+        }
+
+        /// <summary>
         /// Build an instance that targets the production environment using a custom OkHttp client
         /// </summary>
         /// <param name="client">the RestClient instance to use</param>
