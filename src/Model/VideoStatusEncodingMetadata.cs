@@ -55,9 +55,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "samplerate")]
     public int samplerate { get; set; }
     /// <summary>
-    /// The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library.
+    /// The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library. 
     /// </summary>
-    /// <value>The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library.</value>
+    /// <value>The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library. </value>
     [DataMember(Name="videoCodec", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "videoCodec")]
     public string videocodec { get; set; }

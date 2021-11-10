@@ -5,8 +5,6 @@ README.md
 build.bat
 build.sh
 docs/AccessToken.md
-docs/Account.md
-docs/AccountQuota.md
 docs/AuthenticatePayload.md
 docs/AuthenticationApi.md
 docs/BadRequest.md
@@ -92,8 +90,6 @@ src/ApiVideo.Test/Api/VideosApiTests.cs
 src/ApiVideo.Test/Api/WebhooksApiTests.cs
 src/ApiVideo.Test/ApiVideo.Test.csproj
 src/ApiVideo.Test/Model/AccessTokenTests.cs
-src/ApiVideo.Test/Model/AccountQuotaTests.cs
-src/ApiVideo.Test/Model/AccountTests.cs
 src/ApiVideo.Test/Model/AuthenticatePayloadTests.cs
 src/ApiVideo.Test/Model/BadRequestTests.cs
 src/ApiVideo.Test/Model/BytesRangeTests.cs
@@ -174,8 +170,6 @@ src/ApiVideo/Client/ApiResponse.cs
 src/ApiVideo/Client/AuthenticationManager.cs
 src/ApiVideo/Client/EmptyArrayFixTypeConverter.cs
 src/ApiVideo/Model/AccessToken.cs
-src/ApiVideo/Model/Account.cs
-src/ApiVideo/Model/AccountQuota.cs
 src/ApiVideo/Model/AuthenticatePayload.cs
 src/ApiVideo/Model/BadRequest.cs
 src/ApiVideo/Model/BytesRange.cs
@@ -184,6 +178,7 @@ src/ApiVideo/Model/CaptionsListResponse.cs
 src/ApiVideo/Model/CaptionsUpdatePayload.cs
 src/ApiVideo/Model/Chapter.cs
 src/ApiVideo/Model/ChaptersListResponse.cs
+src/ApiVideo/Model/IUploadPartProgressListener.cs
 src/ApiVideo/Model/IUploadProgressListener.cs
 src/ApiVideo/Model/Link.cs
 src/ApiVideo/Model/LiveStream.cs

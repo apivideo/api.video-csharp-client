@@ -13,9 +13,9 @@ namespace ApiVideo.Model {
   [DataContract]
   public class TokenCreationPayload {
     /// <summary>
-    /// Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
+    /// Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
     /// </summary>
-    /// <value>Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.</value>
+    /// <value>Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.</value>
     [DataMember(Name="ttl", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "ttl")]
     public int ttl { get; set; }

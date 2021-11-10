@@ -574,7 +574,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
@@ -589,7 +589,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>

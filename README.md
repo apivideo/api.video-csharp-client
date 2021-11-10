@@ -284,8 +284,6 @@ Method | HTTP request | Description
 ## Documentation for Models
 
  - [AccessToken](docs/AccessToken.md)
- - [Account](docs/Account.md)
- - [AccountQuota](docs/AccountQuota.md)
  - [AuthenticatePayload](docs/AuthenticatePayload.md)
  - [BadRequest](docs/BadRequest.md)
  - [BytesRange](docs/BytesRange.md)
