@@ -12,7 +12,7 @@ The version of the OpenAPI document: 1
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{738C448E-F81B-46FC-B27B-C183925A30C4}</ProjectGuid>
+    <ProjectGuid>{9EFCC159-8CAA-4B04-80A1-622C0D11DDC7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ApiVideo</RootNamespace>
@@ -26,7 +26,7 @@ The version of the OpenAPI document: 1
     <Description>api.video csharp API client</Description>
     <DevelopmentDependency>true</DevelopmentDependency>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/apivideo/csharp-api-client</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/apivideo/api.video-csharp-client</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
