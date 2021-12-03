@@ -21,7 +21,7 @@ The version of the OpenAPI document: 1
     <FileAlignment>512</FileAlignment>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>ApiVideo</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.1.0</PackageVersion>
     <Authors>api.video</Authors>
     <Description>api.video csharp API client</Description>
     <DevelopmentDependency>true</DevelopmentDependency>

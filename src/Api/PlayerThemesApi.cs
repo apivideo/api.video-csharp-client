@@ -172,7 +172,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List all players Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+        /// List all player themes Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
@@ -188,7 +188,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List all players Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+        /// List all player themes Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
@@ -248,7 +248,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+        /// Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
         /// </summary>
         /// <returns>APIlistRequest</returns>
         public APIlistRequest list() {
@@ -434,11 +434,11 @@ namespace ApiVideo.Api
             if (playerThemeUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
             
-                                                                                                                                                                        
+                                                                                                                                                                                    
             if (playerThemeUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
             
-                                                                                                                                                                        
+                                                                                                                                                                                    
             // verify the required parameter 'playerId' is set
             if (playerId == null)
                 throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->update");
@@ -520,7 +520,7 @@ namespace ApiVideo.Api
             if (playerThemeCreationPayload == null) 
                 throw new ApiException(400,"Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");
             
-                                                                                                                                                                        
+                                                                                                                                                                                    
             // verify the required parameter 'playerThemeCreationPayload' is set
             if (playerThemeCreationPayload == null)
                 throw new ApiException(400, "Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");

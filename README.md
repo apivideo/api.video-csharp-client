@@ -219,7 +219,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
 [**deleteLogo**](docs/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](docs/PlayerThemesApi.md#list) | **GET** /players | List all players
+[**list**](docs/PlayerThemesApi.md#list) | **GET** /players | List all player themes
 [**get**](docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
 [**update**](docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
 [**create**](docs/PlayerThemesApi.md#create) | **POST** /players | Create a player
