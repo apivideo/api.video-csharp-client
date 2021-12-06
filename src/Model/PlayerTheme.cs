@@ -13,6 +13,13 @@ namespace ApiVideo.Model {
   [DataContract]
   public class PlayerTheme {
     /// <summary>
+    /// The name of the player theme
+    /// </summary>
+    /// <value>The name of the player theme</value>
+    [DataMember(Name="name", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "name")]
+    public string name { get; set; }
+    /// <summary>
     /// RGBA color for timer text. Default: rgba(255, 255, 255, 1)
     /// </summary>
     /// <value>RGBA color for timer text. Default: rgba(255, 255, 255, 1)</value>
@@ -151,6 +158,7 @@ namespace ApiVideo.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class PlayerTheme {\n");
+      sb.Append("  Name: ").Append(name).Append("\n");
       sb.Append("  Text: ").Append(text).Append("\n");
       sb.Append("  Link: ").Append(link).Append("\n");
       sb.Append("  LinkHover: ").Append(linkhover).Append("\n");

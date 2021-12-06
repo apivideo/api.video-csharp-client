@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](PlayerThemesApi.md#deleteplayersplayerid) | **DELETE** /players/{playerId} | Delete a player
 [**deleteLogo**](PlayerThemesApi.md#deleteplayersplayeridlogo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](PlayerThemesApi.md#getplayers) | **GET** /players | List all players
+[**list**](PlayerThemesApi.md#getplayers) | **GET** /players | List all player themes
 [**get**](PlayerThemesApi.md#getplayersplayerid) | **GET** /players/{playerId} | Show a player
 [**update**](PlayerThemesApi.md#patchplayersplayerid) | **PATCH** /players/{playerId} | Update a player
 [**create**](PlayerThemesApi.md#postplayers) | **POST** /players | Create a player
@@ -155,9 +155,9 @@ void (empty response body)
 # **list**
 > PlayerThemesListResponse list (string sortBy = null, string sortOrder = null, int? currentPage = null, int? pageSize = null)
 
-List all players
+List all player themes
 
-Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
 
 ### Example
 ```csharp
@@ -182,7 +182,7 @@ namespace Example
             var apiPlayerThemesInstance = apiInstance.PlayerThemes();
             try
             {
-                // List all players
+                // List all player themes
                 PlayerThemesListResponse result = apiPlayerThemesInstance.list(sortBy, sortOrder, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
