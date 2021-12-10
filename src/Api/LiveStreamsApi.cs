@@ -613,7 +613,7 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to upload.</param>
-/// <param name="file">The image to be added as a thumbnail.</param>
+/// <param name="file">The .jpg image to be added as a thumbnail.</param>
         
         /// <returns>LiveStream</returns>
 		public LiveStream uploadThumbnail(string liveStreamId, System.IO.Stream file)
@@ -627,7 +627,7 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to upload.</param>
-/// <param name="file">The image to be added as a thumbnail.</param>
+/// <param name="file">The .jpg image to be added as a thumbnail.</param>
         
         /// <returns>ApiResponse of LiveStream</returns>
 		public ApiResponse<LiveStream> uploadThumbnailWithHttpInfo(string liveStreamId, System.IO.Stream file)

@@ -1221,7 +1221,7 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the chosen video </param>
-/// <param name="file">The image to be added as a thumbnail.</param>
+/// <param name="file">The .jpg image to be added as a thumbnail.</param>
         
         /// <returns>Video</returns>
 		public Video uploadThumbnail(string videoId, System.IO.Stream file)
@@ -1235,7 +1235,7 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the chosen video </param>
-/// <param name="file">The image to be added as a thumbnail.</param>
+/// <param name="file">The .jpg image to be added as a thumbnail.</param>
         
         /// <returns>ApiResponse of Video</returns>
 		public ApiResponse<Video> uploadThumbnailWithHttpInfo(string videoId, System.IO.Stream file)

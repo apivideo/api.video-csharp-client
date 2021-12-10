@@ -706,7 +706,7 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var videoId = videoId_example;  // string | Unique identifier of the chosen video 
-            var file = BINARY_DATA_HERE;  // System.IO.Stream | The image to be added as a thumbnail.
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The .jpg image to be added as a thumbnail.
             var apiVideosInstance = apiInstance.Videos();
             try
             {
@@ -730,7 +730,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **string**| Unique identifier of the chosen video  | 
- **file** | **System.IO.Stream****System.IO.Stream**| The image to be added as a thumbnail. | 
+ **file** | **System.IO.Stream****System.IO.Stream**| The .jpg image to be added as a thumbnail. | 
 
 ### Return type
 
