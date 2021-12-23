@@ -138,9 +138,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "updatedAt")]
     public DateTime? updatedat { get; set; }
     /// <summary>
-    /// Deprecated
+    /// RGBA color for the play button when hovered.
     /// </summary>
-    /// <value>Deprecated</value>
+    /// <value>RGBA color for the play button when hovered.</value>
     [DataMember(Name="linkActive", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "linkActive")]
     public string linkactive { get; set; }
