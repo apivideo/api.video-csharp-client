@@ -310,7 +310,7 @@ namespace ApiVideo.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (title != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "title", title)); // query parameter
-            if (tags != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("multi", "tags", tags)); // query parameter
+            if (tags != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("multi", "tags[]", tags)); // query parameter
             if (metadata != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "metadata", metadata)); // query parameter
             if (description != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "description", description)); // query parameter
             if (liveStreamId != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "liveStreamId", liveStreamId)); // query parameter
