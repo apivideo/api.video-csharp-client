@@ -41,6 +41,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "thumbnail")]
     public string thumbnail { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

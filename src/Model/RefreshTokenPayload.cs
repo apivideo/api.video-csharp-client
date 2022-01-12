@@ -20,6 +20,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "refreshToken")]
     public string refreshtoken { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

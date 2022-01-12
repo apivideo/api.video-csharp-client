@@ -27,6 +27,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "city")]
     public string city { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

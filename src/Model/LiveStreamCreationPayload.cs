@@ -25,14 +25,14 @@ namespace ApiVideo.Model {
     /// <value>Whether you are recording or not. True for record, false for not record.</value>
     [DataMember(Name="record", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "record")]
-    public bool record { get; set; }
+    public Nullable<bool> record { get; set; }
     /// <summary>
     /// BETA FEATURE Please limit all public = false (\"private\") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
     /// </summary>
     /// <value>BETA FEATURE Please limit all public = false (\"private\") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
-    public bool _public { get; set; }
+    public Nullable<bool> _public { get; set; }
     /// <summary>
     /// The unique identifier for the player.
     /// </summary>
@@ -40,6 +40,7 @@ namespace ApiVideo.Model {
     [DataMember(Name="playerId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "playerId")]
     public string playerid { get; set; }
+
 
     /// <summary>
     /// Constructor. Set default values.

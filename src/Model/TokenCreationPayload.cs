@@ -20,6 +20,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "ttl")]
     public int ttl { get; set; }
 
+
     /// <summary>
     /// Constructor. Set default values.
     /// </summary>

@@ -12,14 +12,29 @@ namespace ApiVideo.Model {
   /// </summary>
   [DataContract]
   public class VideoUpdatePayload {
+
+    [DataMember(Name="playerId", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "playerId")]
+    public OptionalNullable<string> playerid_optional { get; set; } = null;
+
     /// <summary>
     /// The unique ID for the player you want to associate with your video.
     /// </summary>
     /// <value>The unique ID for the player you want to associate with your video.</value>
-    [DataMember(Name="playerId", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "playerId")]
-    public string playerid { get; set; }
-    /// <summary>
+    public string playerid
+    {
+        get
+        {
+            return this.playerid_optional != null ? this.playerid_optional.value : null;
+        }
+
+        set
+        {
+            this.playerid_optional = new OptionalNullable<string>(value);
+        }
+    }
+
+        /// <summary>
     /// The title you want to use for your video.
     /// </summary>
     /// <value>The title you want to use for your video.</value>
@@ -39,21 +54,21 @@ namespace ApiVideo.Model {
     /// <value>Whether the video is publicly available or not. False means it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
-    public bool _public { get; set; }
+    public Nullable<bool> _public { get; set; }
     /// <summary>
     /// Whether the video is a 360 degree or immersive video.
     /// </summary>
     /// <value>Whether the video is a 360 degree or immersive video.</value>
     [DataMember(Name="panoramic", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "panoramic")]
-    public bool panoramic { get; set; }
+    public Nullable<bool> panoramic { get; set; }
     /// <summary>
     /// Whether the player supports the mp4 format.
     /// </summary>
     /// <value>Whether the player supports the mp4 format.</value>
     [DataMember(Name="mp4Support", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "mp4Support")]
-    public bool mp4support { get; set; }
+    public Nullable<bool> mp4support { get; set; }
     /// <summary>
     /// A list of terms or words you want to tag the video with. Make sure the list includes all the tags you want as whatever you send in this list will overwrite the existing list for the video.
     /// </summary>
@@ -68,6 +83,7 @@ namespace ApiVideo.Model {
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object

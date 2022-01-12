@@ -75,6 +75,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "aspectRatio")]
     public string aspectratio { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

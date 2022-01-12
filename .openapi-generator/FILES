@@ -169,6 +169,7 @@ src/ApiVideo/Client/ApiException.cs
 src/ApiVideo/Client/ApiResponse.cs
 src/ApiVideo/Client/AuthenticationManager.cs
 src/ApiVideo/Client/EmptyArrayFixTypeConverter.cs
+src/ApiVideo/Client/NullableStringTypeConverter.cs
 src/ApiVideo/Model/AccessToken.cs
 src/ApiVideo/Model/AuthenticatePayload.cs
 src/ApiVideo/Model/BadRequest.cs
@@ -194,6 +195,7 @@ src/ApiVideo/Model/LiveStreamSessionSession.cs
 src/ApiVideo/Model/LiveStreamUpdatePayload.cs
 src/ApiVideo/Model/Metadata.cs
 src/ApiVideo/Model/NotFound.cs
+src/ApiVideo/Model/OptionalNullable.cs
 src/ApiVideo/Model/Page.cs
 src/ApiVideo/Model/Pagination.cs
 src/ApiVideo/Model/PaginationLink.cs

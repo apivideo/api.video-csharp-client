@@ -17,7 +17,8 @@ namespace ApiVideo.Model {
     /// </summary>
     [DataMember(Name="default", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "default")]
-    public bool _default { get; set; }
+    public Nullable<bool> _default { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object

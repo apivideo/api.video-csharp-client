@@ -41,6 +41,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "searchTerm")]
     public string searchterm { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

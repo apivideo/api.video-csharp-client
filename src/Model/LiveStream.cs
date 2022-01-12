@@ -39,14 +39,14 @@ namespace ApiVideo.Model {
     /// <value>Whether you are recording or not.</value>
     [DataMember(Name="record", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "record")]
-    public bool record { get; set; }
+    public Nullable<bool> record { get; set; }
     /// <summary>
     /// BETA FEATURE Please limit all public = false (\"private\") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
     /// </summary>
     /// <value>BETA FEATURE Please limit all public = false (\"private\") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
-    public bool _public { get; set; }
+    public Nullable<bool> _public { get; set; }
     /// <summary>
     /// Gets or Sets Assets
     /// </summary>
@@ -66,7 +66,7 @@ namespace ApiVideo.Model {
     /// <value>Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not.</value>
     [DataMember(Name="broadcasting", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "broadcasting")]
-    public bool broadcasting { get; set; }
+    public Nullable<bool> broadcasting { get; set; }
     /// <summary>
     /// When the player was created, presented in ISO-8601 format.
     /// </summary>
@@ -81,6 +81,7 @@ namespace ApiVideo.Model {
     [DataMember(Name="updatedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updatedAt")]
     public DateTime? updatedat { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object

@@ -27,6 +27,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "link")]
     public string link { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

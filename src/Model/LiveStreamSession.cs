@@ -49,6 +49,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "client")]
     public LiveStreamSessionClient _client { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>
