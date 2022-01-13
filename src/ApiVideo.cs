@@ -15,6 +15,7 @@ namespace ApiVideo.Client
         private readonly RawStatisticsApi rawStatistics;
         private readonly UploadTokensApi uploadTokens;
         private readonly VideosApi videos;
+        private readonly WatermarksApi watermarks;
         private readonly WebhooksApi webhooks;
 
         /// <summary>
@@ -70,6 +71,7 @@ namespace ApiVideo.Client
             this.rawStatistics = new RawStatisticsApi(this.apiClient);
             this.uploadTokens = new UploadTokensApi(this.apiClient);
             this.videos = new VideosApi(this.apiClient);
+            this.watermarks = new WatermarksApi(this.apiClient);
             this.webhooks = new WebhooksApi(this.apiClient);
         }
 
@@ -128,6 +130,14 @@ namespace ApiVideo.Client
         /// <returns>VideosApi</returns>
         public VideosApi Videos() {
             return this.videos;
+        }
+    
+        /// <summary>
+        /// Get an WatermarksApi instance
+        /// </summary>
+        /// <returns>WatermarksApi</returns>
+        public WatermarksApi Watermarks() {
+            return this.watermarks;
         }
     
         /// <summary>

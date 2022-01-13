@@ -24,6 +24,7 @@
     - [RawStatisticsApi](#rawstatisticsapi)
     - [UploadTokensApi](#uploadtokensapi)
     - [VideosApi](#videosapi)
+    - [WatermarksApi](#watermarksapi)
     - [WebhooksApi](#webhooksapi)
   - [Models](#models)
   - [Authorization](#authorization)
@@ -288,6 +289,24 @@ Method | HTTP request | Description
 [**uploadThumbnail**](docs/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
 
 
+### WatermarksApi
+
+
+#### Retrieve an instance of WatermarksApi:
+```java
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+WatermarksApi watermarks = client.Watermarks()
+```
+
+#### Endpoints
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**delete**](docs/WatermarksApi.md#delete) | **DELETE** /watermarks/{watermarkId} | Delete a watermark
+[**list**](docs/WatermarksApi.md#list) | **GET** /watermarks | List all watermarks
+[**upload**](docs/WatermarksApi.md#upload) | **POST** /watermarks | Upload a watermark
+
+
 ### WebhooksApi
 
 
@@ -351,6 +370,7 @@ Method | HTTP request | Description
  - [UploadToken](docs/UploadToken.md)
  - [Video](docs/Video.md)
  - [VideoAssets](docs/VideoAssets.md)
+ - [VideoClip](docs/VideoClip.md)
  - [VideoCreationPayload](docs/VideoCreationPayload.md)
  - [VideoSession](docs/VideoSession.md)
  - [VideoSessionClient](docs/VideoSessionClient.md)
@@ -368,7 +388,10 @@ Method | HTTP request | Description
  - [VideoStatusIngest](docs/VideoStatusIngest.md)
  - [VideoThumbnailPickPayload](docs/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](docs/VideoUpdatePayload.md)
+ - [VideoWatermark](docs/VideoWatermark.md)
  - [VideosListResponse](docs/VideosListResponse.md)
+ - [Watermark](docs/Watermark.md)
+ - [WatermarksListResponse](docs/WatermarksListResponse.md)
  - [Webhook](docs/Webhook.md)
  - [WebhooksCreationPayload](docs/WebhooksCreationPayload.md)
  - [WebhooksListResponse](docs/WebhooksListResponse.md)
