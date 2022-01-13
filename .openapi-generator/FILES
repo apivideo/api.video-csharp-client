@@ -53,6 +53,7 @@ docs/UploadToken.md
 docs/UploadTokensApi.md
 docs/Video.md
 docs/VideoAssets.md
+docs/VideoClip.md
 docs/VideoCreationPayload.md
 docs/VideoSession.md
 docs/VideoSessionClient.md
@@ -70,8 +71,12 @@ docs/VideoStatusEncodingMetadata.md
 docs/VideoStatusIngest.md
 docs/VideoThumbnailPickPayload.md
 docs/VideoUpdatePayload.md
+docs/VideoWatermark.md
 docs/VideosApi.md
 docs/VideosListResponse.md
+docs/Watermark.md
+docs/WatermarksApi.md
+docs/WatermarksListResponse.md
 docs/Webhook.md
 docs/WebhooksApi.md
 docs/WebhooksCreationPayload.md
@@ -87,6 +92,7 @@ src/ApiVideo.Test/Api/PlayerThemesApiTests.cs
 src/ApiVideo.Test/Api/RawStatisticsApiTests.cs
 src/ApiVideo.Test/Api/UploadTokensApiTests.cs
 src/ApiVideo.Test/Api/VideosApiTests.cs
+src/ApiVideo.Test/Api/WatermarksApiTests.cs
 src/ApiVideo.Test/Api/WebhooksApiTests.cs
 src/ApiVideo.Test/ApiVideo.Test.csproj
 src/ApiVideo.Test/Model/AccessTokenTests.cs
@@ -129,6 +135,7 @@ src/ApiVideo.Test/Model/TokenCreationPayloadTests.cs
 src/ApiVideo.Test/Model/TokenListResponseTests.cs
 src/ApiVideo.Test/Model/UploadTokenTests.cs
 src/ApiVideo.Test/Model/VideoAssetsTests.cs
+src/ApiVideo.Test/Model/VideoClipTests.cs
 src/ApiVideo.Test/Model/VideoCreationPayloadTests.cs
 src/ApiVideo.Test/Model/VideoSessionClientTests.cs
 src/ApiVideo.Test/Model/VideoSessionDeviceTests.cs
@@ -147,7 +154,10 @@ src/ApiVideo.Test/Model/VideoStatusTests.cs
 src/ApiVideo.Test/Model/VideoTests.cs
 src/ApiVideo.Test/Model/VideoThumbnailPickPayloadTests.cs
 src/ApiVideo.Test/Model/VideoUpdatePayloadTests.cs
+src/ApiVideo.Test/Model/VideoWatermarkTests.cs
 src/ApiVideo.Test/Model/VideosListResponseTests.cs
+src/ApiVideo.Test/Model/WatermarkTests.cs
+src/ApiVideo.Test/Model/WatermarksListResponseTests.cs
 src/ApiVideo.Test/Model/WebhookTests.cs
 src/ApiVideo.Test/Model/WebhooksCreationPayloadTests.cs
 src/ApiVideo.Test/Model/WebhooksListResponseTests.cs
@@ -160,6 +170,7 @@ src/ApiVideo/Api/PlayerThemesApi.cs
 src/ApiVideo/Api/RawStatisticsApi.cs
 src/ApiVideo/Api/UploadTokensApi.cs
 src/ApiVideo/Api/VideosApi.cs
+src/ApiVideo/Api/WatermarksApi.cs
 src/ApiVideo/Api/WebhooksApi.cs
 src/ApiVideo/ApiVideo.cs
 src/ApiVideo/ApiVideo.csproj
@@ -215,6 +226,7 @@ src/ApiVideo/Model/TokenListResponse.cs
 src/ApiVideo/Model/UploadToken.cs
 src/ApiVideo/Model/Video.cs
 src/ApiVideo/Model/VideoAssets.cs
+src/ApiVideo/Model/VideoClip.cs
 src/ApiVideo/Model/VideoCreationPayload.cs
 src/ApiVideo/Model/VideoSession.cs
 src/ApiVideo/Model/VideoSessionClient.cs
@@ -232,7 +244,10 @@ src/ApiVideo/Model/VideoStatusEncodingMetadata.cs
 src/ApiVideo/Model/VideoStatusIngest.cs
 src/ApiVideo/Model/VideoThumbnailPickPayload.cs
 src/ApiVideo/Model/VideoUpdatePayload.cs
+src/ApiVideo/Model/VideoWatermark.cs
 src/ApiVideo/Model/VideosListResponse.cs
+src/ApiVideo/Model/Watermark.cs
+src/ApiVideo/Model/WatermarksListResponse.cs
 src/ApiVideo/Model/Webhook.cs
 src/ApiVideo/Model/WebhooksCreationPayload.cs
 src/ApiVideo/Model/WebhooksListResponse.cs

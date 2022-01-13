@@ -75,6 +75,18 @@ namespace ApiVideo.Model {
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
+    /// <summary>
+    /// Gets or Sets Clip
+    /// </summary>
+    [DataMember(Name="clip", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "clip")]
+    public VideoClip clip { get; set; }
+    /// <summary>
+    /// Gets or Sets Watermark
+    /// </summary>
+    [DataMember(Name="watermark", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "watermark")]
+    public VideoWatermark watermark { get; set; }
 
 
     /// <summary>
@@ -103,6 +115,8 @@ namespace ApiVideo.Model {
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");
       sb.Append("  Tags: ").Append(tags).Append("\n");
       sb.Append("  Metadata: ").Append(metadata).Append("\n");
+      sb.Append("  Clip: ").Append(clip).Append("\n");
+      sb.Append("  Watermark: ").Append(watermark).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

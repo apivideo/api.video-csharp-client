@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **PlayerId** | **string** | The unique identification number for your video player. | [optional] 
 **Tags** | **List&lt;string&gt;** | A list of tags you want to use to describe your video. | [optional] 
 **Metadata** | [**List&lt;Metadata&gt;**](Metadata.md) | A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata). | [optional] 
+**Clip** | [**VideoClip**](VideoClip.md) |  | [optional] 
+**Watermark** | [**VideoWatermark**](VideoWatermark.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
