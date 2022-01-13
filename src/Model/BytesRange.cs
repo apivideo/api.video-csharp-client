@@ -34,6 +34,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "total")]
     public int total { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

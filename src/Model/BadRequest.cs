@@ -43,6 +43,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "problems")]
     public List<BadRequest> problems { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

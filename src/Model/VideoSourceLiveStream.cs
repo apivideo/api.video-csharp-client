@@ -26,6 +26,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "links")]
     public List<VideoSourceLiveStreamLink> links { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

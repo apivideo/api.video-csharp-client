@@ -34,6 +34,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "endedAt")]
     public DateTime? endedat { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

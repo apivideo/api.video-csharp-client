@@ -35,7 +35,8 @@ namespace ApiVideo.Client
             NullValueHandling = NullValueHandling.Ignore,
             Converters =
             {
-                new EmptyArrayFixTypeConverter()
+                new EmptyArrayFixTypeConverter(),
+                new NullableStringTypeConverter()
             }
         };
         private AuthenticationManager AuthManager { get; set; }

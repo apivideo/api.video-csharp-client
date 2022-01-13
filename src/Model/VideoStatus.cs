@@ -25,6 +25,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "encoding")]
     public VideoStatusEncoding encoding { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

@@ -32,6 +32,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "liveStream")]
     public VideoSourceLiveStream livestream { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

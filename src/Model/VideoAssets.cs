@@ -48,6 +48,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "mp4")]
     public string mp4 { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

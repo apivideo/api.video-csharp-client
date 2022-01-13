@@ -41,6 +41,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "expires_in")]
     public int expiresin { get; set; }
 
+
     /// <summary>
     /// Constructor. Set default values.
     /// </summary>

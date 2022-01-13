@@ -41,6 +41,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

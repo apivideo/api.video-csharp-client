@@ -34,6 +34,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "receivedBytes")]
     public List<BytesRange> receivedbytes { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

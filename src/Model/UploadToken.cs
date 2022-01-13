@@ -41,6 +41,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "expiresAt")]
     public DateTime? expiresat { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

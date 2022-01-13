@@ -20,6 +20,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "timecode")]
     public string timecode { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

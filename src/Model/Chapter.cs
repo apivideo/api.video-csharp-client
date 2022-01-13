@@ -32,6 +32,7 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "language")]
     public string language { get; set; }
 
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

@@ -36,7 +36,8 @@ namespace ApiVideo.Model {
     /// <value>Whether you will have subtitles or not. True for yes you will have subtitles, false for no you will not have subtitles.</value>
     [DataMember(Name="default", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "default")]
-    public bool _default { get; set; }
+    public Nullable<bool> _default { get; set; }
+
 
     /// <summary>
     /// Constructor. Set default values.

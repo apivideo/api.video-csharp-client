@@ -39,21 +39,21 @@ namespace ApiVideo.Model {
     /// <value>Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
-    public bool _public { get; set; }
+    public Nullable<bool> _public { get; set; }
     /// <summary>
     /// Indicates if your video is a 360/immersive video.
     /// </summary>
     /// <value>Indicates if your video is a 360/immersive video.</value>
     [DataMember(Name="panoramic", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "panoramic")]
-    public bool panoramic { get; set; }
+    public Nullable<bool> panoramic { get; set; }
     /// <summary>
     /// Enables mp4 version in addition to streamed version.
     /// </summary>
     /// <value>Enables mp4 version in addition to streamed version.</value>
     [DataMember(Name="mp4Support", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "mp4Support")]
-    public bool mp4support { get; set; }
+    public Nullable<bool> mp4support { get; set; }
     /// <summary>
     /// The unique identification number for your video player.
     /// </summary>
@@ -75,6 +75,7 @@ namespace ApiVideo.Model {
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
+
 
     /// <summary>
     /// Constructor. Set default values.

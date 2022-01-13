@@ -93,21 +93,22 @@ namespace ApiVideo.Model {
     /// <value>Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos). </value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
-    public bool _public { get; set; }
+    public Nullable<bool> _public { get; set; }
     /// <summary>
     /// Defines if video is panoramic. 
     /// </summary>
     /// <value>Defines if video is panoramic. </value>
     [DataMember(Name="panoramic", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "panoramic")]
-    public bool panoramic { get; set; }
+    public Nullable<bool> panoramic { get; set; }
     /// <summary>
     /// This lets you know whether mp4 is supported. If enabled, an mp4 URL will be provided in the response for the video. 
     /// </summary>
     /// <value>This lets you know whether mp4 is supported. If enabled, an mp4 URL will be provided in the response for the video. </value>
     [DataMember(Name="mp4Support", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "mp4Support")]
-    public bool mp4support { get; set; }
+    public Nullable<bool> mp4support { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
