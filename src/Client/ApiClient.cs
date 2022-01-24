@@ -28,6 +28,7 @@ namespace ApiVideo.Client
         private const int DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
         private const int MIN_CHUNK_SIZE = 5 * 1024 * 1024;
         private const int MAX_CHUNK_SIZE = 128 * 1024 * 1024;
+        private const string DEFAULT_USER_AGENT = "api.video client (C#; v:1.2.1; )";
 
         private readonly JsonSerializerSettings serializerSettings = new JsonSerializerSettings
         {
@@ -58,7 +59,7 @@ namespace ApiVideo.Client
         /// <param name="basePath">the api base path.</param>
         public ApiClient(string basePath) {
             this.RestClient = new RestClient(basePath);
-            this.RestClient.UserAgent = "api.video client (C#; v:1.2.0; )";
+            this.RestClient.UserAgent = DEFAULT_USER_AGENT;
         }
         
         /// <summary>
@@ -68,7 +69,7 @@ namespace ApiVideo.Client
         /// <param name="basePath">the api base path.</param>
         public ApiClient(string apiKey,string basePath) {
             this.RestClient = new RestClient(basePath);
-            this.RestClient.UserAgent = "api.video client (C#; v:1.2.0; )";
+            this.RestClient.UserAgent = DEFAULT_USER_AGENT;
             this.AuthManager = new AuthenticationManager(apiKey, this);
         }
 
@@ -78,7 +79,27 @@ namespace ApiVideo.Client
         /// <param name="client">a RestClient instance used to make API call</param>
         public ApiClient(RestClient client) {
             this.RestClient = client;
-            this.RestClient.UserAgent = "api.video client (C#; v:1.2.0; )";
+            this.RestClient.UserAgent = DEFAULT_USER_AGENT;
+        }
+
+        /// <summary>
+        /// Set the application name
+        /// </summary>
+        /// <param name="applicationName">the application name</param>
+        public void setApplicationName(string applicationName)
+        {
+            if(applicationName == null)
+            {
+                this.RestClient.UserAgent = DEFAULT_USER_AGENT;
+                return;
+            }
+
+            var regex = new Regex(@"^[\w-\.]{1,50}$");
+            if(!regex.IsMatch(applicationName))
+            {
+                throw new Exception("Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50.");
+            }
+            this.RestClient.UserAgent = DEFAULT_USER_AGENT + " " + applicationName;
         }
 
         /// <summary>
