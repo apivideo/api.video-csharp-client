@@ -41,6 +41,13 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "linkHover")]
     public string linkhover { get; set; }
     /// <summary>
+    /// RGBA color for the play button when hovered.
+    /// </summary>
+    /// <value>RGBA color for the play button when hovered.</value>
+    [DataMember(Name="linkActive", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "linkActive")]
+    public string linkactive { get; set; }
+    /// <summary>
     /// RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
     /// </summary>
     /// <value>RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)</value>
@@ -142,6 +149,7 @@ namespace ApiVideo.Model {
       sb.Append("  Text: ").Append(text).Append("\n");
       sb.Append("  Link: ").Append(link).Append("\n");
       sb.Append("  LinkHover: ").Append(linkhover).Append("\n");
+      sb.Append("  LinkActive: ").Append(linkactive).Append("\n");
       sb.Append("  TrackPlayed: ").Append(trackplayed).Append("\n");
       sb.Append("  TrackUnplayed: ").Append(trackunplayed).Append("\n");
       sb.Append("  TrackBackground: ").Append(trackbackground).Append("\n");
