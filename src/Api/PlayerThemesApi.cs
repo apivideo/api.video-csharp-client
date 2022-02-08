@@ -434,11 +434,11 @@ namespace ApiVideo.Api
             if (playerThemeUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
             
-                                                                                                                                                                                    
+                                                                                                                                                                                                
             if (playerThemeUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
             
-                                                                                                                                                                                    
+                                                                                                                                                                                                
             // verify the required parameter 'playerId' is set
             if (playerId == null)
                 throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->update");
@@ -520,7 +520,7 @@ namespace ApiVideo.Api
             if (playerThemeCreationPayload == null) 
                 throw new ApiException(400,"Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");
             
-                                                                                                                                                                                    
+                                                                                                                                                                                                
             // verify the required parameter 'playerThemeCreationPayload' is set
             if (playerThemeCreationPayload == null)
                 throw new ApiException(400, "Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");
