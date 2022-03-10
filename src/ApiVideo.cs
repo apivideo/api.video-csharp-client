@@ -197,7 +197,17 @@ namespace ApiVideo.Client
         /// <param name="applicationName">the application name</param>
         public void setApplicationName(string applicationName)
         {
-            this.apiClient.setApplicationName(applicationName);
+            this.setApplicationName(applicationName, null);
+        }
+
+        /// <summary>
+        /// Set the application name
+        /// </summary>
+        /// <param name="applicationName">the application name</param>
+        /// <param name="applicationVersion">the application version</param>
+        public void setApplicationName(string applicationName, string applicationVersion)
+        {
+            this.apiClient.setApplicationName(applicationName, applicationVersion);
         }
     }
 
