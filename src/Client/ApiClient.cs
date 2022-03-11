@@ -28,7 +28,6 @@ namespace ApiVideo.Client
         private const int DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
         private const int MIN_CHUNK_SIZE = 5 * 1024 * 1024;
         private const int MAX_CHUNK_SIZE = 128 * 1024 * 1024;
-        private const string DEFAULT_USER_AGENT = "api.video client (C#; v:1.2.1; )";
 
         private readonly JsonSerializerSettings serializerSettings = new JsonSerializerSettings
         {
@@ -57,9 +56,7 @@ namespace ApiVideo.Client
         /// Constructor for ApiClient with custom basePath
         /// </summary>
         /// <param name="basePath">the api base path.</param>
-        public ApiClient(string basePath) {
-            this.RestClient = new RestClient(basePath);
-            this.RestClient.UserAgent = DEFAULT_USER_AGENT;
+        public ApiClient(string basePath): this(new RestClient(basePath)) {
         }
         
         /// <summary>
@@ -67,11 +64,10 @@ namespace ApiVideo.Client
         /// </summary>
         /// <param name="apiKey">the api key to use to authenticate to the API</param>
         /// <param name="basePath">the api base path.</param>
-        public ApiClient(string apiKey,string basePath) {
-            this.RestClient = new RestClient(basePath);
-            this.RestClient.UserAgent = DEFAULT_USER_AGENT;
+        public ApiClient(string apiKey,string basePath): this(basePath) {
             this.AuthManager = new AuthenticationManager(apiKey, this);
         }
+
 
         /// <summary>
         /// Constructor for ApiClient with custom http client.
@@ -79,27 +75,46 @@ namespace ApiVideo.Client
         /// <param name="client">a RestClient instance used to make API call</param>
         public ApiClient(RestClient client) {
             this.RestClient = client;
-            this.RestClient.UserAgent = DEFAULT_USER_AGENT;
+            this.RestClient.AddDefaultHeader("AV-Origin-Client", "csharp:1.2.2");
         }
 
         /// <summary>
         /// Set the application name
         /// </summary>
         /// <param name="applicationName">the application name</param>
-        public void setApplicationName(string applicationName)
+        public void setApplicationName(string applicationName, string applicationVersion)
         {
             if(applicationName == null)
             {
-                this.RestClient.UserAgent = DEFAULT_USER_AGENT;
+                this.RestClient.RemoveDefaultParameter("AV-Origin-App");
                 return;
             }
 
-            var regex = new Regex(@"^[\w-\.]{1,50}$");
+            if(String.IsNullOrEmpty(applicationName) && !String.IsNullOrEmpty(applicationVersion))
+            {
+                throw new Exception("applicationName is mandatory when applicationVersion is set.");
+            }
+
+            var regex = new Regex(@"^[\w-]{1,50}$");
             if(!regex.IsMatch(applicationName))
             {
-                throw new Exception("Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50.");
+                throw new Exception("Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50.");
             }
-            this.RestClient.UserAgent = DEFAULT_USER_AGENT + " " + applicationName;
+
+            String headerValue = applicationName;
+
+            if(applicationVersion != null)
+            {
+                var versionRegex = new Regex(@"^\d{1,3}(\.\d{1,3}(\.\d{1,3})?)?$");
+                if (!versionRegex.IsMatch(applicationVersion))
+                {
+                    throw new Exception("Invalid applicationVersion value. The version should match the xxx[.yyy][.zzz] pattern.");
+                }
+
+                headerValue += ":" + applicationVersion;
+            }
+
+            this.RestClient.AddDefaultHeader("AV-Origin-App", headerValue);
         }
 
         /// <summary>
