@@ -75,7 +75,7 @@ namespace ApiVideo.Client
         /// <param name="client">a RestClient instance used to make API call</param>
         public ApiClient(RestClient client) {
             this.RestClient = client;
-            this.RestClient.AddDefaultHeader("AV-Origin-Client", "csharp:1.2.2");
+            this.RestClient.AddDefaultHeader("AV-Origin-Client", "csharp:1.2.3");
         }
 
         /// <summary>
@@ -575,6 +575,13 @@ namespace ApiVideo.Client
             {
                 var valueCollection = value as IEnumerable;
                 parameters.AddRange(from object item in valueCollection select new KeyValuePair<string, string>(name, ParameterToString(item)));
+            }
+            else if (value is IDictionary dict)
+            {
+                foreach (DictionaryEntry entry in dict)
+                {
+                    parameters.Add(new KeyValuePair<string, string>(name + "[" + entry.Key + "]", ParameterToString(entry.Value)));
+                }
             }
             else
             {
