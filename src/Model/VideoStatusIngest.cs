@@ -33,6 +33,12 @@ namespace ApiVideo.Model {
     [DataMember(Name="receivedBytes", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "receivedBytes")]
     public List<BytesRange> receivedbytes { get; set; }
+    /// <summary>
+    /// Gets or Sets ReceivedParts
+    /// </summary>
+    [DataMember(Name="receivedParts", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "receivedParts")]
+    public VideoStatusIngestReceivedParts receivedparts { get; set; }
 
 
     /// <summary>
@@ -45,6 +51,7 @@ namespace ApiVideo.Model {
       sb.Append("  Status: ").Append(status).Append("\n");
       sb.Append("  Filesize: ").Append(filesize).Append("\n");
       sb.Append("  ReceivedBytes: ").Append(receivedbytes).Append("\n");
+      sb.Append("  ReceivedParts: ").Append(receivedparts).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

@@ -470,7 +470,7 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var liveStreamId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The unique ID for the live stream you want to upload.
-            var file = BINARY_DATA_HERE;  // System.IO.Stream | The .jpg image to be added as a thumbnail.
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
             var apiLiveStreamsInstance = apiInstance.LiveStreams();
             try
             {
@@ -494,7 +494,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **liveStreamId** | **string**| The unique ID for the live stream you want to upload. | 
- **file** | **System.IO.Stream****System.IO.Stream**| The .jpg image to be added as a thumbnail. | 
+ **file** | **System.IO.Stream****System.IO.Stream**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. | 
 
 ### Return type
 
