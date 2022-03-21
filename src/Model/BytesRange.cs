@@ -27,9 +27,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "to")]
     public int to { get; set; }
     /// <summary>
-    /// The total number of bytes in the provided range.
+    /// The total number of expected bytes.
     /// </summary>
-    /// <value>The total number of bytes in the provided range.</value>
+    /// <value>The total number of expected bytes.</value>
     [DataMember(Name="total", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "total")]
     public int total { get; set; }
