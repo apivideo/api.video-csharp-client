@@ -75,7 +75,7 @@ namespace ApiVideo.Client
         /// <param name="client">a RestClient instance used to make API call</param>
         public ApiClient(RestClient client) {
             this.RestClient = client;
-            this.RestClient.AddDefaultHeader("AV-Origin-Client", "csharp:1.2.3");
+            this.RestClient.AddDefaultHeader("AV-Origin-Client", "csharp:1.2.4");
         }
 
         /// <summary>

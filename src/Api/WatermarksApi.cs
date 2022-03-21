@@ -40,7 +40,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Delete a watermark Delete a watermark. A watermark is a static image overlapping a video used as a \&quot;stamp\&quot; to limit leetching.
+        /// Delete a watermark Delete a watermark. A watermark is a static image, directly burnt-into a video.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="watermarkId">The watermark ID for the watermark you want to delete.</param>
@@ -52,7 +52,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Delete a watermark Delete a watermark. A watermark is a static image overlapping a video used as a \&quot;stamp\&quot; to limit leetching.
+        /// Delete a watermark Delete a watermark. A watermark is a static image, directly burnt-into a video.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="watermarkId">The watermark ID for the watermark you want to delete.</param>
@@ -106,7 +106,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List all watermarks List all watermarks. A watermark is a static image overlapping a video used as a \&quot;stamp\&quot; to limit leetching.
+        /// List all watermarks List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt. You can search by the time watermark were created at. (optional)</param>
@@ -122,7 +122,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List all watermarks List all watermarks. A watermark is a static image overlapping a video used as a \&quot;stamp\&quot; to limit leetching.
+        /// List all watermarks List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt. You can search by the time watermark were created at. (optional)</param>
@@ -182,7 +182,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List all watermarks. A watermark is a static image overlapping a video used as a \&quot;stamp\&quot; to limit leetching.
+        /// List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
         /// </summary>
         /// <returns>APIlistRequest</returns>
         public APIlistRequest list() {
@@ -275,10 +275,10 @@ namespace ApiVideo.Api
             }
         }
         /// <summary>
-        /// Upload a watermark Create a new watermark by uploading a .jpg or a .png image. A watermark is a static image overlapping a video used as a \&quot;stamp\&quot; to limit leetching.
+        /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">The .jpg or .png image to be added as a watermark.</param>
+        /// <param name="file">The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.</param>
         
         /// <returns>Watermark</returns>
 		public Watermark upload(System.IO.Stream file)
@@ -288,10 +288,10 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a watermark Create a new watermark by uploading a .jpg or a .png image. A watermark is a static image overlapping a video used as a \&quot;stamp\&quot; to limit leetching.
+        /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">The .jpg or .png image to be added as a watermark.</param>
+        /// <param name="file">The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.</param>
         
         /// <returns>ApiResponse of Watermark</returns>
 		public ApiResponse<Watermark> uploadWithHttpInfo(System.IO.Stream file)

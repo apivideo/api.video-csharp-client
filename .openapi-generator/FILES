@@ -69,6 +69,7 @@ docs/VideoStatus.md
 docs/VideoStatusEncoding.md
 docs/VideoStatusEncodingMetadata.md
 docs/VideoStatusIngest.md
+docs/VideoStatusIngestReceivedParts.md
 docs/VideoThumbnailPickPayload.md
 docs/VideoUpdatePayload.md
 docs/VideoWatermark.md
@@ -149,6 +150,7 @@ src/ApiVideo.Test/Model/VideoSourceLiveStreamTests.cs
 src/ApiVideo.Test/Model/VideoSourceTests.cs
 src/ApiVideo.Test/Model/VideoStatusEncodingMetadataTests.cs
 src/ApiVideo.Test/Model/VideoStatusEncodingTests.cs
+src/ApiVideo.Test/Model/VideoStatusIngestReceivedPartsTests.cs
 src/ApiVideo.Test/Model/VideoStatusIngestTests.cs
 src/ApiVideo.Test/Model/VideoStatusTests.cs
 src/ApiVideo.Test/Model/VideoTests.cs
@@ -242,6 +244,7 @@ src/ApiVideo/Model/VideoStatus.cs
 src/ApiVideo/Model/VideoStatusEncoding.cs
 src/ApiVideo/Model/VideoStatusEncodingMetadata.cs
 src/ApiVideo/Model/VideoStatusIngest.cs
+src/ApiVideo/Model/VideoStatusIngestReceivedParts.cs
 src/ApiVideo/Model/VideoThumbnailPickPayload.cs
 src/ApiVideo/Model/VideoUpdatePayload.cs
 src/ApiVideo/Model/VideoWatermark.cs
