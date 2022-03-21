@@ -13,9 +13,9 @@ namespace ApiVideo.Model {
   [DataContract]
   public class VideoStatusIngestReceivedParts {
     /// <summary>
-    /// The parts that are have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been uploaded, the output will be [1, 2].
+    /// The parts that have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been uploaded, the output will be [1, 2].
     /// </summary>
-    /// <value>The parts that are have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been uploaded, the output will be [1, 2].</value>
+    /// <value>The parts that have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been uploaded, the output will be [1, 2].</value>
     [DataMember(Name="parts", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "parts")]
     public List<int> parts { get; set; }
