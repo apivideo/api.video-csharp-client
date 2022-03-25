@@ -23,6 +23,8 @@ Delete a player if you no longer need it. You can delete any player that you hav
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -91,6 +93,8 @@ Delete logo
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -161,6 +165,8 @@ Retrieve a list of all the player themes you created, as well as details about e
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -182,7 +188,7 @@ namespace Example
             var apiPlayerThemesInstance = apiInstance.PlayerThemes();
             try
             {
-                // List all player themes
+                // List all players
                 PlayerThemesListResponse result = apiPlayerThemesInstance.list(sortBy, sortOrder, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
@@ -238,6 +244,8 @@ Use a player ID to retrieve details about the player and display it for viewers.
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -309,6 +317,8 @@ Use a player ID to update specific details for a player. NOTE: It may take up to
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -382,6 +392,8 @@ Create a player for your video, and customise it.
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -452,6 +464,8 @@ The uploaded image maximum size should be 200x100 and its weight should be 100KB
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 

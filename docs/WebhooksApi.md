@@ -20,6 +20,8 @@ This endpoint will delete the indicated webhook.
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -90,6 +92,8 @@ This call provides the same JSON information provided on Webjhook creation.
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -160,6 +164,8 @@ Requests to this endpoint return a list of your webhooks (with all their details
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -230,10 +236,12 @@ Name | Type | Description  | Notes
 
 Create Webhook
 
-Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed```  When a new video is uploaded into your account, it will be encoded into several different HLS sizes/bitrates.  When each version is encoded, your webhook will get a notification.  It will look like ```{ \\\"type\\\": \\\"video.encoding.quality.completed\\\", \\\"emittedAt\\\": \\\"2021-01-29T16:46:25.217+01:00\\\", \\\"videoId\\\": \\\"viXXXXXXXX\\\", \\\"encoding\\\": \\\"hls\\\", \\\"quality\\\": \\\"720p\\\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a livestream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fores when the livestream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event is similar to ```video.encoding.quality.completed```, but tells you if a livestream has been recorded as a VOD.
+Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \\\"type\\\": \\\"video.encoding.quality.completed\\\", \\\"emittedAt\\\": \\\"2021-01-29T16:46:25.217+01:00\\\", \\\"videoId\\\": \\\"viXXXXXXXX\\\", \\\"encoding\\\": \\\"hls\\\", \\\"quality\\\": \\\"720p\\\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 

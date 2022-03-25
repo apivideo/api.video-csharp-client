@@ -166,12 +166,15 @@ Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a s
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
+
 using System.Diagnostics;
 using ApiVideo.Client;
 
 namespace Example
 {
-    public class uploadExample
+    public class uploadWatermarkExample
     {
         public static void Main()
         {
@@ -180,12 +183,13 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var file = BINARY_DATA_HERE;  // System.IO.Stream | The `.jpg` or `.png` image to be added as a watermark.
+            var file = File.OpenRead("watermark.jpg");  // The watermark image.
             var apiWatermarksInstance = apiInstance.Watermarks();
+
             try
             {
                 // Upload a watermark
-                Watermark result = apiWatermarksInstance.upload(file);
+                Video result = apiWatermarksInstance.upload(videoId, file);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
