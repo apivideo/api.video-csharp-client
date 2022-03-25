@@ -21,6 +21,8 @@ Delete a caption in a specific language by providing the video ID for the video 
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -93,12 +95,14 @@ Retrieve a list of available captions for the videoId you provide.
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
 namespace Example
 {
-    public class listExample
+    public class getExample
     {
         public static void Main()
         {
@@ -107,19 +111,18 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var videoId = vi4k0jvEUuaTdRAEjQ4Prklg;  // string | The unique identifier for the video you want to retrieve a list of captions for.
-            var currentPage = 2;  // int? | Choose the number of search results to return per page. Minimum value: 1 (optional)  (default to 1)
-            var pageSize = 30;  // int? | Results per page. Allowed values 1-100, default is 25. (optional)  (default to 25)
+            var videoId = vi4k0jvEUuaTdRAEjQ4Prklg;  // string | The unique identifier for the video you want captions for.
+            var language = en;  // string | A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
             var apiCaptionsInstance = apiInstance.Captions();
             try
             {
-                // List video captions
-                CaptionsListResponse result = apiCaptionsInstance.list(videoId, currentPage, pageSize);
+                // Show a caption
+                Caption result = apiCaptionsInstance.get(videoId, language);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CaptionsApi.list: " + e.Message );
+                Debug.Print("Exception when calling CaptionsApi.get: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -168,6 +171,8 @@ Display a caption for a video in a specific language. If the language is availab
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -241,6 +246,8 @@ To have the captions on automatically, use this PATCH to set default: true.
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -317,6 +324,8 @@ Upload a VTT file to add captions to your video.  Read our [captioning tutorial]
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 

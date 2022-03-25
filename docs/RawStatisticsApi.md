@@ -17,6 +17,8 @@ List live stream player sessions
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -32,7 +34,7 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var liveStreamId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The unique identifier for the live stream you want to retrieve analytics for.
-            var period = 2019-01-01;  // string | Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\",  - For a month: \"2018-01\" - For a year: \"2018\" For a range period:  -  Date range: \"2018-01-01/2018-01-15\"  (optional) 
+            var period = 2019-01-01;  // string | Period must have one of the following formats:  - For a day : "2018-01-01", - For a week: "2018-W01", - For a month: "2018-01" - For a year: "2018"  For a range period: -  Date range: "2018-01-01/2018-01-15"  (optional) 
             var currentPage = 2;  // int? | Choose the number of search results to return per page. Minimum value: 1 (optional)  (default to 1)
             var pageSize = 30;  // int? | Results per page. Allowed values 1-100, default is 25. (optional)  (default to 25)
             var apiRawStatisticsInstance = apiInstance.RawStatistics();
@@ -94,6 +96,8 @@ Useful to track and measure video's engagement.
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -169,6 +173,8 @@ Retrieve all available user sessions for a specific video. Tutorials that use th
 
 ### Example
 ```csharp
+//install via Nuget
+//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -184,8 +190,8 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var videoId = vi4k0jvEUuaTdRAEjQ4Prklg;  // string | The unique identifier for the video you want to retrieve session information for.
-            var period = period_example;  // string | Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional) 
-            var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. (optional) 
+            var period = period_example;  // string | Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15  (optional) 
+            var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with. (optional) 
             var currentPage = 2;  // int? | Choose the number of search results to return per page. Minimum value: 1 (optional)  (default to 1)
             var pageSize = 30;  // int? | Results per page. Allowed values 1-100, default is 25. (optional)  (default to 25)
             var apiRawStatisticsInstance = apiInstance.RawStatistics();

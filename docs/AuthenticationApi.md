@@ -18,37 +18,8 @@ To get started, submit your API key in the body of your request. api.video retur
 
 ### Example
 ```csharp
-using System.Diagnostics;
-using ApiVideo.Client;
-
-namespace Example
-{
-    public class authenticateExample
-    {
-        public static void Main()
-        {
-            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
-            var apiKey = "YOUR_API_KEY";
-
-            var apiInstance = new ApiVideoClient(apiKey,basePath);
-
-            var authenticatePayload = new AuthenticatePayload(); // AuthenticatePayload | 
-            var apiAuthenticationInstance = apiInstance.Authentication();
-            try
-            {
-                // Authenticate
-                AccessToken result = apiAuthenticationInstance.authenticate(authenticatePayload);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AuthenticationApi.authenticate: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
+//With the api.video API clients, authentication is taken care of with each client created.
+// You get to skip this step!
 ```
 
 ### Parameters
@@ -89,37 +60,8 @@ Use the refresh endpoint with the refresh token you received when you first auth
 
 ### Example
 ```csharp
-using System.Diagnostics;
-using ApiVideo.Client;
-
-namespace Example
-{
-    public class refreshExample
-    {
-        public static void Main()
-        {
-            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
-            var apiKey = "YOUR_API_KEY";
-
-            var apiInstance = new ApiVideoClient(apiKey,basePath);
-
-            var refreshTokenPayload = new RefreshTokenPayload(); // RefreshTokenPayload | 
-            var apiAuthenticationInstance = apiInstance.Authentication();
-            try
-            {
-                // Refresh token
-                AccessToken result = apiAuthenticationInstance.refresh(refreshTokenPayload);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AuthenticationApi.refresh: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
+//With the api.video API clients, authentication is taken care of with each client created.
+// You get to skip this step!
 ```
 
 ### Parameters
