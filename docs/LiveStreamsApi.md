@@ -253,7 +253,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
@@ -387,38 +387,23 @@ A live stream will give you the 'connection point' to RTMP your video stream to 
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
-using System.Diagnostics;
-using ApiVideo.Client;
+var apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 
-namespace Example
+var liveStreamCreationPayload = new LiveStreamCreationPayload()
 {
-    public class createExample
-    {
-        public static void Main()
-        {
-            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
-            var apiKey = "YOUR_API_KEY";
+    record = false,
+    name = "My Live Stream Video",
+    _public = true,
+    playerid = "pl4f4ferf5erfr5zed4fsdd",
+};
 
-            var apiInstance = new ApiVideoClient(apiKey,basePath);
-
-            var liveStreamCreationPayload = new LiveStreamCreationPayload(); // LiveStreamCreationPayload | 
-            var apiLiveStreamsInstance = apiInstance.LiveStreams();
-            try
-            {
-                // Create live stream
-                LiveStream result = apiLiveStreamsInstance.create(liveStreamCreationPayload);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling LiveStreamsApi.create: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
+try
+{
+    var liveStream = apiVideoClient.LiveStreams().create(liveStreamCreationPayload);
+}
+catch (ApiException e)
+{
+    // Manage create error here
 }
 ```
 
