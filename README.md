@@ -28,7 +28,7 @@
     - [WebhooksApi](#webhooksapi)
   - [Models](#models)
   - [Authorization](#authorization)
-    - [API token](#api-token)
+    - [API key](#api-key)
     - [Public endpoints](#public-endpoints)
   - [Recommendation](#recommendation)
 - [Have you gotten use from this API client?](#have-you-gotten-use-from-this-api-client-)
@@ -149,7 +149,7 @@ All URIs are relative to *https://ws.api.video*
 
 #### Retrieve an instance of CaptionsApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 CaptionsApi captions = client.Captions()
 ```
 
@@ -159,8 +159,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
 [**list**](docs/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
-[**get**](docs/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Show a caption
-[**update**](docs/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update caption
+[**get**](docs/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
+[**update**](docs/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
 [**upload**](docs/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
 
 
@@ -169,7 +169,7 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of ChaptersApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 ChaptersApi chapters = client.Chapters()
 ```
 
@@ -179,7 +179,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
 [**list**](docs/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
-[**get**](docs/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Show a chapter
+[**get**](docs/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
 [**upload**](docs/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
 
@@ -188,7 +188,7 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of LiveStreamsApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 LiveStreamsApi liveStreams = client.LiveStreams()
 ```
 
@@ -199,7 +199,7 @@ Method | HTTP request | Description
 [**delete**](docs/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
 [**deleteThumbnail**](docs/LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
 [**list**](docs/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
-[**get**](docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
+[**get**](docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
 [**update**](docs/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
 [**create**](docs/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
 [**uploadThumbnail**](docs/LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
@@ -210,7 +210,7 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of PlayerThemesApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 PlayerThemesApi playerThemes = client.PlayerThemes()
 ```
 
@@ -221,7 +221,7 @@ Method | HTTP request | Description
 [**delete**](docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
 [**deleteLogo**](docs/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
 [**list**](docs/PlayerThemesApi.md#list) | **GET** /players | List all player themes
-[**get**](docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
+[**get**](docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Retrieve a player
 [**update**](docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
 [**create**](docs/PlayerThemesApi.md#create) | **POST** /players | Create a player
 [**uploadLogo**](docs/PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
@@ -232,7 +232,7 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of RawStatisticsApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 RawStatisticsApi rawStatistics = client.RawStatistics()
 ```
 
@@ -250,7 +250,7 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of UploadTokensApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 UploadTokensApi uploadTokens = client.UploadTokens()
 ```
 
@@ -260,7 +260,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteToken**](docs/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
 [**list**](docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
-[**getToken**](docs/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Show upload token
+[**getToken**](docs/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**createToken**](docs/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 
 
@@ -269,7 +269,7 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of VideosApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 VideosApi videos = client.Videos()
 ```
 
@@ -278,8 +278,8 @@ VideosApi videos = client.Videos()
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
-[**get**](docs/VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
-[**getStatus**](docs/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Show video status
+[**get**](docs/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video
+[**getStatus**](docs/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Retrieve video status
 [**list**](docs/VideosApi.md#list) | **GET** /videos | List all videos
 [**update**](docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
 [**pickThumbnail**](docs/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
@@ -294,7 +294,7 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of WatermarksApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 WatermarksApi watermarks = client.Watermarks()
 ```
 
@@ -312,7 +312,7 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of WebhooksApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 WebhooksApi webhooks = client.Webhooks()
 ```
 
@@ -321,7 +321,7 @@ WebhooksApi webhooks = client.Webhooks()
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
-[**get**](docs/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Show Webhook details
+[**get**](docs/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Retrieve Webhook details
 [**list**](docs/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
 [**create**](docs/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
 
@@ -400,17 +400,17 @@ Method | HTTP request | Description
 
 ## Authorization
 
-### API token
+### API key
 
-Most endpoints required to be authenticated using the API token mechanism described in our [documentation](https://docs.api.video/reference#authentication).
-The access token generation mechanism is automatically handled by the client. All you have to do is provide an API token when instantiating the ApiVideoClient:
+Most endpoints required to be authenticated using the API key mechanism described in our [documentation](https://docs.api.video/reference#authentication).
+The access token generation mechanism is automatically handled by the client. All you have to do is provide an API key when instantiating the ApiVideoClient:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
 ```
 
 ### Public endpoints
 
-Some endpoints don't require authentication. These one can be called with an ApiVideoClient instantiated without API token:
+Some endpoints don't require authentication. These one can be called with an ApiVideoClient instantiated without API key:
 ```java
 ApiVideoClient apiVideoClient = new ApiVideoClient();
 ```

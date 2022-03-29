@@ -166,9 +166,6 @@ Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a s
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
-
 using System.Diagnostics;
 using ApiVideo.Client;
 
