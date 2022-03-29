@@ -17,8 +17,6 @@ List live stream player sessions
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -96,8 +94,6 @@ Useful to track and measure video's engagement.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -173,8 +169,6 @@ Retrieve all available user sessions for a specific video. Tutorials that use th
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 

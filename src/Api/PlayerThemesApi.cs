@@ -106,7 +106,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Delete logo 
+        /// Delete logo Delete the logo associated to a player.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
@@ -118,7 +118,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Delete logo 
+        /// Delete logo Delete the logo associated to a player.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
@@ -341,7 +341,7 @@ namespace ApiVideo.Api
             }
         }
         /// <summary>
-        /// Show a player Use a player ID to retrieve details about the player and display it for viewers.
+        /// Retrieve a player Use a player ID to retrieve details about the player and display it for viewers.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
@@ -354,7 +354,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Show a player Use a player ID to retrieve details about the player and display it for viewers.
+        /// Retrieve a player Use a player ID to retrieve details about the player and display it for viewers.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
@@ -408,7 +408,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Update a player Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
+        /// Update a player Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
@@ -422,7 +422,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Update a player Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
+        /// Update a player Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>

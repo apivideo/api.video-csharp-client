@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**delete**](PlayerThemesApi.md#deleteplayersplayerid) | **DELETE** /players/{playerId} | Delete a player
 [**deleteLogo**](PlayerThemesApi.md#deleteplayersplayeridlogo) | **DELETE** /players/{playerId}/logo | Delete logo
 [**list**](PlayerThemesApi.md#getplayers) | **GET** /players | List all player themes
-[**get**](PlayerThemesApi.md#getplayersplayerid) | **GET** /players/{playerId} | Show a player
+[**get**](PlayerThemesApi.md#getplayersplayerid) | **GET** /players/{playerId} | Retrieve a player
 [**update**](PlayerThemesApi.md#patchplayersplayerid) | **PATCH** /players/{playerId} | Update a player
 [**create**](PlayerThemesApi.md#postplayers) | **POST** /players | Create a player
 [**uploadLogo**](PlayerThemesApi.md#postplayersplayeridlogo) | **POST** /players/{playerId}/logo | Upload a logo
@@ -23,8 +23,6 @@ Delete a player if you no longer need it. You can delete any player that you hav
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -91,10 +89,10 @@ void (empty response body)
 
 Delete logo
 
+Delete the logo associated to a player.
+
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -165,8 +163,6 @@ Retrieve a list of all the player themes you created, as well as details about e
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -238,14 +234,12 @@ Name | Type | Description  | Notes
 # **get**
 > PlayerTheme get (string playerId)
 
-Show a player
+Retrieve a player
 
 Use a player ID to retrieve details about the player and display it for viewers.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -313,12 +307,10 @@ Name | Type | Description  | Notes
 
 Update a player
 
-Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
+Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -392,8 +384,6 @@ Create a player for your video, and customise it.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -464,8 +454,6 @@ The uploaded image maximum size should be 200x100 and its weight should be 100KB
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 

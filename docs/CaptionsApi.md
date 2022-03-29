@@ -6,8 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](CaptionsApi.md#deletevideosvideoidcaptionslanguage) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
 [**list**](CaptionsApi.md#getvideosvideoidcaptions) | **GET** /videos/{videoId}/captions | List video captions
-[**get**](CaptionsApi.md#getvideosvideoidcaptionslanguage) | **GET** /videos/{videoId}/captions/{language} | Show a caption
-[**update**](CaptionsApi.md#patchvideosvideoidcaptionslanguage) | **PATCH** /videos/{videoId}/captions/{language} | Update caption
+[**get**](CaptionsApi.md#getvideosvideoidcaptionslanguage) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
+[**update**](CaptionsApi.md#patchvideosvideoidcaptionslanguage) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
 [**upload**](CaptionsApi.md#postvideosvideoidcaptionslanguage) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
 
 
@@ -21,8 +21,6 @@ Delete a caption in a specific language by providing the video ID for the video 
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -95,8 +93,6 @@ Retrieve a list of available captions for the videoId you provide.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -165,14 +161,14 @@ Name | Type | Description  | Notes
 # **get**
 > Caption get (string videoId, string language)
 
-Show a caption
+Retrieve a caption
 
-Display a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a response indicating the caption was not found. Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
+Retrieve a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a error indicating the caption was not found.
+
+Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -240,14 +236,12 @@ Name | Type | Description  | Notes
 # **update**
 > Caption update (string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload)
 
-Update caption
+Update a caption
 
-To have the captions on automatically, use this PATCH to set default: true.
+To have the captions on automatically, use this method to set default: true.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -324,8 +318,6 @@ Upload a VTT file to add captions to your video.  Read our [captioning tutorial]
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 

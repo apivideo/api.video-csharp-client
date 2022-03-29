@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteToken**](UploadTokensApi.md#deleteuploadtokensuploadtoken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
 [**list**](UploadTokensApi.md#getuploadtokens) | **GET** /upload-tokens | List all active upload tokens.
-[**getToken**](UploadTokensApi.md#getuploadtokensuploadtoken) | **GET** /upload-tokens/{uploadToken} | Show upload token
+[**getToken**](UploadTokensApi.md#getuploadtokensuploadtoken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**createToken**](UploadTokensApi.md#postuploadtokens) | **POST** /upload-tokens | Generate an upload token
 
 
@@ -20,8 +20,6 @@ Delete an existing upload token. This is especially useful for tokens you may ha
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -92,9 +90,6 @@ A delegated token is used to allow secure uploads without exposing your API key.
 
 ### Example
 ```csharp
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -105,7 +100,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -159,14 +154,12 @@ Name | Type | Description  | Notes
 # **getToken**
 > UploadToken getToken (string uploadToken)
 
-Show upload token
+Retrieve upload token
 
 You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -238,8 +231,6 @@ Use this endpoint to generate an upload token. You can use this token to authent
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 

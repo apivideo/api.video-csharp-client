@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**delete**](LiveStreamsApi.md#deletelivestreamslivestreamid) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
 [**deleteThumbnail**](LiveStreamsApi.md#deletelivestreamslivestreamidthumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
 [**list**](LiveStreamsApi.md#getlivestreams) | **GET** /live-streams | List all live streams
-[**get**](LiveStreamsApi.md#getlivestreamslivestreamid) | **GET** /live-streams/{liveStreamId} | Show live stream
+[**get**](LiveStreamsApi.md#getlivestreamslivestreamid) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
 [**update**](LiveStreamsApi.md#patchlivestreamslivestreamid) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
 [**create**](LiveStreamsApi.md#postlivestreams) | **POST** /live-streams | Create live stream
 [**uploadThumbnail**](LiveStreamsApi.md#postlivestreamslivestreamidthumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
@@ -19,10 +19,10 @@ Method | HTTP request | Description
 
 Delete a live stream
 
+If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
+
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -88,12 +88,10 @@ void (empty response body)
 
 Delete a thumbnail
 
-Send the unique identifier for a live stream to delete it from the system.
+Send the unique identifier for a live stream to delete its thumbnail.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -131,7 +129,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamId** | **string**| The unique identifier for the live stream you want to delete.  | 
+ **liveStreamId** | **string**| The unique identifier of the live stream whose thumbnail you want to delete. | 
 
 ### Return type
 
@@ -165,8 +163,6 @@ With no parameters added to the url, this will return all livestreams. Query by 
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -236,15 +232,12 @@ Name | Type | Description  | Notes
 # **get**
 > LiveStream get (string liveStreamId)
 
-Show live stream
+Retrieve live stream
 
-Supply a LivestreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
+Supply a liveStreamId, and you'll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
 
 ### Example
 ```csharp
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -255,7 +248,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
@@ -308,12 +301,10 @@ Name | Type | Description  | Notes
 
 Update a live stream
 
-Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
+Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream).  NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.     The public=false \"private livestream\" is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -383,7 +374,7 @@ Name | Type | Description  | Notes
 
 Create live stream
 
-A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
+A live stream will give you the 'connection point' to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
 
 ### Example
 ```csharp
@@ -445,8 +436,6 @@ Upload an image to use as a backdrop for your livestream. Tutorials that [update
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 

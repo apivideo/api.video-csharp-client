@@ -5,8 +5,8 @@ All URIs are relative to *https://ws.api.video*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](VideosApi.md#deletevideo) | **DELETE** /videos/{videoId} | Delete a video
-[**get**](VideosApi.md#getvideo) | **GET** /videos/{videoId} | Show a video
-[**getStatus**](VideosApi.md#getvideostatus) | **GET** /videos/{videoId}/status | Show video status
+[**get**](VideosApi.md#getvideo) | **GET** /videos/{videoId} | Retrieve a video
+[**getStatus**](VideosApi.md#getvideostatus) | **GET** /videos/{videoId}/status | Retrieve video status
 [**list**](VideosApi.md#listvideos) | **GET** /videos | List all videos
 [**update**](VideosApi.md#patchvideo) | **PATCH** /videos/{videoId} | Update a video
 [**pickThumbnail**](VideosApi.md#patchvideosvideoidthumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
@@ -26,8 +26,6 @@ If you do not need a video any longer, you can send a request to delete it. All 
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -90,14 +88,12 @@ void (empty response body)
 # **get**
 > Video get (string videoId)
 
-Show a video
+Retrieve a video
 
 This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -163,14 +159,12 @@ Name | Type | Description  | Notes
 # **getStatus**
 > VideoStatus getStatus (string videoId)
 
-Show video status
+Retrieve video status
 
 This method provides upload status & encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -327,13 +321,14 @@ Update a video
 
 Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
 
+
+
 NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+
 
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -406,15 +401,18 @@ Pick a thumbnail
 
 Pick a thumbnail from the given time code. 
 
+
+
 If you'd like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
+
+
 
 There may be a short delay for the thumbnail to update.
 
 
+
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -488,9 +486,38 @@ This method allows you to send a video using an upload token. Upload tokens are 
 
 ### Example
 ```csharp
-//The upload will happen on the front end, and not on the backend code.  
-//Our [JavaScript uploader(https://docs.api.video/docs/video-uploader) is a great place to look for uploading videos with the delegated token.
-//We also have uploaders for a number of [mobile languages](https://docs.api.video/docs/flutter-uploader).
+using System.Diagnostics;
+using ApiVideo.Client;
+
+namespace Example
+{
+    public class uploadWithUploadTokenExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var token = to1tcmSFHeYY5KzyhOqVKMKb;  // string | The unique identifier for the token you want to use to upload a video.
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The path to the video you want to upload.
+            var apiVideosInstance = apiInstance.Videos();
+            try
+            {
+                // Upload with an upload token
+                Video result = apiVideosInstance.uploadWithUploadToken(token, file);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling VideosApi.uploadWithUploadToken: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
 ```
 
 ### Parameters
@@ -532,9 +559,6 @@ We have tutorials on: * [Creating and uploading videos](https://api.video/blog/t
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
-
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -605,20 +629,26 @@ Upload a video
 
 To upload a video to the videoId you created. You can only upload your video to the videoId once.
 
+
+
 We offer 2 types of upload: 
+
 * Regular upload 
+
 * Progressive upload
+
 The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+
   * allow the upload of video sources > 200 MiB (200 MiB = the max. allowed file size for regular upload)
+
   * allow to send a video source "progressively", i.e., before before knowing the total size of the video.
+
   Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as "completely sent" when the "last" chunk is sent (i.e., the chunk that "completes" the upload).
+
 
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
-
 using System.Diagnostics;
 using ApiVideo.Client;
 
@@ -691,17 +721,20 @@ Upload a thumbnail
 
 The thumbnail is the poster that appears in the player window before video playback begins.
 
+
+
 This endpoint allows you to upload an image for the thumbnail.
 
+
+
 To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+
+
 
 Note: There may be a short delay before the new thumbnail is delivered to our CDN.
 
 ### Example
 ```csharp
-//install via Nuget
-//Install-Package ApiVideo
-
 using System.Diagnostics;
 using ApiVideo.Client;
 

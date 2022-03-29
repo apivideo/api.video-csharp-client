@@ -106,7 +106,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Show a video This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// Retrieve a video This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want details about.</param>
@@ -119,7 +119,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Show a video This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// Retrieve a video This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want details about.</param>
@@ -173,7 +173,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Show video status This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
+        /// Retrieve video status This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
@@ -186,7 +186,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Show video status This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
+        /// Retrieve video status This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
@@ -490,9 +490,12 @@ namespace ApiVideo.Api
         }
         /// <summary>
         /// Update a video Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
-
-NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
-
+        /// 
+        /// 
+        /// 
+        /// NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+        /// 
+        /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to delete.</param>
@@ -507,9 +510,12 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
 
         /// <summary>
         /// Update a video Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
-
-NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
-
+        /// 
+        /// 
+        /// 
+        /// NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+        /// 
+        /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to delete.</param>
@@ -584,11 +590,16 @@ NOTE: If you are updating an array, you must provide the entire array as what yo
         
         /// <summary>
         /// Pick a thumbnail Pick a thumbnail from the given time code. 
-
-If you&#39;d like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
-
-There may be a short delay for the thumbnail to update.
-
+        /// 
+        /// 
+        /// 
+        /// If you&#39;d like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
+        /// 
+        /// 
+        /// 
+        /// There may be a short delay for the thumbnail to update.
+        /// 
+        /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.</param>
@@ -603,11 +614,16 @@ There may be a short delay for the thumbnail to update.
 
         /// <summary>
         /// Pick a thumbnail Pick a thumbnail from the given time code. 
-
-If you&#39;d like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
-
-There may be a short delay for the thumbnail to update.
-
+        /// 
+        /// 
+        /// 
+        /// If you&#39;d like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
+        /// 
+        /// 
+        /// 
+        /// There may be a short delay for the thumbnail to update.
+        /// 
+        /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.</param>
@@ -1004,15 +1020,24 @@ There may be a short delay for the thumbnail to update.
         
         /// <summary>
         /// Upload a video To upload a video to the videoId you created. You can only upload your video to the videoId once.
-
-We offer 2 types of upload: 
-* Regular upload 
-* Progressive upload
-The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
-  * allow the upload of video sources &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload)
-  * allow to send a video source &quot;progressively&quot;, i.e., before before knowing the total size of the video.
-  Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as &quot;completely sent&quot; when the &quot;last&quot; chunk is sent (i.e., the chunk that &quot;completes&quot; the upload).
-
+        /// 
+        /// 
+        /// 
+        /// We offer 2 types of upload: 
+        /// 
+        /// * Regular upload 
+        /// 
+        /// * Progressive upload
+        /// 
+        /// The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+        /// 
+        ///   * allow the upload of video sources &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload)
+        /// 
+        ///   * allow to send a video source &quot;progressively&quot;, i.e., before before knowing the total size of the video.
+        /// 
+        ///   Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as &quot;completely sent&quot; when the &quot;last&quot; chunk is sent (i.e., the chunk that &quot;completes&quot; the upload).
+        /// 
+        /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Enter the videoId you want to use to upload your video.</param>
@@ -1027,15 +1052,24 @@ The latter allows you to split a video source into X chunks and send those chunk
 
         /// <summary>
         /// Upload a video To upload a video to the videoId you created. You can only upload your video to the videoId once.
-
-We offer 2 types of upload: 
-* Regular upload 
-* Progressive upload
-The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
-  * allow the upload of video sources &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload)
-  * allow to send a video source &quot;progressively&quot;, i.e., before before knowing the total size of the video.
-  Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as &quot;completely sent&quot; when the &quot;last&quot; chunk is sent (i.e., the chunk that &quot;completes&quot; the upload).
-
+        /// 
+        /// 
+        /// 
+        /// We offer 2 types of upload: 
+        /// 
+        /// * Regular upload 
+        /// 
+        /// * Progressive upload
+        /// 
+        /// The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+        /// 
+        ///   * allow the upload of video sources &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload)
+        /// 
+        ///   * allow to send a video source &quot;progressively&quot;, i.e., before before knowing the total size of the video.
+        /// 
+        ///   Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as &quot;completely sent&quot; when the &quot;last&quot; chunk is sent (i.e., the chunk that &quot;completes&quot; the upload).
+        /// 
+        /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Enter the videoId you want to use to upload your video.</param>
@@ -1252,12 +1286,18 @@ The latter allows you to split a video source into X chunks and send those chunk
         
         /// <summary>
         /// Upload a thumbnail The thumbnail is the poster that appears in the player window before video playback begins.
-
-This endpoint allows you to upload an image for the thumbnail.
-
-To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
-
-Note: There may be a short delay before the new thumbnail is delivered to our CDN.
+        /// 
+        /// 
+        /// 
+        /// This endpoint allows you to upload an image for the thumbnail.
+        /// 
+        /// 
+        /// 
+        /// To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+        /// 
+        /// 
+        /// 
+        /// Note: There may be a short delay before the new thumbnail is delivered to our CDN.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the chosen video </param>
@@ -1272,12 +1312,18 @@ Note: There may be a short delay before the new thumbnail is delivered to our CD
 
         /// <summary>
         /// Upload a thumbnail The thumbnail is the poster that appears in the player window before video playback begins.
-
-This endpoint allows you to upload an image for the thumbnail.
-
-To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
-
-Note: There may be a short delay before the new thumbnail is delivered to our CDN.
+        /// 
+        /// 
+        /// 
+        /// This endpoint allows you to upload an image for the thumbnail.
+        /// 
+        /// 
+        /// 
+        /// To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+        /// 
+        /// 
+        /// 
+        /// Note: There may be a short delay before the new thumbnail is delivered to our CDN.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the chosen video </param>
