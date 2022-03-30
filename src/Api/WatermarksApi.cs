@@ -40,6 +40,77 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
+        /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.</param>
+        
+        /// <returns>Watermark</returns>
+		public Watermark upload(System.IO.Stream file)
+        {
+             ApiResponse<Watermark> localVarResponse = uploadWithHttpInfo(file);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="file">The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.</param>
+        
+        /// <returns>ApiResponse of Watermark</returns>
+		public ApiResponse<Watermark> uploadWithHttpInfo(System.IO.Stream file)
+        {
+
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling WatermarksApi->upload");
+            
+
+            var localVarPath = "/watermarks";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<Watermark>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Watermark) this.ApiClient.Deserialize(localVarResponse, typeof(Watermark)));
+            
+        }
+
+        
+        /// <summary>
         /// Delete a watermark Delete a watermark. A watermark is a static image, directly burnt-into a video.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
@@ -274,77 +345,6 @@ namespace ApiVideo.Api
                 return copy;
             }
         }
-        /// <summary>
-        /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.</param>
-        
-        /// <returns>Watermark</returns>
-		public Watermark upload(System.IO.Stream file)
-        {
-             ApiResponse<Watermark> localVarResponse = uploadWithHttpInfo(file);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="file">The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.</param>
-        
-        /// <returns>ApiResponse of Watermark</returns>
-		public ApiResponse<Watermark> uploadWithHttpInfo(System.IO.Stream file)
-        {
-
-            // verify the required parameter 'file' is set
-            if (file == null)
-                throw new ApiException(400, "Missing required parameter 'file' when calling WatermarksApi->upload");
-            
-
-            var localVarPath = "/watermarks";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-                "multipart/form-data"
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            
-
-
-            
-            if (file != null) 
-                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Watermark>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Watermark) this.ApiClient.Deserialize(localVarResponse, typeof(Watermark)));
-            
-        }
-
-        
 
     }
 

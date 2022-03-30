@@ -40,30 +40,109 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID for.
+        /// Create a player Create a player for your video, and customise it.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerId">The unique identifier for the player you want to delete.</param>
+        /// <param name="playerThemeCreationPayload"></param>
         
-        /// <returns></returns>
-		public void delete(string playerId)
+        /// <returns>PlayerTheme</returns>
+		public PlayerTheme create(PlayerThemeCreationPayload playerThemeCreationPayload)
         {
-             deleteWithHttpInfo(playerId);
+             ApiResponse<PlayerTheme> localVarResponse = createWithHttpInfo(playerThemeCreationPayload);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID for.
+        /// Create a player Create a player for your video, and customise it.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerId">The unique identifier for the player you want to delete.</param>
+        /// <param name="playerThemeCreationPayload"></param>
         
-        /// <returns>ApiResponse of Object(void)</returns>
-		public ApiResponse<Object> deleteWithHttpInfo(string playerId)
+        /// <returns>ApiResponse of PlayerTheme</returns>
+		public ApiResponse<PlayerTheme> createWithHttpInfo(PlayerThemeCreationPayload playerThemeCreationPayload)
+        {
+            if (playerThemeCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");
+            
+                                                                                                                                                                                                
+            // verify the required parameter 'playerThemeCreationPayload' is set
+            if (playerThemeCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");
+            
+
+            var localVarPath = "/players";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (playerThemeCreationPayload != null && playerThemeCreationPayload.GetType() != typeof(byte[]) && playerThemeCreationPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(playerThemeCreationPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = playerThemeCreationPayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<PlayerTheme>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
+            
+        }
+
+        
+        /// <summary>
+        /// Retrieve a player Use a player ID to retrieve details about the player and display it for viewers.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
+        
+        /// <returns>PlayerTheme</returns>
+		public PlayerTheme get(string playerId)
+        {
+             ApiResponse<PlayerTheme> localVarResponse = getWithHttpInfo(playerId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a player Use a player ID to retrieve details about the player and display it for viewers.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
+        
+        /// <returns>ApiResponse of PlayerTheme</returns>
+		public ApiResponse<PlayerTheme> getWithHttpInfo(string playerId)
         {
 
             // verify the required parameter 'playerId' is set
             if (playerId == null)
-                throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->delete");
+                throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->get");
             
 
             var localVarPath = "/players/{playerId}";
@@ -94,45 +173,133 @@ namespace ApiVideo.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<PlayerTheme>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
             
         }
 
         
         /// <summary>
-        /// Delete logo Delete the logo associated to a player.
+        /// Update a player Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
+/// <param name="playerThemeUpdatePayload"></param>
         
-        /// <returns></returns>
-		public void deleteLogo(string playerId)
+        /// <returns>PlayerTheme</returns>
+		public PlayerTheme update(string playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload)
         {
-             deleteLogoWithHttpInfo(playerId);
+             ApiResponse<PlayerTheme> localVarResponse = updateWithHttpInfo(playerId, playerThemeUpdatePayload);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Delete logo Delete the logo associated to a player.
+        /// Update a player Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
+/// <param name="playerThemeUpdatePayload"></param>
+        
+        /// <returns>ApiResponse of PlayerTheme</returns>
+		public ApiResponse<PlayerTheme> updateWithHttpInfo(string playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload)
+        {
+            if (playerThemeUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
+            
+                                                                                                                                                                                                
+            if (playerThemeUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
+            
+                                                                                                                                                                                                
+            // verify the required parameter 'playerId' is set
+            if (playerId == null)
+                throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->update");
+            // verify the required parameter 'playerThemeUpdatePayload' is set
+            if (playerThemeUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
+            
+
+            var localVarPath = "/players/{playerId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
+            if (playerThemeUpdatePayload != null && playerThemeUpdatePayload.GetType() != typeof(byte[]) && playerThemeUpdatePayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(playerThemeUpdatePayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = playerThemeUpdatePayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<PlayerTheme>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
+            
+        }
+
+        
+        /// <summary>
+        /// Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID for.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId">The unique identifier for the player you want to delete.</param>
+        
+        /// <returns></returns>
+		public void delete(string playerId)
+        {
+             deleteWithHttpInfo(playerId);
+        }
+
+        /// <summary>
+        /// Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID for.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId">The unique identifier for the player you want to delete.</param>
         
         /// <returns>ApiResponse of Object(void)</returns>
-		public ApiResponse<Object> deleteLogoWithHttpInfo(string playerId)
+		public ApiResponse<Object> deleteWithHttpInfo(string playerId)
         {
 
             // verify the required parameter 'playerId' is set
             if (playerId == null)
-                throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->deleteLogo");
+                throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->delete");
             
 
-            var localVarPath = "/players/{playerId}/logo";
+            var localVarPath = "/players/{playerId}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
             var localVarHeaderParams = new Dictionary<string, string>();
@@ -341,239 +508,6 @@ namespace ApiVideo.Api
             }
         }
         /// <summary>
-        /// Retrieve a player Use a player ID to retrieve details about the player and display it for viewers.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
-        
-        /// <returns>PlayerTheme</returns>
-		public PlayerTheme get(string playerId)
-        {
-             ApiResponse<PlayerTheme> localVarResponse = getWithHttpInfo(playerId);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieve a player Use a player ID to retrieve details about the player and display it for viewers.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
-        
-        /// <returns>ApiResponse of PlayerTheme</returns>
-		public ApiResponse<PlayerTheme> getWithHttpInfo(string playerId)
-        {
-
-            // verify the required parameter 'playerId' is set
-            if (playerId == null)
-                throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->get");
-            
-
-            var localVarPath = "/players/{playerId}";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<PlayerTheme>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
-            
-        }
-
-        
-        /// <summary>
-        /// Update a player Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerId">The unique identifier for the player.</param>
-/// <param name="playerThemeUpdatePayload"></param>
-        
-        /// <returns>PlayerTheme</returns>
-		public PlayerTheme update(string playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload)
-        {
-             ApiResponse<PlayerTheme> localVarResponse = updateWithHttpInfo(playerId, playerThemeUpdatePayload);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Update a player Use a player ID to update specific details for a player.  NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerId">The unique identifier for the player.</param>
-/// <param name="playerThemeUpdatePayload"></param>
-        
-        /// <returns>ApiResponse of PlayerTheme</returns>
-		public ApiResponse<PlayerTheme> updateWithHttpInfo(string playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload)
-        {
-            if (playerThemeUpdatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
-            
-                                                                                                                                                                                                
-            if (playerThemeUpdatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
-            
-                                                                                                                                                                                                
-            // verify the required parameter 'playerId' is set
-            if (playerId == null)
-                throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->update");
-            // verify the required parameter 'playerThemeUpdatePayload' is set
-            if (playerThemeUpdatePayload == null)
-                throw new ApiException(400, "Missing required parameter 'playerThemeUpdatePayload' when calling PlayerThemesApi->update");
-            
-
-            var localVarPath = "/players/{playerId}";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-                "application/json"
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
-            if (playerThemeUpdatePayload != null && playerThemeUpdatePayload.GetType() != typeof(byte[]) && playerThemeUpdatePayload.GetType() != typeof(string))
-            {
-                localVarPostBody = this.ApiClient.Serialize(playerThemeUpdatePayload); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = playerThemeUpdatePayload; // byte array
-            }
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<PlayerTheme>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
-            
-        }
-
-        
-        /// <summary>
-        /// Create a player Create a player for your video, and customise it.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerThemeCreationPayload"></param>
-        
-        /// <returns>PlayerTheme</returns>
-		public PlayerTheme create(PlayerThemeCreationPayload playerThemeCreationPayload)
-        {
-             ApiResponse<PlayerTheme> localVarResponse = createWithHttpInfo(playerThemeCreationPayload);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Create a player Create a player for your video, and customise it.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="playerThemeCreationPayload"></param>
-        
-        /// <returns>ApiResponse of PlayerTheme</returns>
-		public ApiResponse<PlayerTheme> createWithHttpInfo(PlayerThemeCreationPayload playerThemeCreationPayload)
-        {
-            if (playerThemeCreationPayload == null) 
-                throw new ApiException(400,"Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");
-            
-                                                                                                                                                                                                
-            // verify the required parameter 'playerThemeCreationPayload' is set
-            if (playerThemeCreationPayload == null)
-                throw new ApiException(400, "Missing required parameter 'playerThemeCreationPayload' when calling PlayerThemesApi->create");
-            
-
-            var localVarPath = "/players";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-                "application/json"
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (playerThemeCreationPayload != null && playerThemeCreationPayload.GetType() != typeof(byte[]) && playerThemeCreationPayload.GetType() != typeof(string))
-            {
-                localVarPostBody = this.ApiClient.Serialize(playerThemeCreationPayload); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = playerThemeCreationPayload; // byte array
-            }
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<PlayerTheme>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
-            
-        }
-
-        
-        /// <summary>
         /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 100KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
@@ -653,6 +587,72 @@ namespace ApiVideo.Api
             return new ApiResponse<PlayerTheme>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (PlayerTheme) this.ApiClient.Deserialize(localVarResponse, typeof(PlayerTheme)));
+            
+        }
+
+        
+        /// <summary>
+        /// Delete logo Delete the logo associated to a player.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId">The unique identifier for the player.</param>
+        
+        /// <returns></returns>
+		public void deleteLogo(string playerId)
+        {
+             deleteLogoWithHttpInfo(playerId);
+        }
+
+        /// <summary>
+        /// Delete logo Delete the logo associated to a player.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId">The unique identifier for the player.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public ApiResponse<Object> deleteLogoWithHttpInfo(string playerId)
+        {
+
+            // verify the required parameter 'playerId' is set
+            if (playerId == null)
+                throw new ApiException(400, "Missing required parameter 'playerId' when calling PlayerThemesApi->deleteLogo");
+            
+
+            var localVarPath = "/players/{playerId}/logo";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (playerId != null) localVarPathParams.Add("playerId", this.ApiClient.ParameterToString(playerId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
             
         }
 

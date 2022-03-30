@@ -4,19 +4,19 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](WebhooksApi.md#deletewebhook) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
-[**get**](WebhooksApi.md#getwebhook) | **GET** /webhooks/{webhookId} | Retrieve Webhook details
-[**list**](WebhooksApi.md#listwebhooks) | **GET** /webhooks | List all webhooks
 [**create**](WebhooksApi.md#postwebhooks) | **POST** /webhooks | Create Webhook
+[**get**](WebhooksApi.md#getwebhook) | **GET** /webhooks/{webhookId} | Retrieve Webhook details
+[**delete**](WebhooksApi.md#deletewebhook) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
+[**list**](WebhooksApi.md#listwebhooks) | **GET** /webhooks | List all webhooks
 
 
-<a name="deletewebhook"></a>
-# **delete**
-> void delete (string webhookId)
+<a name="postwebhooks"></a>
+# **create**
+> Webhook create (WebhooksCreationPayload webhooksCreationPayload)
 
-Delete a Webhook
+Create Webhook
 
-This method will delete the indicated webhook.
+Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \"type\": \"video.encoding.quality.completed\", \"emittedAt\": \"2021-01-29T16:46:25.217+01:00\", \"videoId\": \"viXXXXXXXX\", \"encoding\": \"hls\", \"quality\": \"720p\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.
 
 ### Example
 ```csharp
@@ -25,7 +25,7 @@ using ApiVideo.Client;
 
 namespace Example
 {
-    public class deleteExample
+    public class createExample
     {
         public static void Main()
         {
@@ -34,16 +34,17 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var webhookId = webhookId_example;  // string | The webhook you wish to delete.
+            var webhooksCreationPayload = new WebhooksCreationPayload(); // WebhooksCreationPayload | 
             var apiWebhooksInstance = apiInstance.Webhooks();
             try
             {
-                // Delete a Webhook
-                apiWebhooksInstance.delete(webhookId);
+                // Create Webhook
+                Webhook result = apiWebhooksInstance.create(webhooksCreationPayload);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling WebhooksApi.delete: " + e.Message );
+                Debug.Print("Exception when calling WebhooksApi.create: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -56,11 +57,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhookId** | **string**| The webhook you wish to delete. | 
+ **webhooksCreationPayload** | [**WebhooksCreationPayload**](WebhooksCreationPayload.md)|  | 
 
 ### Return type
 
-void (empty response body)
+[**Webhook**](Webhook.md)
 
 ### Authorization
 
@@ -68,15 +69,15 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **404** | Not Found |  -  |
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -147,6 +148,76 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="deletewebhook"></a>
+# **delete**
+> void delete (string webhookId)
+
+Delete a Webhook
+
+This method will delete the indicated webhook.
+
+### Example
+```csharp
+using System.Diagnostics;
+using ApiVideo.Client;
+
+namespace Example
+{
+    public class deleteExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var webhookId = webhookId_example;  // string | The webhook you wish to delete.
+            var apiWebhooksInstance = apiInstance.Webhooks();
+            try
+            {
+                // Delete a Webhook
+                apiWebhooksInstance.delete(webhookId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WebhooksApi.delete: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhookId** | **string**| The webhook you wish to delete. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -223,77 +294,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="postwebhooks"></a>
-# **create**
-> Webhook create (WebhooksCreationPayload webhooksCreationPayload)
-
-Create Webhook
-
-Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * ```video.encoding.quality.completed``` Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like ```{ \"type\": \"video.encoding.quality.completed\", \"emittedAt\": \"2021-01-29T16:46:25.217+01:00\", \"videoId\": \"viXXXXXXXX\", \"encoding\": \"hls\", \"quality\": \"720p\"} ```. This request says that the 720p HLS encoding was completed. * ```live-stream.broadcast.started```  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * ```live-stream.broadcast.ended```  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * ```video.source.recorded```  This event occurs when a live stream is recorded and submitted for encoding.
-
-### Example
-```csharp
-using System.Diagnostics;
-using ApiVideo.Client;
-
-namespace Example
-{
-    public class createExample
-    {
-        public static void Main()
-        {
-            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
-            var apiKey = "YOUR_API_KEY";
-
-            var apiInstance = new ApiVideoClient(apiKey,basePath);
-
-            var webhooksCreationPayload = new WebhooksCreationPayload(); // WebhooksCreationPayload | 
-            var apiWebhooksInstance = apiInstance.Webhooks();
-            try
-            {
-                // Create Webhook
-                Webhook result = apiWebhooksInstance.create(webhooksCreationPayload);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling WebhooksApi.create: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **webhooksCreationPayload** | [**WebhooksCreationPayload**](WebhooksCreationPayload.md)|  | 
-
-### Return type
-
-[**Webhook**](Webhook.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

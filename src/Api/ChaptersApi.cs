@@ -40,6 +40,165 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
+        /// Upload a chapter Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The unique identifier for the video you want to upload a chapter for.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="file">The VTT file describing the chapters you want to upload.</param>
+        
+        /// <returns>Chapter</returns>
+		public Chapter upload(string videoId, string language, System.IO.Stream file)
+        {
+             ApiResponse<Chapter> localVarResponse = uploadWithHttpInfo(videoId, language, file);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Upload a chapter Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The unique identifier for the video you want to upload a chapter for.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="file">The VTT file describing the chapters you want to upload.</param>
+        
+        /// <returns>ApiResponse of Chapter</returns>
+		public ApiResponse<Chapter> uploadWithHttpInfo(string videoId, string language, System.IO.Stream file)
+        {
+
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling ChaptersApi->upload");
+            // verify the required parameter 'language' is set
+            if (language == null)
+                throw new ApiException(400, "Missing required parameter 'language' when calling ChaptersApi->upload");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling ChaptersApi->upload");
+            
+
+            var localVarPath = "/videos/{videoId}/chapters/{language}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
+            
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<Chapter>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Chapter) this.ApiClient.Deserialize(localVarResponse, typeof(Chapter)));
+            
+        }
+
+        
+        /// <summary>
+        /// Retrieve a chapter Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
+        /// <returns>Chapter</returns>
+		public Chapter get(string videoId, string language)
+        {
+             ApiResponse<Chapter> localVarResponse = getWithHttpInfo(videoId, language);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a chapter Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
+        /// <returns>ApiResponse of Chapter</returns>
+		public ApiResponse<Chapter> getWithHttpInfo(string videoId, string language)
+        {
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling ChaptersApi->get");
+            // verify the required parameter 'language' is set
+            if (language == null)
+                throw new ApiException(400, "Missing required parameter 'language' when calling ChaptersApi->get");
+            
+
+            var localVarPath = "/videos/{videoId}/chapters/{language}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<Chapter>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Chapter) this.ApiClient.Deserialize(localVarResponse, typeof(Chapter)));
+            
+        }
+
+        
+        /// <summary>
         /// Delete a chapter Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
@@ -260,165 +419,6 @@ namespace ApiVideo.Api
                 return copy;
             }
         }
-        /// <summary>
-        /// Retrieve a chapter Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
-/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-        
-        /// <returns>Chapter</returns>
-		public Chapter get(string videoId, string language)
-        {
-             ApiResponse<Chapter> localVarResponse = getWithHttpInfo(videoId, language);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieve a chapter Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
-/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-        
-        /// <returns>ApiResponse of Chapter</returns>
-		public ApiResponse<Chapter> getWithHttpInfo(string videoId, string language)
-        {
-
-
-            // verify the required parameter 'videoId' is set
-            if (videoId == null)
-                throw new ApiException(400, "Missing required parameter 'videoId' when calling ChaptersApi->get");
-            // verify the required parameter 'language' is set
-            if (language == null)
-                throw new ApiException(400, "Missing required parameter 'language' when calling ChaptersApi->get");
-            
-
-            var localVarPath = "/videos/{videoId}/chapters/{language}";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
-            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Chapter>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Chapter) this.ApiClient.Deserialize(localVarResponse, typeof(Chapter)));
-            
-        }
-
-        
-        /// <summary>
-        /// Upload a chapter Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The unique identifier for the video you want to upload a chapter for.</param>
-/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-/// <param name="file">The VTT file describing the chapters you want to upload.</param>
-        
-        /// <returns>Chapter</returns>
-		public Chapter upload(string videoId, string language, System.IO.Stream file)
-        {
-             ApiResponse<Chapter> localVarResponse = uploadWithHttpInfo(videoId, language, file);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Upload a chapter Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The unique identifier for the video you want to upload a chapter for.</param>
-/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
-/// <param name="file">The VTT file describing the chapters you want to upload.</param>
-        
-        /// <returns>ApiResponse of Chapter</returns>
-		public ApiResponse<Chapter> uploadWithHttpInfo(string videoId, string language, System.IO.Stream file)
-        {
-
-
-
-            // verify the required parameter 'videoId' is set
-            if (videoId == null)
-                throw new ApiException(400, "Missing required parameter 'videoId' when calling ChaptersApi->upload");
-            // verify the required parameter 'language' is set
-            if (language == null)
-                throw new ApiException(400, "Missing required parameter 'language' when calling ChaptersApi->upload");
-            // verify the required parameter 'file' is set
-            if (file == null)
-                throw new ApiException(400, "Missing required parameter 'file' when calling ChaptersApi->upload");
-            
-
-            var localVarPath = "/videos/{videoId}/chapters/{language}";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-                "multipart/form-data"
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
-            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
-            
-
-
-            
-            if (file != null) 
-                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
-
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Chapter>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Chapter) this.ApiClient.Deserialize(localVarResponse, typeof(Chapter)));
-            
-        }
-
-        
 
     }
 

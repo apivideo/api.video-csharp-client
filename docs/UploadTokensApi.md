@@ -4,11 +4,153 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createToken**](UploadTokensApi.md#postuploadtokens) | **POST** /upload-tokens | Generate an upload token
+[**getToken**](UploadTokensApi.md#getuploadtokensuploadtoken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**deleteToken**](UploadTokensApi.md#deleteuploadtokensuploadtoken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
 [**list**](UploadTokensApi.md#getuploadtokens) | **GET** /upload-tokens | List all active upload tokens.
-[**getToken**](UploadTokensApi.md#getuploadtokensuploadtoken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
-[**createToken**](UploadTokensApi.md#postuploadtokens) | **POST** /upload-tokens | Generate an upload token
 
+
+<a name="postuploadtokens"></a>
+# **createToken**
+> UploadToken createToken (TokenCreationPayload tokenCreationPayload)
+
+Generate an upload token
+
+Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+
+### Example
+```csharp
+using System.Diagnostics;
+using ApiVideo.Client;
+
+namespace Example
+{
+    public class createTokenExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var tokenCreationPayload = new TokenCreationPayload(); // TokenCreationPayload | 
+            var apiUploadTokensInstance = apiInstance.UploadTokens();
+            try
+            {
+                // Generate an upload token
+                UploadToken result = apiUploadTokensInstance.createToken(tokenCreationPayload);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling UploadTokensApi.createToken: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tokenCreationPayload** | [**TokenCreationPayload**](TokenCreationPayload.md)|  | 
+
+### Return type
+
+[**UploadToken**](UploadToken.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getuploadtokensuploadtoken"></a>
+# **getToken**
+> UploadToken getToken (string uploadToken)
+
+Retrieve upload token
+
+You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+
+### Example
+```csharp
+using System.Diagnostics;
+using ApiVideo.Client;
+
+namespace Example
+{
+    public class getTokenExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var uploadToken = to1tcmSFHeYY5KzyhOqVKMKb;  // string | The unique identifier for the token you want information about.
+            var apiUploadTokensInstance = apiInstance.UploadTokens();
+            try
+            {
+                // Show upload token
+                UploadToken result = apiUploadTokensInstance.getToken(uploadToken);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling UploadTokensApi.getToken: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uploadToken** | **string**| The unique identifier for the token you want information about. | 
+
+### Return type
+
+[**UploadToken**](UploadToken.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="deleteuploadtokensuploadtoken"></a>
 # **deleteToken**
@@ -147,148 +289,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="getuploadtokensuploadtoken"></a>
-# **getToken**
-> UploadToken getToken (string uploadToken)
-
-Retrieve upload token
-
-You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
-
-### Example
-```csharp
-using System.Diagnostics;
-using ApiVideo.Client;
-
-namespace Example
-{
-    public class getTokenExample
-    {
-        public static void Main()
-        {
-            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
-            var apiKey = "YOUR_API_KEY";
-
-            var apiInstance = new ApiVideoClient(apiKey,basePath);
-
-            var uploadToken = to1tcmSFHeYY5KzyhOqVKMKb;  // string | The unique identifier for the token you want information about.
-            var apiUploadTokensInstance = apiInstance.UploadTokens();
-            try
-            {
-                // Show upload token
-                UploadToken result = apiUploadTokensInstance.getToken(uploadToken);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UploadTokensApi.getToken: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uploadToken** | **string**| The unique identifier for the token you want information about. | 
-
-### Return type
-
-[**UploadToken**](UploadToken.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="postuploadtokens"></a>
-# **createToken**
-> UploadToken createToken (TokenCreationPayload tokenCreationPayload)
-
-Generate an upload token
-
-Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
-
-### Example
-```csharp
-using System.Diagnostics;
-using ApiVideo.Client;
-
-namespace Example
-{
-    public class createTokenExample
-    {
-        public static void Main()
-        {
-            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
-            var apiKey = "YOUR_API_KEY";
-
-            var apiInstance = new ApiVideoClient(apiKey,basePath);
-
-            var tokenCreationPayload = new TokenCreationPayload(); // TokenCreationPayload | 
-            var apiUploadTokensInstance = apiInstance.UploadTokens();
-            try
-            {
-                // Generate an upload token
-                UploadToken result = apiUploadTokensInstance.createToken(tokenCreationPayload);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UploadTokensApi.createToken: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tokenCreationPayload** | [**TokenCreationPayload**](TokenCreationPayload.md)|  | 
-
-### Return type
-
-[**UploadToken**](UploadToken.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

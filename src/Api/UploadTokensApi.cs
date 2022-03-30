@@ -40,6 +40,151 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
+        /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenCreationPayload"></param>
+        
+        /// <returns>UploadToken</returns>
+		public UploadToken createToken(TokenCreationPayload tokenCreationPayload)
+        {
+             ApiResponse<UploadToken> localVarResponse = createTokenWithHttpInfo(tokenCreationPayload);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenCreationPayload"></param>
+        
+        /// <returns>ApiResponse of UploadToken</returns>
+		public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreationPayload tokenCreationPayload)
+        {
+            if (tokenCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'tokenCreationPayload' when calling UploadTokensApi->createToken");
+            
+            
+            // verify the required parameter 'tokenCreationPayload' is set
+            if (tokenCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'tokenCreationPayload' when calling UploadTokensApi->createToken");
+            
+
+            var localVarPath = "/upload-tokens";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (tokenCreationPayload != null && tokenCreationPayload.GetType() != typeof(byte[]) && tokenCreationPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(tokenCreationPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = tokenCreationPayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<UploadToken>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UploadToken) this.ApiClient.Deserialize(localVarResponse, typeof(UploadToken)));
+            
+        }
+
+        
+        /// <summary>
+        /// Retrieve upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
+        
+        /// <returns>UploadToken</returns>
+		public UploadToken getToken(string uploadToken)
+        {
+             ApiResponse<UploadToken> localVarResponse = getTokenWithHttpInfo(uploadToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
+        
+        /// <returns>ApiResponse of UploadToken</returns>
+		public ApiResponse<UploadToken> getTokenWithHttpInfo(string uploadToken)
+        {
+
+            // verify the required parameter 'uploadToken' is set
+            if (uploadToken == null)
+                throw new ApiException(400, "Missing required parameter 'uploadToken' when calling UploadTokensApi->getToken");
+            
+
+            var localVarPath = "/upload-tokens/{uploadToken}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uploadToken != null) localVarPathParams.Add("uploadToken", this.ApiClient.ParameterToString(uploadToken)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<UploadToken>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UploadToken) this.ApiClient.Deserialize(localVarResponse, typeof(UploadToken)));
+            
+        }
+
+        
+        /// <summary>
         /// Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
@@ -274,151 +419,6 @@ namespace ApiVideo.Api
                 return copy;
             }
         }
-        /// <summary>
-        /// Retrieve upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
-        
-        /// <returns>UploadToken</returns>
-		public UploadToken getToken(string uploadToken)
-        {
-             ApiResponse<UploadToken> localVarResponse = getTokenWithHttpInfo(uploadToken);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieve upload token You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
-        
-        /// <returns>ApiResponse of UploadToken</returns>
-		public ApiResponse<UploadToken> getTokenWithHttpInfo(string uploadToken)
-        {
-
-            // verify the required parameter 'uploadToken' is set
-            if (uploadToken == null)
-                throw new ApiException(400, "Missing required parameter 'uploadToken' when calling UploadTokensApi->getToken");
-            
-
-            var localVarPath = "/upload-tokens/{uploadToken}";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (uploadToken != null) localVarPathParams.Add("uploadToken", this.ApiClient.ParameterToString(uploadToken)); // path parameter
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<UploadToken>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UploadToken) this.ApiClient.Deserialize(localVarResponse, typeof(UploadToken)));
-            
-        }
-
-        
-        /// <summary>
-        /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tokenCreationPayload"></param>
-        
-        /// <returns>UploadToken</returns>
-		public UploadToken createToken(TokenCreationPayload tokenCreationPayload)
-        {
-             ApiResponse<UploadToken> localVarResponse = createTokenWithHttpInfo(tokenCreationPayload);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tokenCreationPayload"></param>
-        
-        /// <returns>ApiResponse of UploadToken</returns>
-		public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreationPayload tokenCreationPayload)
-        {
-            if (tokenCreationPayload == null) 
-                throw new ApiException(400,"Missing required parameter 'tokenCreationPayload' when calling UploadTokensApi->createToken");
-            
-            
-            // verify the required parameter 'tokenCreationPayload' is set
-            if (tokenCreationPayload == null)
-                throw new ApiException(400, "Missing required parameter 'tokenCreationPayload' when calling UploadTokensApi->createToken");
-            
-
-            var localVarPath = "/upload-tokens";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-                "application/json"
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (tokenCreationPayload != null && tokenCreationPayload.GetType() != typeof(byte[]) && tokenCreationPayload.GetType() != typeof(string))
-            {
-                localVarPostBody = this.ApiClient.Serialize(tokenCreationPayload); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = tokenCreationPayload; // byte array
-            }
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<UploadToken>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UploadToken) this.ApiClient.Deserialize(localVarResponse, typeof(UploadToken)));
-            
-        }
-
-        
 
     }
 
