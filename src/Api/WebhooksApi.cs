@@ -40,33 +40,43 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Delete a Webhook This method will delete the indicated webhook.
+        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;: \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;: \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;, \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed. * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60;  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60;  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60;  This event occurs when a live stream is recorded and submitted for encoding.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="webhookId">The webhook you wish to delete.</param>
+        /// <param name="webhooksCreationPayload"></param>
         
-        /// <returns></returns>
-		public void delete(string webhookId)
+        /// <returns>Webhook</returns>
+		public Webhook create(WebhooksCreationPayload webhooksCreationPayload)
         {
-             deleteWithHttpInfo(webhookId);
+             ApiResponse<Webhook> localVarResponse = createWithHttpInfo(webhooksCreationPayload);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Delete a Webhook This method will delete the indicated webhook.
+        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;: \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;: \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;, \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed. * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60;  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60;  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60;  This event occurs when a live stream is recorded and submitted for encoding.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="webhookId">The webhook you wish to delete.</param>
+        /// <param name="webhooksCreationPayload"></param>
         
-        /// <returns>ApiResponse of Object(void)</returns>
-		public ApiResponse<Object> deleteWithHttpInfo(string webhookId)
+        /// <returns>ApiResponse of Webhook</returns>
+		public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreationPayload webhooksCreationPayload)
         {
-
-            // verify the required parameter 'webhookId' is set
-            if (webhookId == null)
-                throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->delete");
+            if (webhooksCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload' when calling WebhooksApi->create");
+            
+            if (webhooksCreationPayload != null && webhooksCreationPayload.events == null) {
+                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload.Events' when calling WebhooksApi->create");
+            }
+                        if (webhooksCreationPayload != null && webhooksCreationPayload.url == null) {
+                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload.Url' when calling WebhooksApi->create");
+            }
+            
+            // verify the required parameter 'webhooksCreationPayload' is set
+            if (webhooksCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'webhooksCreationPayload' when calling WebhooksApi->create");
             
 
-            var localVarPath = "/webhooks/{webhookId}";
+            var localVarPath = "/webhooks";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
             var localVarHeaderParams = new Dictionary<string, string>();
@@ -76,6 +86,7 @@ namespace ApiVideo.Api
 
             // to determine the Content-Type header
             string[] localVarContentTypes = new string[] {
+                "application/json"
             };
             string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
             localVarHeaderParams.Add("Content-Type", localVarContentType);
@@ -87,20 +98,27 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (webhookId != null) localVarPathParams.Add("webhookId", this.ApiClient.ParameterToString(webhookId)); // path parameter
+            if (webhooksCreationPayload != null && webhooksCreationPayload.GetType() != typeof(byte[]) && webhooksCreationPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(webhooksCreationPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = webhooksCreationPayload; // byte array
+            }
 
 
             
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<Webhook>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Webhook) this.ApiClient.Deserialize(localVarResponse, typeof(Webhook)));
             
         }
 
@@ -168,6 +186,72 @@ namespace ApiVideo.Api
             return new ApiResponse<Webhook>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Webhook) this.ApiClient.Deserialize(localVarResponse, typeof(Webhook)));
+            
+        }
+
+        
+        /// <summary>
+        /// Delete a Webhook This method will delete the indicated webhook.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="webhookId">The webhook you wish to delete.</param>
+        
+        /// <returns></returns>
+		public void delete(string webhookId)
+        {
+             deleteWithHttpInfo(webhookId);
+        }
+
+        /// <summary>
+        /// Delete a Webhook This method will delete the indicated webhook.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="webhookId">The webhook you wish to delete.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public ApiResponse<Object> deleteWithHttpInfo(string webhookId)
+        {
+
+            // verify the required parameter 'webhookId' is set
+            if (webhookId == null)
+                throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->delete");
+            
+
+            var localVarPath = "/webhooks/{webhookId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (webhookId != null) localVarPathParams.Add("webhookId", this.ApiClient.ParameterToString(webhookId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
             
         }
 
@@ -331,90 +415,6 @@ namespace ApiVideo.Api
                 return copy;
             }
         }
-        /// <summary>
-        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;: \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;: \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;, \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed. * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60;  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60;  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60;  This event occurs when a live stream is recorded and submitted for encoding.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="webhooksCreationPayload"></param>
-        
-        /// <returns>Webhook</returns>
-		public Webhook create(WebhooksCreationPayload webhooksCreationPayload)
-        {
-             ApiResponse<Webhook> localVarResponse = createWithHttpInfo(webhooksCreationPayload);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;: \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;: \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;, \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed. * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60;  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60;  This event fires when the live stream has finished broadcasting, and the broadcasting parameter flips from false to true. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60;  This event occurs when a live stream is recorded and submitted for encoding.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="webhooksCreationPayload"></param>
-        
-        /// <returns>ApiResponse of Webhook</returns>
-		public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreationPayload webhooksCreationPayload)
-        {
-            if (webhooksCreationPayload == null) 
-                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload' when calling WebhooksApi->create");
-            
-            if (webhooksCreationPayload != null && webhooksCreationPayload.events == null) {
-                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload.Events' when calling WebhooksApi->create");
-            }
-                        if (webhooksCreationPayload != null && webhooksCreationPayload.url == null) {
-                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload.Url' when calling WebhooksApi->create");
-            }
-            
-            // verify the required parameter 'webhooksCreationPayload' is set
-            if (webhooksCreationPayload == null)
-                throw new ApiException(400, "Missing required parameter 'webhooksCreationPayload' when calling WebhooksApi->create");
-            
-
-            var localVarPath = "/webhooks";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-                "application/json"
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (webhooksCreationPayload != null && webhooksCreationPayload.GetType() != typeof(byte[]) && webhooksCreationPayload.GetType() != typeof(string))
-            {
-                localVarPostBody = this.ApiClient.Serialize(webhooksCreationPayload); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = webhooksCreationPayload; // byte array
-            }
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<Webhook>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Webhook) this.ApiClient.Deserialize(localVarResponse, typeof(Webhook)));
-            
-        }
-
-        
 
     }
 

@@ -40,6 +40,242 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
+        /// Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamCreationPayload"></param>
+        
+        /// <returns>LiveStream</returns>
+		public LiveStream create(LiveStreamCreationPayload liveStreamCreationPayload)
+        {
+             ApiResponse<LiveStream> localVarResponse = createWithHttpInfo(liveStreamCreationPayload);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamCreationPayload"></param>
+        
+        /// <returns>ApiResponse of LiveStream</returns>
+		public ApiResponse<LiveStream> createWithHttpInfo(LiveStreamCreationPayload liveStreamCreationPayload)
+        {
+            if (liveStreamCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'liveStreamCreationPayload' when calling LiveStreamsApi->create");
+            
+            if (liveStreamCreationPayload != null && liveStreamCreationPayload.name == null) {
+                throw new ApiException(400,"Missing required parameter 'liveStreamCreationPayload.Name' when calling LiveStreamsApi->create");
+            }
+                                                
+            // verify the required parameter 'liveStreamCreationPayload' is set
+            if (liveStreamCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamCreationPayload' when calling LiveStreamsApi->create");
+            
+
+            var localVarPath = "/live-streams";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamCreationPayload != null && liveStreamCreationPayload.GetType() != typeof(byte[]) && liveStreamCreationPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(liveStreamCreationPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = liveStreamCreationPayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<LiveStream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
+        }
+
+        
+        /// <summary>
+        /// Retrieve live stream Supply a liveStreamId, and you&#39;ll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
+        
+        /// <returns>LiveStream</returns>
+		public LiveStream get(string liveStreamId)
+        {
+             ApiResponse<LiveStream> localVarResponse = getWithHttpInfo(liveStreamId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve live stream Supply a liveStreamId, and you&#39;ll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
+        
+        /// <returns>ApiResponse of LiveStream</returns>
+		public ApiResponse<LiveStream> getWithHttpInfo(string liveStreamId)
+        {
+
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->get");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<LiveStream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
+        }
+
+        
+        /// <summary>
+        /// Update a live stream Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream).  NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.     The public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
+/// <param name="liveStreamUpdatePayload"></param>
+        
+        /// <returns>LiveStream</returns>
+		public LiveStream update(string liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload)
+        {
+             ApiResponse<LiveStream> localVarResponse = updateWithHttpInfo(liveStreamId, liveStreamUpdatePayload);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a live stream Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream).  NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.     The public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
+/// <param name="liveStreamUpdatePayload"></param>
+        
+        /// <returns>ApiResponse of LiveStream</returns>
+		public ApiResponse<LiveStream> updateWithHttpInfo(string liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload)
+        {
+            if (liveStreamUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
+            
+                                                
+            if (liveStreamUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
+            
+                                                
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->update");
+            // verify the required parameter 'liveStreamUpdatePayload' is set
+            if (liveStreamUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+            if (liveStreamUpdatePayload != null && liveStreamUpdatePayload.GetType() != typeof(byte[]) && liveStreamUpdatePayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(liveStreamUpdatePayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = liveStreamUpdatePayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<LiveStream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
+        }
+
+        
+        /// <summary>
         /// Delete a live stream If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
@@ -100,73 +336,6 @@ namespace ApiVideo.Api
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 null);
-            
-        }
-
-        
-        /// <summary>
-        /// Delete a thumbnail Send the unique identifier for a live stream to delete its thumbnail.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamId">The unique identifier of the live stream whose thumbnail you want to delete.</param>
-        
-        /// <returns>LiveStream</returns>
-		public LiveStream deleteThumbnail(string liveStreamId)
-        {
-             ApiResponse<LiveStream> localVarResponse = deleteThumbnailWithHttpInfo(liveStreamId);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Delete a thumbnail Send the unique identifier for a live stream to delete its thumbnail.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamId">The unique identifier of the live stream whose thumbnail you want to delete.</param>
-        
-        /// <returns>ApiResponse of LiveStream</returns>
-		public ApiResponse<LiveStream> deleteThumbnailWithHttpInfo(string liveStreamId)
-        {
-
-            // verify the required parameter 'liveStreamId' is set
-            if (liveStreamId == null)
-                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->deleteThumbnail");
-            
-
-            var localVarPath = "/live-streams/{liveStreamId}/thumbnail";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<LiveStream>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
             
         }
 
@@ -373,242 +542,6 @@ namespace ApiVideo.Api
             }
         }
         /// <summary>
-        /// Retrieve live stream Supply a liveStreamId, and you&#39;ll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
-        
-        /// <returns>LiveStream</returns>
-		public LiveStream get(string liveStreamId)
-        {
-             ApiResponse<LiveStream> localVarResponse = getWithHttpInfo(liveStreamId);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieve live stream Supply a liveStreamId, and you&#39;ll get all the details for streaming into, and watching the livestream. Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
-        
-        /// <returns>ApiResponse of LiveStream</returns>
-		public ApiResponse<LiveStream> getWithHttpInfo(string liveStreamId)
-        {
-
-            // verify the required parameter 'liveStreamId' is set
-            if (liveStreamId == null)
-                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->get");
-            
-
-            var localVarPath = "/live-streams/{liveStreamId}";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<LiveStream>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
-            
-        }
-
-        
-        /// <summary>
-        /// Update a live stream Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream).  NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.     The public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
-/// <param name="liveStreamUpdatePayload"></param>
-        
-        /// <returns>LiveStream</returns>
-		public LiveStream update(string liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload)
-        {
-             ApiResponse<LiveStream> localVarResponse = updateWithHttpInfo(liveStreamId, liveStreamUpdatePayload);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Update a live stream Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream).  NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.     The public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
-/// <param name="liveStreamUpdatePayload"></param>
-        
-        /// <returns>ApiResponse of LiveStream</returns>
-		public ApiResponse<LiveStream> updateWithHttpInfo(string liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload)
-        {
-            if (liveStreamUpdatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
-            
-                                                
-            if (liveStreamUpdatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
-            
-                                                
-            // verify the required parameter 'liveStreamId' is set
-            if (liveStreamId == null)
-                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->update");
-            // verify the required parameter 'liveStreamUpdatePayload' is set
-            if (liveStreamUpdatePayload == null)
-                throw new ApiException(400, "Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
-            
-
-            var localVarPath = "/live-streams/{liveStreamId}";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-                "application/json"
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
-            if (liveStreamUpdatePayload != null && liveStreamUpdatePayload.GetType() != typeof(byte[]) && liveStreamUpdatePayload.GetType() != typeof(string))
-            {
-                localVarPostBody = this.ApiClient.Serialize(liveStreamUpdatePayload); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = liveStreamUpdatePayload; // byte array
-            }
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<LiveStream>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
-            
-        }
-
-        
-        /// <summary>
-        /// Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamCreationPayload"></param>
-        
-        /// <returns>LiveStream</returns>
-		public LiveStream create(LiveStreamCreationPayload liveStreamCreationPayload)
-        {
-             ApiResponse<LiveStream> localVarResponse = createWithHttpInfo(liveStreamCreationPayload);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Create live stream A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
-        /// </summary>
-        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamCreationPayload"></param>
-        
-        /// <returns>ApiResponse of LiveStream</returns>
-		public ApiResponse<LiveStream> createWithHttpInfo(LiveStreamCreationPayload liveStreamCreationPayload)
-        {
-            if (liveStreamCreationPayload == null) 
-                throw new ApiException(400,"Missing required parameter 'liveStreamCreationPayload' when calling LiveStreamsApi->create");
-            
-            if (liveStreamCreationPayload != null && liveStreamCreationPayload.name == null) {
-                throw new ApiException(400,"Missing required parameter 'liveStreamCreationPayload.Name' when calling LiveStreamsApi->create");
-            }
-                                                
-            // verify the required parameter 'liveStreamCreationPayload' is set
-            if (liveStreamCreationPayload == null)
-                throw new ApiException(400, "Missing required parameter 'liveStreamCreationPayload' when calling LiveStreamsApi->create");
-            
-
-            var localVarPath = "/live-streams";
-            var localVarPathParams = new Dictionary<string, string>();
-            var localVarQueryParams = new List<KeyValuePair<string, string>>();
-            var localVarHeaderParams = new Dictionary<string, string>();
-            var localVarFormParams = new Dictionary<string, string>();
-            var localVarFileParams = new Dictionary<string, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            string[] localVarContentTypes = new string[] {
-                "application/json"
-            };
-            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
-            localVarHeaderParams.Add("Content-Type", localVarContentType);
-            // to determine the Accept header
-            string[] localVarHttpHeaderAccepts = new string[] {
-                "application/json"
-            };
-            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (liveStreamCreationPayload != null && liveStreamCreationPayload.GetType() != typeof(byte[]) && liveStreamCreationPayload.GetType() != typeof(string))
-            {
-                localVarPostBody = this.ApiClient.Serialize(liveStreamCreationPayload); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = liveStreamCreationPayload; // byte array
-            }
-
-
-            
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<LiveStream>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
-            
-        }
-
-        
-        /// <summary>
         /// Upload a thumbnail Upload an image to use as a backdrop for your livestream. Tutorials that [update live stream thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
@@ -676,6 +609,73 @@ namespace ApiVideo.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<LiveStream>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
+        }
+
+        
+        /// <summary>
+        /// Delete a thumbnail Send the unique identifier for a live stream to delete its thumbnail.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamId">The unique identifier of the live stream whose thumbnail you want to delete.</param>
+        
+        /// <returns>LiveStream</returns>
+		public LiveStream deleteThumbnail(string liveStreamId)
+        {
+             ApiResponse<LiveStream> localVarResponse = deleteThumbnailWithHttpInfo(liveStreamId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete a thumbnail Send the unique identifier for a live stream to delete its thumbnail.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamId">The unique identifier of the live stream whose thumbnail you want to delete.</param>
+        
+        /// <returns>ApiResponse of LiveStream</returns>
+		public ApiResponse<LiveStream> deleteThumbnailWithHttpInfo(string liveStreamId)
+        {
+
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->deleteThumbnail");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}/thumbnail";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
