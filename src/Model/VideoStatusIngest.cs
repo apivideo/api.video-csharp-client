@@ -25,7 +25,7 @@ namespace ApiVideo.Model {
     /// <value>The size of your file in bytes.</value>
     [DataMember(Name="filesize", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "filesize")]
-    public int filesize { get; set; }
+    public int? filesize { get; set; }
     /// <summary>
     /// The total number of bytes received, listed for each chunk of the upload.
     /// </summary>
