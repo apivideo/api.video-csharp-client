@@ -18,42 +18,42 @@ namespace ApiVideo.Model {
     /// <value>The width of the video in pixels.</value>
     [DataMember(Name="width", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "width")]
-    public int width { get; set; }
+    public int? width { get; set; }
     /// <summary>
     /// The height of the video in pixels.
     /// </summary>
     /// <value>The height of the video in pixels.</value>
     [DataMember(Name="height", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "height")]
-    public int height { get; set; }
+    public int? height { get; set; }
     /// <summary>
     /// The number of bits processed per second.
     /// </summary>
     /// <value>The number of bits processed per second.</value>
     [DataMember(Name="bitrate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "bitrate")]
-    public decimal bitrate { get; set; }
+    public decimal? bitrate { get; set; }
     /// <summary>
     /// The length of the video.
     /// </summary>
     /// <value>The length of the video.</value>
     [DataMember(Name="duration", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "duration")]
-    public int duration { get; set; }
+    public int? duration { get; set; }
     /// <summary>
     /// The frequency with which consecutive images or frames appear on a display. Shown in this API as frames per second (fps).
     /// </summary>
     /// <value>The frequency with which consecutive images or frames appear on a display. Shown in this API as frames per second (fps).</value>
     [DataMember(Name="framerate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "framerate")]
-    public int framerate { get; set; }
+    public int? framerate { get; set; }
     /// <summary>
     /// How many samples per second a digital audio system uses to record an audio signal. The higher the rate, the higher the frequencies that can be recorded. They are presented in this API using hertz.
     /// </summary>
     /// <value>How many samples per second a digital audio system uses to record an audio signal. The higher the rate, the higher the frequencies that can be recorded. They are presented in this API using hertz.</value>
     [DataMember(Name="samplerate", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "samplerate")]
-    public int samplerate { get; set; }
+    public int? samplerate { get; set; }
     /// <summary>
     /// The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library. 
     /// </summary>
