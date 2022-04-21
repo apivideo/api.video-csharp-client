@@ -46,7 +46,7 @@ namespace ApiVideo.Model {
     /// <value>The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.</value>
     [DataMember(Name="publishedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "publishedAt")]
-    public string publishedat { get; set; }
+    public DateTime? publishedat { get; set; }
     /// <summary>
     /// The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.
     /// </summary>
