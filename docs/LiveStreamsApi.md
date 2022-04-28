@@ -53,10 +53,6 @@ Name | Type | Description  | Notes
 
 [**LiveStream**](LiveStream.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -120,10 +116,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LiveStream**](LiveStream.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -193,10 +185,6 @@ Name | Type | Description  | Notes
 
 [**LiveStream**](LiveStream.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -262,10 +250,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -338,10 +322,6 @@ Name | Type | Description  | Notes
 
 [**LiveStreamListResponse**](LiveStreamListResponse.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -410,10 +390,6 @@ Name | Type | Description  | Notes
 
 [**LiveStream**](LiveStream.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -481,10 +457,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LiveStream**](LiveStream.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

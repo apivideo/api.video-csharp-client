@@ -66,10 +66,6 @@ Name | Type | Description  | Notes
 
 [**RawStatisticsListLiveStreamAnalyticsResponse**](RawStatisticsListLiveStreamAnalyticsResponse.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -140,10 +136,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RawStatisticsListPlayerSessionEventsResponse**](RawStatisticsListPlayerSessionEventsResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -219,10 +211,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RawStatisticsListSessionsResponse**](RawStatisticsListSessionsResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

@@ -63,10 +63,6 @@ Name | Type | Description  | Notes
 
 [**Watermark**](Watermark.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -132,10 +128,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -209,10 +201,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**WatermarksListResponse**](WatermarksListResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
