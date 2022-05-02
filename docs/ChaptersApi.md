@@ -67,10 +67,6 @@ Name | Type | Description  | Notes
 
 [**Chapter**](Chapter.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -141,10 +137,6 @@ Name | Type | Description  | Notes
 
 [**Chapter**](Chapter.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -212,10 +204,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -286,10 +274,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ChaptersListResponse**](ChaptersListResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

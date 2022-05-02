@@ -63,10 +63,6 @@ Name | Type | Description  | Notes
 
 [**UploadToken**](UploadToken.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -134,10 +130,6 @@ Name | Type | Description  | Notes
 
 [**UploadToken**](UploadToken.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -203,10 +195,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -274,10 +262,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TokenListResponse**](TokenListResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

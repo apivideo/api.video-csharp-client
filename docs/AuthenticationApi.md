@@ -61,10 +61,6 @@ Name | Type | Description  | Notes
 
 [**AccessToken**](AccessToken.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -131,10 +127,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AccessToken**](AccessToken.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 

@@ -69,10 +69,6 @@ Name | Type | Description  | Notes
 
 [**Video**](Video.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -161,10 +157,6 @@ Name | Type | Description  | Notes
 
 [**Video**](Video.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -235,10 +227,6 @@ Name | Type | Description  | Notes
 
 [**Video**](Video.md)
 
-### Authorization
-
-No authorization required
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -305,10 +293,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Video**](Video.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -385,10 +369,6 @@ Name | Type | Description  | Notes
 
 [**Video**](Video.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -453,10 +433,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -541,10 +517,6 @@ Name | Type | Description  | Notes
 
 [**VideosListResponse**](VideosListResponse.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -626,10 +598,6 @@ Name | Type | Description  | Notes
 
 [**Video**](Video.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
@@ -710,10 +678,6 @@ Name | Type | Description  | Notes
 
 [**Video**](Video.md)
 
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
 ### HTTP request headers
 
  - **Content-Type**: application/json
@@ -780,10 +744,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**VideoStatus**](VideoStatus.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
