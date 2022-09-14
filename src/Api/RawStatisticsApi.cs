@@ -44,12 +44,12 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for.</param>
-/// <param name="period">Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (optional)</param>
+/// <param name="period">Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot; </param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>RawStatisticsListLiveStreamAnalyticsResponse</returns>
-		public RawStatisticsListLiveStreamAnalyticsResponse listLiveStreamSessions(string liveStreamId, string period = default, int? currentPage = default, int? pageSize = default)
+		public RawStatisticsListLiveStreamAnalyticsResponse listLiveStreamSessions(string liveStreamId, string period, int? currentPage = default, int? pageSize = default)
         {
              ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> localVarResponse = listLiveStreamSessionsWithHttpInfo(liveStreamId, period, currentPage, pageSize);
              return localVarResponse.Data;
@@ -60,12 +60,12 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for.</param>
-/// <param name="period">Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (optional)</param>
+/// <param name="period">Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot; </param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>ApiResponse of RawStatisticsListLiveStreamAnalyticsResponse</returns>
-		public ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> listLiveStreamSessionsWithHttpInfo(string liveStreamId, string period = default, int? currentPage = default, int? pageSize = default)
+		public ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> listLiveStreamSessionsWithHttpInfo(string liveStreamId, string period, int? currentPage = default, int? pageSize = default)
         {
 
 
@@ -74,6 +74,9 @@ namespace ApiVideo.Api
             // verify the required parameter 'liveStreamId' is set
             if (liveStreamId == null)
                 throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling RawStatisticsApi->listLiveStreamSessions");
+            // verify the required parameter 'period' is set
+            if (period == null)
+                throw new ApiException(400, "Missing required parameter 'period' when calling RawStatisticsApi->listLiveStreamSessions");
             
 
             var localVarPath = "/analytics/live-streams/{liveStreamId}";
@@ -122,9 +125,10 @@ namespace ApiVideo.Api
         /// 
         /// </summary>
         /// <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for. (required)</param>
+        /// <param name="period">Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (required)</param>
         /// <returns>APIlistLiveStreamSessionsRequest</returns>
-        public APIlistLiveStreamSessionsRequest listLiveStreamSessions(string liveStreamId) {
-            return new APIlistLiveStreamSessionsRequest(this,liveStreamId);
+        public APIlistLiveStreamSessionsRequest listLiveStreamSessions(string liveStreamId, string period) {
+            return new APIlistLiveStreamSessionsRequest(this,liveStreamId, period);
         }
 
         /// <summary>
@@ -143,19 +147,11 @@ namespace ApiVideo.Api
             /// </summary>
             /// <param name="instance">Instance of the current api</param>
             /// <param name="liveStreamId">The unique identifier for the live stream you want to retrieve analytics for. (required)</param>
-            public APIlistLiveStreamSessionsRequest(RawStatisticsApi instance, string liveStreamId) {
+            /// <param name="period">Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (required)</param>
+            public APIlistLiveStreamSessionsRequest(RawStatisticsApi instance, string liveStreamId, string period) {
                 this.liveStreamId = liveStreamId;
-                this.currentApiInstance = instance;
-            }
-
-            /// <summary>
-            /// Set period
-            /// </summary>
-            /// <param name="period">Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  (optional)</param>
-            /// <returns>APIlistLiveStreamSessionsRequest</returns>
-            public APIlistLiveStreamSessionsRequest Period(string period) {
                 this.period = period;
-                return this;
+                this.currentApiInstance = instance;
             }
 
             /// <summary>
@@ -196,8 +192,7 @@ namespace ApiVideo.Api
             }
 
             private APIlistLiveStreamSessionsRequest copy() {
-                APIlistLiveStreamSessionsRequest copy = new APIlistLiveStreamSessionsRequest( this.currentApiInstance, liveStreamId);
-                copy.Period(period);
+                APIlistLiveStreamSessionsRequest copy = new APIlistLiveStreamSessionsRequest( this.currentApiInstance, liveStreamId, period);
                 copy.CurrentPage(currentPage);
                 copy.PageSize(pageSize);
                 return copy;
@@ -356,13 +351,13 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve session information for.</param>
-/// <param name="period">Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)</param>
+/// <param name="period">Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 </param>
 /// <param name="metadata">Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>RawStatisticsListSessionsResponse</returns>
-		public RawStatisticsListSessionsResponse listVideoSessions(string videoId, string period = default, Dictionary<string, string> metadata = default, int? currentPage = default, int? pageSize = default)
+		public RawStatisticsListSessionsResponse listVideoSessions(string videoId, string period, Dictionary<string, string> metadata = default, int? currentPage = default, int? pageSize = default)
         {
              ApiResponse<RawStatisticsListSessionsResponse> localVarResponse = listVideoSessionsWithHttpInfo(videoId, period, metadata, currentPage, pageSize);
              return localVarResponse.Data;
@@ -373,13 +368,13 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve session information for.</param>
-/// <param name="period">Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)</param>
+/// <param name="period">Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 </param>
 /// <param name="metadata">Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>ApiResponse of RawStatisticsListSessionsResponse</returns>
-		public ApiResponse<RawStatisticsListSessionsResponse> listVideoSessionsWithHttpInfo(string videoId, string period = default, Dictionary<string, string> metadata = default, int? currentPage = default, int? pageSize = default)
+		public ApiResponse<RawStatisticsListSessionsResponse> listVideoSessionsWithHttpInfo(string videoId, string period, Dictionary<string, string> metadata = default, int? currentPage = default, int? pageSize = default)
         {
 
 
@@ -389,6 +384,9 @@ namespace ApiVideo.Api
             // verify the required parameter 'videoId' is set
             if (videoId == null)
                 throw new ApiException(400, "Missing required parameter 'videoId' when calling RawStatisticsApi->listVideoSessions");
+            // verify the required parameter 'period' is set
+            if (period == null)
+                throw new ApiException(400, "Missing required parameter 'period' when calling RawStatisticsApi->listVideoSessions");
             
 
             var localVarPath = "/analytics/videos/{videoId}";
@@ -438,9 +436,10 @@ namespace ApiVideo.Api
         /// Retrieve all available user sessions for a specific video. Tutorials that use the [analytics endpoint](https://api.video/blog/endpoints/analytics).
         /// </summary>
         /// <param name="videoId">The unique identifier for the video you want to retrieve session information for. (required)</param>
+        /// <param name="period">Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  (required)</param>
         /// <returns>APIlistVideoSessionsRequest</returns>
-        public APIlistVideoSessionsRequest listVideoSessions(string videoId) {
-            return new APIlistVideoSessionsRequest(this,videoId);
+        public APIlistVideoSessionsRequest listVideoSessions(string videoId, string period) {
+            return new APIlistVideoSessionsRequest(this,videoId, period);
         }
 
         /// <summary>
@@ -460,19 +459,11 @@ namespace ApiVideo.Api
             /// </summary>
             /// <param name="instance">Instance of the current api</param>
             /// <param name="videoId">The unique identifier for the video you want to retrieve session information for. (required)</param>
-            public APIlistVideoSessionsRequest(RawStatisticsApi instance, string videoId) {
+            /// <param name="period">Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  (required)</param>
+            public APIlistVideoSessionsRequest(RawStatisticsApi instance, string videoId, string period) {
                 this.videoId = videoId;
-                this.currentApiInstance = instance;
-            }
-
-            /// <summary>
-            /// Set period
-            /// </summary>
-            /// <param name="period">Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  (optional)</param>
-            /// <returns>APIlistVideoSessionsRequest</returns>
-            public APIlistVideoSessionsRequest Period(string period) {
                 this.period = period;
-                return this;
+                this.currentApiInstance = instance;
             }
 
             /// <summary>
@@ -523,8 +514,7 @@ namespace ApiVideo.Api
             }
 
             private APIlistVideoSessionsRequest copy() {
-                APIlistVideoSessionsRequest copy = new APIlistVideoSessionsRequest( this.currentApiInstance, videoId);
-                copy.Period(period);
+                APIlistVideoSessionsRequest copy = new APIlistVideoSessionsRequest( this.currentApiInstance, videoId, period);
                 copy.Metadata(metadata);
                 copy.CurrentPage(currentPage);
                 copy.PageSize(pageSize);
