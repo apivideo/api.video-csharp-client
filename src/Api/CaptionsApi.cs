@@ -40,7 +40,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a caption Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
+        /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to add a caption to.</param>
@@ -55,7 +55,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a caption Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
+        /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to add a caption to.</param>
@@ -301,7 +301,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Delete a caption Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
+        /// Delete a caption Delete a caption in a specific language by by video id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to delete a caption from.</param>
@@ -314,7 +314,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Delete a caption Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
+        /// Delete a caption Delete a caption in a specific language by by video id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to delete a caption from.</param>
@@ -374,7 +374,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List video captions Retrieve a list of available captions for the videoId you provide.
+        /// List video captions Retrieve a list of available captions by video id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of captions for.</param>
@@ -389,7 +389,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List video captions Retrieve a list of available captions for the videoId you provide.
+        /// List video captions Retrieve a list of available captions by video id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of captions for.</param>
@@ -449,7 +449,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve a list of available captions for the videoId you provide.
+        /// Retrieve a list of available captions by video id.
         /// </summary>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of captions for. (required)</param>
         /// <returns>APIlistRequest</returns>

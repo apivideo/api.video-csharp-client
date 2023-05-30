@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 Retrieve a player
 
-Use a player ID to retrieve details about the player and display it for viewers.
+Retreive a player theme by player id.
 
 ### Example
 ```csharp
@@ -287,7 +287,7 @@ void (empty response body)
 
 List all player themes
 
-Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+Retrieve a list of all the player themes you created, as well as details about each one.
 
 ### Example
 ```csharp
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 
 Upload a logo
 
-The uploaded image maximum size should be 200x100 and its weight should be 100KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+Upload an image logo for a player.
 
 ### Example
 ```csharp

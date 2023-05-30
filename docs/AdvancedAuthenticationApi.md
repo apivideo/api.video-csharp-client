@@ -1,20 +1,20 @@
-# ApiVideo.Api.AuthenticationApi
+# ApiVideo.Api.AdvancedAuthenticationApi
 
 All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**authenticate**](AuthenticationApi.md#postauthapikey) | **POST** /auth/api-key | Advanced - Authenticate (1/2)
-[**refresh**](AuthenticationApi.md#postauthrefresh) | **POST** /auth/refresh | Advanced - Refresh token (2/2)
+[**authenticate**](AdvancedAuthenticationApi.md#postauthapikey) | **POST** /auth/api-key | Get Bearer Token
+[**refresh**](AdvancedAuthenticationApi.md#postauthrefresh) | **POST** /auth/refresh | Refresh Bearer Token
 
 
 <a name="postauthapikey"></a>
 # **authenticate**
 > AccessToken authenticate (AuthenticatePayload authenticatePayload)
 
-Advanced - Authenticate (1/2)
+Get Bearer Token
 
-To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the [authentication endpoint](https://api.video/blog/endpoints/authenticate)
+Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
 
 ### Example
 ```csharp
@@ -33,16 +33,16 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var authenticatePayload = new AuthenticatePayload(); // AuthenticatePayload | 
-            var apiAuthenticationInstance = apiInstance.Authentication();
+            var apiAdvancedAuthenticationInstance = apiInstance.AdvancedAuthentication();
             try
             {
-                // Advanced - Authenticate (1/2)
-                AccessToken result = apiAuthenticationInstance.authenticate(authenticatePayload);
+                // Get Bearer Token
+                AccessToken result = apiAdvancedAuthenticationInstance.authenticate(authenticatePayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AuthenticationApi.authenticate: " + e.Message );
+                Debug.Print("Exception when calling AdvancedAuthenticationApi.authenticate: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 # **refresh**
 > AccessToken refresh (RefreshTokenPayload refreshTokenPayload)
 
-Advanced - Refresh token (2/2)
+Refresh Bearer Token
 
-Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
+Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
 
 ### Example
 ```csharp
@@ -100,16 +100,16 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var refreshTokenPayload = new RefreshTokenPayload(); // RefreshTokenPayload | 
-            var apiAuthenticationInstance = apiInstance.Authentication();
+            var apiAdvancedAuthenticationInstance = apiInstance.AdvancedAuthentication();
             try
             {
-                // Advanced - Refresh token (2/2)
-                AccessToken result = apiAuthenticationInstance.refresh(refreshTokenPayload);
+                // Refresh Bearer Token
+                AccessToken result = apiAdvancedAuthenticationInstance.refresh(refreshTokenPayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AuthenticationApi.refresh: " + e.Message );
+                Debug.Print("Exception when calling AdvancedAuthenticationApi.refresh: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

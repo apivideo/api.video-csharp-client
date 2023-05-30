@@ -40,7 +40,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Create a video We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
+        /// Create a video object Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1). 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoCreationPayload">video to create</param>
@@ -53,7 +53,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Create a video We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
+        /// Create a video object Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1). 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoCreationPayload">video to create</param>
@@ -387,7 +387,7 @@ namespace ApiVideo.Api
         }
         
         /// <summary>
-        /// Upload with an upload token This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you&#39;d better use the [standard upload method](#upload).
+        /// Upload with an delegated upload token This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you&#39;d better use the [standard upload method](#upload).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">The unique identifier for the token you want to use to upload a video.</param>
@@ -401,7 +401,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload with an upload token This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you&#39;d better use the [standard upload method](#upload).
+        /// Upload with an delegated upload token This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you&#39;d better use the [standard upload method](#upload).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">The unique identifier for the token you want to use to upload a video.</param>
@@ -622,7 +622,7 @@ namespace ApiVideo.Api
         }
         
         /// <summary>
-        /// Retrieve a video This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// Retrieve a video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want details about.</param>
@@ -635,7 +635,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Retrieve a video This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// Retrieve a video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want details about.</param>
@@ -689,7 +689,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Update a video Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
+        /// Update a video object Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
         /// 
         /// 
         /// 
@@ -698,7 +698,7 @@ namespace ApiVideo.Api
         /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The video ID for the video you want to delete.</param>
+        /// <param name="videoId">The video ID for the video you want to update.</param>
 /// <param name="videoUpdatePayload"></param>
         
         /// <returns>Video</returns>
@@ -709,7 +709,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Update a video Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
+        /// Update a video object Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
         /// 
         /// 
         /// 
@@ -718,7 +718,7 @@ namespace ApiVideo.Api
         /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="videoId">The video ID for the video you want to delete.</param>
+        /// <param name="videoId">The video ID for the video you want to update.</param>
 /// <param name="videoUpdatePayload"></param>
         
         /// <returns>ApiResponse of Video</returns>
@@ -789,7 +789,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Delete a video If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to delete.</param>
@@ -801,7 +801,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Delete a video If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to delete.</param>
@@ -855,7 +855,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List all videos This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
+        /// List all video objects This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
@@ -876,7 +876,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List all videos This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
+        /// List all video objects This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
@@ -1206,7 +1206,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Pick a thumbnail Pick a thumbnail from the given time code. 
+        /// Set a thumbnail Pick a thumbnail from the given time code. 
         /// 
         /// 
         /// 
@@ -1230,7 +1230,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Pick a thumbnail Pick a thumbnail from the given time code. 
+        /// Set a thumbnail Pick a thumbnail from the given time code. 
         /// 
         /// 
         /// 
@@ -1320,7 +1320,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve video status This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
+        /// Retrieve video status and details This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
@@ -1333,7 +1333,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Retrieve video status This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
+        /// Retrieve video status and details This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>

@@ -5,8 +5,8 @@ README.md
 build.bat
 build.sh
 docs/AccessToken.md
+docs/AdvancedAuthenticationApi.md
 docs/AuthenticatePayload.md
-docs/AuthenticationApi.md
 docs/BadRequest.md
 docs/BytesRange.md
 docs/Caption.md
@@ -85,7 +85,7 @@ docs/WebhooksListResponse.md
 git_push.sh
 mono_nunit_test.sh
 post-generate.sh
-src/ApiVideo.Test/Api/AuthenticationApiTests.cs
+src/ApiVideo.Test/Api/AdvancedAuthenticationApiTests.cs
 src/ApiVideo.Test/Api/CaptionsApiTests.cs
 src/ApiVideo.Test/Api/ChaptersApiTests.cs
 src/ApiVideo.Test/Api/LiveStreamsApiTests.cs
@@ -164,7 +164,7 @@ src/ApiVideo.Test/Model/WebhookTests.cs
 src/ApiVideo.Test/Model/WebhooksCreationPayloadTests.cs
 src/ApiVideo.Test/Model/WebhooksListResponseTests.cs
 src/ApiVideo.Test/packages.config
-src/ApiVideo/Api/AuthenticationApi.cs
+src/ApiVideo/Api/AdvancedAuthenticationApi.cs
 src/ApiVideo/Api/CaptionsApi.cs
 src/ApiVideo/Api/ChaptersApi.cs
 src/ApiVideo/Api/LiveStreamsApi.cs

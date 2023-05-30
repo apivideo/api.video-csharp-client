@@ -34,9 +34,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "source")]
     public string source { get; set; }
     /// <summary>
-    /// Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
+    /// Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/docs/private-videos)
     /// </summary>
-    /// <value>Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).</value>
+    /// <value>Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/docs/private-videos)</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public Nullable<bool> _public { get; set; }

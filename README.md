@@ -261,7 +261,7 @@ Method | HTTP request | Description
 [**createToken**](docs/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 [**getToken**](docs/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**deleteToken**](docs/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**list**](docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
+[**list**](docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens
 
 
 ### VideosApi
@@ -277,16 +277,16 @@ VideosApi videos = client.Videos()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](docs/VideosApi.md#create) | **POST** /videos | Create a video
+[**create**](docs/VideosApi.md#create) | **POST** /videos | Create a video object
 [**upload**](docs/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
-[**uploadWithUploadToken**](docs/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an upload token
-[**get**](docs/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video
-[**update**](docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
-[**delete**](docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
-[**list**](docs/VideosApi.md#list) | **GET** /videos | List all videos
+[**uploadWithUploadToken**](docs/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an delegated upload token
+[**get**](docs/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video object
+[**update**](docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video object
+[**delete**](docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video object
+[**list**](docs/VideosApi.md#list) | **GET** /videos | List all video objects
 [**uploadThumbnail**](docs/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
-[**pickThumbnail**](docs/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
-[**getStatus**](docs/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Retrieve video status
+[**pickThumbnail**](docs/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Set a thumbnail
+[**getStatus**](docs/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Retrieve video status and details
 
 
 ### WatermarksApi

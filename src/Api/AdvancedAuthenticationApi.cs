@@ -23,7 +23,7 @@ namespace ApiVideo.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class AuthenticationApi
+    public class AdvancedAuthenticationApi
     {
         /// <summary>
         /// Api Client Instance
@@ -31,16 +31,16 @@ namespace ApiVideo.Api
         public ApiClient ApiClient {get; set;}
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApi"/> class.
+        /// Initializes a new instance of the <see cref="AdvancedAuthenticationApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public AuthenticationApi(ApiClient apiClient)
+        public AdvancedAuthenticationApi(ApiClient apiClient)
         {
             this.ApiClient = apiClient;
         }
 
         /// <summary>
-        /// Advanced - Authenticate (1/2) To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the [authentication endpoint](https://api.video/blog/endpoints/authenticate)
+        /// Get Bearer Token Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authenticatePayload"></param>
@@ -53,7 +53,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Advanced - Authenticate (1/2) To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the [authentication endpoint](https://api.video/blog/endpoints/authenticate)
+        /// Get Bearer Token Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authenticatePayload"></param>
@@ -62,15 +62,15 @@ namespace ApiVideo.Api
 		public ApiResponse<AccessToken> authenticateWithHttpInfo(AuthenticatePayload authenticatePayload)
         {
             if (authenticatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'authenticatePayload' when calling AuthenticationApi->authenticate");
+                throw new ApiException(400,"Missing required parameter 'authenticatePayload' when calling AdvancedAuthenticationApi->authenticate");
             
             if (authenticatePayload != null && authenticatePayload.apikey == null) {
-                throw new ApiException(400,"Missing required parameter 'authenticatePayload.ApiKey' when calling AuthenticationApi->authenticate");
+                throw new ApiException(400,"Missing required parameter 'authenticatePayload.ApiKey' when calling AdvancedAuthenticationApi->authenticate");
             }
             
             // verify the required parameter 'authenticatePayload' is set
             if (authenticatePayload == null)
-                throw new ApiException(400, "Missing required parameter 'authenticatePayload' when calling AuthenticationApi->authenticate");
+                throw new ApiException(400, "Missing required parameter 'authenticatePayload' when calling AdvancedAuthenticationApi->authenticate");
             
 
             var localVarPath = "/auth/api-key";
@@ -121,7 +121,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Advanced - Refresh token (2/2) Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
+        /// Refresh Bearer Token Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="refreshTokenPayload"></param>
@@ -134,7 +134,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Advanced - Refresh token (2/2) Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
+        /// Refresh Bearer Token Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="refreshTokenPayload"></param>
@@ -143,15 +143,15 @@ namespace ApiVideo.Api
 		public ApiResponse<AccessToken> refreshWithHttpInfo(RefreshTokenPayload refreshTokenPayload)
         {
             if (refreshTokenPayload == null) 
-                throw new ApiException(400,"Missing required parameter 'refreshTokenPayload' when calling AuthenticationApi->refresh");
+                throw new ApiException(400,"Missing required parameter 'refreshTokenPayload' when calling AdvancedAuthenticationApi->refresh");
             
             if (refreshTokenPayload != null && refreshTokenPayload.refreshtoken == null) {
-                throw new ApiException(400,"Missing required parameter 'refreshTokenPayload.RefreshToken' when calling AuthenticationApi->refresh");
+                throw new ApiException(400,"Missing required parameter 'refreshTokenPayload.RefreshToken' when calling AdvancedAuthenticationApi->refresh");
             }
             
             // verify the required parameter 'refreshTokenPayload' is set
             if (refreshTokenPayload == null)
-                throw new ApiException(400, "Missing required parameter 'refreshTokenPayload' when calling AuthenticationApi->refresh");
+                throw new ApiException(400, "Missing required parameter 'refreshTokenPayload' when calling AdvancedAuthenticationApi->refresh");
             
 
             var localVarPath = "/auth/refresh";
