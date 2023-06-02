@@ -48,16 +48,16 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "right")]
     public string right { get; set; }
     /// <summary>
-    /// Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use initial
+    /// Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use `initial`.
     /// </summary>
-    /// <value>Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use initial</value>
+    /// <value>Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use `initial`.</value>
     [DataMember(Name="width", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "width")]
     public string width { get; set; }
     /// <summary>
-    /// Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use initial
+    /// Height of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use `initial`.
     /// </summary>
-    /// <value>Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use initial</value>
+    /// <value>Height of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use `initial`.</value>
     [DataMember(Name="height", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "height")]
     public string height { get; set; }

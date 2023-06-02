@@ -118,7 +118,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve a player Use a player ID to retrieve details about the player and display it for viewers.
+        /// Retrieve a player Retreive a player theme by player id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
@@ -131,7 +131,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Retrieve a player Use a player ID to retrieve details about the player and display it for viewers.
+        /// Retrieve a player Retreive a player theme by player id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player you want to retrieve. </param>
@@ -339,7 +339,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List all player themes Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+        /// List all player themes Retrieve a list of all the player themes you created, as well as details about each one.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
@@ -355,7 +355,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List all player themes Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+        /// List all player themes Retrieve a list of all the player themes you created, as well as details about each one.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
@@ -415,7 +415,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+        /// Retrieve a list of all the player themes you created, as well as details about each one.
         /// </summary>
         /// <returns>APIlistRequest</returns>
         public APIlistRequest list() {
@@ -508,7 +508,7 @@ namespace ApiVideo.Api
             }
         }
         /// <summary>
-        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 100KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+        /// Upload a logo Upload an image logo for a player.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
@@ -523,7 +523,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 100KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+        /// Upload a logo Upload an image logo for a player.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>

@@ -125,7 +125,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve a chapter Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+        /// Retrieve a chapter Retrieve a chapter for by video id in a specific language. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
@@ -139,7 +139,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Retrieve a chapter Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+        /// Retrieve a chapter Retrieve a chapter for by video id in a specific language. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
@@ -272,7 +272,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// List video chapters Retrieve a list of all chapters for a specified video.
+        /// List video chapters Retrieve a list of all chapters for by video id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for.</param>
@@ -287,7 +287,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// List video chapters Retrieve a list of all chapters for a specified video.
+        /// List video chapters Retrieve a list of all chapters for by video id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for.</param>
@@ -347,7 +347,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve a list of all chapters for a specified video.
+        /// Retrieve a list of all chapters for by video id.
         /// </summary>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for. (required)</param>
         /// <returns>APIlistRequest</returns>
