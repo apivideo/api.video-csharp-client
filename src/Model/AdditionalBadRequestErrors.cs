@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class BadRequest {
+  public class AdditionalBadRequestErrors {
     /// <summary>
     /// A link to the error documentation.
     /// </summary>
@@ -40,13 +40,6 @@ namespace ApiVideo.Model {
     [DataMember(Name="status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status")]
     public int status { get; set; }
-    /// <summary>
-    /// Returns any additional problems in the request in an array of objects.
-    /// </summary>
-    /// <value>Returns any additional problems in the request in an array of objects.</value>
-    [DataMember(Name="problems", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "problems")]
-    public List<AdditionalBadRequestErrors> problems { get; set; }
 
 
     /// <summary>
@@ -55,12 +48,11 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class BadRequest {\n");
+      sb.Append("class AdditionalBadRequestErrors {\n");
       sb.Append("  Type: ").Append(type).Append("\n");
       sb.Append("  Title: ").Append(title).Append("\n");
       sb.Append("  Name: ").Append(name).Append("\n");
       sb.Append("  Status: ").Append(status).Append("\n");
-      sb.Append("  Problems: ").Append(problems).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

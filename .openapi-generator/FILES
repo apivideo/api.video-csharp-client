@@ -5,6 +5,7 @@ README.md
 build.bat
 build.sh
 docs/AccessToken.md
+docs/AdditionalBadRequestErrors.md
 docs/AdvancedAuthenticationApi.md
 docs/AuthenticatePayload.md
 docs/BadRequest.md
@@ -97,6 +98,7 @@ src/ApiVideo.Test/Api/WatermarksApiTests.cs
 src/ApiVideo.Test/Api/WebhooksApiTests.cs
 src/ApiVideo.Test/ApiVideo.Test.csproj
 src/ApiVideo.Test/Model/AccessTokenTests.cs
+src/ApiVideo.Test/Model/AdditionalBadRequestErrorsTests.cs
 src/ApiVideo.Test/Model/AuthenticatePayloadTests.cs
 src/ApiVideo.Test/Model/BadRequestTests.cs
 src/ApiVideo.Test/Model/BytesRangeTests.cs
@@ -184,6 +186,7 @@ src/ApiVideo/Client/AuthenticationManager.cs
 src/ApiVideo/Client/EmptyArrayFixTypeConverter.cs
 src/ApiVideo/Client/NullableStringTypeConverter.cs
 src/ApiVideo/Model/AccessToken.cs
+src/ApiVideo/Model/AdditionalBadRequestErrors.cs
 src/ApiVideo/Model/AuthenticatePayload.cs
 src/ApiVideo/Model/BadRequest.cs
 src/ApiVideo/Model/BytesRange.cs
