@@ -8,6 +8,7 @@ namespace ApiVideo.Client
     /// </summary>
     public class ApiVideoClient {
         private readonly ApiClient apiClient;
+        private readonly AnalyticsApi analytics;
         private readonly CaptionsApi captions;
         private readonly ChaptersApi chapters;
         private readonly LiveStreamsApi liveStreams;
@@ -64,6 +65,7 @@ namespace ApiVideo.Client
 
         private ApiVideoClient(ApiClient apiClient) {
             this.apiClient = apiClient;
+            this.analytics = new AnalyticsApi(this.apiClient);
             this.captions = new CaptionsApi(this.apiClient);
             this.chapters = new ChaptersApi(this.apiClient);
             this.liveStreams = new LiveStreamsApi(this.apiClient);
@@ -75,6 +77,14 @@ namespace ApiVideo.Client
             this.webhooks = new WebhooksApi(this.apiClient);
         }
 
+    
+        /// <summary>
+        /// Get an AnalyticsApi instance
+        /// </summary>
+        /// <returns>AnalyticsApi</returns>
+        public AnalyticsApi Analytics() {
+            return this.analytics;
+        }
     
         /// <summary>
         /// Get an CaptionsApi instance
