@@ -17,6 +17,7 @@
   - [Code sample](#code-sample)
 - [Documentation](#documentation)
   - [API Endpoints](#api-endpoints)
+    - [AnalyticsApi](#analyticsapi)
     - [CaptionsApi](#captionsapi)
     - [ChaptersApi](#chaptersapi)
     - [LiveStreamsApi](#livestreamsapi)
@@ -142,6 +143,23 @@ namespace Example
 
 All URIs are relative to *https://ws.api.video*
 
+
+
+### AnalyticsApi
+
+
+#### Retrieve an instance of AnalyticsApi:
+```java
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
+AnalyticsApi analytics = client.Analytics()
+```
+
+#### Endpoints
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**getLiveStreamsPlays**](docs/AnalyticsApi.md#getLiveStreamsPlays) | **GET** /analytics/live-streams/plays | Get play events for live stream
+[**getVideosPlays**](docs/AnalyticsApi.md#getVideosPlays) | **GET** /analytics/videos/plays | Get play events for video
 
 
 ### CaptionsApi
@@ -331,6 +349,9 @@ Method | HTTP request | Description
 
  - [AccessToken](docs/AccessToken.md)
  - [AdditionalBadRequestErrors](docs/AdditionalBadRequestErrors.md)
+ - [AnalyticsData](docs/AnalyticsData.md)
+ - [AnalyticsPlays400Error](docs/AnalyticsPlays400Error.md)
+ - [AnalyticsPlaysResponse](docs/AnalyticsPlaysResponse.md)
  - [AuthenticatePayload](docs/AuthenticatePayload.md)
  - [BadRequest](docs/BadRequest.md)
  - [BytesRange](docs/BytesRange.md)
