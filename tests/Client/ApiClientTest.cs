@@ -21,7 +21,7 @@ namespace ApiVideoTests.Client
             apiClient.Invoking(x => x.setApplicationName("bad application name", "0.0.1"))
                                 .Should()
                                 .Throw<Exception>()
-                                .WithMessage("Invalid name value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50.");
+                                .WithMessage("Invalid name value. Allowed characters: A-Z, a-z, 0-9, '-', '_'. Max length: 50."); //
 
             apiClient.Invoking(x => x.setApplicationName("application", "test"))
                                 .Should()
