@@ -40,6 +40,13 @@ namespace ApiVideo.Model {
     [DataMember(Name="playerId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "playerId")]
     public string playerid { get; set; }
+    /// <summary>
+    /// Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.
+    /// </summary>
+    /// <value>Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.</value>
+    [DataMember(Name="restreams", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "restreams")]
+    public List<RestreamsRequestObject> restreams { get; set; }
 
 
     /// <summary>
@@ -53,6 +60,7 @@ namespace ApiVideo.Model {
       sb.Append("  Public: ").Append(_public).Append("\n");
       sb.Append("  Record: ").Append(record).Append("\n");
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");
+      sb.Append("  Restreams: ").Append(restreams).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

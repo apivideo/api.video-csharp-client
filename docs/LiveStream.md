@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Assets** | [**LiveStreamAssets**](LiveStreamAssets.md) |  | [optional] 
 **PlayerId** | **string** | The unique identifier for the player. | [optional] 
 **Broadcasting** | **bool** | Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not. | [optional] 
+**Restreams** | [**List&lt;RestreamsResponseObject&gt;**](RestreamsResponseObject.md) | Returns the list of RTMP restream destinations. | 
 **CreatedAt** | **DateTime** | When the player was created, presented in ISO-8601 format. | [optional] 
 **UpdatedAt** | **DateTime** | When the player was last updated, presented in ISO-8601 format. | [optional] 
 

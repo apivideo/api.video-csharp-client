@@ -52,6 +52,8 @@ docs/RawStatisticsListLiveStreamAnalyticsResponse.md
 docs/RawStatisticsListPlayerSessionEventsResponse.md
 docs/RawStatisticsListSessionsResponse.md
 docs/RefreshTokenPayload.md
+docs/RestreamsRequestObject.md
+docs/RestreamsResponseObject.md
 docs/TokenCreationPayload.md
 docs/TokenListResponse.md
 docs/UploadToken.md
@@ -142,6 +144,8 @@ src/ApiVideo.Test/Model/RawStatisticsListLiveStreamAnalyticsResponseTests.cs
 src/ApiVideo.Test/Model/RawStatisticsListPlayerSessionEventsResponseTests.cs
 src/ApiVideo.Test/Model/RawStatisticsListSessionsResponseTests.cs
 src/ApiVideo.Test/Model/RefreshTokenPayloadTests.cs
+src/ApiVideo.Test/Model/RestreamsRequestObjectTests.cs
+src/ApiVideo.Test/Model/RestreamsResponseObjectTests.cs
 src/ApiVideo.Test/Model/TokenCreationPayloadTests.cs
 src/ApiVideo.Test/Model/TokenListResponseTests.cs
 src/ApiVideo.Test/Model/UploadTokenTests.cs
@@ -238,6 +242,8 @@ src/ApiVideo/Model/RawStatisticsListLiveStreamAnalyticsResponse.cs
 src/ApiVideo/Model/RawStatisticsListPlayerSessionEventsResponse.cs
 src/ApiVideo/Model/RawStatisticsListSessionsResponse.cs
 src/ApiVideo/Model/RefreshTokenPayload.cs
+src/ApiVideo/Model/RestreamsRequestObject.cs
+src/ApiVideo/Model/RestreamsResponseObject.cs
 src/ApiVideo/Model/TokenCreationPayload.cs
 src/ApiVideo/Model/TokenListResponse.cs
 src/ApiVideo/Model/UploadToken.cs

@@ -75,7 +75,7 @@ namespace ApiVideo.Client
         /// <param name="client">a RestClient instance used to make API call</param>
         public ApiClient(RestClient client) {
             this.RestClient = client;
-            setName("AV-Origin-Client", "csharp", "1.3.0");
+            setName("AV-Origin-Client", "csharp", "1.4.0");
         }
 
         /// <summary>

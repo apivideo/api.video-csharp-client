@@ -68,6 +68,13 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "broadcasting")]
     public Nullable<bool> broadcasting { get; set; }
     /// <summary>
+    /// Returns the list of RTMP restream destinations.
+    /// </summary>
+    /// <value>Returns the list of RTMP restream destinations.</value>
+    [DataMember(Name="restreams", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "restreams")]
+    public List<RestreamsResponseObject> restreams { get; set; }
+    /// <summary>
     /// When the player was created, presented in ISO-8601 format.
     /// </summary>
     /// <value>When the player was created, presented in ISO-8601 format.</value>
@@ -98,6 +105,7 @@ namespace ApiVideo.Model {
       sb.Append("  Assets: ").Append(assets).Append("\n");
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");
       sb.Append("  Broadcasting: ").Append(broadcasting).Append("\n");
+      sb.Append("  Restreams: ").Append(restreams).Append("\n");
       sb.Append("  CreatedAt: ").Append(createdat).Append("\n");
       sb.Append("  UpdatedAt: ").Append(updatedat).Append("\n");
       sb.Append("}\n");

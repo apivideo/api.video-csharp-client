@@ -23,23 +23,36 @@ Creates a livestream object.
 
 ### Example
 ```csharp
-var apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
+using System.Diagnostics;
+using ApiVideo.Client;
 
-var liveStreamCreationPayload = new LiveStreamCreationPayload()
+namespace Example
 {
-    record = false,
-    name = "My Live Stream Video",
-    _public = true,
-    playerid = "pl4f4ferf5erfr5zed4fsdd",
-};
+    public class createExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
 
-try
-{
-    var liveStream = apiVideoClient.LiveStreams().create(liveStreamCreationPayload);
-}
-catch (ApiException e)
-{
-    // Manage create error here
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var liveStreamCreationPayload = new LiveStreamCreationPayload(); // LiveStreamCreationPayload | 
+            var apiLiveStreamsInstance = apiInstance.LiveStreams();
+            try
+            {
+                // Create live stream
+                LiveStream result = apiLiveStreamsInstance.create(liveStreamCreationPayload);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling LiveStreamsApi.create: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
 }
 ```
 
@@ -77,33 +90,36 @@ Get a livestream by id.
 
 ### Example
 ```csharp
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveStreamsApi;
-import java.util.*;
+using System.Diagnostics;
+using ApiVideo.Client;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+namespace Example
+{
+    public class getExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
 
-    LiveStreamsApi apiInstance = client.liveStreams();
-    
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream you want to watch.
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-    try {
-      LiveStream result = apiInstance.get(liveStreamId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling LiveStreamsApi#get");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+            var liveStreamId = li400mYKSgQ6xs7taUeSaEKr;  // string | The unique ID for the live stream you want to watch.
+            var apiLiveStreamsInstance = apiInstance.LiveStreams();
+            try
+            {
+                // Retrieve live stream
+                LiveStream result = apiLiveStreamsInstance.get(liveStreamId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling LiveStreamsApi.get: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
     }
-  }
 }
 ```
 
