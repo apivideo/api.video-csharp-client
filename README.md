@@ -17,6 +17,7 @@
   - [Code sample](#code-sample)
 - [Documentation](#documentation)
   - [API Endpoints](#api-endpoints)
+
     - [AnalyticsApi](#analyticsapi)
     - [CaptionsApi](#captionsapi)
     - [ChaptersApi](#chaptersapi)

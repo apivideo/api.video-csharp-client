@@ -23,7 +23,7 @@ namespace ApiVideo.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class AdvancedAuthenticationApi
+    public class AdvancedAuthenticationnApi
     {
         /// <summary>
         /// Api Client Instance
@@ -31,49 +31,49 @@ namespace ApiVideo.Api
         public ApiClient ApiClient {get; set;}
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AdvancedAuthenticationApi"/> class.
+        /// Initializes a new instance of the <see cref="AdvancedAuthenticationnApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public AdvancedAuthenticationApi(ApiClient apiClient)
+        public AdvancedAuthenticationnApi(ApiClient apiClient)
         {
             this.ApiClient = apiClient;
         }
 
         /// <summary>
-        /// Get Bearer Token Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+        /// Refresh Bearer Token Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="authenticatePayload"></param>
+        /// <param name="refreshTokenPayload"></param>
         
         /// <returns>AccessToken</returns>
-		public AccessToken authenticate(AuthenticatePayload authenticatePayload)
+		public AccessToken refresh(RefreshTokenPayload refreshTokenPayload)
         {
-             ApiResponse<AccessToken> localVarResponse = authenticateWithHttpInfo(authenticatePayload);
+             ApiResponse<AccessToken> localVarResponse = refreshWithHttpInfo(refreshTokenPayload);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get Bearer Token Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+        /// Refresh Bearer Token Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="authenticatePayload"></param>
+        /// <param name="refreshTokenPayload"></param>
         
         /// <returns>ApiResponse of AccessToken</returns>
-		public ApiResponse<AccessToken> authenticateWithHttpInfo(AuthenticatePayload authenticatePayload)
+		public ApiResponse<AccessToken> refreshWithHttpInfo(RefreshTokenPayload refreshTokenPayload)
         {
-            if (authenticatePayload == null) 
-                throw new ApiException(400,"Missing required parameter 'authenticatePayload' when calling AdvancedAuthenticationApi->authenticate");
+            if (refreshTokenPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'refreshTokenPayload' when calling AdvancedAuthenticationnApi->refresh");
             
-            if (authenticatePayload != null && authenticatePayload.apikey == null) {
-                throw new ApiException(400,"Missing required parameter 'authenticatePayload.ApiKey' when calling AdvancedAuthenticationApi->authenticate");
+            if (refreshTokenPayload != null && refreshTokenPayload.refreshtoken == null) {
+                throw new ApiException(400,"Missing required parameter 'refreshTokenPayload.RefreshToken' when calling AdvancedAuthenticationnApi->refresh");
             }
             
-            // verify the required parameter 'authenticatePayload' is set
-            if (authenticatePayload == null)
-                throw new ApiException(400, "Missing required parameter 'authenticatePayload' when calling AdvancedAuthenticationApi->authenticate");
+            // verify the required parameter 'refreshTokenPayload' is set
+            if (refreshTokenPayload == null)
+                throw new ApiException(400, "Missing required parameter 'refreshTokenPayload' when calling AdvancedAuthenticationnApi->refresh");
             
 
-            var localVarPath = "/auth/api-key";
+            var localVarPath = "/auth/refresh";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
             var localVarHeaderParams = new Dictionary<string, string>();
@@ -95,13 +95,13 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (authenticatePayload != null && authenticatePayload.GetType() != typeof(byte[]) && authenticatePayload.GetType() != typeof(string))
+            if (refreshTokenPayload != null && refreshTokenPayload.GetType() != typeof(byte[]) && refreshTokenPayload.GetType() != typeof(string))
             {
-                localVarPostBody = this.ApiClient.Serialize(authenticatePayload); // http body (model) parameter
+                localVarPostBody = this.ApiClient.Serialize(refreshTokenPayload); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = authenticatePayload; // byte array
+                localVarPostBody = refreshTokenPayload; // byte array
             }
 
 

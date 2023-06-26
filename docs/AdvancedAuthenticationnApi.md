@@ -1,19 +1,19 @@
-# ApiVideo.Api.AdvancedAuthenticationApi
+# ApiVideo.Api.AdvancedAuthenticationnApi
 
 All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**authenticate**](AdvancedAuthenticationApi.md#postauthapikey) | **POST** /auth/api-key | Get Bearer Token
+[**refresh**](AdvancedAuthenticationnApi.md#postauthrefresh) | **POST** /auth/refresh | Refresh Bearer Token
 
 
-<a name="postauthapikey"></a>
-# **authenticate**
-> AccessToken authenticate (AuthenticatePayload authenticatePayload)
+<a name="postauthrefresh"></a>
+# **refresh**
+> AccessToken refresh (RefreshTokenPayload refreshTokenPayload)
 
-Get Bearer Token
+Refresh Bearer Token
 
-Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
 
 ### Example
 ```csharp
@@ -22,7 +22,7 @@ using ApiVideo.Client;
 
 namespace Example
 {
-    public class authenticateExample
+    public class refreshExample
     {
         public static void Main()
         {
@@ -31,17 +31,17 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var authenticatePayload = new AuthenticatePayload(); // AuthenticatePayload | 
-            var apiAdvancedAuthenticationInstance = apiInstance.AdvancedAuthentication();
+            var refreshTokenPayload = new RefreshTokenPayload(); // RefreshTokenPayload | 
+            var apiAdvancedAuthenticationnInstance = apiInstance.AdvancedAuthenticationn();
             try
             {
-                // Get Bearer Token
-                AccessToken result = apiAdvancedAuthenticationInstance.authenticate(authenticatePayload);
+                // Refresh Bearer Token
+                AccessToken result = apiAdvancedAuthenticationnInstance.refresh(refreshTokenPayload);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AdvancedAuthenticationApi.authenticate: " + e.Message );
+                Debug.Print("Exception when calling AdvancedAuthenticationnApi.refresh: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -54,7 +54,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authenticatePayload** | [**AuthenticatePayload**](AuthenticatePayload.md)|  | 
+ **refreshTokenPayload** | [**RefreshTokenPayload**](RefreshTokenPayload.md)|  | 
 
 ### Return type
 

@@ -7,6 +7,7 @@ build.sh
 docs/AccessToken.md
 docs/AdditionalBadRequestErrors.md
 docs/AdvancedAuthenticationApi.md
+docs/AdvancedAuthenticationnApi.md
 docs/AnalyticsApi.md
 docs/AnalyticsData.md
 docs/AnalyticsPlays400Error.md
@@ -91,6 +92,7 @@ git_push.sh
 mono_nunit_test.sh
 post-generate.sh
 src/ApiVideo.Test/Api/AdvancedAuthenticationApiTests.cs
+src/ApiVideo.Test/Api/AdvancedAuthenticationnApiTests.cs
 src/ApiVideo.Test/Api/AnalyticsApiTests.cs
 src/ApiVideo.Test/Api/CaptionsApiTests.cs
 src/ApiVideo.Test/Api/ChaptersApiTests.cs
@@ -175,6 +177,7 @@ src/ApiVideo.Test/Model/WebhooksCreationPayloadTests.cs
 src/ApiVideo.Test/Model/WebhooksListResponseTests.cs
 src/ApiVideo.Test/packages.config
 src/ApiVideo/Api/AdvancedAuthenticationApi.cs
+src/ApiVideo/Api/AdvancedAuthenticationnApi.cs
 src/ApiVideo/Api/AnalyticsApi.cs
 src/ApiVideo/Api/CaptionsApi.cs
 src/ApiVideo/Api/ChaptersApi.cs
