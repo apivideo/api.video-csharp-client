@@ -35,6 +35,7 @@ docs/LiveStreamSessionSession.md
 docs/LiveStreamUpdatePayload.md
 docs/LiveStreamsApi.md
 docs/Metadata.md
+docs/Model403ErrorSchema.md
 docs/NotFound.md
 docs/Pagination.md
 docs/Pagination.md
@@ -128,6 +129,7 @@ src/ApiVideo.Test/Model/LiveStreamSessionTests.cs
 src/ApiVideo.Test/Model/LiveStreamTests.cs
 src/ApiVideo.Test/Model/LiveStreamUpdatePayloadTests.cs
 src/ApiVideo.Test/Model/MetadataTests.cs
+src/ApiVideo.Test/Model/Model403ErrorSchemaTests.cs
 src/ApiVideo.Test/Model/NotFoundTests.cs
 src/ApiVideo.Test/Model/PaginationLinkTests.cs
 src/ApiVideo.Test/Model/PaginationTests.cs
@@ -222,6 +224,7 @@ src/ApiVideo/Model/LiveStreamSessionReferrer.cs
 src/ApiVideo/Model/LiveStreamSessionSession.cs
 src/ApiVideo/Model/LiveStreamUpdatePayload.cs
 src/ApiVideo/Model/Metadata.cs
+src/ApiVideo/Model/Model403ErrorSchema.cs
 src/ApiVideo/Model/NotFound.cs
 src/ApiVideo/Model/OptionalNullable.cs
 src/ApiVideo/Model/Page.cs
