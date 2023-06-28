@@ -31,6 +31,9 @@ var liveStreamCreationPayload = new LiveStreamCreationPayload()
     name = "My Live Stream Video",
     _public = true,
     playerid = "pl4f4ferf5erfr5zed4fsdd",
+    restreams = new List<RestreamsRequestObject>(){
+        new RestreamsRequestObject(){name="My RTMP server", streamKey="dw-dew8-q6w9-k67w-1ws8", serverUrl="rtmp://my.broadcast.example.com/app" }
+    }
 };
 
 try
