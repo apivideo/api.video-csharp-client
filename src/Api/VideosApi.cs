@@ -861,10 +861,10 @@ namespace ApiVideo.Api
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
 /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
 /// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. (optional)</param>
-/// <param name="description">If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional)</param>
-/// <param name="liveStreamId">If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional)</param>
-/// <param name="sortBy">Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional)</param>
-/// <param name="sortOrder">Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A. (optional)</param>
+/// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
+/// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
+/// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
+/// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
@@ -882,10 +882,10 @@ namespace ApiVideo.Api
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
 /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
 /// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. (optional)</param>
-/// <param name="description">If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional)</param>
-/// <param name="liveStreamId">If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional)</param>
-/// <param name="sortBy">Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional)</param>
-/// <param name="sortOrder">Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A. (optional)</param>
+/// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
+/// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
+/// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
+/// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
@@ -1015,7 +1015,7 @@ namespace ApiVideo.Api
             /// <summary>
             /// Set description
             /// </summary>
-            /// <param name="description">If you described a video with a term or sentence, you can add it here to return videos containing this string. (optional)</param>
+            /// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
             /// <returns>APIlistRequest</returns>
             public APIlistRequest Description(string description) {
                 this.description = description;
@@ -1025,7 +1025,7 @@ namespace ApiVideo.Api
             /// <summary>
             /// Set liveStreamId
             /// </summary>
-            /// <param name="liveStreamId">If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. (optional)</param>
+            /// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
             /// <returns>APIlistRequest</returns>
             public APIlistRequest LiveStreamId(string liveStreamId) {
                 this.liveStreamId = liveStreamId;
@@ -1035,7 +1035,7 @@ namespace ApiVideo.Api
             /// <summary>
             /// Set sortBy
             /// </summary>
-            /// <param name="sortBy">Allowed: publishedAt, title. You can search by the time videos were published at, or by title. (optional)</param>
+            /// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
             /// <returns>APIlistRequest</returns>
             public APIlistRequest SortBy(string sortBy) {
                 this.sortBy = sortBy;
@@ -1045,7 +1045,7 @@ namespace ApiVideo.Api
             /// <summary>
             /// Set sortOrder
             /// </summary>
-            /// <param name="sortOrder">Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A. (optional)</param>
+            /// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
             /// <returns>APIlistRequest</returns>
             public APIlistRequest SortOrder(string sortOrder) {
                 this.sortOrder = sortOrder;
