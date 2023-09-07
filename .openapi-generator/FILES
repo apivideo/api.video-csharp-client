@@ -90,6 +90,7 @@ docs/Webhook.md
 docs/WebhooksApi.md
 docs/WebhooksCreationPayload.md
 docs/WebhooksListResponse.md
+documentation.md
 git_push.sh
 mono_nunit_test.sh
 post-generate.sh
