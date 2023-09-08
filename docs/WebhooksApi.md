@@ -105,7 +105,7 @@ namespace Example
             var apiWebhooksInstance = apiInstance.Webhooks();
             try
             {
-                // Show Webhook details
+                // Retrieve Webhook details
                 Webhook result = apiWebhooksInstance.get(webhookId);
                 Debug.WriteLine(result);
             }

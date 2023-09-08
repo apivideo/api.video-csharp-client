@@ -107,7 +107,7 @@ namespace Example
             var apiPlayerThemesInstance = apiInstance.PlayerThemes();
             try
             {
-                // Show a player
+                // Retrieve a player
                 PlayerTheme result = apiPlayerThemesInstance.get(playerId);
                 Debug.WriteLine(result);
             }
@@ -312,7 +312,7 @@ namespace Example
             var apiPlayerThemesInstance = apiInstance.PlayerThemes();
             try
             {
-                // List all players
+                // List all player themes
                 PlayerThemesListResponse result = apiPlayerThemesInstance.list(sortBy, sortOrder, currentPage, pageSize);
                 Debug.WriteLine(result);
             }

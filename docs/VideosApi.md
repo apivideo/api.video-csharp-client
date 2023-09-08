@@ -44,7 +44,7 @@ namespace Example
             var apiVideosInstance = apiInstance.Videos();
             try
             {
-                // Create a video
+                // Create a video object
                 Video result = apiVideosInstance.create(videoCreationPayload);
                 Debug.WriteLine(result);
             }
@@ -127,7 +127,7 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | Enter the videoId you want to use to upload your video.
-            var file = BINARY_DATA_HERE;  // System.IO.Stream | The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the "/videos" endpoint and add the "source" parameter when you create a new video.
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\"/videos\\\" endpoint and add the \\\"source\\\" parameter when you create a new video.
             var apiVideosInstance = apiInstance.Videos();
             try
             {
@@ -269,7 +269,7 @@ namespace Example
             var apiVideosInstance = apiInstance.Videos();
             try
             {
-                // Show a video
+                // Retrieve a video object
                 Video result = apiVideosInstance.get(videoId);
                 Debug.WriteLine(result);
             }
@@ -281,7 +281,7 @@ namespace Example
             }
         }
     }
-} 
+}
 ```
 
 ### Parameters
@@ -338,12 +338,12 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The video ID for the video you want to delete.
+            var videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The video ID for the video you want to update.
             var videoUpdatePayload = new VideoUpdatePayload(); // VideoUpdatePayload | 
             var apiVideosInstance = apiInstance.Videos();
             try
             {
-                // Update a video
+                // Update a video object
                 Video result = apiVideosInstance.update(videoId, videoUpdatePayload);
                 Debug.WriteLine(result);
             }
@@ -405,12 +405,14 @@ namespace Example
         {
             var basePath = ApiVideoClient.Client.Environment.SANDBOX;
             var apiKey = "YOUR_API_KEY";
+
             var apiInstance = new ApiVideoClient(apiKey,basePath);
+
             var videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The video ID for the video you want to delete.
             var apiVideosInstance = apiInstance.Videos();
             try
             {
-                // Delete a video
+                // Delete a video object
                 apiVideosInstance.delete(videoId);
             }
             catch (ApiException  e)
@@ -421,7 +423,7 @@ namespace Example
             }
         }
     }
-} 
+}
 ```
 
 ### Parameters
@@ -568,7 +570,7 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var videoId = videoId_example;  // string | Unique identifier of the chosen video 
-            var file = BINARY_DATA_HERE;  // System.IO.Stream | The image to be added as a thumbnail.
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
             var apiVideosInstance = apiInstance.Videos();
             try
             {
@@ -652,7 +654,7 @@ namespace Example
             var apiVideosInstance = apiInstance.Videos();
             try
             {
-                // Pick a thumbnail
+                // Set a thumbnail
                 Video result = apiVideosInstance.pickThumbnail(videoId, videoThumbnailPickPayload);
                 Debug.WriteLine(result);
             }
@@ -664,7 +666,7 @@ namespace Example
             }
         }
     }
-}              
+}
 ```
 
 ### Parameters
@@ -720,7 +722,7 @@ namespace Example
             var apiVideosInstance = apiInstance.Videos();
             try
             {
-                // Show video status
+                // Retrieve video status and details
                 VideoStatus result = apiVideosInstance.getStatus(videoId);
                 Debug.WriteLine(result);
             }

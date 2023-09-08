@@ -23,26 +23,36 @@ Creates a livestream object.
 
 ### Example
 ```csharp
-var apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
+using System.Diagnostics;
+using ApiVideo.Client;
 
-var liveStreamCreationPayload = new LiveStreamCreationPayload()
+namespace Example
 {
-    record = false,
-    name = "My Live Stream Video",
-    _public = true,
-    playerid = "pl4f4ferf5erfr5zed4fsdd",
-    restreams = new List<RestreamsRequestObject>(){
-        new RestreamsRequestObject(){name="My RTMP server", streamKey="dw-dew8-q6w9-k67w-1ws8", serverUrl="rtmp://my.broadcast.example.com/app" }
+    public class createExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var liveStreamCreationPayload = new LiveStreamCreationPayload(); // LiveStreamCreationPayload | 
+            var apiLiveStreamsInstance = apiInstance.LiveStreams();
+            try
+            {
+                // Create live stream
+                LiveStream result = apiLiveStreamsInstance.create(liveStreamCreationPayload);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling LiveStreamsApi.create: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
     }
-};
-
-try
-{
-    var liveStream = apiVideoClient.LiveStreams().create(liveStreamCreationPayload);
-}
-catch (ApiException e)
-{
-    // Manage create error here
 }
 ```
 
@@ -80,33 +90,36 @@ Get a livestream by id.
 
 ### Example
 ```csharp
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveStreamsApi;
-import java.util.*;
+using System.Diagnostics;
+using ApiVideo.Client;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+namespace Example
+{
+    public class getExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
 
-    LiveStreamsApi apiInstance = client.liveStreams();
-    
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream you want to watch.
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-    try {
-      LiveStream result = apiInstance.get(liveStreamId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling LiveStreamsApi#get");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+            var liveStreamId = li400mYKSgQ6xs7taUeSaEKr;  // string | The unique ID for the live stream you want to watch.
+            var apiLiveStreamsInstance = apiInstance.LiveStreams();
+            try
+            {
+                // Retrieve live stream
+                LiveStream result = apiLiveStreamsInstance.get(liveStreamId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling LiveStreamsApi.get: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
     }
-  }
 }
 ```
 
@@ -282,7 +295,7 @@ using ApiVideo.Client;
 
 namespace Example
 {
-    public class getExample
+    public class listExample
     {
         public static void Main()
         {
@@ -291,17 +304,22 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var liveStreamId = li400mYKSgQ6xs7taUeSaEKr;  // string | The unique ID for the live stream you want to watch.
+            var streamKey = dw-dew8-q6w9-k67w-1ws8;  // string | The unique stream key that allows you to stream videos. (optional) 
+            var name = My Video;  // string | You can filter live streams by their name or a part of their name. (optional) 
+            var sortBy = createdAt;  // string | Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. (optional) 
+            var sortOrder = desc;  // string | Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional) 
+            var currentPage = 2;  // int? | Choose the number of search results to return per page. Minimum value: 1 (optional)  (default to 1)
+            var pageSize = 30;  // int? | Results per page. Allowed values 1-100, default is 25. (optional)  (default to 25)
             var apiLiveStreamsInstance = apiInstance.LiveStreams();
             try
             {
-                // Show live stream
-                LiveStream result = apiLiveStreamsInstance.get(liveStreamId);
+                // List all live streams
+                LiveStreamListResponse result = apiLiveStreamsInstance.list(streamKey, name, sortBy, sortOrder, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LiveStreamsApi.get: " + e.Message );
+                Debug.Print("Exception when calling LiveStreamsApi.list: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -363,7 +381,7 @@ namespace Example
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
             var liveStreamId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The unique ID for the live stream you want to upload.
-            var file = BINARY_DATA_HERE;  // System.IO.Stream | The image to be added as a thumbnail.
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
             var apiLiveStreamsInstance = apiInstance.LiveStreams();
             try
             {
@@ -432,7 +450,7 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var liveStreamId = li400mYKSgQ6xs7taUeSaEKr;  // string | The unique identifier for the live stream you want to delete. 
+            var liveStreamId = li400mYKSgQ6xs7taUeSaEKr;  // string | The unique identifier of the live stream whose thumbnail you want to delete.
             var apiLiveStreamsInstance = apiInstance.LiveStreams();
             try
             {
