@@ -24,7 +24,7 @@ using ApiVideo.Client;
 
 namespace Example
 {
-    public class uploadWatermarkExample
+    public class uploadExample
     {
         public static void Main()
         {
@@ -33,13 +33,12 @@ namespace Example
 
             var apiInstance = new ApiVideoClient(apiKey,basePath);
 
-            var file = File.OpenRead("watermark.jpg");  // The watermark image.
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The `.jpg` or `.png` image to be added as a watermark.
             var apiWatermarksInstance = apiInstance.Watermarks();
-
             try
             {
                 // Upload a watermark
-                Video result = apiWatermarksInstance.upload(videoId, file);
+                Watermark result = apiWatermarksInstance.upload(file);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
