@@ -20,13 +20,6 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "name")]
     public string name { get; set; }
     /// <summary>
-    /// Whether you are recording or not. True for record, false for not record.
-    /// </summary>
-    /// <value>Whether you are recording or not. True for record, false for not record.</value>
-    [DataMember(Name="record", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "record")]
-    public Nullable<bool> record { get; set; }
-    /// <summary>
     /// Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
     /// </summary>
     /// <value>Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).</value>
@@ -50,14 +43,6 @@ namespace ApiVideo.Model {
 
 
     /// <summary>
-    /// Constructor. Set default values.
-    /// </summary>
-    public LiveStreamCreationPayload() {
-        record = false;
-        
-    }
-
-    /// <summary>
     /// Get the string presentation of the object
     /// </summary>
     /// <returns>String presentation of the object</returns>
@@ -65,7 +50,6 @@ namespace ApiVideo.Model {
       var sb = new StringBuilder();
       sb.Append("class LiveStreamCreationPayload {\n");
       sb.Append("  Name: ").Append(name).Append("\n");
-      sb.Append("  Record: ").Append(record).Append("\n");
       sb.Append("  Public: ").Append(_public).Append("\n");
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");
       sb.Append("  Restreams: ").Append(restreams).Append("\n");

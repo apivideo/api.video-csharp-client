@@ -48,10 +48,6 @@ docs/PlayerThemeUpdatePayload.md
 docs/PlayerThemesApi.md
 docs/PlayerThemesListResponse.md
 docs/Quality.md
-docs/RawStatisticsApi.md
-docs/RawStatisticsListLiveStreamAnalyticsResponse.md
-docs/RawStatisticsListPlayerSessionEventsResponse.md
-docs/RawStatisticsListSessionsResponse.md
 docs/RefreshTokenPayload.md
 docs/RestreamsRequestObject.md
 docs/RestreamsResponseObject.md
@@ -100,7 +96,6 @@ src/ApiVideo.Test/Api/CaptionsApiTests.cs
 src/ApiVideo.Test/Api/ChaptersApiTests.cs
 src/ApiVideo.Test/Api/LiveStreamsApiTests.cs
 src/ApiVideo.Test/Api/PlayerThemesApiTests.cs
-src/ApiVideo.Test/Api/RawStatisticsApiTests.cs
 src/ApiVideo.Test/Api/UploadTokensApiTests.cs
 src/ApiVideo.Test/Api/VideosApiTests.cs
 src/ApiVideo.Test/Api/WatermarksApiTests.cs
@@ -143,9 +138,6 @@ src/ApiVideo.Test/Model/PlayerThemeTests.cs
 src/ApiVideo.Test/Model/PlayerThemeUpdatePayloadTests.cs
 src/ApiVideo.Test/Model/PlayerThemesListResponseTests.cs
 src/ApiVideo.Test/Model/QualityTests.cs
-src/ApiVideo.Test/Model/RawStatisticsListLiveStreamAnalyticsResponseTests.cs
-src/ApiVideo.Test/Model/RawStatisticsListPlayerSessionEventsResponseTests.cs
-src/ApiVideo.Test/Model/RawStatisticsListSessionsResponseTests.cs
 src/ApiVideo.Test/Model/RefreshTokenPayloadTests.cs
 src/ApiVideo.Test/Model/RestreamsRequestObjectTests.cs
 src/ApiVideo.Test/Model/RestreamsResponseObjectTests.cs
@@ -187,7 +179,6 @@ src/ApiVideo/Api/CaptionsApi.cs
 src/ApiVideo/Api/ChaptersApi.cs
 src/ApiVideo/Api/LiveStreamsApi.cs
 src/ApiVideo/Api/PlayerThemesApi.cs
-src/ApiVideo/Api/RawStatisticsApi.cs
 src/ApiVideo/Api/UploadTokensApi.cs
 src/ApiVideo/Api/VideosApi.cs
 src/ApiVideo/Api/WatermarksApi.cs
@@ -242,9 +233,6 @@ src/ApiVideo/Model/PlayerThemeCreationPayload.cs
 src/ApiVideo/Model/PlayerThemeUpdatePayload.cs
 src/ApiVideo/Model/PlayerThemesListResponse.cs
 src/ApiVideo/Model/Quality.cs
-src/ApiVideo/Model/RawStatisticsListLiveStreamAnalyticsResponse.cs
-src/ApiVideo/Model/RawStatisticsListPlayerSessionEventsResponse.cs
-src/ApiVideo/Model/RawStatisticsListSessionsResponse.cs
 src/ApiVideo/Model/RefreshTokenPayload.cs
 src/ApiVideo/Model/RestreamsRequestObject.cs
 src/ApiVideo/Model/RestreamsResponseObject.cs
