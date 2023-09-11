@@ -67,7 +67,7 @@ namespace ApiVideo.Api
             if (liveStreamCreationPayload != null && liveStreamCreationPayload.name == null) {
                 throw new ApiException(400,"Missing required parameter 'liveStreamCreationPayload.Name' when calling LiveStreamsApi->create");
             }
-                                                            
+                                                
             // verify the required parameter 'liveStreamCreationPayload' is set
             if (liveStreamCreationPayload == null)
                 throw new ApiException(400, "Missing required parameter 'liveStreamCreationPayload' when calling LiveStreamsApi->create");
@@ -191,7 +191,7 @@ namespace ApiVideo.Api
         /// Update a live stream Updates the livestream object.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
+        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details.</param>
 /// <param name="liveStreamUpdatePayload"></param>
         
         /// <returns>LiveStream</returns>
@@ -205,7 +205,7 @@ namespace ApiVideo.Api
         /// Update a live stream Updates the livestream object.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.</param>
+        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details.</param>
 /// <param name="liveStreamUpdatePayload"></param>
         
         /// <returns>ApiResponse of LiveStream</returns>
@@ -214,11 +214,11 @@ namespace ApiVideo.Api
             if (liveStreamUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
             
-                                                            
+                                                
             if (liveStreamUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
             
-                                                            
+                                                
             // verify the required parameter 'liveStreamId' is set
             if (liveStreamId == null)
                 throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->update");

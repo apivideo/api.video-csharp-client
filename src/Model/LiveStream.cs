@@ -34,13 +34,6 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "streamKey")]
     public string streamkey { get; set; }
     /// <summary>
-    /// Whether you are recording or not.
-    /// </summary>
-    /// <value>Whether you are recording or not.</value>
-    [DataMember(Name="record", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "record")]
-    public Nullable<bool> record { get; set; }
-    /// <summary>
     /// Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
     /// </summary>
     /// <value>Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).</value>
@@ -100,7 +93,6 @@ namespace ApiVideo.Model {
       sb.Append("  LiveStreamId: ").Append(livestreamid).Append("\n");
       sb.Append("  Name: ").Append(name).Append("\n");
       sb.Append("  StreamKey: ").Append(streamkey).Append("\n");
-      sb.Append("  Record: ").Append(record).Append("\n");
       sb.Append("  Public: ").Append(_public).Append("\n");
       sb.Append("  Assets: ").Append(assets).Append("\n");
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");

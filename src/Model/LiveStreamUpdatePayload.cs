@@ -27,13 +27,6 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "public")]
     public Nullable<bool> _public { get; set; }
     /// <summary>
-    /// Use this to indicate whether you want the recording on or off. On is true, off is false.
-    /// </summary>
-    /// <value>Use this to indicate whether you want the recording on or off. On is true, off is false.</value>
-    [DataMember(Name="record", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "record")]
-    public Nullable<bool> record { get; set; }
-    /// <summary>
     /// The unique ID for the player associated with a live stream that you want to update.
     /// </summary>
     /// <value>The unique ID for the player associated with a live stream that you want to update.</value>
@@ -58,7 +51,6 @@ namespace ApiVideo.Model {
       sb.Append("class LiveStreamUpdatePayload {\n");
       sb.Append("  Name: ").Append(name).Append("\n");
       sb.Append("  Public: ").Append(_public).Append("\n");
-      sb.Append("  Record: ").Append(record).Append("\n");
       sb.Append("  PlayerId: ").Append(playerid).Append("\n");
       sb.Append("  Restreams: ").Append(restreams).Append("\n");
       sb.Append("}\n");
