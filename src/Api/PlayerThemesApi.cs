@@ -508,7 +508,7 @@ namespace ApiVideo.Api
             }
         }
         /// <summary>
-        /// Upload a logo Upload an image logo for a player.
+        /// Upload a logo Upload an image file as a logo for your player. The image should fit within these constraints: - The image mime type must be &#x60;image/jpeg&#x60; or &#x60;image/png&#x60;. api.video recommends using &#x60;png&#x60; images with transparent background. - The image size should be a maximum of 200px width x 100px. - The file size should be a maximum of 100 KiB. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
@@ -523,7 +523,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a logo Upload an image logo for a player.
+        /// Upload a logo Upload an image file as a logo for your player. The image should fit within these constraints: - The image mime type must be &#x60;image/jpeg&#x60; or &#x60;image/png&#x60;. api.video recommends using &#x60;png&#x60; images with transparent background. - The image size should be a maximum of 200px width x 100px. - The file size should be a maximum of 100 KiB. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="playerId">The unique identifier for the player.</param>
