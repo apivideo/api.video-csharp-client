@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Create a video object
 
-Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1). 
+Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos). 
 
 ### Example
 ```csharp
@@ -476,7 +476,7 @@ namespace Example
 
             var title = My Video.mp4;  // string | The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional) 
             var tags = new List<string>(); // List<string> | A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional) 
-            var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. (optional) 
+            var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional) 
             var description = New Zealand;  // string | Retrieve video objects by `description`. (optional) 
             var liveStreamId = li400mYKSgQ6xs7taUeSaEKr;  // string | Retrieve video objects that were recorded from a live stream by `liveStreamId`. (optional) 
             var sortBy = publishedAt;  // string | Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional) 
@@ -507,7 +507,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **string**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional] 
  **tags** | [**List&lt;string&gt;**](string.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional] 
- **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. | [optional] 
+ **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. | [optional] 
  **description** | **string**| Retrieve video objects by &#x60;description&#x60;. | [optional] 
  **liveStreamId** | **string**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional] 
  **sortBy** | **string**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional] 

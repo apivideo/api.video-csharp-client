@@ -40,7 +40,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)
+        /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to add a caption to.</param>
@@ -55,7 +55,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/reference/captions)
+        /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to add a caption to.</param>
