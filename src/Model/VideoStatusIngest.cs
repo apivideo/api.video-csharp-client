@@ -13,9 +13,9 @@ namespace ApiVideo.Model {
   [DataContract]
   public class VideoStatusIngest {
     /// <summary>
-    /// There are three possible ingest statuses. missing - you are missing information required to ingest the video. uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.
+    /// There are four possible statuses depending on how you provide a video file: - `uploading` - the API is gathering the video source file from an upload. - `uploaded` - the video file is fully uploaded. - `ingesting` - the API is gathering the video source file from either a URL, or from cloning. - `ingested` - the video file is fully stored. 
     /// </summary>
-    /// <value>There are three possible ingest statuses. missing - you are missing information required to ingest the video. uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.</value>
+    /// <value>There are four possible statuses depending on how you provide a video file: - `uploading` - the API is gathering the video source file from an upload. - `uploaded` - the video file is fully uploaded. - `ingesting` - the API is gathering the video source file from either a URL, or from cloning. - `ingested` - the video file is fully stored. </value>
     [DataMember(Name="status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status")]
     public string status { get; set; }
