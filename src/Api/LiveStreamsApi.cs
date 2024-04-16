@@ -317,6 +317,7 @@ namespace ApiVideo.Api
             localVarHeaderParams.Add("Content-Type", localVarContentType);
             // to determine the Accept header
             string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
             };
             string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)

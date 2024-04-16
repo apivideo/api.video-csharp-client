@@ -53,6 +53,7 @@ docs/RestreamsRequestObject.md
 docs/RestreamsResponseObject.md
 docs/TokenCreationPayload.md
 docs/TokenListResponse.md
+docs/TooManyRequests.md
 docs/UploadToken.md
 docs/UploadTokensApi.md
 docs/Video.md
@@ -142,6 +143,7 @@ src/ApiVideo.Test/Model/RestreamsRequestObjectTests.cs
 src/ApiVideo.Test/Model/RestreamsResponseObjectTests.cs
 src/ApiVideo.Test/Model/TokenCreationPayloadTests.cs
 src/ApiVideo.Test/Model/TokenListResponseTests.cs
+src/ApiVideo.Test/Model/TooManyRequestsTests.cs
 src/ApiVideo.Test/Model/UploadTokenTests.cs
 src/ApiVideo.Test/Model/VideoAssetsTests.cs
 src/ApiVideo.Test/Model/VideoClipTests.cs
@@ -237,6 +239,7 @@ src/ApiVideo/Model/RestreamsRequestObject.cs
 src/ApiVideo/Model/RestreamsResponseObject.cs
 src/ApiVideo/Model/TokenCreationPayload.cs
 src/ApiVideo/Model/TokenListResponse.cs
+src/ApiVideo/Model/TooManyRequests.cs
 src/ApiVideo/Model/UploadToken.cs
 src/ApiVideo/Model/Video.cs
 src/ApiVideo/Model/VideoAssets.cs
