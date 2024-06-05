@@ -1,12 +1,12 @@
-# ApiVideo.Model.VideoSessionLocation
-The location of the viewer.
+# ApiVideo.Model.UnrecognizedRequestUrl
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Country** | **string** | The country of the viewer. | [optional] 
-**City** | **string** | The city of the viewer. | [optional] 
+**Type** | **string** | A link to the error documentation. | [optional] 
+**Title** | **string** | A description of the error that occurred. | [optional] 
+**Status** | **int** | The HTTP status code. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
