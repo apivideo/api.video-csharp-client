@@ -8,31 +8,31 @@ using Newtonsoft.Json;
 namespace ApiVideo.Model {
 
   /// <summary>
-  /// What type of device the user is on when in the live stream session.
+  /// 
   /// </summary>
   [DataContract]
-  public class LiveStreamSessionDevice {
+  public class UnrecognizedRequestUrl {
     /// <summary>
-    /// What the type is like desktop, laptop, mobile.
+    /// A link to the error documentation.
     /// </summary>
-    /// <value>What the type is like desktop, laptop, mobile.</value>
+    /// <value>A link to the error documentation.</value>
     [DataMember(Name="type", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "type")]
     public string type { get; set; }
     /// <summary>
-    /// If known, what the brand of the device is, like Apple, Dell, etc.
+    /// A description of the error that occurred.
     /// </summary>
-    /// <value>If known, what the brand of the device is, like Apple, Dell, etc.</value>
-    [DataMember(Name="vendor", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "vendor")]
-    public string vendor { get; set; }
+    /// <value>A description of the error that occurred.</value>
+    [DataMember(Name="title", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "title")]
+    public string title { get; set; }
     /// <summary>
-    /// The specific model of the device, if known.
+    /// The HTTP status code.
     /// </summary>
-    /// <value>The specific model of the device, if known.</value>
-    [DataMember(Name="model", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "model")]
-    public string model { get; set; }
+    /// <value>The HTTP status code.</value>
+    [DataMember(Name="status", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "status")]
+    public int status { get; set; }
 
 
     /// <summary>
@@ -41,10 +41,10 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class LiveStreamSessionDevice {\n");
+      sb.Append("class UnrecognizedRequestUrl {\n");
       sb.Append("  Type: ").Append(type).Append("\n");
-      sb.Append("  Vendor: ").Append(vendor).Append("\n");
-      sb.Append("  Model: ").Append(model).Append("\n");
+      sb.Append("  Title: ").Append(title).Append("\n");
+      sb.Append("  Status: ").Append(status).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

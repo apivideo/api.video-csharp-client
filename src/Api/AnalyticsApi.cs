@@ -40,7 +40,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Get play events for live stream Retrieve filtered analytics about the number of plays for your live streams in a project.
+        /// Get play events for live stream Retrieve filtered analytics about the number of plays for your live streams in a project.  This endpoint will be deprecated with the release of Analytics v2.0. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
@@ -51,6 +51,7 @@ namespace ApiVideo.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>AnalyticsPlaysResponse</returns>
+		[Obsolete]
 		public AnalyticsPlaysResponse getLiveStreamsPlays(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default)
         {
              ApiResponse<AnalyticsPlaysResponse> localVarResponse = getLiveStreamsPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
@@ -58,7 +59,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Get play events for live stream Retrieve filtered analytics about the number of plays for your live streams in a project.
+        /// Get play events for live stream Retrieve filtered analytics about the number of plays for your live streams in a project.  This endpoint will be deprecated with the release of Analytics v2.0. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
@@ -69,6 +70,7 @@ namespace ApiVideo.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>ApiResponse of AnalyticsPlaysResponse</returns>
+		[Obsolete]
 		public ApiResponse<AnalyticsPlaysResponse> getLiveStreamsPlaysWithHttpInfo(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default)
         {
 
@@ -130,11 +132,12 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve filtered analytics about the number of plays for your live streams in a project.
+        /// Retrieve filtered analytics about the number of plays for your live streams in a project.  This endpoint will be deprecated with the release of Analytics v2.0. 
         /// </summary>
         /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (required)</param>
         /// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;liveStreamId&#x60;: Returns analytics based on the public live stream identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. (required)</param>
         /// <returns>APIgetLiveStreamsPlaysRequest</returns>
+        [Obsolete]
         public APIgetLiveStreamsPlaysRequest getLiveStreamsPlays(DateTime from, string dimension) {
             return new APIgetLiveStreamsPlaysRequest(this,from, dimension);
         }
@@ -210,6 +213,7 @@ namespace ApiVideo.Api
             /// Execute getLiveStreamsPlays request
             /// </summary>
             /// <returns>AnalyticsPlaysResponse </returns>
+            [Obsolete]
             public Page<AnalyticsData> execute(){
                 ApiResponse<AnalyticsPlaysResponse> localVarResp = this.currentApiInstance.getLiveStreamsPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
                 return new Page<AnalyticsData>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
@@ -231,7 +235,7 @@ namespace ApiVideo.Api
             }
         }
         /// <summary>
-        /// Get play events for video Retrieve filtered analytics about the number of plays for your videos in a project.
+        /// Get play events for video Retrieve filtered analytics about the number of plays for your videos in a project.  This endpoint will be deprecated with the release of Analytics v2.0. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
@@ -242,6 +246,7 @@ namespace ApiVideo.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>AnalyticsPlaysResponse</returns>
+		[Obsolete]
 		public AnalyticsPlaysResponse getVideosPlays(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default)
         {
              ApiResponse<AnalyticsPlaysResponse> localVarResponse = getVideosPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
@@ -249,7 +254,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Get play events for video Retrieve filtered analytics about the number of plays for your videos in a project.
+        /// Get play events for video Retrieve filtered analytics about the number of plays for your videos in a project.  This endpoint will be deprecated with the release of Analytics v2.0. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
@@ -260,6 +265,7 @@ namespace ApiVideo.Api
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
         /// <returns>ApiResponse of AnalyticsPlaysResponse</returns>
+		[Obsolete]
 		public ApiResponse<AnalyticsPlaysResponse> getVideosPlaysWithHttpInfo(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default)
         {
 
@@ -321,11 +327,12 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Retrieve filtered analytics about the number of plays for your videos in a project.
+        /// Retrieve filtered analytics about the number of plays for your videos in a project.  This endpoint will be deprecated with the release of Analytics v2.0. 
         /// </summary>
         /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (required)</param>
         /// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;videoId&#x60;: Returns analytics based on the public video identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. (required)</param>
         /// <returns>APIgetVideosPlaysRequest</returns>
+        [Obsolete]
         public APIgetVideosPlaysRequest getVideosPlays(DateTime from, string dimension) {
             return new APIgetVideosPlaysRequest(this,from, dimension);
         }
@@ -401,6 +408,7 @@ namespace ApiVideo.Api
             /// Execute getVideosPlays request
             /// </summary>
             /// <returns>AnalyticsPlaysResponse </returns>
+            [Obsolete]
             public Page<AnalyticsData> execute(){
                 ApiResponse<AnalyticsPlaysResponse> localVarResp = this.currentApiInstance.getVideosPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
                 return new Page<AnalyticsData>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
