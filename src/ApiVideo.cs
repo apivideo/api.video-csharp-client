@@ -58,7 +58,7 @@ namespace ApiVideo.Client
         /// Build an instance that targets the production environment using a custom OkHttp client
         /// </summary>
         /// <param name="client">the RestClient instance to use</param>
-        public ApiVideoClient(RestClient client) : this(new ApiClient(client))
+        public ApiVideoClient(IRestClient client) : this(new ApiClient(client))
         { 
         }
 
@@ -179,7 +179,7 @@ namespace ApiVideo.Client
         /// <returns>The rest client timeout</returns>
         public int GetTimeout()
         {
-            return this.apiClient.RestClient.Timeout;
+            return this.apiClient.GetTimeout();
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace ApiVideo.Client
         /// <param name="newTimeOut">the new timeout</param>
         public void SetTimeout(int newTimeOut)
         {
-            this.apiClient.RestClient.Timeout = newTimeOut;
+            this.apiClient.SetTimeout(newTimeOut);
         }
 
         /// <summary>

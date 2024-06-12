@@ -1,10 +1,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-VisualStudioVersion = 12.0.0.0
-MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiVideo", "src\ApiVideo.csproj", "{47CD76E4-3F74-3BC2-A1BA-AF194D07E1FA}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiVideo", "src\ApiVideo.csproj", "{47CD76E4-3F74-3BC2-A1BA-AF194D07E1FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiVideo.Test", "tests\ApiVideoTests.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiVideoTests", "tests\ApiVideoTests.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47CD76E4-3F74-3BC2-A1BA-AF194D07E1FA} = {47CD76E4-3F74-3BC2-A1BA-AF194D07E1FA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
