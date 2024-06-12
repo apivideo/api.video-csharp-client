@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.4.0] - 2024-06-11
+- .net 5.0 support
+
 ## [1.3.1] - 2024-02-19
 - Update VideoStatusIngest enum
 

@@ -58,15 +58,14 @@ api.video's C# API client streamlines the coding process. Chunking files is hand
 #### Frameworks supported
 
 
-- .NET 4.0 or later
-- Windows Phone 7.1 (Mango)
+- .NET 5.0 or later
 
 #### Dependencies
 
 
-- [RestSharp](https://www.nuget.org/packages/RestSharp) - 105.1.0
-- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 7.0.0 or later
-- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 1.2.0 or later
+- [RestSharp](https://www.nuget.org/packages/RestSharp) - 111.2.0
+- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 13.0.3
+- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 1.8.0
 
 We recommend using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the packages:
 

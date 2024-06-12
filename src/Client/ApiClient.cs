@@ -28,6 +28,10 @@ namespace ApiVideo.Client
         private const int DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
         private const int MIN_CHUNK_SIZE = 5 * 1024 * 1024;
         private const int MAX_CHUNK_SIZE = 128 * 1024 * 1024;
+        private int timeout = 60000;
+        private String basePath = "ws.api.video";
+        private Dictionary<string, string> originHeaders = new Dictionary<string, string>();
+
 
         private readonly JsonSerializerSettings serializerSettings = new JsonSerializerSettings
         {
@@ -45,7 +49,7 @@ namespace ApiVideo.Client
         /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
-        private RestRequest InterceptRequest(IRestRequest request){
+        private RestRequest InterceptRequest(RestRequest request){
             if(AuthManager != null)
                 return AuthManager.Intercept(request) as RestRequest;
             return request as RestRequest;
@@ -56,7 +60,15 @@ namespace ApiVideo.Client
         /// Constructor for ApiClient with custom basePath
         /// </summary>
         /// <param name="basePath">the api base path.</param>
-        public ApiClient(string basePath): this(new RestClient(basePath)) {
+        public ApiClient(string basePath) {
+            var options = new RestClientOptions()
+            {
+                ThrowOnAnyError = true,
+                BaseUrl = new Uri(basePath)
+            };
+            RestClient client = new RestClient(options);
+
+            Initialize(client);
         }
         
         /// <summary>
@@ -73,9 +85,16 @@ namespace ApiVideo.Client
         /// Constructor for ApiClient with custom http client.
         /// </summary>
         /// <param name="client">a RestClient instance used to make API call</param>
-        public ApiClient(RestClient client) {
+        public ApiClient(IRestClient client) {
+            Initialize(client);
+
+        }
+
+
+        private void Initialize(IRestClient client)
+        {
             this.RestClient = client;
-            setName("AV-Origin-Client", "csharp", "1.3.1");
+            setName("AV-Origin-Client", "csharp", "1.4.0");
         }
 
         /// <summary>
@@ -119,7 +138,7 @@ namespace ApiVideo.Client
                throw new Exception("Invalid version value. The version should match the xxx[.yyy][.zzz] pattern.");
             }
 
-            this.RestClient.AddDefaultHeader(key, name + ":" + version);
+            this.originHeaders.Add(key, name + ":" + version);
         }
 
         private bool isValidName(string name)
@@ -139,7 +158,7 @@ namespace ApiVideo.Client
         /// </summary>
         /// <returns> Timeout in milliseconds</returns>
         public int GetTimeout() {
-            return this.RestClient.Timeout;
+            return ((int)this.timeout);
         }
 
         /// <summary>
@@ -151,7 +170,7 @@ namespace ApiVideo.Client
         public ApiClient SetTimeout(int connectionTimeout) {
             // set timeout
             
-            RestClient.Timeout = connectionTimeout;
+            this.timeout = connectionTimeout;
             return this;
         }
 
@@ -159,13 +178,13 @@ namespace ApiVideo.Client
         /// Gets or sets the RestClient.
         /// </summary>
         /// <value>An instance of the RestClient</value>
-        public RestClient RestClient { get; set; }
+        public IRestClient RestClient { get; set; }
 
         /// <summary>
         /// Sets the api base path.
         /// </summary>
         public void SetBasePath(string basePath) {
-            this.RestClient.BaseUrl = new Uri(basePath);
+            this.basePath = basePath;
         }
 
 
@@ -194,6 +213,7 @@ namespace ApiVideo.Client
             string contentType)
         {
             var request = new RestRequest(path, method);
+            request.Timeout = new TimeSpan(0, 0, this.timeout);
 
             // add path parameter, if any
             foreach(var param in pathParams)
@@ -201,6 +221,9 @@ namespace ApiVideo.Client
 
             // add header parameter, if any
             foreach(var param in headerParams)
+                request.AddHeader(param.Key, param.Value);
+
+            foreach(var param in this.originHeaders)
                 request.AddHeader(param.Key, param.Value);
 
             // add query parameter, if any
@@ -214,7 +237,7 @@ namespace ApiVideo.Client
             // add file parameter, if any
             foreach(var param in fileParams)
             {
-                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentType);
+                request.AddFile(param.Value.Name, param.Value.GetFile, param.Value.FileName, param.Value.ContentType);
             }
 
             if (postBody != null) // http body (model or byte[]) parameter
@@ -259,7 +282,7 @@ namespace ApiVideo.Client
         /// Check if the api call response was successful
         /// </summary>
         /// <param name="response">The response to check</param>
-        private void CheckResponse(IRestResponse response)
+        private void CheckResponse(RestResponse response)
         {
             if (response.ResponseStatus != ResponseStatus.Completed)
             {
@@ -304,7 +327,7 @@ namespace ApiVideo.Client
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
             request = InterceptRequest(request);
-            var response = await RestClient.ExecuteTaskAsync(request, cancellationToken);
+            var response = await RestClient.ExecuteAsync(request, cancellationToken);
             return (Object)response;
         }
 
@@ -369,9 +392,9 @@ namespace ApiVideo.Client
         /// <param name="response">The HTTP response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(IRestResponse response, Type type)
+        public object Deserialize(RestResponse response, Type type)
         {
-            IList<Parameter> headers = response.Headers;
+            IReadOnlyCollection<Parameter> headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
