@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using ApiVideo.Upload;
 using RestSharp;
@@ -43,6 +44,21 @@ namespace ApiVideo.Api
         /// Generate an upload token Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/vod/delegated-upload-tokens)
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="tokenCreationPayload"></param>
+        
+        /// <returns>UploadToken</returns>
+		public Task<UploadToken> createTokenAsync(TokenCreationPayload tokenCreationPayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<UploadToken>> localVarResponse = createTokenWithHttpInfoAsync(tokenCreationPayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<UploadToken>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Generate an upload token Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/vod/delegated-upload-tokens)
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenCreationPayload"></param>
         
         /// <returns>UploadToken</returns>
@@ -51,6 +67,77 @@ namespace ApiVideo.Api
              ApiResponse<UploadToken> localVarResponse = createTokenWithHttpInfo(tokenCreationPayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Generate an upload token Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/vod/delegated-upload-tokens)
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="tokenCreationPayload"></param>
+        
+        /// <returns>ApiResponse of UploadToken</returns>
+		public Task<ApiResponse<UploadToken>> createTokenWithHttpInfoAsync(TokenCreationPayload tokenCreationPayload, CancellationToken cancellationToken = default)
+        {
+            if (tokenCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'tokenCreationPayload' when calling UploadTokensApi->createToken");
+            
+            
+            // verify the required parameter 'tokenCreationPayload' is set
+            if (tokenCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'tokenCreationPayload' when calling UploadTokensApi->createToken");
+            
+
+            var localVarPath = "/upload-tokens";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (tokenCreationPayload != null && tokenCreationPayload.GetType() != typeof(byte[]) && tokenCreationPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(tokenCreationPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = tokenCreationPayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<UploadToken>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (UploadToken) this.ApiClient.Deserialize(task.Result, typeof(UploadToken)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Generate an upload token Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/vod/delegated-upload-tokens)
@@ -121,6 +208,21 @@ namespace ApiVideo.Api
         /// Retrieve upload token Retrieve details about a specific upload token by id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
+        
+        /// <returns>UploadToken</returns>
+		public Task<UploadToken> getTokenAsync(string uploadToken, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<UploadToken>> localVarResponse = getTokenWithHttpInfoAsync(uploadToken, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<UploadToken>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Retrieve upload token Retrieve details about a specific upload token by id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
         
         /// <returns>UploadToken</returns>
@@ -129,6 +231,66 @@ namespace ApiVideo.Api
              ApiResponse<UploadToken> localVarResponse = getTokenWithHttpInfo(uploadToken);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Retrieve upload token Retrieve details about a specific upload token by id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="uploadToken">The unique identifier for the token you want information about.</param>
+        
+        /// <returns>ApiResponse of UploadToken</returns>
+		public Task<ApiResponse<UploadToken>> getTokenWithHttpInfoAsync(string uploadToken, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'uploadToken' is set
+            if (uploadToken == null)
+                throw new ApiException(400, "Missing required parameter 'uploadToken' when calling UploadTokensApi->getToken");
+            
+
+            var localVarPath = "/upload-tokens/{uploadToken}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uploadToken != null) localVarPathParams.Add("uploadToken", this.ApiClient.ParameterToString(uploadToken)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<UploadToken>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (UploadToken) this.ApiClient.Deserialize(task.Result, typeof(UploadToken)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Retrieve upload token Retrieve details about a specific upload token by id.
@@ -188,6 +350,19 @@ namespace ApiVideo.Api
         /// Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
+        
+        /// <returns></returns>
+		public void deleteTokenAsync(string uploadToken, CancellationToken cancellationToken = default)
+        {
+             deleteTokenWithHttpInfoAsync(uploadToken, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
         
         /// <returns></returns>
@@ -195,6 +370,65 @@ namespace ApiVideo.Api
         {
              deleteTokenWithHttpInfo(uploadToken);
         }
+
+
+        /// <summary>
+        /// Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public Task<ApiResponse<Object>> deleteTokenWithHttpInfoAsync(string uploadToken, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'uploadToken' is set
+            if (uploadToken == null)
+                throw new ApiException(400, "Missing required parameter 'uploadToken' when calling UploadTokensApi->deleteToken");
+            
+
+            var localVarPath = "/upload-tokens/{uploadToken}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uploadToken != null) localVarPathParams.Add("uploadToken", this.ApiClient.ParameterToString(uploadToken)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Object>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    null);
+            });
+            
+        }
+
 
         /// <summary>
         /// Delete an upload token Delete an existing upload token. This is especially useful for tokens you may have created that do not expire.
@@ -254,6 +488,24 @@ namespace ApiVideo.Api
         /// List all active upload tokens Retrieve a list of all currently active delegated tokens.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>TokenListResponse</returns>
+		public Task<TokenListResponse> listAsync(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<TokenListResponse>> localVarResponse = listWithHttpInfoAsync(sortBy, sortOrder, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<TokenListResponse>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// List all active upload tokens Retrieve a list of all currently active delegated tokens.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
@@ -265,6 +517,72 @@ namespace ApiVideo.Api
              ApiResponse<TokenListResponse> localVarResponse = listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// List all active upload tokens Retrieve a list of all currently active delegated tokens.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="sortBy">Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format. (optional)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of TokenListResponse</returns>
+		public Task<ApiResponse<TokenListResponse>> listWithHttpInfoAsync(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+
+
+
+
+            
+
+            var localVarPath = "/upload-tokens";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (sortBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (sortOrder != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortOrder", sortOrder)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<TokenListResponse>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (TokenListResponse) this.ApiClient.Deserialize(task.Result, typeof(TokenListResponse)));
+            });
+            
+        }
+
 
         /// <summary>
         /// List all active upload tokens Retrieve a list of all currently active delegated tokens.

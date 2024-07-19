@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using ApiVideo.Upload;
 using RestSharp;
@@ -43,6 +44,23 @@ namespace ApiVideo.Api
         /// Upload a chapter Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more details.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to upload a chapter for.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="file">The VTT file describing the chapters you want to upload.</param>
+        
+        /// <returns>Chapter</returns>
+		public Task<Chapter> uploadAsync(string videoId, string language, System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Chapter>> localVarResponse = uploadWithHttpInfoAsync(videoId, language, file, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Chapter>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Upload a chapter Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more details.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to upload a chapter for.</param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
 /// <param name="file">The VTT file describing the chapters you want to upload.</param>
@@ -53,6 +71,82 @@ namespace ApiVideo.Api
              ApiResponse<Chapter> localVarResponse = uploadWithHttpInfo(videoId, language, file);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Upload a chapter Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more details.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to upload a chapter for.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+/// <param name="file">The VTT file describing the chapters you want to upload.</param>
+        
+        /// <returns>ApiResponse of Chapter</returns>
+		public Task<ApiResponse<Chapter>> uploadWithHttpInfoAsync(string videoId, string language, System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling ChaptersApi->upload");
+            // verify the required parameter 'language' is set
+            if (language == null)
+                throw new ApiException(400, "Missing required parameter 'language' when calling ChaptersApi->upload");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling ChaptersApi->upload");
+            
+
+            var localVarPath = "/videos/{videoId}/chapters/{language}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
+            
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Chapter>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Chapter) this.ApiClient.Deserialize(task.Result, typeof(Chapter)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Upload a chapter Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more details.
@@ -128,6 +222,22 @@ namespace ApiVideo.Api
         /// Retrieve a chapter Retrieve a chapter for by video id in a specific language. 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
+        /// <returns>Chapter</returns>
+		public Task<Chapter> getAsync(string videoId, string language, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Chapter>> localVarResponse = getWithHttpInfoAsync(videoId, language, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Chapter>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Retrieve a chapter Retrieve a chapter for by video id in a specific language. 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
         
@@ -137,6 +247,72 @@ namespace ApiVideo.Api
              ApiResponse<Chapter> localVarResponse = getWithHttpInfo(videoId, language);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Retrieve a chapter Retrieve a chapter for by video id in a specific language. 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to show a chapter for.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
+        /// <returns>ApiResponse of Chapter</returns>
+		public Task<ApiResponse<Chapter>> getWithHttpInfoAsync(string videoId, string language, CancellationToken cancellationToken = default)
+        {
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling ChaptersApi->get");
+            // verify the required parameter 'language' is set
+            if (language == null)
+                throw new ApiException(400, "Missing required parameter 'language' when calling ChaptersApi->get");
+            
+
+            var localVarPath = "/videos/{videoId}/chapters/{language}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Chapter>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Chapter) this.ApiClient.Deserialize(task.Result, typeof(Chapter)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Retrieve a chapter Retrieve a chapter for by video id in a specific language. 
@@ -202,6 +378,20 @@ namespace ApiVideo.Api
         /// Delete a chapter Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to delete a chapter from.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
+        /// <returns></returns>
+		public void deleteAsync(string videoId, string language, CancellationToken cancellationToken = default)
+        {
+             deleteWithHttpInfoAsync(videoId, language, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete a chapter Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to delete a chapter from.</param>
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
         
@@ -210,6 +400,71 @@ namespace ApiVideo.Api
         {
              deleteWithHttpInfo(videoId, language);
         }
+
+
+        /// <summary>
+        /// Delete a chapter Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to delete a chapter from.</param>
+/// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public Task<ApiResponse<Object>> deleteWithHttpInfoAsync(string videoId, string language, CancellationToken cancellationToken = default)
+        {
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling ChaptersApi->delete");
+            // verify the required parameter 'language' is set
+            if (language == null)
+                throw new ApiException(400, "Missing required parameter 'language' when calling ChaptersApi->delete");
+            
+
+            var localVarPath = "/videos/{videoId}/chapters/{language}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Object>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    null);
+            });
+            
+        }
+
 
         /// <summary>
         /// Delete a chapter Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.
@@ -275,6 +530,23 @@ namespace ApiVideo.Api
         /// List video chapters Retrieve a list of all chapters for by video id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for.</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ChaptersListResponse</returns>
+		public Task<ChaptersListResponse> listAsync(string videoId, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<ChaptersListResponse>> localVarResponse = listWithHttpInfoAsync(videoId, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<ChaptersListResponse>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// List video chapters Retrieve a list of all chapters for by video id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for.</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -285,6 +557,72 @@ namespace ApiVideo.Api
              ApiResponse<ChaptersListResponse> localVarResponse = listWithHttpInfo(videoId, currentPage, pageSize);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// List video chapters Retrieve a list of all chapters for by video id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to retrieve a list of chapters for.</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of ChaptersListResponse</returns>
+		public Task<ApiResponse<ChaptersListResponse>> listWithHttpInfoAsync(string videoId, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling ChaptersApi->list");
+            
+
+            var localVarPath = "/videos/{videoId}/chapters";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<ChaptersListResponse>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (ChaptersListResponse) this.ApiClient.Deserialize(task.Result, typeof(ChaptersListResponse)));
+            });
+            
+        }
+
 
         /// <summary>
         /// List video chapters Retrieve a list of all chapters for by video id.

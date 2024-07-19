@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using ApiVideo.Upload;
 using RestSharp;
@@ -43,6 +44,21 @@ namespace ApiVideo.Api
         /// Create a video object Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos). 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoCreationPayload">video to create</param>
+        
+        /// <returns>Video</returns>
+		public Task<Video> createAsync(VideoCreationPayload videoCreationPayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Video>> localVarResponse = createWithHttpInfoAsync(videoCreationPayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Video>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Create a video object Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos). 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoCreationPayload">video to create</param>
         
         /// <returns>Video</returns>
@@ -51,6 +67,80 @@ namespace ApiVideo.Api
              ApiResponse<Video> localVarResponse = createWithHttpInfo(videoCreationPayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Create a video object Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos). 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoCreationPayload">video to create</param>
+        
+        /// <returns>ApiResponse of Video</returns>
+		public Task<ApiResponse<Video>> createWithHttpInfoAsync(VideoCreationPayload videoCreationPayload, CancellationToken cancellationToken = default)
+        {
+            if (videoCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'videoCreationPayload' when calling VideosApi->create");
+            
+            if (videoCreationPayload != null && videoCreationPayload.title == null) {
+                throw new ApiException(400,"Missing required parameter 'videoCreationPayload.Title' when calling VideosApi->create");
+            }
+                                                                                                                                    
+            // verify the required parameter 'videoCreationPayload' is set
+            if (videoCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'videoCreationPayload' when calling VideosApi->create");
+            
+
+            var localVarPath = "/videos";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoCreationPayload != null && videoCreationPayload.GetType() != typeof(byte[]) && videoCreationPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(videoCreationPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = videoCreationPayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Video>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Create a video object Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos). 
@@ -142,6 +232,40 @@ namespace ApiVideo.Api
         /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">Enter the videoId you want to use to upload your video.</param>
+/// <param name="file">The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video.</param>
+        /// <param name="progressListener">Progress listener called after each chunk upload</param>
+        /// <returns>Video</returns>
+		public Task<Video> uploadAsync(string videoId, System.IO.Stream file,IUploadProgressListener progressListener = null, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Video>> localVarResponse = uploadWithHttpInfoAsync(videoId, file,progressListener, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Video>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Upload a video To upload a video to the videoId you created. You can only upload your video to the videoId once.
+        /// 
+        /// 
+        /// 
+        /// We offer 2 types of upload: 
+        /// 
+        /// * Regular upload 
+        /// 
+        /// * Progressive upload
+        /// 
+        /// The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+        /// 
+        ///   * allow the upload of video sources &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload)
+        /// 
+        ///   * allow to send a video source &quot;progressively&quot;, i.e., before before knowing the total size of the video.
+        /// 
+        ///   Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as &quot;completely sent&quot; when the &quot;last&quot; chunk is sent (i.e., the chunk that &quot;completes&quot; the upload).
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Enter the videoId you want to use to upload your video.</param>
 /// <param name="file">The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video.</param>
         /// <param name="progressListener">Progress listener called after each chunk upload</param>
@@ -151,6 +275,153 @@ namespace ApiVideo.Api
              ApiResponse<Video> localVarResponse = uploadWithHttpInfo(videoId, file,progressListener);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Upload a video To upload a video to the videoId you created. You can only upload your video to the videoId once.
+        /// 
+        /// 
+        /// 
+        /// We offer 2 types of upload: 
+        /// 
+        /// * Regular upload 
+        /// 
+        /// * Progressive upload
+        /// 
+        /// The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+        /// 
+        ///   * allow the upload of video sources &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload)
+        /// 
+        ///   * allow to send a video source &quot;progressively&quot;, i.e., before before knowing the total size of the video.
+        /// 
+        ///   Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as &quot;completely sent&quot; when the &quot;last&quot; chunk is sent (i.e., the chunk that &quot;completes&quot; the upload).
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">Enter the videoId you want to use to upload your video.</param>
+/// <param name="file">The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\&quot;/videos\\\&quot; endpoint and add the \\\&quot;source\\\&quot; parameter when you create a new video.</param>
+        /// <param name="progressListener">Progress listener called after each chunk upload</param>
+        /// <returns>ApiResponse of Video</returns>
+		public Task<ApiResponse<Video>> uploadWithHttpInfoAsync(string videoId, System.IO.Stream file,IUploadProgressListener progressListener = null, CancellationToken cancellationToken = default)
+        {
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->upload");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling VideosApi->upload");
+            
+            long totalBytes = file.Length;
+            int chunkSize = Convert.ToInt32(this.ApiClient.UploadChunkSize);
+
+            var localVarPath = "/videos/{videoId}/source";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            
+
+            if (totalBytes > chunkSize)
+            {
+                Task<ApiResponse<Video>> lastRes = null;
+                localVarHeaderParams.Add("Content-Range", "");
+                var chunkNum = 0;
+                int chunkCount = (int)Math.Ceiling((double)totalBytes / (double)chunkSize);
+                for (int i = 0; i < totalBytes; i += chunkSize)
+                {
+                    chunkNum++;
+                    byte[] buffer = new byte[chunkSize];
+                    if(i + chunkSize >= totalBytes) {
+                        localVarHeaderParams["Content-Range"] = "part " + chunkNum + "/" + chunkNum;
+                    } else {
+                        localVarHeaderParams["Content-Range"] = "part " + chunkNum + "/*";
+                    }
+                    
+                    file.Read(buffer, 0, chunkSize);
+
+                    if(buffer != null)
+                    {
+                        if(localVarFileParams.ContainsKey("file"))
+                        {
+                            localVarFileParams["file"] = this.ApiClient.ParameterToFile("file", file, buffer);
+                        }
+                        else
+                        {
+                            localVarFileParams.Add("file",this.ApiClient.ParameterToFile("file", file, buffer));
+                        }
+                    }
+                    
+                    // make the HTTP request
+                    Task<RestResponse> localVarResponse = this.ApiClient.CallApiAsync(localVarPath,
+                        Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                        localVarPathParams, localVarContentType, cancellationToken);
+
+                    int localVarStatusCode = (int) localVarResponse.Result.StatusCode;
+                    lastRes = localVarResponse.ContinueWith((Task<RestResponse> task) =>
+                    {
+                        return new ApiResponse<Video>(localVarStatusCode,
+                            task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                            (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+                    });
+                 
+                    
+                    if(progressListener != null)
+                    {
+                        progressListener.onProgress(Math.Min(i + chunkSize, totalBytes), totalBytes, chunkCount, chunkNum);
+                    }
+                }
+                return lastRes;
+            }
+            else{
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            if (progressListener != null)
+            {
+                progressListener.onProgress(totalBytes, totalBytes, 1, 1);
+            }
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Video>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+            });
+            
+            }
+        }
+
 
         /// <summary>
         /// Upload a video To upload a video to the videoId you created. You can only upload your video to the videoId once.
@@ -390,6 +661,22 @@ namespace ApiVideo.Api
         /// Upload with an delegated upload token This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you&#39;d better use the [standard upload method](#upload).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="token">The unique identifier for the token you want to use to upload a video.</param>
+/// <param name="file">The path to the video you want to upload.</param>
+        /// <param name="progressListener">Progress listener called after each chunk upload</param>
+        /// <returns>Video</returns>
+		public Task<Video> uploadWithUploadTokenAsync(string token, System.IO.Stream file,IUploadProgressListener progressListener = null, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Video>> localVarResponse = uploadWithUploadTokenWithHttpInfoAsync(token, file,progressListener, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Video>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Upload with an delegated upload token This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you&#39;d better use the [standard upload method](#upload).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">The unique identifier for the token you want to use to upload a video.</param>
 /// <param name="file">The path to the video you want to upload.</param>
         /// <param name="progressListener">Progress listener called after each chunk upload</param>
@@ -399,6 +686,135 @@ namespace ApiVideo.Api
              ApiResponse<Video> localVarResponse = uploadWithUploadTokenWithHttpInfo(token, file,progressListener);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Upload with an delegated upload token This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you&#39;d better use the [standard upload method](#upload).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="token">The unique identifier for the token you want to use to upload a video.</param>
+/// <param name="file">The path to the video you want to upload.</param>
+        /// <param name="progressListener">Progress listener called after each chunk upload</param>
+        /// <returns>ApiResponse of Video</returns>
+		public Task<ApiResponse<Video>> uploadWithUploadTokenWithHttpInfoAsync(string token, System.IO.Stream file,IUploadProgressListener progressListener = null, CancellationToken cancellationToken = default)
+        {
+
+
+            // verify the required parameter 'token' is set
+            if (token == null)
+                throw new ApiException(400, "Missing required parameter 'token' when calling VideosApi->uploadWithUploadToken");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling VideosApi->uploadWithUploadToken");
+            
+            long totalBytes = file.Length;
+            int chunkSize = Convert.ToInt32(this.ApiClient.UploadChunkSize);
+
+            var localVarPath = "/upload";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (token != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "token", token)); // query parameter
+            
+
+            if (totalBytes > chunkSize)
+            {
+                Task<ApiResponse<Video>> lastRes = null;
+                localVarHeaderParams.Add("Content-Range", "");
+                var chunkNum = 0;
+                int chunkCount = (int)Math.Ceiling((double)totalBytes / (double)chunkSize);
+                for (int i = 0; i < totalBytes; i += chunkSize)
+                {
+                    chunkNum++;
+                    byte[] buffer = new byte[chunkSize];
+                    if(i + chunkSize >= totalBytes) {
+                        localVarHeaderParams["Content-Range"] = "part " + chunkNum + "/" + chunkNum;
+                    } else {
+                        localVarHeaderParams["Content-Range"] = "part " + chunkNum + "/*";
+                    }
+                    
+                    file.Read(buffer, 0, chunkSize);
+
+                    if(buffer != null)
+                    {
+                        if(localVarFileParams.ContainsKey("file"))
+                        {
+                            localVarFileParams["file"] = this.ApiClient.ParameterToFile("file", file, buffer);
+                        }
+                        else
+                        {
+                            localVarFileParams.Add("file",this.ApiClient.ParameterToFile("file", file, buffer));
+                        }
+                    }
+                    
+                    // make the HTTP request
+                    Task<RestResponse> localVarResponse = this.ApiClient.CallApiAsync(localVarPath,
+                        Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                        localVarPathParams, localVarContentType, cancellationToken);
+
+                    int localVarStatusCode = (int) localVarResponse.Result.StatusCode;
+                    lastRes = localVarResponse.ContinueWith((Task<RestResponse> task) =>
+                    {
+                        return new ApiResponse<Video>(localVarStatusCode,
+                            task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                            (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+                    });
+                 
+                    
+                    if(progressListener != null)
+                    {
+                        progressListener.onProgress(Math.Min(i + chunkSize, totalBytes), totalBytes, chunkCount, chunkNum);
+                    }
+                }
+                return lastRes;
+            }
+            else{
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            if (progressListener != null)
+            {
+                progressListener.onProgress(totalBytes, totalBytes, 1, 1);
+            }
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Video>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+            });
+            
+            }
+        }
+
 
         /// <summary>
         /// Upload with an delegated upload token This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you&#39;d better use the [standard upload method](#upload).
@@ -625,6 +1041,21 @@ namespace ApiVideo.Api
         /// Retrieve a video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want details about.</param>
+        
+        /// <returns>Video</returns>
+		public Task<Video> getAsync(string videoId, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Video>> localVarResponse = getWithHttpInfoAsync(videoId, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Video>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Retrieve a video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want details about.</param>
         
         /// <returns>Video</returns>
@@ -633,6 +1064,66 @@ namespace ApiVideo.Api
              ApiResponse<Video> localVarResponse = getWithHttpInfo(videoId);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Retrieve a video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want details about.</param>
+        
+        /// <returns>ApiResponse of Video</returns>
+		public Task<ApiResponse<Video>> getWithHttpInfoAsync(string videoId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->get");
+            
+
+            var localVarPath = "/videos/{videoId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Video>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Retrieve a video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
@@ -698,6 +1189,28 @@ namespace ApiVideo.Api
         /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The video ID for the video you want to update.</param>
+/// <param name="videoUpdatePayload"></param>
+        
+        /// <returns>Video</returns>
+		public Task<Video> updateAsync(string videoId, VideoUpdatePayload videoUpdatePayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Video>> localVarResponse = updateWithHttpInfoAsync(videoId, videoUpdatePayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Video>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Update a video object Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
+        /// 
+        /// 
+        /// 
+        /// NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to update.</param>
 /// <param name="videoUpdatePayload"></param>
         
@@ -707,6 +1220,92 @@ namespace ApiVideo.Api
              ApiResponse<Video> localVarResponse = updateWithHttpInfo(videoId, videoUpdatePayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Update a video object Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
+        /// 
+        /// 
+        /// 
+        /// NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The video ID for the video you want to update.</param>
+/// <param name="videoUpdatePayload"></param>
+        
+        /// <returns>ApiResponse of Video</returns>
+		public Task<ApiResponse<Video>> updateWithHttpInfoAsync(string videoId, VideoUpdatePayload videoUpdatePayload, CancellationToken cancellationToken = default)
+        {
+            if (videoUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
+            
+                                                                                                
+            if (videoUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
+            
+                                                                                                
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->update");
+            // verify the required parameter 'videoUpdatePayload' is set
+            if (videoUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
+            
+
+            var localVarPath = "/videos/{videoId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (videoUpdatePayload != null && videoUpdatePayload.GetType() != typeof(byte[]) && videoUpdatePayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(videoUpdatePayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = videoUpdatePayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Patch, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Video>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Update a video object Updates the parameters associated with a video ID. The video object you are updating is determined by the video ID you provide. 
@@ -792,6 +1391,19 @@ namespace ApiVideo.Api
         /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The video ID for the video you want to delete.</param>
+        
+        /// <returns></returns>
+		public void deleteAsync(string videoId, CancellationToken cancellationToken = default)
+        {
+             deleteWithHttpInfoAsync(videoId, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to delete.</param>
         
         /// <returns></returns>
@@ -799,6 +1411,65 @@ namespace ApiVideo.Api
         {
              deleteWithHttpInfo(videoId);
         }
+
+
+        /// <summary>
+        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The video ID for the video you want to delete.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public Task<ApiResponse<Object>> deleteWithHttpInfoAsync(string videoId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->delete");
+            
+
+            var localVarPath = "/videos/{videoId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Object>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    null);
+            });
+            
+        }
+
 
         /// <summary>
         /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
@@ -858,6 +1529,29 @@ namespace ApiVideo.Api
         /// List all video objects This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
+/// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional)</param>
+/// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
+/// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
+/// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
+/// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>VideosListResponse</returns>
+		public Task<VideosListResponse> listAsync(string title = default, List<string> tags = default, Dictionary<string, string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<VideosListResponse>> localVarResponse = listWithHttpInfoAsync(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<VideosListResponse>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// List all video objects This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
 /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
 /// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional)</param>
@@ -874,6 +1568,87 @@ namespace ApiVideo.Api
              ApiResponse<VideosListResponse> localVarResponse = listWithHttpInfo(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// List all video objects This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
+/// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional)</param>
+/// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
+/// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
+/// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
+/// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of VideosListResponse</returns>
+		public Task<ApiResponse<VideosListResponse>> listWithHttpInfoAsync(string title = default, List<string> tags = default, Dictionary<string, string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+
+
+
+
+
+
+
+
+
+            
+
+            var localVarPath = "/videos";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (title != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "title", title)); // query parameter
+            if (tags != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("multi", "tags[]", tags)); // query parameter
+            if (metadata != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "metadata", metadata)); // query parameter
+            if (description != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "description", description)); // query parameter
+            if (liveStreamId != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "liveStreamId", liveStreamId)); // query parameter
+            if (sortBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (sortOrder != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortOrder", sortOrder)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<VideosListResponse>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (VideosListResponse) this.ApiClient.Deserialize(task.Result, typeof(VideosListResponse)));
+            });
+            
+        }
+
 
         /// <summary>
         /// List all video objects This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
@@ -1119,6 +1894,34 @@ namespace ApiVideo.Api
         /// Note: There may be a short delay before the new thumbnail is delivered to our CDN.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">Unique identifier of the chosen video </param>
+/// <param name="file">The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.</param>
+        
+        /// <returns>Video</returns>
+		public Task<Video> uploadThumbnailAsync(string videoId, System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Video>> localVarResponse = uploadThumbnailWithHttpInfoAsync(videoId, file, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Video>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Upload a thumbnail The thumbnail is the poster that appears in the player window before video playback begins.
+        /// 
+        /// 
+        /// 
+        /// This endpoint allows you to upload an image for the thumbnail.
+        /// 
+        /// 
+        /// 
+        /// To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+        /// 
+        /// 
+        /// 
+        /// Note: There may be a short delay before the new thumbnail is delivered to our CDN.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the chosen video </param>
 /// <param name="file">The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.</param>
         
@@ -1128,6 +1931,88 @@ namespace ApiVideo.Api
              ApiResponse<Video> localVarResponse = uploadThumbnailWithHttpInfo(videoId, file);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Upload a thumbnail The thumbnail is the poster that appears in the player window before video playback begins.
+        /// 
+        /// 
+        /// 
+        /// This endpoint allows you to upload an image for the thumbnail.
+        /// 
+        /// 
+        /// 
+        /// To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+        /// 
+        /// 
+        /// 
+        /// Note: There may be a short delay before the new thumbnail is delivered to our CDN.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">Unique identifier of the chosen video </param>
+/// <param name="file">The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.</param>
+        
+        /// <returns>ApiResponse of Video</returns>
+		public Task<ApiResponse<Video>> uploadThumbnailWithHttpInfoAsync(string videoId, System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->uploadThumbnail");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling VideosApi->uploadThumbnail");
+            
+
+            var localVarPath = "/videos/{videoId}/thumbnail";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Video>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Upload a thumbnail The thumbnail is the poster that appears in the player window before video playback begins.
@@ -1219,6 +2104,32 @@ namespace ApiVideo.Api
         /// 
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.</param>
+/// <param name="videoThumbnailPickPayload"></param>
+        
+        /// <returns>Video</returns>
+		public Task<Video> pickThumbnailAsync(string videoId, VideoThumbnailPickPayload videoThumbnailPickPayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Video>> localVarResponse = pickThumbnailWithHttpInfoAsync(videoId, videoThumbnailPickPayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Video>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Set a thumbnail Pick a thumbnail from the given time code. 
+        /// 
+        /// 
+        /// 
+        /// If you&#39;d like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
+        /// 
+        /// 
+        /// 
+        /// There may be a short delay for the thumbnail to update.
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.</param>
 /// <param name="videoThumbnailPickPayload"></param>
         
@@ -1228,6 +2139,102 @@ namespace ApiVideo.Api
              ApiResponse<Video> localVarResponse = pickThumbnailWithHttpInfo(videoId, videoThumbnailPickPayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Set a thumbnail Pick a thumbnail from the given time code. 
+        /// 
+        /// 
+        /// 
+        /// If you&#39;d like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
+        /// 
+        /// 
+        /// 
+        /// There may be a short delay for the thumbnail to update.
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.</param>
+/// <param name="videoThumbnailPickPayload"></param>
+        
+        /// <returns>ApiResponse of Video</returns>
+		public Task<ApiResponse<Video>> pickThumbnailWithHttpInfoAsync(string videoId, VideoThumbnailPickPayload videoThumbnailPickPayload, CancellationToken cancellationToken = default)
+        {
+            if (videoThumbnailPickPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'videoThumbnailPickPayload' when calling VideosApi->pickThumbnail");
+            
+            if (videoThumbnailPickPayload != null && videoThumbnailPickPayload.timecode == null) {
+                throw new ApiException(400,"Missing required parameter 'videoThumbnailPickPayload.Timecode' when calling VideosApi->pickThumbnail");
+            }
+            
+            if (videoThumbnailPickPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'videoThumbnailPickPayload' when calling VideosApi->pickThumbnail");
+            
+            if (videoThumbnailPickPayload != null && videoThumbnailPickPayload.timecode == null) {
+                throw new ApiException(400,"Missing required parameter 'videoThumbnailPickPayload.Timecode' when calling VideosApi->pickThumbnail");
+            }
+            
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->pickThumbnail");
+            // verify the required parameter 'videoThumbnailPickPayload' is set
+            if (videoThumbnailPickPayload == null)
+                throw new ApiException(400, "Missing required parameter 'videoThumbnailPickPayload' when calling VideosApi->pickThumbnail");
+            
+
+            var localVarPath = "/videos/{videoId}/thumbnail";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (videoThumbnailPickPayload != null && videoThumbnailPickPayload.GetType() != typeof(byte[]) && videoThumbnailPickPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(videoThumbnailPickPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = videoThumbnailPickPayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Patch, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Video>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Set a thumbnail Pick a thumbnail from the given time code. 
@@ -1323,6 +2330,21 @@ namespace ApiVideo.Api
         /// Retrieve video status and details This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want the status for.</param>
+        
+        /// <returns>VideoStatus</returns>
+		public Task<VideoStatus> getStatusAsync(string videoId, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<VideoStatus>> localVarResponse = getStatusWithHttpInfoAsync(videoId, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<VideoStatus>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Retrieve video status and details This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want the status for.</param>
         
         /// <returns>VideoStatus</returns>
@@ -1331,6 +2353,66 @@ namespace ApiVideo.Api
              ApiResponse<VideoStatus> localVarResponse = getStatusWithHttpInfo(videoId);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Retrieve video status and details This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want the status for.</param>
+        
+        /// <returns>ApiResponse of VideoStatus</returns>
+		public Task<ApiResponse<VideoStatus>> getStatusWithHttpInfoAsync(string videoId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->getStatus");
+            
+
+            var localVarPath = "/videos/{videoId}/status";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<VideoStatus>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (VideoStatus) this.ApiClient.Deserialize(task.Result, typeof(VideoStatus)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Retrieve video status and details This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
