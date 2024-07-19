@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using ApiVideo.Upload;
 using RestSharp;
@@ -43,6 +44,21 @@ namespace ApiVideo.Api
         /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="file">The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.</param>
+        
+        /// <returns>Watermark</returns>
+		public Task<Watermark> uploadAsync(System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Watermark>> localVarResponse = uploadWithHttpInfoAsync(file, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Watermark>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="file">The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.</param>
         
         /// <returns>Watermark</returns>
@@ -51,6 +67,70 @@ namespace ApiVideo.Api
              ApiResponse<Watermark> localVarResponse = uploadWithHttpInfo(file);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="file">The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark.</param>
+        
+        /// <returns>ApiResponse of Watermark</returns>
+		public Task<ApiResponse<Watermark>> uploadWithHttpInfoAsync(System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling WatermarksApi->upload");
+            
+
+            var localVarPath = "/watermarks";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Watermark>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Watermark) this.ApiClient.Deserialize(task.Result, typeof(Watermark)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image.
@@ -114,6 +194,19 @@ namespace ApiVideo.Api
         /// Delete a watermark Delete a watermark.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="watermarkId">The watermark ID for the watermark you want to delete.</param>
+        
+        /// <returns></returns>
+		public void deleteAsync(string watermarkId, CancellationToken cancellationToken = default)
+        {
+             deleteWithHttpInfoAsync(watermarkId, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete a watermark Delete a watermark.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="watermarkId">The watermark ID for the watermark you want to delete.</param>
         
         /// <returns></returns>
@@ -121,6 +214,65 @@ namespace ApiVideo.Api
         {
              deleteWithHttpInfo(watermarkId);
         }
+
+
+        /// <summary>
+        /// Delete a watermark Delete a watermark.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="watermarkId">The watermark ID for the watermark you want to delete.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public Task<ApiResponse<Object>> deleteWithHttpInfoAsync(string watermarkId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'watermarkId' is set
+            if (watermarkId == null)
+                throw new ApiException(400, "Missing required parameter 'watermarkId' when calling WatermarksApi->delete");
+            
+
+            var localVarPath = "/watermarks/{watermarkId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (watermarkId != null) localVarPathParams.Add("watermarkId", this.ApiClient.ParameterToString(watermarkId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Object>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    null);
+            });
+            
+        }
+
 
         /// <summary>
         /// Delete a watermark Delete a watermark.
@@ -180,6 +332,24 @@ namespace ApiVideo.Api
         /// List all watermarks List all watermarks associated with your workspace.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="sortBy">Allowed: createdAt. You can search by the time watermark were created at. (optional)</param>
+/// <param name="sortOrder">Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>WatermarksListResponse</returns>
+		public Task<WatermarksListResponse> listAsync(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<WatermarksListResponse>> localVarResponse = listWithHttpInfoAsync(sortBy, sortOrder, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<WatermarksListResponse>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// List all watermarks List all watermarks associated with your workspace.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sortBy">Allowed: createdAt. You can search by the time watermark were created at. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
@@ -191,6 +361,72 @@ namespace ApiVideo.Api
              ApiResponse<WatermarksListResponse> localVarResponse = listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// List all watermarks List all watermarks associated with your workspace.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="sortBy">Allowed: createdAt. You can search by the time watermark were created at. (optional)</param>
+/// <param name="sortOrder">Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of WatermarksListResponse</returns>
+		public Task<ApiResponse<WatermarksListResponse>> listWithHttpInfoAsync(string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+
+
+
+
+            
+
+            var localVarPath = "/watermarks";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (sortBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (sortOrder != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortOrder", sortOrder)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<WatermarksListResponse>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (WatermarksListResponse) this.ApiClient.Deserialize(task.Result, typeof(WatermarksListResponse)));
+            });
+            
+        }
+
 
         /// <summary>
         /// List all watermarks List all watermarks associated with your workspace.

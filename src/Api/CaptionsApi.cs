@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using ApiVideo.Upload;
 using RestSharp;
@@ -43,6 +44,23 @@ namespace ApiVideo.Api
         /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to add a caption to.</param>
+/// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
+/// <param name="file">The video text track (VTT) you want to upload.</param>
+        
+        /// <returns>Caption</returns>
+		public Task<Caption> uploadAsync(string videoId, string language, System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Caption>> localVarResponse = uploadWithHttpInfoAsync(videoId, language, file, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Caption>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to add a caption to.</param>
 /// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
 /// <param name="file">The video text track (VTT) you want to upload.</param>
@@ -53,6 +71,82 @@ namespace ApiVideo.Api
              ApiResponse<Caption> localVarResponse = uploadWithHttpInfo(videoId, language, file);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to add a caption to.</param>
+/// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
+/// <param name="file">The video text track (VTT) you want to upload.</param>
+        
+        /// <returns>ApiResponse of Caption</returns>
+		public Task<ApiResponse<Caption>> uploadWithHttpInfoAsync(string videoId, string language, System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling CaptionsApi->upload");
+            // verify the required parameter 'language' is set
+            if (language == null)
+                throw new ApiException(400, "Missing required parameter 'language' when calling CaptionsApi->upload");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling CaptionsApi->upload");
+            
+
+            var localVarPath = "/videos/{videoId}/captions/{language}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
+            
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Caption>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Caption) this.ApiClient.Deserialize(task.Result, typeof(Caption)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Upload a caption Upload a VTT file to add captions to your video. More information can be found [here](https://docs.api.video/vod/add-captions)
@@ -130,6 +224,24 @@ namespace ApiVideo.Api
         /// Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want captions for.</param>
+/// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
+        
+        /// <returns>Caption</returns>
+		public Task<Caption> getAsync(string videoId, string language, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Caption>> localVarResponse = getWithHttpInfoAsync(videoId, language, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Caption>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Retrieve a caption Retrieve a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a error indicating the caption was not found.
+        /// 
+        /// Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want captions for.</param>
 /// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
         
@@ -139,6 +251,74 @@ namespace ApiVideo.Api
              ApiResponse<Caption> localVarResponse = getWithHttpInfo(videoId, language);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Retrieve a caption Retrieve a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a error indicating the caption was not found.
+        /// 
+        /// Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want captions for.</param>
+/// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
+        
+        /// <returns>ApiResponse of Caption</returns>
+		public Task<ApiResponse<Caption>> getWithHttpInfoAsync(string videoId, string language, CancellationToken cancellationToken = default)
+        {
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling CaptionsApi->get");
+            // verify the required parameter 'language' is set
+            if (language == null)
+                throw new ApiException(400, "Missing required parameter 'language' when calling CaptionsApi->get");
+            
+
+            var localVarPath = "/videos/{videoId}/captions/{language}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Caption>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Caption) this.ApiClient.Deserialize(task.Result, typeof(Caption)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Retrieve a caption Retrieve a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a error indicating the caption was not found.
@@ -206,6 +386,23 @@ namespace ApiVideo.Api
         /// Update a caption To have the captions on automatically, use this method to set default: true.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to have automatic captions for.</param>
+/// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
+/// <param name="captionsUpdatePayload"></param>
+        
+        /// <returns>Caption</returns>
+		public Task<Caption> updateAsync(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Caption>> localVarResponse = updateWithHttpInfoAsync(videoId, language, captionsUpdatePayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Caption>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Update a caption To have the captions on automatically, use this method to set default: true.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to have automatic captions for.</param>
 /// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
 /// <param name="captionsUpdatePayload"></param>
@@ -216,6 +413,95 @@ namespace ApiVideo.Api
              ApiResponse<Caption> localVarResponse = updateWithHttpInfo(videoId, language, captionsUpdatePayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Update a caption To have the captions on automatically, use this method to set default: true.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to have automatic captions for.</param>
+/// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
+/// <param name="captionsUpdatePayload"></param>
+        
+        /// <returns>ApiResponse of Caption</returns>
+		public Task<ApiResponse<Caption>> updateWithHttpInfoAsync(string videoId, string language, CaptionsUpdatePayload captionsUpdatePayload, CancellationToken cancellationToken = default)
+        {
+            if (captionsUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'captionsUpdatePayload' when calling CaptionsApi->update");
+            
+            
+            if (captionsUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'captionsUpdatePayload' when calling CaptionsApi->update");
+            
+            
+            if (captionsUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'captionsUpdatePayload' when calling CaptionsApi->update");
+            
+            
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling CaptionsApi->update");
+            // verify the required parameter 'language' is set
+            if (language == null)
+                throw new ApiException(400, "Missing required parameter 'language' when calling CaptionsApi->update");
+            // verify the required parameter 'captionsUpdatePayload' is set
+            if (captionsUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'captionsUpdatePayload' when calling CaptionsApi->update");
+            
+
+            var localVarPath = "/videos/{videoId}/captions/{language}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
+            if (captionsUpdatePayload != null && captionsUpdatePayload.GetType() != typeof(byte[]) && captionsUpdatePayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(captionsUpdatePayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = captionsUpdatePayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Patch, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Caption>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Caption) this.ApiClient.Deserialize(task.Result, typeof(Caption)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Update a caption To have the captions on automatically, use this method to set default: true.
@@ -304,6 +590,20 @@ namespace ApiVideo.Api
         /// Delete a caption Delete a caption in a specific language by by video id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to delete a caption from.</param>
+/// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
+        
+        /// <returns></returns>
+		public void deleteAsync(string videoId, string language, CancellationToken cancellationToken = default)
+        {
+             deleteWithHttpInfoAsync(videoId, language, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete a caption Delete a caption in a specific language by by video id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to delete a caption from.</param>
 /// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
         
@@ -312,6 +612,71 @@ namespace ApiVideo.Api
         {
              deleteWithHttpInfo(videoId, language);
         }
+
+
+        /// <summary>
+        /// Delete a caption Delete a caption in a specific language by by video id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to delete a caption from.</param>
+/// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public Task<ApiResponse<Object>> deleteWithHttpInfoAsync(string videoId, string language, CancellationToken cancellationToken = default)
+        {
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling CaptionsApi->delete");
+            // verify the required parameter 'language' is set
+            if (language == null)
+                throw new ApiException(400, "Missing required parameter 'language' when calling CaptionsApi->delete");
+            
+
+            var localVarPath = "/videos/{videoId}/captions/{language}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (language != null) localVarPathParams.Add("language", this.ApiClient.ParameterToString(language)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Object>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    null);
+            });
+            
+        }
+
 
         /// <summary>
         /// Delete a caption Delete a caption in a specific language by by video id.
@@ -377,6 +742,23 @@ namespace ApiVideo.Api
         /// List video captions Retrieve a list of available captions by video id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to retrieve a list of captions for.</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>CaptionsListResponse</returns>
+		public Task<CaptionsListResponse> listAsync(string videoId, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<CaptionsListResponse>> localVarResponse = listWithHttpInfoAsync(videoId, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<CaptionsListResponse>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// List video captions Retrieve a list of available captions by video id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The unique identifier for the video you want to retrieve a list of captions for.</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -387,6 +769,72 @@ namespace ApiVideo.Api
              ApiResponse<CaptionsListResponse> localVarResponse = listWithHttpInfo(videoId, currentPage, pageSize);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// List video captions Retrieve a list of available captions by video id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want to retrieve a list of captions for.</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of CaptionsListResponse</returns>
+		public Task<ApiResponse<CaptionsListResponse>> listWithHttpInfoAsync(string videoId, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+
+
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling CaptionsApi->list");
+            
+
+            var localVarPath = "/videos/{videoId}/captions";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<CaptionsListResponse>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (CaptionsListResponse) this.ApiClient.Deserialize(task.Result, typeof(CaptionsListResponse)));
+            });
+            
+        }
+
 
         /// <summary>
         /// List video captions Retrieve a list of available captions by video id.

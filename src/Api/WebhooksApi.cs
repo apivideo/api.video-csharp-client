@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using ApiVideo.Upload;
 using RestSharp;
@@ -43,6 +44,21 @@ namespace ApiVideo.Api
         /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;: \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;: \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;, \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed. * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60;  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60;  This event fires when a live stream has finished broadcasting. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60;  This event occurs when a live stream is recorded and submitted for encoding.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="webhooksCreationPayload"></param>
+        
+        /// <returns>Webhook</returns>
+		public Task<Webhook> createAsync(WebhooksCreationPayload webhooksCreationPayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Webhook>> localVarResponse = createWithHttpInfoAsync(webhooksCreationPayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Webhook>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;: \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;: \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;, \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed. * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60;  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60;  This event fires when a live stream has finished broadcasting. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60;  This event occurs when a live stream is recorded and submitted for encoding.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhooksCreationPayload"></param>
         
         /// <returns>Webhook</returns>
@@ -51,6 +67,83 @@ namespace ApiVideo.Api
              ApiResponse<Webhook> localVarResponse = createWithHttpInfo(webhooksCreationPayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;: \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;: \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;, \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed. * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60;  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60;  This event fires when a live stream has finished broadcasting. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60;  This event occurs when a live stream is recorded and submitted for encoding.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="webhooksCreationPayload"></param>
+        
+        /// <returns>ApiResponse of Webhook</returns>
+		public Task<ApiResponse<Webhook>> createWithHttpInfoAsync(WebhooksCreationPayload webhooksCreationPayload, CancellationToken cancellationToken = default)
+        {
+            if (webhooksCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload' when calling WebhooksApi->create");
+            
+            if (webhooksCreationPayload != null && webhooksCreationPayload.events == null) {
+                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload.Events' when calling WebhooksApi->create");
+            }
+                        if (webhooksCreationPayload != null && webhooksCreationPayload.url == null) {
+                throw new ApiException(400,"Missing required parameter 'webhooksCreationPayload.Url' when calling WebhooksApi->create");
+            }
+            
+            // verify the required parameter 'webhooksCreationPayload' is set
+            if (webhooksCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'webhooksCreationPayload' when calling WebhooksApi->create");
+            
+
+            var localVarPath = "/webhooks";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (webhooksCreationPayload != null && webhooksCreationPayload.GetType() != typeof(byte[]) && webhooksCreationPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(webhooksCreationPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = webhooksCreationPayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Webhook>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Webhook) this.ApiClient.Deserialize(task.Result, typeof(Webhook)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Create Webhook Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer four events:  * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is encoded, your webhook will get a notification.  It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;: \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;: \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;, \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed. * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60;  When a live stream begins broadcasting, the broadcasting parameter changes from false to true, and this webhook fires. * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60;  This event fires when a live stream has finished broadcasting. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60;  This event occurs when a live stream is recorded and submitted for encoding.
@@ -127,6 +220,21 @@ namespace ApiVideo.Api
         /// Retrieve Webhook details Retrieve webhook details by id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="webhookId">The unique webhook you wish to retreive details on.</param>
+        
+        /// <returns>Webhook</returns>
+		public Task<Webhook> getAsync(string webhookId, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Webhook>> localVarResponse = getWithHttpInfoAsync(webhookId, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Webhook>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Retrieve Webhook details Retrieve webhook details by id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The unique webhook you wish to retreive details on.</param>
         
         /// <returns>Webhook</returns>
@@ -135,6 +243,66 @@ namespace ApiVideo.Api
              ApiResponse<Webhook> localVarResponse = getWithHttpInfo(webhookId);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Retrieve Webhook details Retrieve webhook details by id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="webhookId">The unique webhook you wish to retreive details on.</param>
+        
+        /// <returns>ApiResponse of Webhook</returns>
+		public Task<ApiResponse<Webhook>> getWithHttpInfoAsync(string webhookId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'webhookId' is set
+            if (webhookId == null)
+                throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->get");
+            
+
+            var localVarPath = "/webhooks/{webhookId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (webhookId != null) localVarPathParams.Add("webhookId", this.ApiClient.ParameterToString(webhookId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Webhook>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Webhook) this.ApiClient.Deserialize(task.Result, typeof(Webhook)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Retrieve Webhook details Retrieve webhook details by id.
@@ -194,6 +362,19 @@ namespace ApiVideo.Api
         /// Delete a Webhook This method will delete the indicated webhook.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="webhookId">The webhook you wish to delete.</param>
+        
+        /// <returns></returns>
+		public void deleteAsync(string webhookId, CancellationToken cancellationToken = default)
+        {
+             deleteWithHttpInfoAsync(webhookId, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete a Webhook This method will delete the indicated webhook.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="webhookId">The webhook you wish to delete.</param>
         
         /// <returns></returns>
@@ -201,6 +382,65 @@ namespace ApiVideo.Api
         {
              deleteWithHttpInfo(webhookId);
         }
+
+
+        /// <summary>
+        /// Delete a Webhook This method will delete the indicated webhook.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="webhookId">The webhook you wish to delete.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public Task<ApiResponse<Object>> deleteWithHttpInfoAsync(string webhookId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'webhookId' is set
+            if (webhookId == null)
+                throw new ApiException(400, "Missing required parameter 'webhookId' when calling WebhooksApi->delete");
+            
+
+            var localVarPath = "/webhooks/{webhookId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (webhookId != null) localVarPathParams.Add("webhookId", this.ApiClient.ParameterToString(webhookId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Object>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    null);
+            });
+            
+        }
+
 
         /// <summary>
         /// Delete a Webhook This method will delete the indicated webhook.
@@ -262,6 +502,25 @@ namespace ApiVideo.Api
         /// You can filter what the webhook list that the API returns using the parameters described below.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="events">The webhook event that you wish to filter on. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>WebhooksListResponse</returns>
+		public Task<WebhooksListResponse> listAsync(string events = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<WebhooksListResponse>> localVarResponse = listWithHttpInfoAsync(events, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<WebhooksListResponse>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// List all webhooks Thie method returns a list of your webhooks (with all their details). 
+        /// 
+        /// You can filter what the webhook list that the API returns using the parameters described below.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="events">The webhook event that you wish to filter on. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -272,6 +531,71 @@ namespace ApiVideo.Api
              ApiResponse<WebhooksListResponse> localVarResponse = listWithHttpInfo(events, currentPage, pageSize);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// List all webhooks Thie method returns a list of your webhooks (with all their details). 
+        /// 
+        /// You can filter what the webhook list that the API returns using the parameters described below.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="events">The webhook event that you wish to filter on. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of WebhooksListResponse</returns>
+		public Task<ApiResponse<WebhooksListResponse>> listWithHttpInfoAsync(string events = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+
+
+
+            
+
+            var localVarPath = "/webhooks";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (events != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "events", events)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<WebhooksListResponse>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (WebhooksListResponse) this.ApiClient.Deserialize(task.Result, typeof(WebhooksListResponse)));
+            });
+            
+        }
+
 
         /// <summary>
         /// List all webhooks Thie method returns a list of your webhooks (with all their details). 

@@ -94,7 +94,7 @@ namespace ApiVideo.Client
         private void Initialize(IRestClient client)
         {
             this.RestClient = client;
-            setName("AV-Origin-Client", "csharp", "1.4.0");
+            setName("AV-Origin-Client", "csharp", "1.5.0");
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace ApiVideo.Client
         /// <param name="contentType">Content type.</param>
         /// <param name="cancellationToken">Cancellation Token.</param>
         /// <returns>The Task instance.</returns>
-        public async System.Threading.Tasks.Task<Object> CallApiAsync(
+        public async System.Threading.Tasks.Task<RestResponse> CallApiAsync(
             string path, RestSharp.Method method, List<KeyValuePair<string, string>> queryParams, Object postBody,
             Dictionary<string, string> headerParams, Dictionary<string, string> formParams,
             Dictionary<string, FileParameter> fileParams, Dictionary<string, string> pathParams,
@@ -328,7 +328,7 @@ namespace ApiVideo.Client
                 pathParams, contentType);
             request = InterceptRequest(request);
             var response = await RestClient.ExecuteAsync(request, cancellationToken);
-            return (Object)response;
+            return (RestResponse)response;
         }
 
         /// <summary>

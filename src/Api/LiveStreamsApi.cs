@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using ApiVideo.Upload;
 using RestSharp;
@@ -43,6 +44,21 @@ namespace ApiVideo.Api
         /// Create live stream Creates a livestream object.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamCreationPayload"></param>
+        
+        /// <returns>LiveStream</returns>
+		public Task<LiveStream> createAsync(LiveStreamCreationPayload liveStreamCreationPayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<LiveStream>> localVarResponse = createWithHttpInfoAsync(liveStreamCreationPayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<LiveStream>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Create live stream Creates a livestream object.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamCreationPayload"></param>
         
         /// <returns>LiveStream</returns>
@@ -51,6 +67,80 @@ namespace ApiVideo.Api
              ApiResponse<LiveStream> localVarResponse = createWithHttpInfo(liveStreamCreationPayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Create live stream Creates a livestream object.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamCreationPayload"></param>
+        
+        /// <returns>ApiResponse of LiveStream</returns>
+		public Task<ApiResponse<LiveStream>> createWithHttpInfoAsync(LiveStreamCreationPayload liveStreamCreationPayload, CancellationToken cancellationToken = default)
+        {
+            if (liveStreamCreationPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'liveStreamCreationPayload' when calling LiveStreamsApi->create");
+            
+            if (liveStreamCreationPayload != null && liveStreamCreationPayload.name == null) {
+                throw new ApiException(400,"Missing required parameter 'liveStreamCreationPayload.Name' when calling LiveStreamsApi->create");
+            }
+                                                
+            // verify the required parameter 'liveStreamCreationPayload' is set
+            if (liveStreamCreationPayload == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamCreationPayload' when calling LiveStreamsApi->create");
+            
+
+            var localVarPath = "/live-streams";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamCreationPayload != null && liveStreamCreationPayload.GetType() != typeof(byte[]) && liveStreamCreationPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(liveStreamCreationPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = liveStreamCreationPayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<LiveStream>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (LiveStream) this.ApiClient.Deserialize(task.Result, typeof(LiveStream)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Create live stream Creates a livestream object.
@@ -124,6 +214,21 @@ namespace ApiVideo.Api
         /// Retrieve live stream Get a livestream by id.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
+        
+        /// <returns>LiveStream</returns>
+		public Task<LiveStream> getAsync(string liveStreamId, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<LiveStream>> localVarResponse = getWithHttpInfoAsync(liveStreamId, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<LiveStream>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Retrieve live stream Get a livestream by id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
         
         /// <returns>LiveStream</returns>
@@ -132,6 +237,66 @@ namespace ApiVideo.Api
              ApiResponse<LiveStream> localVarResponse = getWithHttpInfo(liveStreamId);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Retrieve live stream Get a livestream by id.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to watch.</param>
+        
+        /// <returns>ApiResponse of LiveStream</returns>
+		public Task<ApiResponse<LiveStream>> getWithHttpInfoAsync(string liveStreamId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->get");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<LiveStream>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (LiveStream) this.ApiClient.Deserialize(task.Result, typeof(LiveStream)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Retrieve live stream Get a livestream by id.
@@ -191,6 +356,22 @@ namespace ApiVideo.Api
         /// Update a live stream Updates the livestream object.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details.</param>
+/// <param name="liveStreamUpdatePayload"></param>
+        
+        /// <returns>LiveStream</returns>
+		public Task<LiveStream> updateAsync(string liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<LiveStream>> localVarResponse = updateWithHttpInfoAsync(liveStreamId, liveStreamUpdatePayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<LiveStream>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Update a live stream Updates the livestream object.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details.</param>
 /// <param name="liveStreamUpdatePayload"></param>
         
@@ -200,6 +381,86 @@ namespace ApiVideo.Api
              ApiResponse<LiveStream> localVarResponse = updateWithHttpInfo(liveStreamId, liveStreamUpdatePayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Update a live stream Updates the livestream object.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream that you want to update information for such as player details.</param>
+/// <param name="liveStreamUpdatePayload"></param>
+        
+        /// <returns>ApiResponse of LiveStream</returns>
+		public Task<ApiResponse<LiveStream>> updateWithHttpInfoAsync(string liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload, CancellationToken cancellationToken = default)
+        {
+            if (liveStreamUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
+            
+                                                
+            if (liveStreamUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
+            
+                                                
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->update");
+            // verify the required parameter 'liveStreamUpdatePayload' is set
+            if (liveStreamUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamUpdatePayload' when calling LiveStreamsApi->update");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+            if (liveStreamUpdatePayload != null && liveStreamUpdatePayload.GetType() != typeof(byte[]) && liveStreamUpdatePayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(liveStreamUpdatePayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = liveStreamUpdatePayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Patch, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<LiveStream>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (LiveStream) this.ApiClient.Deserialize(task.Result, typeof(LiveStream)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Update a live stream Updates the livestream object.
@@ -279,6 +540,19 @@ namespace ApiVideo.Api
         /// Delete a live stream If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
+        
+        /// <returns></returns>
+		public void deleteAsync(string liveStreamId, CancellationToken cancellationToken = default)
+        {
+             deleteWithHttpInfoAsync(liveStreamId, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete a live stream If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
         
         /// <returns></returns>
@@ -286,6 +560,65 @@ namespace ApiVideo.Api
         {
              deleteWithHttpInfo(liveStreamId);
         }
+
+
+        /// <summary>
+        /// Delete a live stream If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public Task<ApiResponse<Object>> deleteWithHttpInfoAsync(string liveStreamId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->delete");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Object>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    null);
+            });
+            
+        }
+
 
         /// <summary>
         /// Delete a live stream If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
@@ -345,6 +678,26 @@ namespace ApiVideo.Api
         /// List all live streams Get the list of livestreams on the workspace.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="streamKey">The unique stream key that allows you to stream videos. (optional)</param>
+/// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
+/// <param name="sortBy">Enables you to sort live stream results. Allowed attributes: &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. &#x60;name&#x60; - the name of the live stream. &#x60;createdAt&#x60; - the time a live stream was created. &#x60;updatedAt&#x60; - the time a live stream was last updated.  When using &#x60;createdAt&#x60; or &#x60;updatedAt&#x60;, the API sorts the results based on the ISO-8601 time format.  (optional)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>LiveStreamListResponse</returns>
+		public Task<LiveStreamListResponse> listAsync(string streamKey = default, string name = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<LiveStreamListResponse>> localVarResponse = listWithHttpInfoAsync(streamKey, name, sortBy, sortOrder, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<LiveStreamListResponse>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// List all live streams Get the list of livestreams on the workspace.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="streamKey">The unique stream key that allows you to stream videos. (optional)</param>
 /// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
 /// <param name="sortBy">Enables you to sort live stream results. Allowed attributes: &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. &#x60;name&#x60; - the name of the live stream. &#x60;createdAt&#x60; - the time a live stream was created. &#x60;updatedAt&#x60; - the time a live stream was last updated.  When using &#x60;createdAt&#x60; or &#x60;updatedAt&#x60;, the API sorts the results based on the ISO-8601 time format.  (optional)</param>
@@ -358,6 +711,78 @@ namespace ApiVideo.Api
              ApiResponse<LiveStreamListResponse> localVarResponse = listWithHttpInfo(streamKey, name, sortBy, sortOrder, currentPage, pageSize);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// List all live streams Get the list of livestreams on the workspace.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="streamKey">The unique stream key that allows you to stream videos. (optional)</param>
+/// <param name="name">You can filter live streams by their name or a part of their name. (optional)</param>
+/// <param name="sortBy">Enables you to sort live stream results. Allowed attributes: &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. &#x60;name&#x60; - the name of the live stream. &#x60;createdAt&#x60; - the time a live stream was created. &#x60;updatedAt&#x60; - the time a live stream was last updated.  When using &#x60;createdAt&#x60; or &#x60;updatedAt&#x60;, the API sorts the results based on the ISO-8601 time format.  (optional)</param>
+/// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of LiveStreamListResponse</returns>
+		public Task<ApiResponse<LiveStreamListResponse>> listWithHttpInfoAsync(string streamKey = default, string name = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+
+
+
+
+
+
+            
+
+            var localVarPath = "/live-streams";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (streamKey != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "streamKey", streamKey)); // query parameter
+            if (name != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "name", name)); // query parameter
+            if (sortBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (sortOrder != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortOrder", sortOrder)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<LiveStreamListResponse>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (LiveStreamListResponse) this.ApiClient.Deserialize(task.Result, typeof(LiveStreamListResponse)));
+            });
+            
+        }
+
 
         /// <summary>
         /// List all live streams Get the list of livestreams on the workspace.
@@ -546,6 +971,22 @@ namespace ApiVideo.Api
         /// Upload a thumbnail Upload the thumbnail for the livestream.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to upload.</param>
+/// <param name="file">The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.</param>
+        
+        /// <returns>LiveStream</returns>
+		public Task<LiveStream> uploadThumbnailAsync(string liveStreamId, System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<LiveStream>> localVarResponse = uploadThumbnailWithHttpInfoAsync(liveStreamId, file, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<LiveStream>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Upload a thumbnail Upload the thumbnail for the livestream.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique ID for the live stream you want to upload.</param>
 /// <param name="file">The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.</param>
         
@@ -555,6 +996,76 @@ namespace ApiVideo.Api
              ApiResponse<LiveStream> localVarResponse = uploadThumbnailWithHttpInfo(liveStreamId, file);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Upload a thumbnail Upload the thumbnail for the livestream.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to upload.</param>
+/// <param name="file">The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.</param>
+        
+        /// <returns>ApiResponse of LiveStream</returns>
+		public Task<ApiResponse<LiveStream>> uploadThumbnailWithHttpInfoAsync(string liveStreamId, System.IO.Stream file, CancellationToken cancellationToken = default)
+        {
+
+
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->uploadThumbnail");
+            // verify the required parameter 'file' is set
+            if (file == null)
+                throw new ApiException(400, "Missing required parameter 'file' when calling LiveStreamsApi->uploadThumbnail");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}/thumbnail";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "multipart/form-data"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+            
+
+
+            
+            if (file != null) 
+                localVarFileParams.Add("file", this.ApiClient.ParameterToFile("file", file));
+
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<LiveStream>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (LiveStream) this.ApiClient.Deserialize(task.Result, typeof(LiveStream)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Upload a thumbnail Upload the thumbnail for the livestream.
@@ -624,6 +1135,21 @@ namespace ApiVideo.Api
         /// Delete a thumbnail Send the unique identifier for a live stream to delete its thumbnail.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique identifier of the live stream whose thumbnail you want to delete.</param>
+        
+        /// <returns>LiveStream</returns>
+		public Task<LiveStream> deleteThumbnailAsync(string liveStreamId, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<LiveStream>> localVarResponse = deleteThumbnailWithHttpInfoAsync(liveStreamId, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<LiveStream>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Delete a thumbnail Send the unique identifier for a live stream to delete its thumbnail.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="liveStreamId">The unique identifier of the live stream whose thumbnail you want to delete.</param>
         
         /// <returns>LiveStream</returns>
@@ -632,6 +1158,66 @@ namespace ApiVideo.Api
              ApiResponse<LiveStream> localVarResponse = deleteThumbnailWithHttpInfo(liveStreamId);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Delete a thumbnail Send the unique identifier for a live stream to delete its thumbnail.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique identifier of the live stream whose thumbnail you want to delete.</param>
+        
+        /// <returns>ApiResponse of LiveStream</returns>
+		public Task<ApiResponse<LiveStream>> deleteThumbnailWithHttpInfoAsync(string liveStreamId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->deleteThumbnail");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}/thumbnail";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<LiveStream>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (LiveStream) this.ApiClient.Deserialize(task.Result, typeof(LiveStream)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Delete a thumbnail Send the unique identifier for a live stream to delete its thumbnail.

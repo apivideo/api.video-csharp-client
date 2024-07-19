@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using ApiVideo.Upload;
 using RestSharp;
@@ -43,6 +44,21 @@ namespace ApiVideo.Api
         /// Get Bearer Token Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="authenticatePayload"></param>
+        
+        /// <returns>AccessToken</returns>
+		public Task<AccessToken> authenticateAsync(AuthenticatePayload authenticatePayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<AccessToken>> localVarResponse = authenticateWithHttpInfoAsync(authenticatePayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<AccessToken>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Get Bearer Token Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authenticatePayload"></param>
         
         /// <returns>AccessToken</returns>
@@ -51,6 +67,80 @@ namespace ApiVideo.Api
              ApiResponse<AccessToken> localVarResponse = authenticateWithHttpInfo(authenticatePayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Get Bearer Token Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="authenticatePayload"></param>
+        
+        /// <returns>ApiResponse of AccessToken</returns>
+		public Task<ApiResponse<AccessToken>> authenticateWithHttpInfoAsync(AuthenticatePayload authenticatePayload, CancellationToken cancellationToken = default)
+        {
+            if (authenticatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'authenticatePayload' when calling AdvancedAuthenticationApi->authenticate");
+            
+            if (authenticatePayload != null && authenticatePayload.apikey == null) {
+                throw new ApiException(400,"Missing required parameter 'authenticatePayload.ApiKey' when calling AdvancedAuthenticationApi->authenticate");
+            }
+            
+            // verify the required parameter 'authenticatePayload' is set
+            if (authenticatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'authenticatePayload' when calling AdvancedAuthenticationApi->authenticate");
+            
+
+            var localVarPath = "/auth/api-key";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (authenticatePayload != null && authenticatePayload.GetType() != typeof(byte[]) && authenticatePayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(authenticatePayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = authenticatePayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<AccessToken>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (AccessToken) this.ApiClient.Deserialize(task.Result, typeof(AccessToken)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Get Bearer Token Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
@@ -124,6 +214,21 @@ namespace ApiVideo.Api
         /// Refresh Bearer Token Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="refreshTokenPayload"></param>
+        
+        /// <returns>AccessToken</returns>
+		public Task<AccessToken> refreshAsync(RefreshTokenPayload refreshTokenPayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<AccessToken>> localVarResponse = refreshWithHttpInfoAsync(refreshTokenPayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<AccessToken>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Refresh Bearer Token Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="refreshTokenPayload"></param>
         
         /// <returns>AccessToken</returns>
@@ -132,6 +237,80 @@ namespace ApiVideo.Api
              ApiResponse<AccessToken> localVarResponse = refreshWithHttpInfo(refreshTokenPayload);
              return localVarResponse.Data;
         }
+
+
+        /// <summary>
+        /// Refresh Bearer Token Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="refreshTokenPayload"></param>
+        
+        /// <returns>ApiResponse of AccessToken</returns>
+		public Task<ApiResponse<AccessToken>> refreshWithHttpInfoAsync(RefreshTokenPayload refreshTokenPayload, CancellationToken cancellationToken = default)
+        {
+            if (refreshTokenPayload == null) 
+                throw new ApiException(400,"Missing required parameter 'refreshTokenPayload' when calling AdvancedAuthenticationApi->refresh");
+            
+            if (refreshTokenPayload != null && refreshTokenPayload.refreshtoken == null) {
+                throw new ApiException(400,"Missing required parameter 'refreshTokenPayload.RefreshToken' when calling AdvancedAuthenticationApi->refresh");
+            }
+            
+            // verify the required parameter 'refreshTokenPayload' is set
+            if (refreshTokenPayload == null)
+                throw new ApiException(400, "Missing required parameter 'refreshTokenPayload' when calling AdvancedAuthenticationApi->refresh");
+            
+
+            var localVarPath = "/auth/refresh";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (refreshTokenPayload != null && refreshTokenPayload.GetType() != typeof(byte[]) && refreshTokenPayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(refreshTokenPayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = refreshTokenPayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<AccessToken>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (AccessToken) this.ApiClient.Deserialize(task.Result, typeof(AccessToken)));
+            });
+            
+        }
+
 
         /// <summary>
         /// Refresh Bearer Token Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
