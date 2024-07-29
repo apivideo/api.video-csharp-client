@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class PlayerSessionEvent {
+  public class PlayerSessionEvent: DeepObject   {
     /// <summary>
     /// Possible values are: ready, play, pause, resume, seek.backward, seek.forward, end
     /// </summary>

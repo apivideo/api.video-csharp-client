@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class VideoStatusIngestReceivedParts {
+  public class VideoStatusIngestReceivedParts: DeepObject   {
     /// <summary>
     /// The parts that have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been uploaded, the output will be [1, 2].
     /// </summary>

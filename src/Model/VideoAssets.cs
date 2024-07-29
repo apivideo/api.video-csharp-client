@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// Collection of details about the video object that you can use to work with the video object.
   /// </summary>
   [DataContract]
-  public class VideoAssets {
+  public class VideoAssets: DeepObject   {
     /// <summary>
     /// This is the manifest URL. For HTTP Live Streaming (HLS), when a HLS video stream is initiated, the first file to download is the manifest. This file has the extension M3U8, and provides the video player with information about the various bitrates available for streaming.
     /// </summary>

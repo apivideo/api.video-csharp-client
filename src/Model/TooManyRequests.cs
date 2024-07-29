@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class TooManyRequests {
+  public class TooManyRequests: DeepObject   {
     /// <summary>
     /// A link to the error documentation.
     /// </summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Link {
+  public class Link: DeepObject   {
     /// <summary>
     /// Gets or Sets Rel
     /// </summary>

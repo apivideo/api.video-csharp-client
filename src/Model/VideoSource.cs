@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// Source information about the video.
   /// </summary>
   [DataContract]
-  public class VideoSource {
+  public class VideoSource: DeepObject   {
     /// <summary>
     /// The URL where the video is stored.
     /// </summary>

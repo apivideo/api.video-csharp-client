@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class AnalyticsPlays400Error {
+  public class AnalyticsPlays400Error: DeepObject   {
     /// <summary>
     /// A link to the error documentation.
     /// </summary>

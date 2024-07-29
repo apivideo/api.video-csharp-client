@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Caption {
+  public class Caption: DeepObject   {
     /// <summary>
     /// The unique resource identifier of the uploaded caption.
     /// </summary>

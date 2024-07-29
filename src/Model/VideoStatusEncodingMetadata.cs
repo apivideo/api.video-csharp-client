@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class VideoStatusEncodingMetadata {
+  public class VideoStatusEncodingMetadata: DeepObject   {
     /// <summary>
     /// The width of the video in pixels.
     /// </summary>

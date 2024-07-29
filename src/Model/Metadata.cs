@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Metadata {
+  public class Metadata: DeepObject   {
     /// <summary>
     /// The constant that defines the data set.
     /// </summary>

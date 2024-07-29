@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class PlayerThemeAssets {
+  public class PlayerThemeAssets: DeepObject   {
     /// <summary>
     /// The name of the file containing the logo you want to use.
     /// </summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class WebhooksListResponse {
+  public class WebhooksListResponse: DeepObject   {
     /// <summary>
     /// Gets or Sets Data
     /// </summary>

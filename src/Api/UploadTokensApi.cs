@@ -354,9 +354,9 @@ namespace ApiVideo.Api
         /// <param name="uploadToken">The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication.</param>
         
         /// <returns></returns>
-		public void deleteTokenAsync(string uploadToken, CancellationToken cancellationToken = default)
+		public Task<ApiResponse<object>> deleteTokenAsync(string uploadToken, CancellationToken cancellationToken = default)
         {
-             deleteTokenWithHttpInfoAsync(uploadToken, cancellationToken);
+             return deleteTokenWithHttpInfoAsync(uploadToken, cancellationToken);
         }
 
         /// <summary>

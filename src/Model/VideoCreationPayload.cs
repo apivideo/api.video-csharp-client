@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class VideoCreationPayload {
+  public class VideoCreationPayload: DeepObject   {
     /// <summary>
     /// The title of your new video.
     /// </summary>
@@ -34,9 +34,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "source")]
     public string source { get; set; }
     /// <summary>
-    /// Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)
+    /// Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery/video-privacy-access-management)
     /// </summary>
-    /// <value>Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)</value>
+    /// <value>Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery/video-privacy-access-management)</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public Nullable<bool> _public { get; set; }

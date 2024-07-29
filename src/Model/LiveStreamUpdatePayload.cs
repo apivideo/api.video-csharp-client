@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class LiveStreamUpdatePayload {
+  public class LiveStreamUpdatePayload: DeepObject   {
     /// <summary>
     /// The name you want to use for your live stream.
     /// </summary>
@@ -20,9 +20,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "name")]
     public string name { get; set; }
     /// <summary>
-    /// Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+    /// Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).
     /// </summary>
-    /// <value>Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).</value>
+    /// <value>Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public Nullable<bool> _public { get; set; }
@@ -34,9 +34,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "playerId")]
     public string playerid { get; set; }
     /// <summary>
-    /// Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.
+    /// Use this parameter to add, edit, or remove `RTMPS` or `RTMP` services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.
     /// </summary>
-    /// <value>Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.</value>
+    /// <value>Use this parameter to add, edit, or remove `RTMPS` or `RTMP` services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.</value>
     [DataMember(Name="restreams", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "restreams")]
     public List<RestreamsRequestObject> restreams { get; set; }

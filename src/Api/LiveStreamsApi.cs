@@ -544,9 +544,9 @@ namespace ApiVideo.Api
         /// <param name="liveStreamId">The unique ID for the live stream that you want to remove.</param>
         
         /// <returns></returns>
-		public void deleteAsync(string liveStreamId, CancellationToken cancellationToken = default)
+		public Task<ApiResponse<object>> deleteAsync(string liveStreamId, CancellationToken cancellationToken = default)
         {
-             deleteWithHttpInfoAsync(liveStreamId, cancellationToken);
+             return deleteWithHttpInfoAsync(liveStreamId, cancellationToken);
         }
 
         /// <summary>
@@ -1269,6 +1269,144 @@ namespace ApiVideo.Api
             return new ApiResponse<LiveStream>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (LiveStream) this.ApiClient.Deserialize(localVarResponse, typeof(LiveStream)));
+            
+        }
+
+        
+        /// <summary>
+        /// Complete a live stream Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the &#x60;EXT-X-ENDLIST&#x60; tag to the live stream&#39;s HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream. 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to complete.</param>
+        
+        /// <returns></returns>
+		public Task<ApiResponse<object>> completeAsync(string liveStreamId, CancellationToken cancellationToken = default)
+        {
+             return completeWithHttpInfoAsync(liveStreamId, cancellationToken);
+        }
+
+        /// <summary>
+        /// Complete a live stream Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the &#x60;EXT-X-ENDLIST&#x60; tag to the live stream&#39;s HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream. 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to complete.</param>
+        
+        /// <returns></returns>
+		public void complete(string liveStreamId)
+        {
+             completeWithHttpInfo(liveStreamId);
+        }
+
+
+        /// <summary>
+        /// Complete a live stream Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the &#x60;EXT-X-ENDLIST&#x60; tag to the live stream&#39;s HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream. 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to complete.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public Task<ApiResponse<Object>> completeWithHttpInfoAsync(string liveStreamId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->complete");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}/complete";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Object>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    null);
+            });
+            
+        }
+
+
+        /// <summary>
+        /// Complete a live stream Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the &#x60;EXT-X-ENDLIST&#x60; tag to the live stream&#39;s HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream. 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="liveStreamId">The unique ID for the live stream you want to complete.</param>
+        
+        /// <returns>ApiResponse of Object(void)</returns>
+		public ApiResponse<Object> completeWithHttpInfo(string liveStreamId)
+        {
+
+            // verify the required parameter 'liveStreamId' is set
+            if (liveStreamId == null)
+                throw new ApiException(400, "Missing required parameter 'liveStreamId' when calling LiveStreamsApi->complete");
+            
+
+            var localVarPath = "/live-streams/{liveStreamId}/complete";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (liveStreamId != null) localVarPathParams.Add("liveStreamId", this.ApiClient.ParameterToString(liveStreamId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
             
         }
 

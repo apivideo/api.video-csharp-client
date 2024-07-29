@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Chapter {
+  public class Chapter: DeepObject   {
     /// <summary>
     /// Gets or Sets Uri
     /// </summary>

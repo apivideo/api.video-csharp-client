@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class VideoWatermark {
+  public class VideoWatermark: DeepObject   {
     /// <summary>
     /// id of the watermark
     /// </summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class TokenListResponse {
+  public class TokenListResponse: DeepObject   {
     /// <summary>
     /// Gets or Sets Data
     /// </summary>

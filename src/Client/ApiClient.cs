@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using RestSharp;
+using ApiVideo.Model;
 
 namespace ApiVideo.Client
 {
@@ -94,7 +95,7 @@ namespace ApiVideo.Client
         private void Initialize(IRestClient client)
         {
             this.RestClient = client;
-            setName("AV-Origin-Client", "csharp", "1.5.0");
+            setName("AV-Origin-Client", "csharp", "1.6.0");
         }
 
         /// <summary>
@@ -366,9 +367,9 @@ namespace ApiVideo.Client
         public string ParameterToString(object obj)
         {
             if (obj is DateTime dateTime)
-                return dateTime.ToString();
+                return dateTime.ToString("yyyy-MM-ddTHH:mm:ssKT");
             else if (obj is DateTimeOffset dateTimeOffset)
-                return dateTimeOffset.ToString();
+                return dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ssKT");
             else if (obj is bool isTrue)
                 return isTrue ? "true" : "false";
             else if (obj is IList list)
@@ -622,6 +623,25 @@ namespace ApiVideo.Client
                 {
                     parameters.Add(new KeyValuePair<string, string>(name + "[" + entry.Key + "]", ParameterToString(entry.Value)));
                 }
+            }
+            else if (value is DeepObject) {
+                var dict2 = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonConvert.SerializeObject(value, Newtonsoft.Json.Formatting.Indented));
+                foreach (var entry in dict2)
+                {
+                    if (entry.Value != null)
+                    {
+                        if (entry.Value is IList)
+                        {
+                            var valueCollection = entry.Value as IEnumerable;
+                            foreach (object item in valueCollection)
+                            {
+                                parameters.Add(new KeyValuePair<string, string>(name + "[" + entry.Key + "][]", ParameterToString(item)));
+                            }
+                        } else {
+                          parameters.Add(new KeyValuePair<string, string>(name + "[" + entry.Key + "]", ParameterToString(entry.Value)));
+                        }
+                    }
+                 }
             }
             else
             {

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class CaptionsListResponse {
+  public class CaptionsListResponse: DeepObject   {
     /// <summary>
     /// Gets or Sets Data
     /// </summary>

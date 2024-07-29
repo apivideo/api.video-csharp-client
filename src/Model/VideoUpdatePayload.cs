@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class VideoUpdatePayload {
+  public class VideoUpdatePayload: DeepObject   {
 
     [DataMember(Name="playerId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "playerId")]

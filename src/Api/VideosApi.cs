@@ -1395,9 +1395,9 @@ namespace ApiVideo.Api
         /// <param name="videoId">The video ID for the video you want to delete.</param>
         
         /// <returns></returns>
-		public void deleteAsync(string videoId, CancellationToken cancellationToken = default)
+		public Task<ApiResponse<object>> deleteAsync(string videoId, CancellationToken cancellationToken = default)
         {
-             deleteWithHttpInfoAsync(videoId, cancellationToken);
+             return deleteWithHttpInfoAsync(videoId, cancellationToken);
         }
 
         /// <summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class BadRequest {
+  public class BadRequest: DeepObject   {
     /// <summary>
     /// A link to the error documentation.
     /// </summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class LiveStream {
+  public class LiveStream: DeepObject   {
     /// <summary>
     /// The unique identifier for the live stream. Live stream IDs begin with \"li.\"
     /// </summary>
@@ -34,9 +34,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "streamKey")]
     public string streamkey { get; set; }
     /// <summary>
-    /// Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+    /// Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).
     /// </summary>
-    /// <value>Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).</value>
+    /// <value>Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public Nullable<bool> _public { get; set; }
@@ -61,9 +61,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "broadcasting")]
     public Nullable<bool> broadcasting { get; set; }
     /// <summary>
-    /// Returns the list of RTMP restream destinations.
+    /// Returns the list of restream destinations.
     /// </summary>
-    /// <value>Returns the list of RTMP restream destinations.</value>
+    /// <value>Returns the list of restream destinations.</value>
     [DataMember(Name="restreams", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "restreams")]
     public List<RestreamsResponseObject> restreams { get; set; }

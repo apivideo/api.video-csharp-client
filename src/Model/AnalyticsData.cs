@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class AnalyticsData {
+  public class AnalyticsData: DeepObject   {
     /// <summary>
     /// Shows a value for the property you have specified for `dimension` in your request. For example, if you requested `dimension=videoId`, each `value` field in the response returns a different videoId.
     /// </summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Video {
+  public class Video: DeepObject   {
     /// <summary>
     /// The unique identifier of the video object.
     /// </summary>
