@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class TokenCreationPayload {
+  public class TokenCreationPayload: DeepObject   {
     /// <summary>
     /// Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
     /// </summary>

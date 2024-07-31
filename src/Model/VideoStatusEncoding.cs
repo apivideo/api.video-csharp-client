@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class VideoStatusEncoding {
+  public class VideoStatusEncoding: DeepObject   {
     /// <summary>
     /// Whether the video is playable or not.
     /// </summary>

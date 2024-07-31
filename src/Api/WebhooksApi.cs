@@ -366,9 +366,9 @@ namespace ApiVideo.Api
         /// <param name="webhookId">The webhook you wish to delete.</param>
         
         /// <returns></returns>
-		public void deleteAsync(string webhookId, CancellationToken cancellationToken = default)
+		public Task<ApiResponse<object>> deleteAsync(string webhookId, CancellationToken cancellationToken = default)
         {
-             deleteWithHttpInfoAsync(webhookId, cancellationToken);
+             return deleteWithHttpInfoAsync(webhookId, cancellationToken);
         }
 
         /// <summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Pagination {
+  public class Pagination: DeepObject   {
     /// <summary>
     /// Total number of items that exist.
     /// </summary>

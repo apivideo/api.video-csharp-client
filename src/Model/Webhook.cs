@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Webhook {
+  public class Webhook: DeepObject   {
     /// <summary>
     /// Unique identifier of the webhook
     /// </summary>

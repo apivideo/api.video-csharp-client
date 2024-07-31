@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// Details about the capturing, transferring, and storing of your video for use immediately or in the future.
   /// </summary>
   [DataContract]
-  public class VideoStatusIngest {
+  public class VideoStatusIngest: DeepObject   {
     /// <summary>
     /// There are four possible statuses depending on how you provide a video file: - `uploading` - the API is gathering the video source file from an upload. - `uploaded` - the video file is fully uploaded. - `ingesting` - the API is gathering the video source file from either a URL, or from cloning. - `ingested` - the video file is fully stored. 
     /// </summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class BytesRange {
+  public class BytesRange: DeepObject   {
     /// <summary>
     /// The starting point for the range of bytes for a chunk of a video.
     /// </summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class LiveStreamAssets {
+  public class LiveStreamAssets: DeepObject   {
     /// <summary>
     /// The http live streaming (HLS) link for your live video stream.
     /// </summary>

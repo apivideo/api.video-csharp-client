@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class CaptionsUpdatePayload {
+  public class CaptionsUpdatePayload: DeepObject   {
     /// <summary>
     /// Gets or Sets Default
     /// </summary>

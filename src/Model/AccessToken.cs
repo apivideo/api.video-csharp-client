@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class AccessToken {
+  public class AccessToken: DeepObject   {
     /// <summary>
     /// The access token containing security credentials allowing you to acccess the API. The token lasts for one hour.
     /// </summary>

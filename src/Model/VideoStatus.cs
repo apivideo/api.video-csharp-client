@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class VideoStatus {
+  public class VideoStatus: DeepObject   {
     /// <summary>
     /// Gets or Sets Ingest
     /// </summary>

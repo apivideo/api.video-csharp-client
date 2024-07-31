@@ -41,74 +41,70 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Get play events for live stream Retrieve filtered analytics about the number of plays for your live streams in a project.
+        /// Retrieve aggregated metrics Retrieve time-based and countable metrics like average watch time or the number of impressions over a certain period of time.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
-/// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;liveStreamId&#x60;: Returns analytics based on the public live stream identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.</param>
-/// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-/// <param name="filter">Use this query parameter to filter your results to a specific live stream in a project that you want analytics for. You must use the &#x60;liveStreamId:&#x60; prefix when specifying a live stream ID. (optional)</param>
-/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. You can use the aggregations &#x60;count&#x60;, &#x60;rate&#x60;, and &#x60;total&#x60; with the &#x60;play&#x60; metric. - &#x60;start&#x60; is the number of times playback was started. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression-time&#x60; is the time in milliseconds that your content was loading for until the first video frame is displayed. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. - &#x60;watch-time&#x60; is the cumulative time in seconds that the user has spent watching your content. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. </param>
+/// <param name="aggregation">Use this path parameter to define a way of collecting data for the metric that you want analytics for.  - &#x60;count&#x60; returns the overall number of events for the &#x60;play&#x60; metric. - &#x60;rate&#x60; returns the ratio that calculates the number of plays your content receives divided by its impressions. This aggregation can be used only with the &#x60;play&#x60; metric. - &#x60;total&#x60; calculates the total number of events for the &#x60;play&#x60; metric.  - &#x60;average&#x60; calculates an average value for the selected metric. - &#x60;sum&#x60; adds up the total value of the select metric. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60; - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;.  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
         
-        /// <returns>AnalyticsPlaysResponse</returns>
-		public Task<AnalyticsPlaysResponse> getLiveStreamsPlaysAsync(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        /// <returns>AnalyticsAggregatedMetricsResponse</returns>
+		public Task<AnalyticsAggregatedMetricsResponse> getAggregatedMetricsAsync(string metric, string aggregation, DateTime? from = default, DateTime? to = default, FilterBy2 filterBy = default, CancellationToken cancellationToken = default)
         {
-             Task<ApiResponse<AnalyticsPlaysResponse>> localVarResponse = getLiveStreamsPlaysWithHttpInfoAsync(from, dimension, to, filter, currentPage, pageSize, cancellationToken);
-             return localVarResponse.ContinueWith((Task<ApiResponse<AnalyticsPlaysResponse>> task) => task.Result.Data );
+             Task<ApiResponse<AnalyticsAggregatedMetricsResponse>> localVarResponse = getAggregatedMetricsWithHttpInfoAsync(metric, aggregation, from, to, filterBy, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<AnalyticsAggregatedMetricsResponse>> task) => task.Result.Data );
              
         }
 
         /// <summary>
-        /// Get play events for live stream Retrieve filtered analytics about the number of plays for your live streams in a project.
+        /// Retrieve aggregated metrics Retrieve time-based and countable metrics like average watch time or the number of impressions over a certain period of time.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
-/// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;liveStreamId&#x60;: Returns analytics based on the public live stream identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.</param>
-/// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-/// <param name="filter">Use this query parameter to filter your results to a specific live stream in a project that you want analytics for. You must use the &#x60;liveStreamId:&#x60; prefix when specifying a live stream ID. (optional)</param>
-/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. You can use the aggregations &#x60;count&#x60;, &#x60;rate&#x60;, and &#x60;total&#x60; with the &#x60;play&#x60; metric. - &#x60;start&#x60; is the number of times playback was started. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression-time&#x60; is the time in milliseconds that your content was loading for until the first video frame is displayed. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. - &#x60;watch-time&#x60; is the cumulative time in seconds that the user has spent watching your content. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. </param>
+/// <param name="aggregation">Use this path parameter to define a way of collecting data for the metric that you want analytics for.  - &#x60;count&#x60; returns the overall number of events for the &#x60;play&#x60; metric. - &#x60;rate&#x60; returns the ratio that calculates the number of plays your content receives divided by its impressions. This aggregation can be used only with the &#x60;play&#x60; metric. - &#x60;total&#x60; calculates the total number of events for the &#x60;play&#x60; metric.  - &#x60;average&#x60; calculates an average value for the selected metric. - &#x60;sum&#x60; adds up the total value of the select metric. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60; - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;.  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
         
-        /// <returns>AnalyticsPlaysResponse</returns>
-		public AnalyticsPlaysResponse getLiveStreamsPlays(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default)
+        /// <returns>AnalyticsAggregatedMetricsResponse</returns>
+		public AnalyticsAggregatedMetricsResponse getAggregatedMetrics(string metric, string aggregation, DateTime? from = default, DateTime? to = default, FilterBy2 filterBy = default)
         {
-             ApiResponse<AnalyticsPlaysResponse> localVarResponse = getLiveStreamsPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
+             ApiResponse<AnalyticsAggregatedMetricsResponse> localVarResponse = getAggregatedMetricsWithHttpInfo(metric, aggregation, from, to, filterBy);
              return localVarResponse.Data;
         }
 
 
         /// <summary>
-        /// Get play events for live stream Retrieve filtered analytics about the number of plays for your live streams in a project.
+        /// Retrieve aggregated metrics Retrieve time-based and countable metrics like average watch time or the number of impressions over a certain period of time.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
-/// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;liveStreamId&#x60;: Returns analytics based on the public live stream identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.</param>
-/// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-/// <param name="filter">Use this query parameter to filter your results to a specific live stream in a project that you want analytics for. You must use the &#x60;liveStreamId:&#x60; prefix when specifying a live stream ID. (optional)</param>
-/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. You can use the aggregations &#x60;count&#x60;, &#x60;rate&#x60;, and &#x60;total&#x60; with the &#x60;play&#x60; metric. - &#x60;start&#x60; is the number of times playback was started. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression-time&#x60; is the time in milliseconds that your content was loading for until the first video frame is displayed. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. - &#x60;watch-time&#x60; is the cumulative time in seconds that the user has spent watching your content. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. </param>
+/// <param name="aggregation">Use this path parameter to define a way of collecting data for the metric that you want analytics for.  - &#x60;count&#x60; returns the overall number of events for the &#x60;play&#x60; metric. - &#x60;rate&#x60; returns the ratio that calculates the number of plays your content receives divided by its impressions. This aggregation can be used only with the &#x60;play&#x60; metric. - &#x60;total&#x60; calculates the total number of events for the &#x60;play&#x60; metric.  - &#x60;average&#x60; calculates an average value for the selected metric. - &#x60;sum&#x60; adds up the total value of the select metric. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60; - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;.  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
         
-        /// <returns>ApiResponse of AnalyticsPlaysResponse</returns>
-		public Task<ApiResponse<AnalyticsPlaysResponse>> getLiveStreamsPlaysWithHttpInfoAsync(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        /// <returns>ApiResponse of AnalyticsAggregatedMetricsResponse</returns>
+		public Task<ApiResponse<AnalyticsAggregatedMetricsResponse>> getAggregatedMetricsWithHttpInfoAsync(string metric, string aggregation, DateTime? from = default, DateTime? to = default, FilterBy2 filterBy = default, CancellationToken cancellationToken = default)
         {
 
 
 
 
 
-
-            // verify the required parameter 'from' is set
-            if (from == null)
-                throw new ApiException(400, "Missing required parameter 'from' when calling AnalyticsApi->getLiveStreamsPlays");
-            // verify the required parameter 'dimension' is set
-            if (dimension == null)
-                throw new ApiException(400, "Missing required parameter 'dimension' when calling AnalyticsApi->getLiveStreamsPlays");
+            // verify the required parameter 'metric' is set
+            if (metric == null)
+                throw new ApiException(400, "Missing required parameter 'metric' when calling AnalyticsApi->getAggregatedMetrics");
+            // verify the required parameter 'aggregation' is set
+            if (aggregation == null)
+                throw new ApiException(400, "Missing required parameter 'aggregation' when calling AnalyticsApi->getAggregatedMetrics");
             
 
-            var localVarPath = "/analytics/live-streams/plays";
+            var localVarPath = "/data/metrics/{metric}/{aggregation}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
             var localVarHeaderParams = new Dictionary<string, string>();
@@ -129,10 +125,282 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (metric != null) localVarPathParams.Add("metric", this.ApiClient.ParameterToString(metric)); // path parameter
+            if (aggregation != null) localVarPathParams.Add("aggregation", this.ApiClient.ParameterToString(aggregation)); // path parameter
             if (from != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "from", from)); // query parameter
             if (to != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "to", to)); // query parameter
-            if (dimension != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "dimension", dimension)); // query parameter
-            if (filter != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filter", filter)); // query parameter
+            if (filterBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filterBy", filterBy)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<AnalyticsAggregatedMetricsResponse>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (AnalyticsAggregatedMetricsResponse) this.ApiClient.Deserialize(task.Result, typeof(AnalyticsAggregatedMetricsResponse)));
+            });
+            
+        }
+
+
+        /// <summary>
+        /// Retrieve aggregated metrics Retrieve time-based and countable metrics like average watch time or the number of impressions over a certain period of time.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. You can use the aggregations &#x60;count&#x60;, &#x60;rate&#x60;, and &#x60;total&#x60; with the &#x60;play&#x60; metric. - &#x60;start&#x60; is the number of times playback was started. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression-time&#x60; is the time in milliseconds that your content was loading for until the first video frame is displayed. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. - &#x60;watch-time&#x60; is the cumulative time in seconds that the user has spent watching your content. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. </param>
+/// <param name="aggregation">Use this path parameter to define a way of collecting data for the metric that you want analytics for.  - &#x60;count&#x60; returns the overall number of events for the &#x60;play&#x60; metric. - &#x60;rate&#x60; returns the ratio that calculates the number of plays your content receives divided by its impressions. This aggregation can be used only with the &#x60;play&#x60; metric. - &#x60;total&#x60; calculates the total number of events for the &#x60;play&#x60; metric.  - &#x60;average&#x60; calculates an average value for the selected metric. - &#x60;sum&#x60; adds up the total value of the select metric. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60; - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;.  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
+        
+        /// <returns>ApiResponse of AnalyticsAggregatedMetricsResponse</returns>
+		public ApiResponse<AnalyticsAggregatedMetricsResponse> getAggregatedMetricsWithHttpInfo(string metric, string aggregation, DateTime? from = default, DateTime? to = default, FilterBy2 filterBy = default)
+        {
+
+
+
+
+
+            // verify the required parameter 'metric' is set
+            if (metric == null)
+                throw new ApiException(400, "Missing required parameter 'metric' when calling AnalyticsApi->getAggregatedMetrics");
+            // verify the required parameter 'aggregation' is set
+            if (aggregation == null)
+                throw new ApiException(400, "Missing required parameter 'aggregation' when calling AnalyticsApi->getAggregatedMetrics");
+            
+
+            var localVarPath = "/data/metrics/{metric}/{aggregation}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (metric != null) localVarPathParams.Add("metric", this.ApiClient.ParameterToString(metric)); // path parameter
+            if (aggregation != null) localVarPathParams.Add("aggregation", this.ApiClient.ParameterToString(aggregation)); // path parameter
+            if (from != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "from", from)); // query parameter
+            if (to != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "to", to)); // query parameter
+            if (filterBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filterBy", filterBy)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<AnalyticsAggregatedMetricsResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (AnalyticsAggregatedMetricsResponse) this.ApiClient.Deserialize(localVarResponse, typeof(AnalyticsAggregatedMetricsResponse)));
+            
+        }
+
+        
+        /// <summary>
+        /// Retrieve time-based and countable metrics like average watch time or the number of impressions over a certain period of time.
+        /// </summary>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. You can use the aggregations &#x60;count&#x60;, &#x60;rate&#x60;, and &#x60;total&#x60; with the &#x60;play&#x60; metric. - &#x60;start&#x60; is the number of times playback was started. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression-time&#x60; is the time in milliseconds that your content was loading for until the first video frame is displayed. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. - &#x60;watch-time&#x60; is the cumulative time in seconds that the user has spent watching your content. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric.  (required)</param>
+        /// <param name="aggregation">Use this path parameter to define a way of collecting data for the metric that you want analytics for.  - &#x60;count&#x60; returns the overall number of events for the &#x60;play&#x60; metric. - &#x60;rate&#x60; returns the ratio that calculates the number of plays your content receives divided by its impressions. This aggregation can be used only with the &#x60;play&#x60; metric. - &#x60;total&#x60; calculates the total number of events for the &#x60;play&#x60; metric.  - &#x60;average&#x60; calculates an average value for the selected metric. - &#x60;sum&#x60; adds up the total value of the select metric.  (required)</param>
+        /// <returns>APIgetAggregatedMetricsRequest</returns>
+        public APIgetAggregatedMetricsRequest getAggregatedMetrics(string metric, string aggregation) {
+            return new APIgetAggregatedMetricsRequest(this,metric, aggregation);
+        }
+
+        /// <summary>
+        /// Request getAggregatedMetrics class to get paginated list of items
+        /// </summary>
+        public class APIgetAggregatedMetricsRequest {
+            private string metric;
+            private string aggregation;
+            private DateTime? from;
+            private DateTime? to;
+            private FilterBy2 filterBy;
+
+            private AnalyticsApi currentApiInstance;
+
+            /// <summary>
+            /// Class constructor with api instance
+            /// </summary>
+            /// <param name="instance">Instance of the current api</param>
+            /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. You can use the aggregations &#x60;count&#x60;, &#x60;rate&#x60;, and &#x60;total&#x60; with the &#x60;play&#x60; metric. - &#x60;start&#x60; is the number of times playback was started. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. You can use the aggregation &#x60;count&#x60; with this metric. - &#x60;impression-time&#x60; is the time in milliseconds that your content was loading for until the first video frame is displayed. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric. - &#x60;watch-time&#x60; is the cumulative time in seconds that the user has spent watching your content. You can use the aggregations &#x60;average&#x60; and &#x60;sum&#x60; with this metric.  (required)</param>
+            /// <param name="aggregation">Use this path parameter to define a way of collecting data for the metric that you want analytics for.  - &#x60;count&#x60; returns the overall number of events for the &#x60;play&#x60; metric. - &#x60;rate&#x60; returns the ratio that calculates the number of plays your content receives divided by its impressions. This aggregation can be used only with the &#x60;play&#x60; metric. - &#x60;total&#x60; calculates the total number of events for the &#x60;play&#x60; metric.  - &#x60;average&#x60; calculates an average value for the selected metric. - &#x60;sum&#x60; adds up the total value of the select metric.  (required)</param>
+            public APIgetAggregatedMetricsRequest(AnalyticsApi instance, string metric, string aggregation) {
+                this.metric = metric;
+                this.aggregation = aggregation;
+                this.currentApiInstance = instance;
+            }
+
+            /// <summary>
+            /// Set from
+            /// </summary>
+            /// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60; - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;.  (optional)</param>
+            /// <returns>APIgetAggregatedMetricsRequest</returns>
+            public APIgetAggregatedMetricsRequest From(DateTime? from) {
+                this.from = from;
+                return this;
+            }
+
+            /// <summary>
+            /// Set to
+            /// </summary>
+            /// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The API ignores this parameter when you call &#x60;/data/metrics/play/total&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+            /// <returns>APIgetAggregatedMetricsRequest</returns>
+            public APIgetAggregatedMetricsRequest To(DateTime? to) {
+                this.to = to;
+                return this;
+            }
+
+            /// <summary>
+            /// Set filterBy
+            /// </summary>
+            /// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
+            /// <returns>APIgetAggregatedMetricsRequest</returns>
+            public APIgetAggregatedMetricsRequest FilterBy(FilterBy2 filterBy) {
+                this.filterBy = filterBy;
+                return this;
+            }
+
+            
+            /// <summary>
+            /// Execute getAggregatedMetrics request
+            /// </summary>
+            /// <returns>AnalyticsAggregatedMetricsResponse </returns>
+            public AnalyticsAggregatedMetricsResponse execute(){
+                ApiResponse<AnalyticsAggregatedMetricsResponse> localVarResp = this.currentApiInstance.getAggregatedMetricsWithHttpInfo(metric, aggregation, from, to, filterBy);
+                return localVarResp.Data;
+            }
+
+
+            private APIgetAggregatedMetricsRequest copy() {
+                APIgetAggregatedMetricsRequest copy = new APIgetAggregatedMetricsRequest( this.currentApiInstance, metric, aggregation);
+                copy.From(from);
+                copy.To(to);
+                copy.FilterBy(filterBy);
+                return copy;
+            }
+        }
+        /// <summary>
+        /// Retrieve metrics in a breakdown of dimensions Retrieve detailed analytics play-rate and number of impressions segmented by dimensions like country or device type.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;play-total&#x60; is the total number of times a specific content has been played. You can only use the &#x60;media-id&#x60; breakdown with this metric. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. </param>
+/// <param name="breakdown">Use this path parameter to define a dimension for segmenting analytics data. You must use &#x60;kebab-case&#x60; for path parameters.  These are the available dimensions:  - &#x60;media-id&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;media-type&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;device-type&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operating-system&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>AnalyticsMetricsBreakdownResponse</returns>
+		public Task<AnalyticsMetricsBreakdownResponse> getMetricsBreakdownAsync(string metric, string breakdown, DateTime? from = default, DateTime? to = default, FilterBy2 filterBy = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<AnalyticsMetricsBreakdownResponse>> localVarResponse = getMetricsBreakdownWithHttpInfoAsync(metric, breakdown, from, to, filterBy, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<AnalyticsMetricsBreakdownResponse>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Retrieve metrics in a breakdown of dimensions Retrieve detailed analytics play-rate and number of impressions segmented by dimensions like country or device type.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;play-total&#x60; is the total number of times a specific content has been played. You can only use the &#x60;media-id&#x60; breakdown with this metric. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. </param>
+/// <param name="breakdown">Use this path parameter to define a dimension for segmenting analytics data. You must use &#x60;kebab-case&#x60; for path parameters.  These are the available dimensions:  - &#x60;media-id&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;media-type&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;device-type&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operating-system&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>AnalyticsMetricsBreakdownResponse</returns>
+		public AnalyticsMetricsBreakdownResponse getMetricsBreakdown(string metric, string breakdown, DateTime? from = default, DateTime? to = default, FilterBy2 filterBy = default, int? currentPage = default, int? pageSize = default)
+        {
+             ApiResponse<AnalyticsMetricsBreakdownResponse> localVarResponse = getMetricsBreakdownWithHttpInfo(metric, breakdown, from, to, filterBy, currentPage, pageSize);
+             return localVarResponse.Data;
+        }
+
+
+        /// <summary>
+        /// Retrieve metrics in a breakdown of dimensions Retrieve detailed analytics play-rate and number of impressions segmented by dimensions like country or device type.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;play-total&#x60; is the total number of times a specific content has been played. You can only use the &#x60;media-id&#x60; breakdown with this metric. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. </param>
+/// <param name="breakdown">Use this path parameter to define a dimension for segmenting analytics data. You must use &#x60;kebab-case&#x60; for path parameters.  These are the available dimensions:  - &#x60;media-id&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;media-type&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;device-type&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operating-system&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of AnalyticsMetricsBreakdownResponse</returns>
+		public Task<ApiResponse<AnalyticsMetricsBreakdownResponse>> getMetricsBreakdownWithHttpInfoAsync(string metric, string breakdown, DateTime? from = default, DateTime? to = default, FilterBy2 filterBy = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+
+
+
+
+
+
+
+            // verify the required parameter 'metric' is set
+            if (metric == null)
+                throw new ApiException(400, "Missing required parameter 'metric' when calling AnalyticsApi->getMetricsBreakdown");
+            // verify the required parameter 'breakdown' is set
+            if (breakdown == null)
+                throw new ApiException(400, "Missing required parameter 'breakdown' when calling AnalyticsApi->getMetricsBreakdown");
+            
+
+            var localVarPath = "/data/buckets/{metric}/{breakdown}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (metric != null) localVarPathParams.Add("metric", this.ApiClient.ParameterToString(metric)); // path parameter
+            if (breakdown != null) localVarPathParams.Add("breakdown", this.ApiClient.ParameterToString(breakdown)); // path parameter
+            if (from != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "from", from)); // query parameter
+            if (to != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "to", to)); // query parameter
+            if (filterBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filterBy", filterBy)); // query parameter
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
@@ -148,27 +416,28 @@ namespace ApiVideo.Api
             return localVarResponse.ContinueWith((Task<RestResponse> task) =>
             {
                 int localVarStatusCode = (int) task.Result.StatusCode;
-                return new ApiResponse<AnalyticsPlaysResponse>(localVarStatusCode,
+                return new ApiResponse<AnalyticsMetricsBreakdownResponse>(localVarStatusCode,
                     task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (AnalyticsPlaysResponse) this.ApiClient.Deserialize(task.Result, typeof(AnalyticsPlaysResponse)));
+                    (AnalyticsMetricsBreakdownResponse) this.ApiClient.Deserialize(task.Result, typeof(AnalyticsMetricsBreakdownResponse)));
             });
             
         }
 
 
         /// <summary>
-        /// Get play events for live stream Retrieve filtered analytics about the number of plays for your live streams in a project.
+        /// Retrieve metrics in a breakdown of dimensions Retrieve detailed analytics play-rate and number of impressions segmented by dimensions like country or device type.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
-/// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;liveStreamId&#x60;: Returns analytics based on the public live stream identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.</param>
-/// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-/// <param name="filter">Use this query parameter to filter your results to a specific live stream in a project that you want analytics for. You must use the &#x60;liveStreamId:&#x60; prefix when specifying a live stream ID. (optional)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;play-total&#x60; is the total number of times a specific content has been played. You can only use the &#x60;media-id&#x60; breakdown with this metric. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. </param>
+/// <param name="breakdown">Use this path parameter to define a dimension for segmenting analytics data. You must use &#x60;kebab-case&#x60; for path parameters.  These are the available dimensions:  - &#x60;media-id&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;media-type&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;device-type&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operating-system&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
-        /// <returns>ApiResponse of AnalyticsPlaysResponse</returns>
-		public ApiResponse<AnalyticsPlaysResponse> getLiveStreamsPlaysWithHttpInfo(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default)
+        /// <returns>ApiResponse of AnalyticsMetricsBreakdownResponse</returns>
+		public ApiResponse<AnalyticsMetricsBreakdownResponse> getMetricsBreakdownWithHttpInfo(string metric, string breakdown, DateTime? from = default, DateTime? to = default, FilterBy2 filterBy = default, int? currentPage = default, int? pageSize = default)
         {
 
 
@@ -176,15 +445,16 @@ namespace ApiVideo.Api
 
 
 
-            // verify the required parameter 'from' is set
-            if (from == null)
-                throw new ApiException(400, "Missing required parameter 'from' when calling AnalyticsApi->getLiveStreamsPlays");
-            // verify the required parameter 'dimension' is set
-            if (dimension == null)
-                throw new ApiException(400, "Missing required parameter 'dimension' when calling AnalyticsApi->getLiveStreamsPlays");
+
+            // verify the required parameter 'metric' is set
+            if (metric == null)
+                throw new ApiException(400, "Missing required parameter 'metric' when calling AnalyticsApi->getMetricsBreakdown");
+            // verify the required parameter 'breakdown' is set
+            if (breakdown == null)
+                throw new ApiException(400, "Missing required parameter 'breakdown' when calling AnalyticsApi->getMetricsBreakdown");
             
 
-            var localVarPath = "/analytics/live-streams/plays";
+            var localVarPath = "/data/buckets/{metric}/{breakdown}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
             var localVarHeaderParams = new Dictionary<string, string>();
@@ -205,10 +475,11 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (metric != null) localVarPathParams.Add("metric", this.ApiClient.ParameterToString(metric)); // path parameter
+            if (breakdown != null) localVarPathParams.Add("breakdown", this.ApiClient.ParameterToString(breakdown)); // path parameter
             if (from != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "from", from)); // query parameter
             if (to != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "to", to)); // query parameter
-            if (dimension != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "dimension", dimension)); // query parameter
-            if (filter != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filter", filter)); // query parameter
+            if (filterBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filterBy", filterBy)); // query parameter
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
@@ -221,31 +492,32 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<AnalyticsPlaysResponse>(localVarStatusCode,
+            return new ApiResponse<AnalyticsMetricsBreakdownResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (AnalyticsPlaysResponse) this.ApiClient.Deserialize(localVarResponse, typeof(AnalyticsPlaysResponse)));
+                (AnalyticsMetricsBreakdownResponse) this.ApiClient.Deserialize(localVarResponse, typeof(AnalyticsMetricsBreakdownResponse)));
             
         }
 
         
         /// <summary>
-        /// Retrieve filtered analytics about the number of plays for your live streams in a project.
+        /// Retrieve detailed analytics play-rate and number of impressions segmented by dimensions like country or device type.
         /// </summary>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (required)</param>
-        /// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;liveStreamId&#x60;: Returns analytics based on the public live stream identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. (required)</param>
-        /// <returns>APIgetLiveStreamsPlaysRequest</returns>
-        public APIgetLiveStreamsPlaysRequest getLiveStreamsPlays(DateTime from, string dimension) {
-            return new APIgetLiveStreamsPlaysRequest(this,from, dimension);
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;play-total&#x60; is the total number of times a specific content has been played. You can only use the &#x60;media-id&#x60; breakdown with this metric. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback.  (required)</param>
+        /// <param name="breakdown">Use this path parameter to define a dimension for segmenting analytics data. You must use &#x60;kebab-case&#x60; for path parameters.  These are the available dimensions:  - &#x60;media-id&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;media-type&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;device-type&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operating-system&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.  (required)</param>
+        /// <returns>APIgetMetricsBreakdownRequest</returns>
+        public APIgetMetricsBreakdownRequest getMetricsBreakdown(string metric, string breakdown) {
+            return new APIgetMetricsBreakdownRequest(this,metric, breakdown);
         }
 
         /// <summary>
-        /// Request getLiveStreamsPlays class to get paginated list of items
+        /// Request getMetricsBreakdown class to get paginated list of items
         /// </summary>
-        public class APIgetLiveStreamsPlaysRequest {
-            private DateTime from;
-            private string dimension;
+        public class APIgetMetricsBreakdownRequest {
+            private string metric;
+            private string breakdown;
+            private DateTime? from;
             private DateTime? to;
-            private string filter;
+            private FilterBy2 filterBy;
             private int? currentPage;
             private int? pageSize;
 
@@ -255,31 +527,41 @@ namespace ApiVideo.Api
             /// Class constructor with api instance
             /// </summary>
             /// <param name="instance">Instance of the current api</param>
-            /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (required)</param>
-            /// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;liveStreamId&#x60;: Returns analytics based on the public live stream identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. (required)</param>
-            public APIgetLiveStreamsPlaysRequest(AnalyticsApi instance, DateTime from, string dimension) {
-                this.from = from;
-                this.dimension = dimension;
+            /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;play-total&#x60; is the total number of times a specific content has been played. You can only use the &#x60;media-id&#x60; breakdown with this metric. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback.  (required)</param>
+            /// <param name="breakdown">Use this path parameter to define a dimension for segmenting analytics data. You must use &#x60;kebab-case&#x60; for path parameters.  These are the available dimensions:  - &#x60;media-id&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;media-type&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;device-type&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operating-system&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.  (required)</param>
+            public APIgetMetricsBreakdownRequest(AnalyticsApi instance, string metric, string breakdown) {
+                this.metric = metric;
+                this.breakdown = breakdown;
                 this.currentApiInstance = instance;
+            }
+
+            /// <summary>
+            /// Set from
+            /// </summary>
+            /// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+            /// <returns>APIgetMetricsBreakdownRequest</returns>
+            public APIgetMetricsBreakdownRequest From(DateTime? from) {
+                this.from = from;
+                return this;
             }
 
             /// <summary>
             /// Set to
             /// </summary>
-            /// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-            /// <returns>APIgetLiveStreamsPlaysRequest</returns>
-            public APIgetLiveStreamsPlaysRequest To(DateTime? to) {
+            /// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+            /// <returns>APIgetMetricsBreakdownRequest</returns>
+            public APIgetMetricsBreakdownRequest To(DateTime? to) {
                 this.to = to;
                 return this;
             }
 
             /// <summary>
-            /// Set filter
+            /// Set filterBy
             /// </summary>
-            /// <param name="filter">Use this query parameter to filter your results to a specific live stream in a project that you want analytics for. You must use the &#x60;liveStreamId:&#x60; prefix when specifying a live stream ID. (optional)</param>
-            /// <returns>APIgetLiveStreamsPlaysRequest</returns>
-            public APIgetLiveStreamsPlaysRequest Filter(string filter) {
-                this.filter = filter;
+            /// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
+            /// <returns>APIgetMetricsBreakdownRequest</returns>
+            public APIgetMetricsBreakdownRequest FilterBy(FilterBy2 filterBy) {
+                this.filterBy = filterBy;
                 return this;
             }
 
@@ -287,8 +569,8 @@ namespace ApiVideo.Api
             /// Set currentPage
             /// </summary>
             /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            /// <returns>APIgetLiveStreamsPlaysRequest</returns>
-            public APIgetLiveStreamsPlaysRequest CurrentPage(int? currentPage) {
+            /// <returns>APIgetMetricsBreakdownRequest</returns>
+            public APIgetMetricsBreakdownRequest CurrentPage(int? currentPage) {
                 this.currentPage = currentPage;
                 return this;
             }
@@ -297,8 +579,8 @@ namespace ApiVideo.Api
             /// Set pageSize
             /// </summary>
             /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            /// <returns>APIgetLiveStreamsPlaysRequest</returns>
-            public APIgetLiveStreamsPlaysRequest PageSize(int? pageSize) {
+            /// <returns>APIgetMetricsBreakdownRequest</returns>
+            public APIgetMetricsBreakdownRequest PageSize(int? pageSize) {
                 this.pageSize = pageSize;
                 return this;
             }
@@ -306,12 +588,12 @@ namespace ApiVideo.Api
             
 
             /// <summary>
-            /// Execute getLiveStreamsPlays request
+            /// Execute getMetricsBreakdown request
             /// </summary>
-            /// <returns>AnalyticsPlaysResponse </returns>
-            public Page<AnalyticsData> execute(){
-                ApiResponse<AnalyticsPlaysResponse> localVarResp = this.currentApiInstance.getLiveStreamsPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
-                return new Page<AnalyticsData>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+            /// <returns>AnalyticsMetricsBreakdownResponse </returns>
+            public Page<AnalyticsMetricsBreakdownResponseData> execute(){
+                ApiResponse<AnalyticsMetricsBreakdownResponse> localVarResp = this.currentApiInstance.getMetricsBreakdownWithHttpInfo(metric, breakdown, from, to, filterBy, currentPage, pageSize);
+                return new Page<AnalyticsMetricsBreakdownResponseData>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
                     try {
                         return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
                     } catch (ApiException e) {
@@ -320,68 +602,72 @@ namespace ApiVideo.Api
                 }); 
             }
 
-            private APIgetLiveStreamsPlaysRequest copy() {
-                APIgetLiveStreamsPlaysRequest copy = new APIgetLiveStreamsPlaysRequest( this.currentApiInstance, from, dimension);
+            private APIgetMetricsBreakdownRequest copy() {
+                APIgetMetricsBreakdownRequest copy = new APIgetMetricsBreakdownRequest( this.currentApiInstance, metric, breakdown);
+                copy.From(from);
                 copy.To(to);
-                copy.Filter(filter);
+                copy.FilterBy(filterBy);
                 copy.CurrentPage(currentPage);
                 copy.PageSize(pageSize);
                 return copy;
             }
         }
         /// <summary>
-        /// Get play events for video Retrieve filtered analytics about the number of plays for your videos in a project.
+        /// Retrieve metrics over time Retrieve countable metrics like the number of plays or impressions, grouped by the time at which they occurred
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
-/// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;videoId&#x60;: Returns analytics based on the public video identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.</param>
-/// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-/// <param name="filter">Use this query parameter to filter your results to a specific video in a project that you want analytics for. You must use the &#x60;videoId:&#x60; prefix when specifying a video ID. (optional)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="interval">Use this query parameter to define how granularity of the data. Possible values: &#x60;hour&#x60;, &#x60;day&#x60;.  - Default: If no interval specified and the period (different between from and to) ≤ 2 days then hour, otherwise day.  - If you do not set a value for &#x60;interval&#x60;, and the period you set using the &#x60;from&#x60; and &#x60;to&#x60; parameters is less than or equals to 2 days, then the default assigned value is &#x60;hour&#x60;. Otherwise the API sets it to &#x60;day&#x60;.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
-        /// <returns>AnalyticsPlaysResponse</returns>
-		public Task<AnalyticsPlaysResponse> getVideosPlaysAsync(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        /// <returns>AnalyticsMetricsOverTimeResponse</returns>
+		public Task<AnalyticsMetricsOverTimeResponse> getMetricsOverTimeAsync(string metric, DateTime? from = default, DateTime? to = default, string interval = default, FilterBy2 filterBy = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
         {
-             Task<ApiResponse<AnalyticsPlaysResponse>> localVarResponse = getVideosPlaysWithHttpInfoAsync(from, dimension, to, filter, currentPage, pageSize, cancellationToken);
-             return localVarResponse.ContinueWith((Task<ApiResponse<AnalyticsPlaysResponse>> task) => task.Result.Data );
+             Task<ApiResponse<AnalyticsMetricsOverTimeResponse>> localVarResponse = getMetricsOverTimeWithHttpInfoAsync(metric, from, to, interval, filterBy, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<AnalyticsMetricsOverTimeResponse>> task) => task.Result.Data );
              
         }
 
         /// <summary>
-        /// Get play events for video Retrieve filtered analytics about the number of plays for your videos in a project.
+        /// Retrieve metrics over time Retrieve countable metrics like the number of plays or impressions, grouped by the time at which they occurred
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
-/// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;videoId&#x60;: Returns analytics based on the public video identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.</param>
-/// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-/// <param name="filter">Use this query parameter to filter your results to a specific video in a project that you want analytics for. You must use the &#x60;videoId:&#x60; prefix when specifying a video ID. (optional)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="interval">Use this query parameter to define how granularity of the data. Possible values: &#x60;hour&#x60;, &#x60;day&#x60;.  - Default: If no interval specified and the period (different between from and to) ≤ 2 days then hour, otherwise day.  - If you do not set a value for &#x60;interval&#x60;, and the period you set using the &#x60;from&#x60; and &#x60;to&#x60; parameters is less than or equals to 2 days, then the default assigned value is &#x60;hour&#x60;. Otherwise the API sets it to &#x60;day&#x60;.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
-        /// <returns>AnalyticsPlaysResponse</returns>
-		public AnalyticsPlaysResponse getVideosPlays(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default)
+        /// <returns>AnalyticsMetricsOverTimeResponse</returns>
+		public AnalyticsMetricsOverTimeResponse getMetricsOverTime(string metric, DateTime? from = default, DateTime? to = default, string interval = default, FilterBy2 filterBy = default, int? currentPage = default, int? pageSize = default)
         {
-             ApiResponse<AnalyticsPlaysResponse> localVarResponse = getVideosPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
+             ApiResponse<AnalyticsMetricsOverTimeResponse> localVarResponse = getMetricsOverTimeWithHttpInfo(metric, from, to, interval, filterBy, currentPage, pageSize);
              return localVarResponse.Data;
         }
 
 
         /// <summary>
-        /// Get play events for video Retrieve filtered analytics about the number of plays for your videos in a project.
+        /// Retrieve metrics over time Retrieve countable metrics like the number of plays or impressions, grouped by the time at which they occurred
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
-/// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;videoId&#x60;: Returns analytics based on the public video identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.</param>
-/// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-/// <param name="filter">Use this query parameter to filter your results to a specific video in a project that you want analytics for. You must use the &#x60;videoId:&#x60; prefix when specifying a video ID. (optional)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="interval">Use this query parameter to define how granularity of the data. Possible values: &#x60;hour&#x60;, &#x60;day&#x60;.  - Default: If no interval specified and the period (different between from and to) ≤ 2 days then hour, otherwise day.  - If you do not set a value for &#x60;interval&#x60;, and the period you set using the &#x60;from&#x60; and &#x60;to&#x60; parameters is less than or equals to 2 days, then the default assigned value is &#x60;hour&#x60;. Otherwise the API sets it to &#x60;day&#x60;.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
-        /// <returns>ApiResponse of AnalyticsPlaysResponse</returns>
-		public Task<ApiResponse<AnalyticsPlaysResponse>> getVideosPlaysWithHttpInfoAsync(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        /// <returns>ApiResponse of AnalyticsMetricsOverTimeResponse</returns>
+		public Task<ApiResponse<AnalyticsMetricsOverTimeResponse>> getMetricsOverTimeWithHttpInfoAsync(string metric, DateTime? from = default, DateTime? to = default, string interval = default, FilterBy2 filterBy = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
         {
 
 
@@ -389,15 +675,13 @@ namespace ApiVideo.Api
 
 
 
-            // verify the required parameter 'from' is set
-            if (from == null)
-                throw new ApiException(400, "Missing required parameter 'from' when calling AnalyticsApi->getVideosPlays");
-            // verify the required parameter 'dimension' is set
-            if (dimension == null)
-                throw new ApiException(400, "Missing required parameter 'dimension' when calling AnalyticsApi->getVideosPlays");
+
+            // verify the required parameter 'metric' is set
+            if (metric == null)
+                throw new ApiException(400, "Missing required parameter 'metric' when calling AnalyticsApi->getMetricsOverTime");
             
 
-            var localVarPath = "/analytics/videos/plays";
+            var localVarPath = "/data/timeseries/{metric}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
             var localVarHeaderParams = new Dictionary<string, string>();
@@ -418,10 +702,11 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (metric != null) localVarPathParams.Add("metric", this.ApiClient.ParameterToString(metric)); // path parameter
             if (from != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "from", from)); // query parameter
             if (to != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "to", to)); // query parameter
-            if (dimension != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "dimension", dimension)); // query parameter
-            if (filter != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filter", filter)); // query parameter
+            if (interval != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "interval", interval)); // query parameter
+            if (filterBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filterBy", filterBy)); // query parameter
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
@@ -437,27 +722,28 @@ namespace ApiVideo.Api
             return localVarResponse.ContinueWith((Task<RestResponse> task) =>
             {
                 int localVarStatusCode = (int) task.Result.StatusCode;
-                return new ApiResponse<AnalyticsPlaysResponse>(localVarStatusCode,
+                return new ApiResponse<AnalyticsMetricsOverTimeResponse>(localVarStatusCode,
                     task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                    (AnalyticsPlaysResponse) this.ApiClient.Deserialize(task.Result, typeof(AnalyticsPlaysResponse)));
+                    (AnalyticsMetricsOverTimeResponse) this.ApiClient.Deserialize(task.Result, typeof(AnalyticsMetricsOverTimeResponse)));
             });
             
         }
 
 
         /// <summary>
-        /// Get play events for video Retrieve filtered analytics about the number of plays for your videos in a project.
+        /// Retrieve metrics over time Retrieve countable metrics like the number of plays or impressions, grouped by the time at which they occurred
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format. </param>
-/// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;videoId&#x60;: Returns analytics based on the public video identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.</param>
-/// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-/// <param name="filter">Use this query parameter to filter your results to a specific video in a project that you want analytics for. You must use the &#x60;videoId:&#x60; prefix when specifying a video ID. (optional)</param>
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback. </param>
+/// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+/// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+/// <param name="interval">Use this query parameter to define how granularity of the data. Possible values: &#x60;hour&#x60;, &#x60;day&#x60;.  - Default: If no interval specified and the period (different between from and to) ≤ 2 days then hour, otherwise day.  - If you do not set a value for &#x60;interval&#x60;, and the period you set using the &#x60;from&#x60; and &#x60;to&#x60; parameters is less than or equals to 2 days, then the default assigned value is &#x60;hour&#x60;. Otherwise the API sets it to &#x60;day&#x60;.  (optional)</param>
+/// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
         
-        /// <returns>ApiResponse of AnalyticsPlaysResponse</returns>
-		public ApiResponse<AnalyticsPlaysResponse> getVideosPlaysWithHttpInfo(DateTime from, string dimension, DateTime? to = default, string filter = default, int? currentPage = default, int? pageSize = default)
+        /// <returns>ApiResponse of AnalyticsMetricsOverTimeResponse</returns>
+		public ApiResponse<AnalyticsMetricsOverTimeResponse> getMetricsOverTimeWithHttpInfo(string metric, DateTime? from = default, DateTime? to = default, string interval = default, FilterBy2 filterBy = default, int? currentPage = default, int? pageSize = default)
         {
 
 
@@ -465,15 +751,13 @@ namespace ApiVideo.Api
 
 
 
-            // verify the required parameter 'from' is set
-            if (from == null)
-                throw new ApiException(400, "Missing required parameter 'from' when calling AnalyticsApi->getVideosPlays");
-            // verify the required parameter 'dimension' is set
-            if (dimension == null)
-                throw new ApiException(400, "Missing required parameter 'dimension' when calling AnalyticsApi->getVideosPlays");
+
+            // verify the required parameter 'metric' is set
+            if (metric == null)
+                throw new ApiException(400, "Missing required parameter 'metric' when calling AnalyticsApi->getMetricsOverTime");
             
 
-            var localVarPath = "/analytics/videos/plays";
+            var localVarPath = "/data/timeseries/{metric}";
             var localVarPathParams = new Dictionary<string, string>();
             var localVarQueryParams = new List<KeyValuePair<string, string>>();
             var localVarHeaderParams = new Dictionary<string, string>();
@@ -494,10 +778,11 @@ namespace ApiVideo.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (metric != null) localVarPathParams.Add("metric", this.ApiClient.ParameterToString(metric)); // path parameter
             if (from != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "from", from)); // query parameter
             if (to != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "to", to)); // query parameter
-            if (dimension != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "dimension", dimension)); // query parameter
-            if (filter != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filter", filter)); // query parameter
+            if (interval != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "interval", interval)); // query parameter
+            if (filterBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "filterBy", filterBy)); // query parameter
             if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
 
@@ -510,31 +795,31 @@ namespace ApiVideo.Api
                 localVarPathParams, localVarContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
-            return new ApiResponse<AnalyticsPlaysResponse>(localVarStatusCode,
+            return new ApiResponse<AnalyticsMetricsOverTimeResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (AnalyticsPlaysResponse) this.ApiClient.Deserialize(localVarResponse, typeof(AnalyticsPlaysResponse)));
+                (AnalyticsMetricsOverTimeResponse) this.ApiClient.Deserialize(localVarResponse, typeof(AnalyticsMetricsOverTimeResponse)));
             
         }
 
         
         /// <summary>
-        /// Retrieve filtered analytics about the number of plays for your videos in a project.
+        /// Retrieve countable metrics like the number of plays or impressions, grouped by the time at which they occurred
         /// </summary>
-        /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (required)</param>
-        /// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;videoId&#x60;: Returns analytics based on the public video identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. (required)</param>
-        /// <returns>APIgetVideosPlaysRequest</returns>
-        public APIgetVideosPlaysRequest getVideosPlays(DateTime from, string dimension) {
-            return new APIgetVideosPlaysRequest(this,from, dimension);
+        /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback.  (required)</param>
+        /// <returns>APIgetMetricsOverTimeRequest</returns>
+        public APIgetMetricsOverTimeRequest getMetricsOverTime(string metric) {
+            return new APIgetMetricsOverTimeRequest(this,metric);
         }
 
         /// <summary>
-        /// Request getVideosPlays class to get paginated list of items
+        /// Request getMetricsOverTime class to get paginated list of items
         /// </summary>
-        public class APIgetVideosPlaysRequest {
-            private DateTime from;
-            private string dimension;
+        public class APIgetMetricsOverTimeRequest {
+            private string metric;
+            private DateTime? from;
             private DateTime? to;
-            private string filter;
+            private string interval;
+            private FilterBy2 filterBy;
             private int? currentPage;
             private int? pageSize;
 
@@ -544,31 +829,49 @@ namespace ApiVideo.Api
             /// Class constructor with api instance
             /// </summary>
             /// <param name="instance">Instance of the current api</param>
-            /// <param name="from">Use this query parameter to set the start date for the time period that you want analytics for. - The API returns analytics data including the day you set in &#x60;from&#x60;. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (required)</param>
-            /// <param name="dimension">Use this query parameter to define the dimension that you want analytics for. - &#x60;videoId&#x60;: Returns analytics based on the public video identifiers. - &#x60;emittedAt&#x60;: Returns analytics based on the times of the play events. The API returns data in specific interval groups. When the date period you set in &#x60;from&#x60; and &#x60;to&#x60; is less than or equals to 2 days, the response for this dimension is grouped in hourly intervals. Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event. Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. (required)</param>
-            public APIgetVideosPlaysRequest(AnalyticsApi instance, DateTime from, string dimension) {
-                this.from = from;
-                this.dimension = dimension;
+            /// <param name="metric">Use this path parameter to select a metric that you want analytics for.  - &#x60;play&#x60; is the number of times your content has been played. - &#x60;play-rate&#x60; is the ratio that calculates the number of plays your content receives divided by its impressions. - &#x60;start&#x60; is the number of times playback was started. - &#x60;end&#x60; is the number of times playback has ended with the content watch until the end. - &#x60;impression&#x60; is the number of times your content has been loaded and was ready for playback.  (required)</param>
+            public APIgetMetricsOverTimeRequest(AnalyticsApi instance, string metric) {
+                this.metric = metric;
                 this.currentApiInstance = instance;
+            }
+
+            /// <summary>
+            /// Set from
+            /// </summary>
+            /// <param name="from">Use this query parameter to define the starting date-time of the period you want analytics for.  - If you do not set a value for &#x60;from&#x60;, the default assigned value is 1 day ago, based on the &#x60;to&#x60; parameter. - The maximum value is 30 days ago. - The value you provide should follow the ATOM date-time format: &#x60;2024-02-05T00:00:00+01:00&#x60;  (optional)</param>
+            /// <returns>APIgetMetricsOverTimeRequest</returns>
+            public APIgetMetricsOverTimeRequest From(DateTime? from) {
+                this.from = from;
+                return this;
             }
 
             /// <summary>
             /// Set to
             /// </summary>
-            /// <param name="to">Use this optional query parameter to set the end date for the time period that you want analytics for. - If you do not specify a &#x60;to&#x60; date, the API returns analytics data starting from the &#x60;from&#x60; date up until today, and excluding today. - The date you set must be **within the last 30 days**. - The value you provide must follow the &#x60;YYYY-MM-DD&#x60; format.  (optional)</param>
-            /// <returns>APIgetVideosPlaysRequest</returns>
-            public APIgetVideosPlaysRequest To(DateTime? to) {
+            /// <param name="to">Use this query parameter to define the ending date-time of the period you want analytics for.  - If you do not set a value for &#x60;to&#x60;, the default assigned value is &#x60;now&#x60;. - The value for &#x60;to&#x60; is a non-inclusive value: the API returns data **before** the date-time that you set.  (optional)</param>
+            /// <returns>APIgetMetricsOverTimeRequest</returns>
+            public APIgetMetricsOverTimeRequest To(DateTime? to) {
                 this.to = to;
                 return this;
             }
 
             /// <summary>
-            /// Set filter
+            /// Set interval
             /// </summary>
-            /// <param name="filter">Use this query parameter to filter your results to a specific video in a project that you want analytics for. You must use the &#x60;videoId:&#x60; prefix when specifying a video ID. (optional)</param>
-            /// <returns>APIgetVideosPlaysRequest</returns>
-            public APIgetVideosPlaysRequest Filter(string filter) {
-                this.filter = filter;
+            /// <param name="interval">Use this query parameter to define how granularity of the data. Possible values: &#x60;hour&#x60;, &#x60;day&#x60;.  - Default: If no interval specified and the period (different between from and to) ≤ 2 days then hour, otherwise day.  - If you do not set a value for &#x60;interval&#x60;, and the period you set using the &#x60;from&#x60; and &#x60;to&#x60; parameters is less than or equals to 2 days, then the default assigned value is &#x60;hour&#x60;. Otherwise the API sets it to &#x60;day&#x60;.  (optional)</param>
+            /// <returns>APIgetMetricsOverTimeRequest</returns>
+            public APIgetMetricsOverTimeRequest Interval(string interval) {
+                this.interval = interval;
+                return this;
+            }
+
+            /// <summary>
+            /// Set filterBy
+            /// </summary>
+            /// <param name="filterBy">Use this parameter to filter the API&#39;s response based on different data dimensions. You can serialize filters in your query to receive more detailed breakdowns of your analytics.  - If you do not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;.  These are the available breakdown dimensions:  - &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;.  - &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;.  - &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers. Response values can include: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for videos using this tag. This filter only accepts a single value and is case sensitive. Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).  (optional)</param>
+            /// <returns>APIgetMetricsOverTimeRequest</returns>
+            public APIgetMetricsOverTimeRequest FilterBy(FilterBy2 filterBy) {
+                this.filterBy = filterBy;
                 return this;
             }
 
@@ -576,8 +879,8 @@ namespace ApiVideo.Api
             /// Set currentPage
             /// </summary>
             /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
-            /// <returns>APIgetVideosPlaysRequest</returns>
-            public APIgetVideosPlaysRequest CurrentPage(int? currentPage) {
+            /// <returns>APIgetMetricsOverTimeRequest</returns>
+            public APIgetMetricsOverTimeRequest CurrentPage(int? currentPage) {
                 this.currentPage = currentPage;
                 return this;
             }
@@ -586,8 +889,8 @@ namespace ApiVideo.Api
             /// Set pageSize
             /// </summary>
             /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
-            /// <returns>APIgetVideosPlaysRequest</returns>
-            public APIgetVideosPlaysRequest PageSize(int? pageSize) {
+            /// <returns>APIgetMetricsOverTimeRequest</returns>
+            public APIgetMetricsOverTimeRequest PageSize(int? pageSize) {
                 this.pageSize = pageSize;
                 return this;
             }
@@ -595,12 +898,12 @@ namespace ApiVideo.Api
             
 
             /// <summary>
-            /// Execute getVideosPlays request
+            /// Execute getMetricsOverTime request
             /// </summary>
-            /// <returns>AnalyticsPlaysResponse </returns>
-            public Page<AnalyticsData> execute(){
-                ApiResponse<AnalyticsPlaysResponse> localVarResp = this.currentApiInstance.getVideosPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
-                return new Page<AnalyticsData>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+            /// <returns>AnalyticsMetricsOverTimeResponse </returns>
+            public Page<AnalyticsMetricsOverTimeResponseData> execute(){
+                ApiResponse<AnalyticsMetricsOverTimeResponse> localVarResp = this.currentApiInstance.getMetricsOverTimeWithHttpInfo(metric, from, to, interval, filterBy, currentPage, pageSize);
+                return new Page<AnalyticsMetricsOverTimeResponseData>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
                     try {
                         return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
                     } catch (ApiException e) {
@@ -609,10 +912,12 @@ namespace ApiVideo.Api
                 }); 
             }
 
-            private APIgetVideosPlaysRequest copy() {
-                APIgetVideosPlaysRequest copy = new APIgetVideosPlaysRequest( this.currentApiInstance, from, dimension);
+            private APIgetMetricsOverTimeRequest copy() {
+                APIgetMetricsOverTimeRequest copy = new APIgetMetricsOverTimeRequest( this.currentApiInstance, metric);
+                copy.From(from);
                 copy.To(to);
-                copy.Filter(filter);
+                copy.Interval(interval);
+                copy.FilterBy(filterBy);
                 copy.CurrentPage(currentPage);
                 copy.PageSize(pageSize);
                 return copy;

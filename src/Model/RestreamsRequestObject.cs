@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// Adding restream destinations is optional. However, if you set a restream destination, you must provide all attributes for each destination.
   /// </summary>
   [DataContract]
-  public class RestreamsRequestObject {
+  public class RestreamsRequestObject: DeepObject   {
     /// <summary>
     /// Use this parameter to define a name for the restream destination.
     /// </summary>
@@ -20,9 +20,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "name")]
     public string name { get; set; }
     /// <summary>
-    /// Use this parameter to set the RTMP URL of the restream destination.
+    /// Use this parameter to set the `RTMPS` or `RTMP` server URL of the restream destination.
     /// </summary>
-    /// <value>Use this parameter to set the RTMP URL of the restream destination.</value>
+    /// <value>Use this parameter to set the `RTMPS` or `RTMP` server URL of the restream destination.</value>
     [DataMember(Name="serverUrl", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "serverUrl")]
     public string serverurl { get; set; }

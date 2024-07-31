@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class UploadToken {
+  public class UploadToken: DeepObject   {
     /// <summary>
     /// The unique identifier for the token you will use to authenticate an upload.
     /// </summary>

@@ -169,8 +169,9 @@ AnalyticsApi analytics = client.Analytics()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLiveStreamsPlays**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsApi.md#getLiveStreamsPlays) | **GET** `/analytics/live-streams/plays` | Get play events for live stream
-[**getVideosPlays**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsApi.md#getVideosPlays) | **GET** `/analytics/videos/plays` | Get play events for video
+[**getAggregatedMetrics**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsApi.md#getAggregatedMetrics) | **GET** `/data/metrics/{metric}/{aggregation}` | Retrieve aggregated metrics
+[**getMetricsBreakdown**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsApi.md#getMetricsBreakdown) | **GET** `/data/buckets/{metric}/{breakdown}` | Retrieve metrics in a breakdown of dimensions
+[**getMetricsOverTime**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsApi.md#getMetricsOverTime) | **GET** `/data/timeseries/{metric}` | Retrieve metrics over time
 
 
 #### CaptionsApi
@@ -232,6 +233,7 @@ Method | HTTP request | Description
 [**list**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamsApi.md#list) | **GET** `/live-streams` | List all live streams
 [**uploadThumbnail**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamsApi.md#uploadThumbnail) | **POST** `/live-streams/{liveStreamId}/thumbnail` | Upload a thumbnail
 [**deleteThumbnail**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamsApi.md#deleteThumbnail) | **DELETE** `/live-streams/{liveStreamId}/thumbnail` | Delete a thumbnail
+[**complete**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamsApi.md#complete) | **PUT** `/live-streams/{liveStreamId}/complete` | Complete a live stream
 
 
 #### PlayerThemesApi
@@ -342,7 +344,16 @@ Method | HTTP request | Description
 
  - [AccessToken](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AccessToken.md)
  - [AdditionalBadRequestErrors](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AdditionalBadRequestErrors.md)
+ - [AnalyticsAggregatedMetricsResponse](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsAggregatedMetricsResponse.md)
+ - [AnalyticsAggregatedMetricsResponseContext](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsAggregatedMetricsResponseContext.md)
+ - [AnalyticsAggregatedMetricsResponseContextTimeframe](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsAggregatedMetricsResponseContextTimeframe.md)
  - [AnalyticsData](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsData.md)
+ - [AnalyticsMetricsBreakdownResponse](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsMetricsBreakdownResponse.md)
+ - [AnalyticsMetricsBreakdownResponseContext](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsMetricsBreakdownResponseContext.md)
+ - [AnalyticsMetricsBreakdownResponseData](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsMetricsBreakdownResponseData.md)
+ - [AnalyticsMetricsOverTimeResponse](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsMetricsOverTimeResponse.md)
+ - [AnalyticsMetricsOverTimeResponseContext](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsMetricsOverTimeResponseContext.md)
+ - [AnalyticsMetricsOverTimeResponseData](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsMetricsOverTimeResponseData.md)
  - [AnalyticsPlays400Error](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsPlays400Error.md)
  - [AnalyticsPlaysResponse](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AnalyticsPlaysResponse.md)
  - [AuthenticatePayload](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/AuthenticatePayload.md)
@@ -353,17 +364,14 @@ Method | HTTP request | Description
  - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/CaptionsUpdatePayload.md)
  - [Chapter](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/Chapter.md)
  - [ChaptersListResponse](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/ChaptersListResponse.md)
+ - [FilterBy](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/FilterBy.md)
+ - [FilterBy1](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/FilterBy1.md)
+ - [FilterBy2](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/FilterBy2.md)
  - [Link](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/Link.md)
  - [LiveStream](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStream.md)
  - [LiveStreamAssets](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamAssets.md)
  - [LiveStreamCreationPayload](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamCreationPayload.md)
  - [LiveStreamListResponse](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamListResponse.md)
- - [LiveStreamSession](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamSession.md)
- - [LiveStreamSessionClient](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamSessionClient.md)
- - [LiveStreamSessionDevice](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamSessionDevice.md)
- - [LiveStreamSessionLocation](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamSessionLocation.md)
- - [LiveStreamSessionReferrer](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamSessionReferrer.md)
- - [LiveStreamSessionSession](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamSessionSession.md)
  - [LiveStreamUpdatePayload](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamUpdatePayload.md)
  - [Metadata](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/Metadata.md)
  - [Model403ErrorSchema](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/Model403ErrorSchema.md)
@@ -383,18 +391,12 @@ Method | HTTP request | Description
  - [TokenCreationPayload](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/TokenCreationPayload.md)
  - [TokenListResponse](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/TokenListResponse.md)
  - [TooManyRequests](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/TooManyRequests.md)
+ - [UnrecognizedRequestUrl](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/UnrecognizedRequestUrl.md)
  - [UploadToken](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/UploadToken.md)
  - [Video](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/Video.md)
  - [VideoAssets](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoAssets.md)
  - [VideoClip](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoClip.md)
  - [VideoCreationPayload](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoCreationPayload.md)
- - [VideoSession](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSession.md)
- - [VideoSessionClient](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSessionClient.md)
- - [VideoSessionDevice](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSessionDevice.md)
- - [VideoSessionLocation](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSessionLocation.md)
- - [VideoSessionOs](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSessionOs.md)
- - [VideoSessionReferrer](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSessionReferrer.md)
- - [VideoSessionSession](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSessionSession.md)
  - [VideoSource](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSource.md)
  - [VideoSourceLiveStream](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSourceLiveStream.md)
  - [VideoSourceLiveStreamLink](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/VideoSourceLiveStreamLink.md)

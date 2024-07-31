@@ -198,9 +198,9 @@ namespace ApiVideo.Api
         /// <param name="watermarkId">The watermark ID for the watermark you want to delete.</param>
         
         /// <returns></returns>
-		public void deleteAsync(string watermarkId, CancellationToken cancellationToken = default)
+		public Task<ApiResponse<object>> deleteAsync(string watermarkId, CancellationToken cancellationToken = default)
         {
-             deleteWithHttpInfoAsync(watermarkId, cancellationToken);
+             return deleteWithHttpInfoAsync(watermarkId, cancellationToken);
         }
 
         /// <summary>

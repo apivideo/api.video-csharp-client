@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class PlayerThemeCreationPayload {
+  public class PlayerThemeCreationPayload: DeepObject   {
     /// <summary>
     /// Add a name for your player theme here.
     /// </summary>

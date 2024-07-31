@@ -13,7 +13,7 @@ The version of the OpenAPI document: 1
     <OutputType>Library</OutputType>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>ApiVideo</PackageId>
-    <PackageVersion>1.5.0</PackageVersion>
+    <PackageVersion>1.6.0</PackageVersion>
     <Authors>api.video</Authors>
     <Description>api.video csharp API client</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

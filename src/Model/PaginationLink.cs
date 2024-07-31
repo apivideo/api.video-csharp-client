@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class PaginationLink {
+  public class PaginationLink: DeepObject   {
     /// <summary>
     /// Gets or Sets Rel
     /// </summary>

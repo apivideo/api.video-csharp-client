@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Model403ErrorSchema {
+  public class Model403ErrorSchema: DeepObject   {
     /// <summary>
     /// A link to the error documentation.
     /// </summary>

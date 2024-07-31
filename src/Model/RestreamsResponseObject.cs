@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class RestreamsResponseObject {
+  public class RestreamsResponseObject: DeepObject   {
     /// <summary>
     /// Returns the name of a restream destination.
     /// </summary>
@@ -20,9 +20,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "name")]
     public string name { get; set; }
     /// <summary>
-    /// Returns the RTMP URL of a restream destination.
+    /// Returns the server URL of a restream destination.
     /// </summary>
-    /// <value>Returns the RTMP URL of a restream destination.</value>
+    /// <value>Returns the server URL of a restream destination.</value>
     [DataMember(Name="serverUrl", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "serverUrl")]
     public string serverurl { get; set; }

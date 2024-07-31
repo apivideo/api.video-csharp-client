@@ -595,9 +595,9 @@ namespace ApiVideo.Api
 /// <param name="language">A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60; (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).</param>
         
         /// <returns></returns>
-		public void deleteAsync(string videoId, string language, CancellationToken cancellationToken = default)
+		public Task<ApiResponse<object>> deleteAsync(string videoId, string language, CancellationToken cancellationToken = default)
         {
-             deleteWithHttpInfoAsync(videoId, language, cancellationToken);
+             return deleteWithHttpInfoAsync(videoId, language, cancellationToken);
         }
 
         /// <summary>

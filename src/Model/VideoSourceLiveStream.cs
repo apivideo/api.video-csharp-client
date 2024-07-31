@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// This appears if the video is from a Live Record.
   /// </summary>
   [DataContract]
-  public class VideoSourceLiveStream {
+  public class VideoSourceLiveStream: DeepObject   {
     /// <summary>
     /// The unique identifier for the live stream.
     /// </summary>

@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Quality {
+  public class Quality: DeepObject   {
     /// <summary>
     /// The type of video (hls or mp4).
     /// </summary>

@@ -538,9 +538,9 @@ namespace ApiVideo.Api
         /// <param name="playerId">The unique identifier for the player you want to delete.</param>
         
         /// <returns></returns>
-		public void deleteAsync(string playerId, CancellationToken cancellationToken = default)
+		public Task<ApiResponse<object>> deleteAsync(string playerId, CancellationToken cancellationToken = default)
         {
-             deleteWithHttpInfoAsync(playerId, cancellationToken);
+             return deleteWithHttpInfoAsync(playerId, cancellationToken);
         }
 
         /// <summary>
@@ -1105,9 +1105,9 @@ namespace ApiVideo.Api
         /// <param name="playerId">The unique identifier for the player.</param>
         
         /// <returns></returns>
-		public void deleteLogoAsync(string playerId, CancellationToken cancellationToken = default)
+		public Task<ApiResponse<object>> deleteLogoAsync(string playerId, CancellationToken cancellationToken = default)
         {
-             deleteLogoWithHttpInfoAsync(playerId, cancellationToken);
+             return deleteLogoWithHttpInfoAsync(playerId, cancellationToken);
         }
 
         /// <summary>

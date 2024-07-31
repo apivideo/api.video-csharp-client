@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class AuthenticatePayload {
+  public class AuthenticatePayload: DeepObject   {
     /// <summary>
     /// Your account API key. You can use your sandbox API key, or you can use your production API key.
     /// </summary>

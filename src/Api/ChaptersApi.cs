@@ -383,9 +383,9 @@ namespace ApiVideo.Api
 /// <param name="language">A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.</param>
         
         /// <returns></returns>
-		public void deleteAsync(string videoId, string language, CancellationToken cancellationToken = default)
+		public Task<ApiResponse<object>> deleteAsync(string videoId, string language, CancellationToken cancellationToken = default)
         {
-             deleteWithHttpInfoAsync(videoId, language, cancellationToken);
+             return deleteWithHttpInfoAsync(videoId, language, cancellationToken);
         }
 
         /// <summary>

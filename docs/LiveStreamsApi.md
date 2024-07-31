@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**list**](LiveStreamsApi.md#getlivestreams) | **GET** /live-streams | List all live streams
 [**uploadThumbnail**](LiveStreamsApi.md#postlivestreamslivestreamidthumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
 [**deleteThumbnail**](LiveStreamsApi.md#deletelivestreamslivestreamidthumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**complete**](LiveStreamsApi.md#putlivestreamslivestreamidcomplete) | **PUT** /live-streams/{liveStreamId}/complete | Complete a live stream
 
 
 <a name="postlivestreams"></a>
@@ -495,6 +496,73 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+| **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+| **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="putlivestreamslivestreamidcomplete"></a>
+# **complete**
+> void complete (string liveStreamId)
+
+Complete a live stream
+
+Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the `EXT-X-ENDLIST` tag to the live stream's HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream. 
+
+### Example
+```csharp
+using System.Diagnostics;
+using ApiVideo.Client;
+
+namespace Example
+{
+    public class completeExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var liveStreamId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The unique ID for the live stream you want to complete.
+            var apiLiveStreamsInstance = apiInstance.LiveStreams();
+            try
+            {
+                // Complete a live stream
+                apiLiveStreamsInstance.complete(liveStreamId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling LiveStreamsApi.complete: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **liveStreamId** | **string**| The unique ID for the live stream you want to complete. | 
+
+### Return type
+
+void (empty response body)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Accepted |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 | **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 | **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 

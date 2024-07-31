@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class NotFound {
+  public class NotFound: DeepObject   {
     /// <summary>
     /// Gets or Sets Type
     /// </summary>
