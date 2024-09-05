@@ -95,7 +95,7 @@ namespace ApiVideo.Client
         private void Initialize(IRestClient client)
         {
             this.RestClient = client;
-            setName("AV-Origin-Client", "csharp", "1.6.0");
+            setName("AV-Origin-Client", "csharp", "1.6.1");
         }
 
         /// <summary>
