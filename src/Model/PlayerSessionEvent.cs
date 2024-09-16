@@ -20,9 +20,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "type")]
     public string type { get; set; }
     /// <summary>
-    /// When an event occurred, presented in ISO-8601 format.
+    /// When an event occurred, presented in ATOM UTC format.
     /// </summary>
-    /// <value>When an event occurred, presented in ISO-8601 format.</value>
+    /// <value>When an event occurred, presented in ATOM UTC format.</value>
     [DataMember(Name="emittedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "emittedAt")]
     public DateTime? emittedat { get; set; }

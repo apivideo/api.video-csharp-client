@@ -20,9 +20,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "videoId")]
     public string videoid { get; set; }
     /// <summary>
-    /// When a video was created, presented in ISO-8601 format.
+    /// When a video was created, presented in ATOM UTC format.
     /// </summary>
-    /// <value>When a video was created, presented in ISO-8601 format.</value>
+    /// <value>When a video was created, presented in ATOM UTC format.</value>
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }
@@ -41,19 +41,40 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "description")]
     public string description { get; set; }
     /// <summary>
-    /// The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.
+    /// The date and time the API created the video. Date and time are provided using ATOM UTC format.
     /// </summary>
-    /// <value>The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.</value>
+    /// <value>The date and time the API created the video. Date and time are provided using ATOM UTC format.</value>
     [DataMember(Name="publishedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "publishedAt")]
     public DateTime? publishedat { get; set; }
     /// <summary>
-    /// The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.
+    /// The date and time the video was updated. Date and time are provided using ATOM UTC format.
     /// </summary>
-    /// <value>The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.</value>
+    /// <value>The date and time the video was updated. Date and time are provided using ATOM UTC format.</value>
     [DataMember(Name="updatedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updatedAt")]
     public DateTime? updatedat { get; set; }
+    /// <summary>
+    /// The date and time the video was discarded. The API populates this field only if you have the Video Restore feature enabled and discard a video. Date and time are provided using ATOM UTC format.
+    /// </summary>
+    /// <value>The date and time the video was discarded. The API populates this field only if you have the Video Restore feature enabled and discard a video. Date and time are provided using ATOM UTC format.</value>
+    [DataMember(Name="discardedAt", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "discardedAt")]
+    public DateTime? discardedat { get; set; }
+    /// <summary>
+    /// The date and time the video will be permanently deleted. The API populates this field only if you have the Video Restore feature enabled and discard a video. Discarded videos are pemanently deleted after 90 days. Date and time are provided using ATOM UTC format.
+    /// </summary>
+    /// <value>The date and time the video will be permanently deleted. The API populates this field only if you have the Video Restore feature enabled and discard a video. Discarded videos are pemanently deleted after 90 days. Date and time are provided using ATOM UTC format.</value>
+    [DataMember(Name="deletesAt", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "deletesAt")]
+    public DateTime? deletesat { get; set; }
+    /// <summary>
+    /// Returns `true` for videos you discarded when you have the Video Restore feature enabled. Returns `false` for every other video.
+    /// </summary>
+    /// <value>Returns `true` for videos you discarded when you have the Video Restore feature enabled. Returns `false` for every other video.</value>
+    [DataMember(Name="discarded", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "discarded")]
+    public Nullable<bool> discarded { get; set; }
     /// <summary>
     /// One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  
     /// </summary>
@@ -62,9 +83,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "tags")]
     public List<string> tags { get; set; }
     /// <summary>
-    /// Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. 
+    /// Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. 
     /// </summary>
-    /// <value>Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. </value>
+    /// <value>Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. </value>
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
@@ -123,6 +144,9 @@ namespace ApiVideo.Model {
       sb.Append("  Description: ").Append(description).Append("\n");
       sb.Append("  PublishedAt: ").Append(publishedat).Append("\n");
       sb.Append("  UpdatedAt: ").Append(updatedat).Append("\n");
+      sb.Append("  DiscardedAt: ").Append(discardedat).Append("\n");
+      sb.Append("  DeletesAt: ").Append(deletesat).Append("\n");
+      sb.Append("  Discarded: ").Append(discarded).Append("\n");
       sb.Append("  Tags: ").Append(tags).Append("\n");
       sb.Append("  Metadata: ").Append(metadata).Append("\n");
       sb.Append("  Source: ").Append(source).Append("\n");

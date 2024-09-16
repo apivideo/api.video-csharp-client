@@ -1388,7 +1388,7 @@ namespace ApiVideo.Api
 
         
         /// <summary>
-        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
@@ -1401,7 +1401,7 @@ namespace ApiVideo.Api
         }
 
         /// <summary>
-        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to delete.</param>
@@ -1414,7 +1414,7 @@ namespace ApiVideo.Api
 
 
         /// <summary>
-        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
@@ -1472,7 +1472,7 @@ namespace ApiVideo.Api
 
 
         /// <summary>
-        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+        /// Delete a video object If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="videoId">The video ID for the video you want to delete.</param>
@@ -1532,7 +1532,7 @@ namespace ApiVideo.Api
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
 /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
-/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
 /// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
 /// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
 /// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
@@ -1554,7 +1554,7 @@ namespace ApiVideo.Api
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
 /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
-/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
 /// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
 /// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
 /// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
@@ -1577,7 +1577,7 @@ namespace ApiVideo.Api
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
 /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
-/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
 /// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
 /// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
 /// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
@@ -1656,7 +1656,7 @@ namespace ApiVideo.Api
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
 /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
-/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
 /// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
 /// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
 /// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
@@ -1780,7 +1780,7 @@ namespace ApiVideo.Api
             /// <summary>
             /// Set metadata
             /// </summary>
-            /// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional)</param>
+            /// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
             /// <returns>APIlistRequest</returns>
             public APIlistRequest Metadata(Dictionary<string, string> metadata) {
                 this.metadata = metadata;
@@ -2327,6 +2327,148 @@ namespace ApiVideo.Api
 
         
         /// <summary>
+        /// Retrieve a discarded video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want details about.</param>
+        
+        /// <returns>Video</returns>
+		public Task<Video> getDiscardedAsync(string videoId, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Video>> localVarResponse = getDiscardedWithHttpInfoAsync(videoId, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Video>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Retrieve a discarded video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The unique identifier for the video you want details about.</param>
+        
+        /// <returns>Video</returns>
+		public Video getDiscarded(string videoId)
+        {
+             ApiResponse<Video> localVarResponse = getDiscardedWithHttpInfo(videoId);
+             return localVarResponse.Data;
+        }
+
+
+        /// <summary>
+        /// Retrieve a discarded video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The unique identifier for the video you want details about.</param>
+        
+        /// <returns>ApiResponse of Video</returns>
+		public Task<ApiResponse<Video>> getDiscardedWithHttpInfoAsync(string videoId, CancellationToken cancellationToken = default)
+        {
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->getDiscarded");
+            
+
+            var localVarPath = "/discarded/videos/{videoId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Video>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+            });
+            
+        }
+
+
+        /// <summary>
+        /// Retrieve a discarded video object This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The unique identifier for the video you want details about.</param>
+        
+        /// <returns>ApiResponse of Video</returns>
+		public ApiResponse<Video> getDiscardedWithHttpInfo(string videoId)
+        {
+
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->getDiscarded");
+            
+
+            var localVarPath = "/discarded/videos/{videoId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+
+
+            
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<Video>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Video) this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
+            
+        }
+
+        
+        /// <summary>
         /// Retrieve video status and details This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2464,6 +2606,551 @@ namespace ApiVideo.Api
             return new ApiResponse<VideoStatus>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (VideoStatus) this.ApiClient.Deserialize(localVarResponse, typeof(VideoStatus)));
+            
+        }
+
+        
+        /// <summary>
+        /// List all discarded video objects This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
+/// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
+/// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
+/// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
+/// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
+/// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>VideosListResponse</returns>
+		public Task<VideosListResponse> listDiscardedAsync(string title = default, List<string> tags = default, Dictionary<string, string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<VideosListResponse>> localVarResponse = listDiscardedWithHttpInfoAsync(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<VideosListResponse>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// List all discarded video objects This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
+/// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
+/// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
+/// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
+/// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
+/// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>VideosListResponse</returns>
+		public VideosListResponse listDiscarded(string title = default, List<string> tags = default, Dictionary<string, string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
+        {
+             ApiResponse<VideosListResponse> localVarResponse = listDiscardedWithHttpInfo(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize);
+             return localVarResponse.Data;
+        }
+
+
+        /// <summary>
+        /// List all discarded video objects This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
+/// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
+/// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
+/// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
+/// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
+/// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of VideosListResponse</returns>
+		public Task<ApiResponse<VideosListResponse>> listDiscardedWithHttpInfoAsync(string title = default, List<string> tags = default, Dictionary<string, string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default, CancellationToken cancellationToken = default)
+        {
+
+
+
+
+
+
+
+
+
+            
+
+            var localVarPath = "/discarded/videos";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (title != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "title", title)); // query parameter
+            if (tags != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("multi", "tags[]", tags)); // query parameter
+            if (metadata != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "metadata", metadata)); // query parameter
+            if (description != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "description", description)); // query parameter
+            if (liveStreamId != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "liveStreamId", liveStreamId)); // query parameter
+            if (sortBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (sortOrder != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortOrder", sortOrder)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<VideosListResponse>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (VideosListResponse) this.ApiClient.Deserialize(task.Result, typeof(VideosListResponse)));
+            });
+            
+        }
+
+
+        /// <summary>
+        /// List all discarded video objects This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
+/// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
+/// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
+/// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
+/// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
+/// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
+/// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
+/// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+/// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+        
+        /// <returns>ApiResponse of VideosListResponse</returns>
+		public ApiResponse<VideosListResponse> listDiscardedWithHttpInfo(string title = default, List<string> tags = default, Dictionary<string, string> metadata = default, string description = default, string liveStreamId = default, string sortBy = default, string sortOrder = default, int? currentPage = default, int? pageSize = default)
+        {
+
+
+
+
+
+
+
+
+
+            
+
+            var localVarPath = "/discarded/videos";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (title != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "title", title)); // query parameter
+            if (tags != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("multi", "tags[]", tags)); // query parameter
+            if (metadata != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "metadata", metadata)); // query parameter
+            if (description != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "description", description)); // query parameter
+            if (liveStreamId != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "liveStreamId", liveStreamId)); // query parameter
+            if (sortBy != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortBy", sortBy)); // query parameter
+            if (sortOrder != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "sortOrder", sortOrder)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+
+
+            
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<VideosListResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (VideosListResponse) this.ApiClient.Deserialize(localVarResponse, typeof(VideosListResponse)));
+            
+        }
+
+        
+        /// <summary>
+        /// This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+        /// </summary>
+        /// <returns>APIlistDiscardedRequest</returns>
+        public APIlistDiscardedRequest listDiscarded() {
+            return new APIlistDiscardedRequest(this);
+        }
+
+        /// <summary>
+        /// Request listDiscarded class to get paginated list of items
+        /// </summary>
+        public class APIlistDiscardedRequest {
+            private string title;
+            private List<string> tags;
+            private Dictionary<string, string> metadata;
+            private string description;
+            private string liveStreamId;
+            private string sortBy;
+            private string sortOrder;
+            private int? currentPage;
+            private int? pageSize;
+
+            private VideosApi currentApiInstance;
+
+            /// <summary>
+            /// Class constructor with api instance
+            /// </summary>
+            /// <param name="instance">Instance of the current api</param>
+            public APIlistDiscardedRequest(VideosApi instance) {
+                this.currentApiInstance = instance;
+            }
+
+            /// <summary>
+            /// Set title
+            /// </summary>
+            /// <param name="title">The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional)</param>
+            /// <returns>APIlistDiscardedRequest</returns>
+            public APIlistDiscardedRequest Title(string title) {
+                this.title = title;
+                return this;
+            }
+
+            /// <summary>
+            /// Set tags
+            /// </summary>
+            /// <param name="tags">A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional)</param>
+            /// <returns>APIlistDiscardedRequest</returns>
+            public APIlistDiscardedRequest Tags(List<string> tags) {
+                this.tags = tags;
+                return this;
+            }
+
+            /// <summary>
+            /// Set metadata
+            /// </summary>
+            /// <param name="metadata">Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional)</param>
+            /// <returns>APIlistDiscardedRequest</returns>
+            public APIlistDiscardedRequest Metadata(Dictionary<string, string> metadata) {
+                this.metadata = metadata;
+                return this;
+            }
+
+            /// <summary>
+            /// Set description
+            /// </summary>
+            /// <param name="description">Retrieve video objects by &#x60;description&#x60;. (optional)</param>
+            /// <returns>APIlistDiscardedRequest</returns>
+            public APIlistDiscardedRequest Description(string description) {
+                this.description = description;
+                return this;
+            }
+
+            /// <summary>
+            /// Set liveStreamId
+            /// </summary>
+            /// <param name="liveStreamId">Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. (optional)</param>
+            /// <returns>APIlistDiscardedRequest</returns>
+            public APIlistDiscardedRequest LiveStreamId(string liveStreamId) {
+                this.liveStreamId = liveStreamId;
+                return this;
+            }
+
+            /// <summary>
+            /// Set sortBy
+            /// </summary>
+            /// <param name="sortBy">Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional)</param>
+            /// <returns>APIlistDiscardedRequest</returns>
+            public APIlistDiscardedRequest SortBy(string sortBy) {
+                this.sortBy = sortBy;
+                return this;
+            }
+
+            /// <summary>
+            /// Set sortOrder
+            /// </summary>
+            /// <param name="sortOrder">Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. (optional)</param>
+            /// <returns>APIlistDiscardedRequest</returns>
+            public APIlistDiscardedRequest SortOrder(string sortOrder) {
+                this.sortOrder = sortOrder;
+                return this;
+            }
+
+            /// <summary>
+            /// Set currentPage
+            /// </summary>
+            /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
+            /// <returns>APIlistDiscardedRequest</returns>
+            public APIlistDiscardedRequest CurrentPage(int? currentPage) {
+                this.currentPage = currentPage;
+                return this;
+            }
+
+            /// <summary>
+            /// Set pageSize
+            /// </summary>
+            /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
+            /// <returns>APIlistDiscardedRequest</returns>
+            public APIlistDiscardedRequest PageSize(int? pageSize) {
+                this.pageSize = pageSize;
+                return this;
+            }
+
+            
+
+            /// <summary>
+            /// Execute listDiscarded request
+            /// </summary>
+            /// <returns>VideosListResponse </returns>
+            public Page<Video> execute(){
+                ApiResponse<VideosListResponse> localVarResp = this.currentApiInstance.listDiscardedWithHttpInfo(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize);
+                return new Page<Video>(localVarResp.Data.data, localVarResp.Data.pagination, () => {
+                    try {
+                        return copy().CurrentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                    } catch (ApiException e) {
+                        throw new Exception(e.Message);
+                    }
+                }); 
+            }
+
+            private APIlistDiscardedRequest copy() {
+                APIlistDiscardedRequest copy = new APIlistDiscardedRequest( this.currentApiInstance);
+                copy.Title(title);
+                copy.Tags(tags);
+                copy.Metadata(metadata);
+                copy.Description(description);
+                copy.LiveStreamId(liveStreamId);
+                copy.SortBy(sortBy);
+                copy.SortOrder(sortOrder);
+                copy.CurrentPage(currentPage);
+                copy.PageSize(pageSize);
+                return copy;
+            }
+        }
+        /// <summary>
+        /// Update a discarded video object Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The video ID for the video you want to restore.</param>
+/// <param name="discardedVideoUpdatePayload"></param>
+        
+        /// <returns>Video</returns>
+		public Task<Video> updateDiscardedAsync(string videoId, DiscardedVideoUpdatePayload discardedVideoUpdatePayload, CancellationToken cancellationToken = default)
+        {
+             Task<ApiResponse<Video>> localVarResponse = updateDiscardedWithHttpInfoAsync(videoId, discardedVideoUpdatePayload, cancellationToken);
+             return localVarResponse.ContinueWith((Task<ApiResponse<Video>> task) => task.Result.Data );
+             
+        }
+
+        /// <summary>
+        /// Update a discarded video object Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The video ID for the video you want to restore.</param>
+/// <param name="discardedVideoUpdatePayload"></param>
+        
+        /// <returns>Video</returns>
+		public Video updateDiscarded(string videoId, DiscardedVideoUpdatePayload discardedVideoUpdatePayload)
+        {
+             ApiResponse<Video> localVarResponse = updateDiscardedWithHttpInfo(videoId, discardedVideoUpdatePayload);
+             return localVarResponse.Data;
+        }
+
+
+        /// <summary>
+        /// Update a discarded video object Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
+        /// <param name="videoId">The video ID for the video you want to restore.</param>
+/// <param name="discardedVideoUpdatePayload"></param>
+        
+        /// <returns>ApiResponse of Video</returns>
+		public Task<ApiResponse<Video>> updateDiscardedWithHttpInfoAsync(string videoId, DiscardedVideoUpdatePayload discardedVideoUpdatePayload, CancellationToken cancellationToken = default)
+        {
+            if (discardedVideoUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'discardedVideoUpdatePayload' when calling VideosApi->updateDiscarded");
+            
+            
+            if (discardedVideoUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'discardedVideoUpdatePayload' when calling VideosApi->updateDiscarded");
+            
+            
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->updateDiscarded");
+            // verify the required parameter 'discardedVideoUpdatePayload' is set
+            if (discardedVideoUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'discardedVideoUpdatePayload' when calling VideosApi->updateDiscarded");
+            
+
+            var localVarPath = "/discarded/videos/{videoId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (discardedVideoUpdatePayload != null && discardedVideoUpdatePayload.GetType() != typeof(byte[]) && discardedVideoUpdatePayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(discardedVideoUpdatePayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = discardedVideoUpdatePayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            Task<RestResponse> localVarResponse = (Task<RestResponse>) this.ApiClient.CallApiAsync(localVarPath,
+                Method.Patch, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType, cancellationToken);
+
+
+            return localVarResponse.ContinueWith((Task<RestResponse> task) =>
+            {
+                int localVarStatusCode = (int) task.Result.StatusCode;
+                return new ApiResponse<Video>(localVarStatusCode,
+                    task.Result.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                    (Video) this.ApiClient.Deserialize(task.Result, typeof(Video)));
+            });
+            
+        }
+
+
+        /// <summary>
+        /// Update a discarded video object Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+        /// 
+        /// 
+        /// </summary>
+        /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="videoId">The video ID for the video you want to restore.</param>
+/// <param name="discardedVideoUpdatePayload"></param>
+        
+        /// <returns>ApiResponse of Video</returns>
+		public ApiResponse<Video> updateDiscardedWithHttpInfo(string videoId, DiscardedVideoUpdatePayload discardedVideoUpdatePayload)
+        {
+            if (discardedVideoUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'discardedVideoUpdatePayload' when calling VideosApi->updateDiscarded");
+            
+            
+            if (discardedVideoUpdatePayload == null) 
+                throw new ApiException(400,"Missing required parameter 'discardedVideoUpdatePayload' when calling VideosApi->updateDiscarded");
+            
+            
+            // verify the required parameter 'videoId' is set
+            if (videoId == null)
+                throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->updateDiscarded");
+            // verify the required parameter 'discardedVideoUpdatePayload' is set
+            if (discardedVideoUpdatePayload == null)
+                throw new ApiException(400, "Missing required parameter 'discardedVideoUpdatePayload' when calling VideosApi->updateDiscarded");
+            
+
+            var localVarPath = "/discarded/videos/{videoId}";
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>();
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            string[] localVarContentTypes = new string[] {
+                "application/json"
+            };
+            string localVarContentType = ApiClient.SelectHeaderContentType(localVarContentTypes);
+            localVarHeaderParams.Add("Content-Type", localVarContentType);
+            // to determine the Accept header
+            string[] localVarHttpHeaderAccepts = new string[] {
+                "application/json"
+            };
+            string localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (videoId != null) localVarPathParams.Add("videoId", this.ApiClient.ParameterToString(videoId)); // path parameter
+            if (discardedVideoUpdatePayload != null && discardedVideoUpdatePayload.GetType() != typeof(byte[]) && discardedVideoUpdatePayload.GetType() != typeof(string))
+            {
+                localVarPostBody = this.ApiClient.Serialize(discardedVideoUpdatePayload); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = discardedVideoUpdatePayload; // byte array
+            }
+
+
+            
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.ApiClient.CallApi(localVarPath,
+                Method.Patch, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            return new ApiResponse<Video>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Video) this.ApiClient.Deserialize(localVarResponse, typeof(Video)));
             
         }
 

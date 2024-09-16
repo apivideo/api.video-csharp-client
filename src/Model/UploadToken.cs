@@ -27,16 +27,16 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "ttl")]
     public int ttl { get; set; }
     /// <summary>
-    /// When the token was created, displayed in ISO-8601 format.
+    /// When the token was created, displayed in ATOM UTC format.
     /// </summary>
-    /// <value>When the token was created, displayed in ISO-8601 format.</value>
+    /// <value>When the token was created, displayed in ATOM UTC format.</value>
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }
     /// <summary>
-    /// When the token expires, displayed in ISO-8601 format.
+    /// When the token expires, displayed in ATOM UTC format.
     /// </summary>
-    /// <value>When the token expires, displayed in ISO-8601 format.</value>
+    /// <value>When the token expires, displayed in ATOM UTC format.</value>
     [DataMember(Name="expiresAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "expiresAt")]
     public DateTime? expiresat { get; set; }

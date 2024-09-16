@@ -673,7 +673,7 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
-        /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
+        /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -690,7 +690,7 @@ namespace ApiVideo.Api
         /// List all player themes Retrieve a list of all the player themes you created, as well as details about each one.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
+        /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -708,7 +708,7 @@ namespace ApiVideo.Api
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation. (optional)</param>
-        /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
+        /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -772,7 +772,7 @@ namespace ApiVideo.Api
         /// List all player themes Retrieve a list of all the player themes you created, as well as details about each one.
         /// </summary>
         /// <exception cref="ApiVideo.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
+        /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format. (optional)</param>
 /// <param name="sortOrder">Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. (optional)</param>
 /// <param name="currentPage">Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)</param>
 /// <param name="pageSize">Results per page. Allowed values 1-100, default is 25. (optional, default to 25)</param>
@@ -858,7 +858,7 @@ namespace ApiVideo.Api
             /// <summary>
             /// Set sortBy
             /// </summary>
-            /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. (optional)</param>
+            /// <param name="sortBy">createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format. (optional)</param>
             /// <returns>APIlistRequest</returns>
             public APIlistRequest SortBy(string sortBy) {
                 this.sortBy = sortBy;

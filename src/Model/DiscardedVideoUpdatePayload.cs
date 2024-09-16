@@ -11,21 +11,14 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class Watermark: DeepObject   {
+  public class DiscardedVideoUpdatePayload: DeepObject   {
     /// <summary>
-    /// The unique identifier of the watermark.
+    /// Use this parameter to restore a discarded video when you have the Video Restore feature enabled. This parameter only accepts `false` as a value!
     /// </summary>
-    /// <value>The unique identifier of the watermark.</value>
-    [DataMember(Name="watermarkId", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "watermarkId")]
-    public string watermarkid { get; set; }
-    /// <summary>
-    /// When the watermark was created, presented in ATOM UTC format.
-    /// </summary>
-    /// <value>When the watermark was created, presented in ATOM UTC format.</value>
-    [DataMember(Name="createdAt", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "createdAt")]
-    public DateTime? createdat { get; set; }
+    /// <value>Use this parameter to restore a discarded video when you have the Video Restore feature enabled. This parameter only accepts `false` as a value!</value>
+    [DataMember(Name="discarded", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "discarded")]
+    public Nullable<bool> discarded { get; set; }
 
 
     /// <summary>
@@ -34,9 +27,8 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class Watermark {\n");
-      sb.Append("  WatermarkId: ").Append(watermarkid).Append("\n");
-      sb.Append("  CreatedAt: ").Append(createdat).Append("\n");
+      sb.Append("class DiscardedVideoUpdatePayload {\n");
+      sb.Append("  Discarded: ").Append(discarded).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
