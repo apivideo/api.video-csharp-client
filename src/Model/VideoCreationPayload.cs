@@ -69,9 +69,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "tags")]
     public List<string> tags { get; set; }
     /// <summary>
-    /// A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).
+    /// A list of key value pairs that you use to provide metadata for your video.
     /// </summary>
-    /// <value>A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).</value>
+    /// <value>A list of key value pairs that you use to provide metadata for your video.</value>
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }

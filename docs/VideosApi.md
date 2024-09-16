@@ -13,7 +13,10 @@ Method | HTTP request | Description
 [**list**](VideosApi.md#listvideos) | **GET** /videos | List all video objects
 [**uploadThumbnail**](VideosApi.md#postvideosvideoidthumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
 [**pickThumbnail**](VideosApi.md#patchvideosvideoidthumbnail) | **PATCH** /videos/{videoId}/thumbnail | Set a thumbnail
+[**getDiscarded**](VideosApi.md#getdiscardedvideo) | **GET** /discarded/videos/{videoId} | Retrieve a discarded video object
 [**getStatus**](VideosApi.md#getvideostatus) | **GET** /videos/{videoId}/status | Retrieve video status and details
+[**listDiscarded**](VideosApi.md#listdiscardedvideos) | **GET** /discarded/videos | List all discarded video objects
+[**updateDiscarded**](VideosApi.md#patchdiscardedvideo) | **PATCH** /discarded/videos/{videoId} | Update a discarded video object
 
 
 <a name="postvideo"></a>
@@ -395,7 +398,7 @@ Name | Type | Description  | Notes
 
 Delete a video object
 
-If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
 
 ### Example
 ```csharp
@@ -482,7 +485,7 @@ namespace Example
 
             var title = My Video.mp4;  // string | The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional) 
             var tags = new List<string>(); // List<string> | A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional) 
-            var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. (optional) 
+            var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional) 
             var description = New Zealand;  // string | Retrieve video objects by `description`. (optional) 
             var liveStreamId = li400mYKSgQ6xs7taUeSaEKr;  // string | Retrieve video objects that were recorded from a live stream by `liveStreamId`. (optional) 
             var sortBy = publishedAt;  // string | Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional) 
@@ -513,7 +516,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **string**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional] 
  **tags** | [**List&lt;string&gt;**](string.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional] 
- **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. | [optional] 
+ **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional] 
  **description** | **string**| Retrieve video objects by &#x60;description&#x60;. | [optional] 
  **liveStreamId** | **string**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional] 
  **sortBy** | **string**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional] 
@@ -703,6 +706,74 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="getdiscardedvideo"></a>
+# **getDiscarded**
+> Video getDiscarded (string videoId)
+
+Retrieve a discarded video object
+
+This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+
+### Example
+```csharp
+using System.Diagnostics;
+using ApiVideo.Client;
+
+namespace Example
+{
+    public class getDiscardedExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var videoId = videoId_example;  // string | The unique identifier for the video you want details about.
+            var apiVideosInstance = apiInstance.Videos();
+            try
+            {
+                // Retrieve a discarded video object
+                Video result = apiVideosInstance.getDiscarded(videoId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling VideosApi.getDiscarded: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **string**| The unique identifier for the video you want details about. | 
+
+### Return type
+
+[**Video**](Video.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+| **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+| **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getvideostatus"></a>
 # **getStatus**
 > VideoStatus getStatus (string videoId)
@@ -766,6 +837,163 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+| **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+| **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="listdiscardedvideos"></a>
+# **listDiscarded**
+> VideosListResponse listDiscarded (string title = null, List<string> tags = null, Dictionary<string, string> metadata = null, string description = null, string liveStreamId = null, string sortBy = null, string sortOrder = null, int? currentPage = null, int? pageSize = null)
+
+List all discarded video objects
+
+This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+
+### Example
+```csharp
+using System.Diagnostics;
+using ApiVideo.Client;
+
+namespace Example
+{
+    public class listDiscardedExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var title = My Video.mp4;  // string | The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. (optional) 
+            var tags = new List<string>(); // List<string> | A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. (optional) 
+            var metadata = new Dictionary<string, string>(); // Dictionary<string, string> | Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. (optional) 
+            var description = New Zealand;  // string | Retrieve video objects by `description`. (optional) 
+            var liveStreamId = li400mYKSgQ6xs7taUeSaEKr;  // string | Retrieve video objects that were recorded from a live stream by `liveStreamId`. (optional) 
+            var sortBy = publishedAt;  // string | Use this parameter to sort videos by the their created time, published time, updated time, or by title. (optional) 
+            var sortOrder = asc;  // string | Use this parameter to sort results. `asc` is ascending and sorts from A to Z. `desc` is descending and sorts from Z to A. (optional) 
+            var currentPage = 2;  // int? | Choose the number of search results to return per page. Minimum value: 1 (optional)  (default to 1)
+            var pageSize = 30;  // int? | Results per page. Allowed values 1-100, default is 25. (optional)  (default to 25)
+            var apiVideosInstance = apiInstance.Videos();
+            try
+            {
+                // List all discarded video objects
+                VideosListResponse result = apiVideosInstance.listDiscarded(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling VideosApi.listDiscarded: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **title** | **string**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional] 
+ **tags** | [**List&lt;string&gt;**](string.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional] 
+ **metadata** | [**Dictionary&lt;string, string&gt;**](string.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional] 
+ **description** | **string**| Retrieve video objects by &#x60;description&#x60;. | [optional] 
+ **liveStreamId** | **string**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional] 
+ **sortBy** | **string**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional] 
+ **sortOrder** | **string**| Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. | [optional] 
+ **currentPage** | **int?**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
+ **pageSize** | **int?**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
+
+### Return type
+
+[**VideosListResponse**](VideosListResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+| **400** | Bad Request |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+| **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="patchdiscardedvideo"></a>
+# **updateDiscarded**
+> Video updateDiscarded (string videoId, DiscardedVideoUpdatePayload discardedVideoUpdatePayload)
+
+Update a discarded video object
+
+Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+
+
+
+### Example
+```csharp
+using System.Diagnostics;
+using ApiVideo.Client;
+
+namespace Example
+{
+    public class updateDiscardedExample
+    {
+        public static void Main()
+        {
+            var basePath = ApiVideoClient.Client.Environment.SANDBOX;
+            var apiKey = "YOUR_API_KEY";
+
+            var apiInstance = new ApiVideoClient(apiKey,basePath);
+
+            var videoId = vi4k0jvEUuaTdRAEjQ4Jfrgz;  // string | The video ID for the video you want to restore.
+            var discardedVideoUpdatePayload = new DiscardedVideoUpdatePayload(); // DiscardedVideoUpdatePayload | 
+            var apiVideosInstance = apiInstance.Videos();
+            try
+            {
+                // Update a discarded video object
+                Video result = apiVideosInstance.updateDiscarded(videoId, discardedVideoUpdatePayload);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling VideosApi.updateDiscarded: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **string**| The video ID for the video you want to restore. | 
+ **discardedVideoUpdatePayload** | [**DiscardedVideoUpdatePayload**](DiscardedVideoUpdatePayload.md)|  | 
+
+### Return type
+
+[**Video**](Video.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+| **400** | Bad Request |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 | **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 | **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 

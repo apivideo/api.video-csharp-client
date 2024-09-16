@@ -68,16 +68,16 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "restreams")]
     public List<RestreamsResponseObject> restreams { get; set; }
     /// <summary>
-    /// When the player was created, presented in ISO-8601 format.
+    /// When the player was created, presented in ATOM UTC format.
     /// </summary>
-    /// <value>When the player was created, presented in ISO-8601 format.</value>
+    /// <value>When the player was created, presented in ATOM UTC format.</value>
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }
     /// <summary>
-    /// When the player was last updated, presented in ISO-8601 format.
+    /// When the player was last updated, presented in ATOM UTC format.
     /// </summary>
-    /// <value>When the player was last updated, presented in ISO-8601 format.</value>
+    /// <value>When the player was last updated, presented in ATOM UTC format.</value>
     [DataMember(Name="updatedAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updatedAt")]
     public DateTime? updatedat { get; set; }

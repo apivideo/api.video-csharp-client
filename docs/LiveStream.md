@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **PlayerId** | **string** | The unique identifier for the player. | [optional] 
 **Broadcasting** | **bool** | Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not. | [optional] 
 **Restreams** | [**List&lt;RestreamsResponseObject&gt;**](RestreamsResponseObject.md) | Returns the list of restream destinations. | 
-**CreatedAt** | **DateTime** | When the player was created, presented in ISO-8601 format. | [optional] 
-**UpdatedAt** | **DateTime** | When the player was last updated, presented in ISO-8601 format. | [optional] 
+**CreatedAt** | **DateTime** | When the player was created, presented in ATOM UTC format. | [optional] 
+**UpdatedAt** | **DateTime** | When the player was last updated, presented in ATOM UTC format. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

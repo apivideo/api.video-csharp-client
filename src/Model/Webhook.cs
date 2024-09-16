@@ -20,9 +20,9 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "webhookId")]
     public string webhookid { get; set; }
     /// <summary>
-    /// When an webhook was created, presented in ISO-8601 format.
+    /// When an webhook was created, presented in ATOM UTC format.
     /// </summary>
-    /// <value>When an webhook was created, presented in ISO-8601 format.</value>
+    /// <value>When an webhook was created, presented in ATOM UTC format.</value>
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }

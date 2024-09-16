@@ -30,6 +30,7 @@ docs/CaptionsUpdatePayload.md
 docs/Chapter.md
 docs/ChaptersApi.md
 docs/ChaptersListResponse.md
+docs/DiscardedVideoUpdatePayload.md
 docs/FilterBy.md
 docs/FilterBy1.md
 docs/FilterBy2.md
@@ -123,6 +124,7 @@ src/ApiVideo.Test/Model/CaptionsListResponseTests.cs
 src/ApiVideo.Test/Model/CaptionsUpdatePayloadTests.cs
 src/ApiVideo.Test/Model/ChapterTests.cs
 src/ApiVideo.Test/Model/ChaptersListResponseTests.cs
+src/ApiVideo.Test/Model/DiscardedVideoUpdatePayloadTests.cs
 src/ApiVideo.Test/Model/FilterBy1Tests.cs
 src/ApiVideo.Test/Model/FilterBy2Tests.cs
 src/ApiVideo.Test/Model/FilterByTests.cs
@@ -215,6 +217,7 @@ src/ApiVideo/Model/CaptionsListResponse.cs
 src/ApiVideo/Model/CaptionsUpdatePayload.cs
 src/ApiVideo/Model/Chapter.cs
 src/ApiVideo/Model/ChaptersListResponse.cs
+src/ApiVideo/Model/DiscardedVideoUpdatePayload.cs
 src/ApiVideo/Model/FilterBy.cs
 src/ApiVideo/Model/FilterBy1.cs
 src/ApiVideo/Model/FilterBy2.cs
