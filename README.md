@@ -23,6 +23,7 @@
     - [ChaptersApi](#chaptersapi)
     - [LiveStreamsApi](#livestreamsapi)
     - [PlayerThemesApi](#playerthemesapi)
+    - [TagsApi](#tagsapi)
     - [UploadTokensApi](#uploadtokensapi)
     - [VideosApi](#videosapi)
     - [WatermarksApi](#watermarksapi)
@@ -258,6 +259,22 @@ Method | HTTP request | Description
 [**deleteLogo**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/PlayerThemesApi.md#deleteLogo) | **DELETE** `/players/{playerId}/logo` | Delete logo
 
 
+#### TagsApi
+
+
+##### Retrieve an instance of TagsApi:
+```java
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_KEY");
+TagsApi tags = client.Tags()
+```
+
+##### Endpoints
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**list**](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/TagsApi.md#list) | **GET** `/tags` | List all video tags
+
+
 #### UploadTokensApi
 
 
@@ -372,6 +389,8 @@ Method | HTTP request | Description
  - [FilterBy1](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/FilterBy1.md)
  - [FilterBy2](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/FilterBy2.md)
  - [Link](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/Link.md)
+ - [ListTagsResponse](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/ListTagsResponse.md)
+ - [ListTagsResponseData](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/ListTagsResponseData.md)
  - [LiveStream](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStream.md)
  - [LiveStreamAssets](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamAssets.md)
  - [LiveStreamCreationPayload](https://github.com/apivideo/api.video-csharp-client/blob/main/docs/LiveStreamCreationPayload.md)

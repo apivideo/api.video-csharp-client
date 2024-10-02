@@ -35,6 +35,8 @@ docs/FilterBy.md
 docs/FilterBy1.md
 docs/FilterBy2.md
 docs/Link.md
+docs/ListTagsResponse.md
+docs/ListTagsResponseData.md
 docs/LiveStream.md
 docs/LiveStreamAssets.md
 docs/LiveStreamCreationPayload.md
@@ -58,6 +60,7 @@ docs/Quality.md
 docs/RefreshTokenPayload.md
 docs/RestreamsRequestObject.md
 docs/RestreamsResponseObject.md
+docs/TagsApi.md
 docs/TokenCreationPayload.md
 docs/TokenListResponse.md
 docs/TooManyRequests.md
@@ -97,6 +100,7 @@ src/ApiVideo.Test/Api/CaptionsApiTests.cs
 src/ApiVideo.Test/Api/ChaptersApiTests.cs
 src/ApiVideo.Test/Api/LiveStreamsApiTests.cs
 src/ApiVideo.Test/Api/PlayerThemesApiTests.cs
+src/ApiVideo.Test/Api/TagsApiTests.cs
 src/ApiVideo.Test/Api/UploadTokensApiTests.cs
 src/ApiVideo.Test/Api/VideosApiTests.cs
 src/ApiVideo.Test/Api/WatermarksApiTests.cs
@@ -129,6 +133,8 @@ src/ApiVideo.Test/Model/FilterBy1Tests.cs
 src/ApiVideo.Test/Model/FilterBy2Tests.cs
 src/ApiVideo.Test/Model/FilterByTests.cs
 src/ApiVideo.Test/Model/LinkTests.cs
+src/ApiVideo.Test/Model/ListTagsResponseDataTests.cs
+src/ApiVideo.Test/Model/ListTagsResponseTests.cs
 src/ApiVideo.Test/Model/LiveStreamAssetsTests.cs
 src/ApiVideo.Test/Model/LiveStreamCreationPayloadTests.cs
 src/ApiVideo.Test/Model/LiveStreamListResponseTests.cs
@@ -182,6 +188,7 @@ src/ApiVideo/Api/CaptionsApi.cs
 src/ApiVideo/Api/ChaptersApi.cs
 src/ApiVideo/Api/LiveStreamsApi.cs
 src/ApiVideo/Api/PlayerThemesApi.cs
+src/ApiVideo/Api/TagsApi.cs
 src/ApiVideo/Api/UploadTokensApi.cs
 src/ApiVideo/Api/VideosApi.cs
 src/ApiVideo/Api/WatermarksApi.cs
@@ -224,6 +231,8 @@ src/ApiVideo/Model/FilterBy2.cs
 src/ApiVideo/Model/IUploadPartProgressListener.cs
 src/ApiVideo/Model/IUploadProgressListener.cs
 src/ApiVideo/Model/Link.cs
+src/ApiVideo/Model/ListTagsResponse.cs
+src/ApiVideo/Model/ListTagsResponseData.cs
 src/ApiVideo/Model/LiveStream.cs
 src/ApiVideo/Model/LiveStreamAssets.cs
 src/ApiVideo/Model/LiveStreamCreationPayload.cs

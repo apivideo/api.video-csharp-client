@@ -13,33 +13,40 @@ namespace ApiVideo.Model {
   [DataContract]
   public class Webhook: DeepObject   {
     /// <summary>
-    /// Unique identifier of the webhook
+    /// A unique identifier of the webhook you subscribed to.
     /// </summary>
-    /// <value>Unique identifier of the webhook</value>
+    /// <value>A unique identifier of the webhook you subscribed to.</value>
     [DataMember(Name="webhookId", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "webhookId")]
     public string webhookid { get; set; }
     /// <summary>
-    /// When an webhook was created, presented in ATOM UTC format.
+    /// The time and date when you created this webhook subscription, in ATOM UTC format.
     /// </summary>
-    /// <value>When an webhook was created, presented in ATOM UTC format.</value>
+    /// <value>The time and date when you created this webhook subscription, in ATOM UTC format.</value>
     [DataMember(Name="createdAt", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "createdAt")]
     public DateTime? createdat { get; set; }
     /// <summary>
-    /// A list of events that will trigger the webhook.
+    /// A list of events that you subscribed to. When these events occur, the API triggers a webhook call to the URL you provided.
     /// </summary>
-    /// <value>A list of events that will trigger the webhook.</value>
+    /// <value>A list of events that you subscribed to. When these events occur, the API triggers a webhook call to the URL you provided.</value>
     [DataMember(Name="events", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "events")]
     public List<string> events { get; set; }
     /// <summary>
-    /// URL of the webhook
+    /// The URL where the API sends the webhook.
     /// </summary>
-    /// <value>URL of the webhook</value>
+    /// <value>The URL where the API sends the webhook.</value>
     [DataMember(Name="url", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "url")]
     public string url { get; set; }
+    /// <summary>
+    /// A secret key for the webhook you subscribed to. You can use it to verify the origin of the webhook call that you receive.
+    /// </summary>
+    /// <value>A secret key for the webhook you subscribed to. You can use it to verify the origin of the webhook call that you receive.</value>
+    [DataMember(Name="signatureSecret", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "signatureSecret")]
+    public string signaturesecret { get; set; }
 
 
     /// <summary>
@@ -53,6 +60,7 @@ namespace ApiVideo.Model {
       sb.Append("  CreatedAt: ").Append(createdat).Append("\n");
       sb.Append("  Events: ").Append(events).Append("\n");
       sb.Append("  Url: ").Append(url).Append("\n");
+      sb.Append("  SignatureSecret: ").Append(signaturesecret).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

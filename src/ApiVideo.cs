@@ -13,6 +13,7 @@ namespace ApiVideo.Client
         private readonly ChaptersApi chapters;
         private readonly LiveStreamsApi liveStreams;
         private readonly PlayerThemesApi playerThemes;
+        private readonly TagsApi tags;
         private readonly UploadTokensApi uploadTokens;
         private readonly VideosApi videos;
         private readonly WatermarksApi watermarks;
@@ -69,6 +70,7 @@ namespace ApiVideo.Client
             this.chapters = new ChaptersApi(this.apiClient);
             this.liveStreams = new LiveStreamsApi(this.apiClient);
             this.playerThemes = new PlayerThemesApi(this.apiClient);
+            this.tags = new TagsApi(this.apiClient);
             this.uploadTokens = new UploadTokensApi(this.apiClient);
             this.videos = new VideosApi(this.apiClient);
             this.watermarks = new WatermarksApi(this.apiClient);
@@ -114,6 +116,14 @@ namespace ApiVideo.Client
         /// <returns>PlayerThemesApi</returns>
         public PlayerThemesApi PlayerThemes() {
             return this.playerThemes;
+        }
+    
+        /// <summary>
+        /// Get an TagsApi instance
+        /// </summary>
+        /// <returns>TagsApi</returns>
+        public TagsApi Tags() {
+            return this.tags;
         }
     
         /// <summary>
