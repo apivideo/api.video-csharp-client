@@ -76,6 +76,20 @@ namespace ApiVideo.Model {
     [JsonProperty(PropertyName = "discarded")]
     public Nullable<bool> discarded { get; set; }
     /// <summary>
+    /// Returns the language of a video in [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format. You can set the language during video creation via the API, otherwise it is detected automatically.
+    /// </summary>
+    /// <value>Returns the language of a video in [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format. You can set the language during video creation via the API, otherwise it is detected automatically.</value>
+    [DataMember(Name="language", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "language")]
+    public string language { get; set; }
+    /// <summary>
+    /// Returns the origin of the last update on the video's `language` attribute.  - `api` means that the last update was requested from the API. - `auto` means that the last update was done automatically by the API.
+    /// </summary>
+    /// <value>Returns the origin of the last update on the video's `language` attribute.  - `api` means that the last update was requested from the API. - `auto` means that the last update was done automatically by the API.</value>
+    [DataMember(Name="languageOrigin", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "languageOrigin")]
+    public string languageorigin { get; set; }
+    /// <summary>
     /// One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  
     /// </summary>
     /// <value>One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  </value>
@@ -147,6 +161,8 @@ namespace ApiVideo.Model {
       sb.Append("  DiscardedAt: ").Append(discardedat).Append("\n");
       sb.Append("  DeletesAt: ").Append(deletesat).Append("\n");
       sb.Append("  Discarded: ").Append(discarded).Append("\n");
+      sb.Append("  Language: ").Append(language).Append("\n");
+      sb.Append("  LanguageOrigin: ").Append(languageorigin).Append("\n");
       sb.Append("  Tags: ").Append(tags).Append("\n");
       sb.Append("  Metadata: ").Append(metadata).Append("\n");
       sb.Append("  Source: ").Append(source).Append("\n");
