@@ -83,6 +83,20 @@ namespace ApiVideo.Model {
     [DataMember(Name="metadata", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "metadata")]
     public List<Metadata> metadata { get; set; }
+    /// <summary>
+    /// Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.  `language` is a permanent attribute of the video. You can update it to another language using the [`PATCH /videos/{videoId}`](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language.
+    /// </summary>
+    /// <value>Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.  `language` is a permanent attribute of the video. You can update it to another language using the [`PATCH /videos/{videoId}`](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language.</value>
+    [DataMember(Name="language", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "language")]
+    public string language { get; set; }
+    /// <summary>
+    /// Use this parameter to enable transcription.   - When `true`, the API generates a transcript for the video. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video.  - When the API generates a transcript, it will be available as a caption for the video.
+    /// </summary>
+    /// <value>Use this parameter to enable transcription.   - When `true`, the API generates a transcript for the video. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video.  - When the API generates a transcript, it will be available as a caption for the video.</value>
+    [DataMember(Name="transcript", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "transcript")]
+    public Nullable<bool> transcript { get; set; }
 
 
     /// <summary>
@@ -100,6 +114,8 @@ namespace ApiVideo.Model {
       sb.Append("  Mp4Support: ").Append(mp4support).Append("\n");
       sb.Append("  Tags: ").Append(tags).Append("\n");
       sb.Append("  Metadata: ").Append(metadata).Append("\n");
+      sb.Append("  Language: ").Append(language).Append("\n");
+      sb.Append("  Transcript: ").Append(transcript).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

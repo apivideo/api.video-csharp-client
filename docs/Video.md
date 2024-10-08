@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **DiscardedAt** | **DateTime?** | The date and time the video was discarded. The API populates this field only if you have the Video Restore feature enabled and discard a video. Date and time are provided using ATOM UTC format. | [optional] 
 **DeletesAt** | **DateTime?** | The date and time the video will be permanently deleted. The API populates this field only if you have the Video Restore feature enabled and discard a video. Discarded videos are pemanently deleted after 90 days. Date and time are provided using ATOM UTC format. | [optional] 
 **Discarded** | **bool** | Returns &#x60;true&#x60; for videos you discarded when you have the Video Restore feature enabled. Returns &#x60;false&#x60; for every other video. | [optional] 
+**Language** | **string** | Returns the language of a video in [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format. You can set the language during video creation via the API, otherwise it is detected automatically. | [optional] 
+**LanguageOrigin** | **string** | Returns the origin of the last update on the video&#39;s &#x60;language&#x60; attribute.  - &#x60;api&#x60; means that the last update was requested from the API. - &#x60;auto&#x60; means that the last update was done automatically by the API. | [optional] 
 **Tags** | **List&lt;string&gt;** | One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.   | [optional] 
 **Metadata** | [**List&lt;Metadata&gt;**](Metadata.md) | Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.  | [optional] 
 **Source** | [**VideoSource**](VideoSource.md) |  | [optional] 
