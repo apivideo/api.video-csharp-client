@@ -13,8 +13,9 @@ namespace ApiVideo.Model {
   [DataContract]
   public class CaptionsUpdatePayload: DeepObject   {
     /// <summary>
-    /// Gets or Sets Default
+    /// Set this parameter to `true` to define a caption as the default for a video.
     /// </summary>
+    /// <value>Set this parameter to `true` to define a caption as the default for a video.</value>
     [DataMember(Name="default", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "default")]
     public Nullable<bool> _default { get; set; }
