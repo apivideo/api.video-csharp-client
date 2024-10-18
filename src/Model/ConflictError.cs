@@ -11,7 +11,7 @@ namespace ApiVideo.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class NotFound: DeepObject   {
+  public class ConflictError: DeepObject   {
     /// <summary>
     /// A link to the error documentation.
     /// </summary>
@@ -40,6 +40,13 @@ namespace ApiVideo.Model {
     [DataMember(Name="status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status")]
     public int status { get; set; }
+    /// <summary>
+    /// A solution for the error.
+    /// </summary>
+    /// <value>A solution for the error.</value>
+    [DataMember(Name="detail", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "detail")]
+    public string detail { get; set; }
 
 
     /// <summary>
@@ -48,11 +55,12 @@ namespace ApiVideo.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class NotFound {\n");
+      sb.Append("class ConflictError {\n");
       sb.Append("  Type: ").Append(type).Append("\n");
       sb.Append("  Title: ").Append(title).Append("\n");
       sb.Append("  Name: ").Append(name).Append("\n");
       sb.Append("  Status: ").Append(status).Append("\n");
+      sb.Append("  Detail: ").Append(detail).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
