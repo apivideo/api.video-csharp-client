@@ -101,6 +101,13 @@ namespace ApiVideo.Model {
     [DataMember(Name="transcript", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "transcript")]
     public Nullable<bool> transcript { get; set; }
+    /// <summary>
+    /// Use this parameter to enable summarization. We recommend using this parameter together with `transcript: true`.  - When `true`, the API generates a summary for the video, based on the transcription. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to summarize the video. If you do not define a language, the API detects it based on the video.
+    /// </summary>
+    /// <value>Use this parameter to enable summarization. We recommend using this parameter together with `transcript: true`.  - When `true`, the API generates a summary for the video, based on the transcription. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to summarize the video. If you do not define a language, the API detects it based on the video.</value>
+    [DataMember(Name="transcriptSummary", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "transcriptSummary")]
+    public Nullable<bool> transcriptsummary { get; set; }
 
 
     /// <summary>
@@ -133,6 +140,7 @@ namespace ApiVideo.Model {
       sb.Append("  Watermark: ").Append(watermark).Append("\n");
       sb.Append("  Language: ").Append(language).Append("\n");
       sb.Append("  Transcript: ").Append(transcript).Append("\n");
+      sb.Append("  TranscriptSummary: ").Append(transcriptsummary).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
