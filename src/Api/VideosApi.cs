@@ -85,7 +85,7 @@ namespace ApiVideo.Api
             if (videoCreationPayload != null && videoCreationPayload.title == null) {
                 throw new ApiException(400,"Missing required parameter 'videoCreationPayload.Title' when calling VideosApi->create");
             }
-                                                                                                                                                            
+                                                                                                                                                                        
             // verify the required parameter 'videoCreationPayload' is set
             if (videoCreationPayload == null)
                 throw new ApiException(400, "Missing required parameter 'videoCreationPayload' when calling VideosApi->create");
@@ -157,7 +157,7 @@ namespace ApiVideo.Api
             if (videoCreationPayload != null && videoCreationPayload.title == null) {
                 throw new ApiException(400,"Missing required parameter 'videoCreationPayload.Title' when calling VideosApi->create");
             }
-                                                                                                                                                            
+                                                                                                                                                                        
             // verify the required parameter 'videoCreationPayload' is set
             if (videoCreationPayload == null)
                 throw new ApiException(400, "Missing required parameter 'videoCreationPayload' when calling VideosApi->create");
@@ -1242,11 +1242,11 @@ namespace ApiVideo.Api
             if (videoUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
             
-                                                                                                                        
+                                                                                                                                    
             if (videoUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
             
-                                                                                                                        
+                                                                                                                                    
             // verify the required parameter 'videoId' is set
             if (videoId == null)
                 throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->update");
@@ -1326,11 +1326,11 @@ namespace ApiVideo.Api
             if (videoUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
             
-                                                                                                                        
+                                                                                                                                    
             if (videoUpdatePayload == null) 
                 throw new ApiException(400,"Missing required parameter 'videoUpdatePayload' when calling VideosApi->update");
             
-                                                                                                                        
+                                                                                                                                    
             // verify the required parameter 'videoId' is set
             if (videoId == null)
                 throw new ApiException(400, "Missing required parameter 'videoId' when calling VideosApi->update");
