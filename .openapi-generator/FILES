@@ -30,6 +30,7 @@ docs/CaptionsUpdatePayload.md
 docs/Chapter.md
 docs/ChaptersApi.md
 docs/ChaptersListResponse.md
+docs/ConflictError.md
 docs/DiscardedVideoUpdatePayload.md
 docs/FilterBy.md
 docs/FilterBy1.md
@@ -60,6 +61,12 @@ docs/Quality.md
 docs/RefreshTokenPayload.md
 docs/RestreamsRequestObject.md
 docs/RestreamsResponseObject.md
+docs/SummariesApi.md
+docs/SummariesListResponse.md
+docs/Summary.md
+docs/SummaryCreationPayload.md
+docs/SummarySource.md
+docs/SummaryUpdatePayload.md
 docs/TagsApi.md
 docs/TokenCreationPayload.md
 docs/TokenListResponse.md
@@ -100,6 +107,7 @@ src/ApiVideo.Test/Api/CaptionsApiTests.cs
 src/ApiVideo.Test/Api/ChaptersApiTests.cs
 src/ApiVideo.Test/Api/LiveStreamsApiTests.cs
 src/ApiVideo.Test/Api/PlayerThemesApiTests.cs
+src/ApiVideo.Test/Api/SummariesApiTests.cs
 src/ApiVideo.Test/Api/TagsApiTests.cs
 src/ApiVideo.Test/Api/UploadTokensApiTests.cs
 src/ApiVideo.Test/Api/VideosApiTests.cs
@@ -128,6 +136,7 @@ src/ApiVideo.Test/Model/CaptionsListResponseTests.cs
 src/ApiVideo.Test/Model/CaptionsUpdatePayloadTests.cs
 src/ApiVideo.Test/Model/ChapterTests.cs
 src/ApiVideo.Test/Model/ChaptersListResponseTests.cs
+src/ApiVideo.Test/Model/ConflictErrorTests.cs
 src/ApiVideo.Test/Model/DiscardedVideoUpdatePayloadTests.cs
 src/ApiVideo.Test/Model/FilterBy1Tests.cs
 src/ApiVideo.Test/Model/FilterBy2Tests.cs
@@ -155,6 +164,11 @@ src/ApiVideo.Test/Model/QualityTests.cs
 src/ApiVideo.Test/Model/RefreshTokenPayloadTests.cs
 src/ApiVideo.Test/Model/RestreamsRequestObjectTests.cs
 src/ApiVideo.Test/Model/RestreamsResponseObjectTests.cs
+src/ApiVideo.Test/Model/SummariesListResponseTests.cs
+src/ApiVideo.Test/Model/SummaryCreationPayloadTests.cs
+src/ApiVideo.Test/Model/SummarySourceTests.cs
+src/ApiVideo.Test/Model/SummaryTests.cs
+src/ApiVideo.Test/Model/SummaryUpdatePayloadTests.cs
 src/ApiVideo.Test/Model/TokenCreationPayloadTests.cs
 src/ApiVideo.Test/Model/TokenListResponseTests.cs
 src/ApiVideo.Test/Model/TooManyRequestsTests.cs
@@ -188,6 +202,7 @@ src/ApiVideo/Api/CaptionsApi.cs
 src/ApiVideo/Api/ChaptersApi.cs
 src/ApiVideo/Api/LiveStreamsApi.cs
 src/ApiVideo/Api/PlayerThemesApi.cs
+src/ApiVideo/Api/SummariesApi.cs
 src/ApiVideo/Api/TagsApi.cs
 src/ApiVideo/Api/UploadTokensApi.cs
 src/ApiVideo/Api/VideosApi.cs
@@ -224,6 +239,7 @@ src/ApiVideo/Model/CaptionsListResponse.cs
 src/ApiVideo/Model/CaptionsUpdatePayload.cs
 src/ApiVideo/Model/Chapter.cs
 src/ApiVideo/Model/ChaptersListResponse.cs
+src/ApiVideo/Model/ConflictError.cs
 src/ApiVideo/Model/DiscardedVideoUpdatePayload.cs
 src/ApiVideo/Model/FilterBy.cs
 src/ApiVideo/Model/FilterBy1.cs
@@ -255,6 +271,11 @@ src/ApiVideo/Model/Quality.cs
 src/ApiVideo/Model/RefreshTokenPayload.cs
 src/ApiVideo/Model/RestreamsRequestObject.cs
 src/ApiVideo/Model/RestreamsResponseObject.cs
+src/ApiVideo/Model/SummariesListResponse.cs
+src/ApiVideo/Model/Summary.cs
+src/ApiVideo/Model/SummaryCreationPayload.cs
+src/ApiVideo/Model/SummarySource.cs
+src/ApiVideo/Model/SummaryUpdatePayload.cs
 src/ApiVideo/Model/TokenCreationPayload.cs
 src/ApiVideo/Model/TokenListResponse.cs
 src/ApiVideo/Model/TooManyRequests.cs
